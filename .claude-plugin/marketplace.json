@@ -3,6 +3,9 @@
   "owner": {
     "name": "Senglay Pann"
   },
+  "metadata": {
+    "description": "Skills, hooks, and templates that turn Claude Code into a virtual game studio for solo indie developers building with AI."
+  },
   "plugins": [
     {
       "name": "indie-studio",
