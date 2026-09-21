@@ -45,6 +45,8 @@ To test the hook by hand, create a folder with a `STUDIO_STATE.md`, then run
 ## Before a release
 1. All scenarios above behave as described.
 2. `sh scripts/check-plugin.sh` and `claude plugin validate .` pass.
-3. Update `CHANGELOG.md` and the `version` in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
+3. Update `CHANGELOG.md` and bump `version` in `.claude-plugin/plugin.json` **only**. Do not also set it in
+   `marketplace.json`: Claude Code silently prefers the `plugin.json` value, so a stale second copy would hide
+   updates. Users only receive an update when the version changes, so bump it on every release.
 4. Fill `homepage` and `repository` in `plugin.json`, and the `<owner>/<repo>` placeholders in the README.
 5. Merge `develop` into `main` with `--no-ff` and tag `vX.Y.Z`.

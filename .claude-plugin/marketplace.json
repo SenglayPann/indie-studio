@@ -11,7 +11,6 @@
       "name": "indie-studio",
       "source": "./",
       "description": "A virtual game studio for solo indie developers who build with AI: phase tracking, role switching, scope guard, git workflow, research rules, and session briefings.",
-      "version": "0.1.0",
       "license": "MIT",
       "keywords": ["gamedev", "indie", "mobile", "workflow", "git"]
     }
