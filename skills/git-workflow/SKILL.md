@@ -10,6 +10,9 @@ Git is the project's save system. In plain words: the `main` copy is your best w
 AI does risky work in **practice copies** (branches); good work is copied into the main line; bad work
 is deleted with no harm. Communication rules: [communication.md](../director/references/communication.md).
 
+If `$ARGUMENTS` names a mode, jump to it: `init` = section 1, `status` = section 7, `commit` = section 4,
+`merge` or `tag` = section 3, `undo` = section 5. With no argument, use the section that matches the request.
+
 Commit message format and examples: [commit-convention.md](references/commit-convention.md).
 Engine-specific notes (Unity, Godot): [engine-notes.md](references/engine-notes.md).
 Templates live in `${CLAUDE_PLUGIN_ROOT}/templates/git/`.

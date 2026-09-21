@@ -32,6 +32,7 @@ Checklists for all six gates are in [gates.md](references/gates.md).
    2. Append the decision to `studio/DECISIONS.md` and an entry to `studio/JOURNAL.md`.
    3. Git (`indie-studio:git-workflow`): with the user's approval, merge `develop` into `main` with `--no-ff`,
       create the annotated gate tag, and push `main` and the tag. Update `last_synced_commit`.
+      (For Gold Master, merge the `release/x.y.z` branch into `main` and `develop` instead; see `indie-studio:launch-live`.)
    4. Give one line on what this milestone means and one line on what the next stage is about.
    5. Recommend a **fresh session** (`indie-studio:session`, compact mode): a gate is the cleanest reset point.
 8. **If not approved or not ready:** record the missing items as next actions. Do not advance the stage.
