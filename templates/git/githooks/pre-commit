@@ -1,0 +1,65 @@
+#!/bin/sh
+# Indie Studio pre-commit hook.
+# Blocks: direct commits to main, oversized files that are not in Git LFS, likely secrets,
+# and engine cache or build folders. See indie-studio:git-workflow.
+#
+# Overrides (only when the human explicitly asks):
+#   STUDIO_ALLOW_MAIN=1        allow a direct commit on main (used once, for the very first commit)
+#   STUDIO_MAX_FILE_MB=100     change the size limit (default 50)
+#   STUDIO_SKIP_SECRET_SCAN=1  skip the content scan for keys
+
+say() { printf '%s\n' "$*" >&2; }
+
+git_dir=$(git rev-parse --git-dir)
+branch=$(git symbolic-ref --short -q HEAD)
+
+# 1. main only receives gate merges and releases.
+if [ "$branch" = "main" ] && [ "${STUDIO_ALLOW_MAIN:-}" != "1" ] && [ ! -f "$git_dir/MERGE_HEAD" ]; then
+  say "Blocked: direct commit to 'main'."
+  say "main only receives gate merges and releases. Switch to a working branch first:"
+  say "  git switch develop && git switch -c feature/<scope>-<short-desc>"
+  exit 1
+fi
+
+files=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$files" ] && exit 0
+
+max_mb="${STUDIO_MAX_FILE_MB:-50}"
+max_bytes=$((max_mb * 1024 * 1024))
+problems=$(mktemp)
+trap 'rm -f "$problems"' EXIT
+
+printf '%s\n' "$files" | while IFS= read -r f; do
+  # 2. Files that should never be committed (keys, certificates, environment files).
+  case "$f" in
+    *.keystore|*.jks|*.p12|*.pfx|*.pem|*.p8|*.mobileprovision|.env|*/.env|.env.*|*/.env.*|*service-account*.json|*serviceaccount*.json)
+      echo "$f : looks like a secret or signing file. Keep it out of git." >> "$problems" ;;
+  esac
+  # 3. Engine caches and build output (a .gitignore should already cover these).
+  case "$f" in
+    Library/*|Temp/*|Obj/*|Logs/*|UserSettings/*|Builds/*|.godot/*)
+      echo "$f : engine cache or build output. Add it to .gitignore." >> "$problems" ;;
+  esac
+  # 4. Big files must be Git LFS pointers (pointers are tiny, so they pass).
+  size=$(git cat-file -s ":$f" 2>/dev/null || echo 0)
+  if [ "$size" -gt "$max_bytes" ]; then
+    mb=$((size / 1024 / 1024))
+    echo "$f : ${mb} MB is over the ${max_mb} MB limit. Track it with Git LFS or leave it out." >> "$problems"
+  fi
+done
+
+# 5. Content scan of added lines for private keys and common key formats.
+if [ "${STUDIO_SKIP_SECRET_SCAN:-}" != "1" ]; then
+  if git diff --cached -U0 --no-color | grep '^+' | grep -Eq -- '-----BEGIN ([A-Z]+ )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|(api[_-]?key|secret|token)[[:space:]]*[=:][[:space:]]*["'"'"'][A-Za-z0-9_./+-]{20,}["'"'"']'; then
+    echo "staged changes : contain something that looks like a private key or API key." >> "$problems"
+  fi
+fi
+
+if [ -s "$problems" ]; then
+  say "Commit blocked by the Indie Studio pre-commit hook:"
+  sed 's/^/  - /' "$problems" >&2
+  say "Fix these, or ask the human before overriding (see the header of this hook)."
+  exit 1
+fi
+
+exit 0

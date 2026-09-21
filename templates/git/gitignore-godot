@@ -1,0 +1,18 @@
+# Godot additions. Append to gitignore-base. Starting point: verify against the current Godot docs
+# for your engine version (indie-studio:research) before relying on it.
+# Keep the *.import files next to your assets and project.godot in git (verify for your version).
+
+# Imported-asset cache and editor data
+.godot/
+.import/
+export.cfg
+export_credentials.cfg
+
+# Mono / C# builds
+.mono/
+data_*/
+mono_crash.*.json
+
+# Android export output
+android/build/
+*.translation
