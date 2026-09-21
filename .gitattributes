@@ -1,0 +1,7 @@
+# Keep LF line endings everywhere. Shell scripts break with CRLF on macOS/Linux
+# and inside Git Bash on Windows.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.zip binary
