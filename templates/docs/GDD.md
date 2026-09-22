@@ -1,7 +1,12 @@
-# <Working title>: game design (GDD-lite)
+# <Working title>: game design
 
-A living document of 2-4 pages. Write only what is proven by playtests or decided. If a section is
-unknown, write "open question" instead of inventing it. Update it when the game changes.
+A living document. Write only what is proven by playtests or decided; if a section is unknown, write "open
+question" instead of inventing it. There is no page limit, but there is a rule: every line is a decision
+someone made, not a wish. Update it when the game changes.
+
+Keep separate documents for the things that grow on their own: money and the economy in `docs/ECONOMY.md`,
+the market in `docs/MARKET.md`, the look in `docs/STYLE_BIBLE.md`. Anything an agent has to read in full
+belongs in a file of its own, so a session only loads what it needs.
 
 ## 1. The game in one paragraph
 <One-sentence game from the pitch, plus what a typical session feels like.>
@@ -35,11 +40,13 @@ unknown, write "open question" instead of inventing it. Update it when the game 
 - Engine and version: <...>   Target devices and minimum spec: <...>   Orientation: <...>
 - Data-driven decisions, save format, anything special: <...>
 
-## 9. Money (tentative)
-<Model and where ads or purchases would appear. No SDK work before Pre-Alpha.>
+## 9. Money
+<One paragraph: the model from `docs/BUSINESS_CASE.md`. The detail lives in `docs/ECONOMY.md`. No SDK work
+before Pre-Alpha.>
 
 ## 10. Scope tiers (mirror of STUDIO_STATE.md)
-- T1: <...>   T2: <...>   T3: <...>   Not doing: <...>
+- T1 (first release): <...>   T2: <...>   T3: <...>
+- Post-launch roadmap: <...>   Not doing: <...>
 
 ## 11. Open questions
 - <...>

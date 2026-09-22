@@ -21,7 +21,7 @@ the hats the current stage needs (at most three in one session; see the stage ta
 | Level Designer | [level-designer.md](references/roles/level-designer.md) | Levels, pacing, difficulty curve | Vertical Slice to Alpha |
 | Audio | [audio.md](references/roles/audio.md) | Sound effects, music, mixing | Vertical Slice to Beta |
 | QA | [qa.md](references/roles/qa.md) | Testing, bugs, devices, performance | Prototype to Live Ops |
-| Monetization | [monetization.md](references/roles/monetization.md) | Ads, purchases, analytics, consent | Pre-Alpha to Live Ops |
+| Monetization | [monetization.md](references/roles/monetization.md) | Ads, purchases, economy, analytics, consent | Conception, then Pre-Alpha to Live Ops |
 | Release Engineer | [release-engineer.md](references/roles/release-engineer.md) | Builds, signing, stores, compliance | Alpha to Launch |
 | Marketer | [marketer.md](references/roles/marketer.md) | Market check, store listing, community | Idea, Beta to Live Ops |
 
@@ -36,6 +36,7 @@ the hats the current stage needs (at most three in one session; see the stage ta
 ## Rules for every hat
 - Stay inside the stage's "Off-limits right now" list. A hat does not license out-of-phase work.
 - New ideas go through `indie-studio:scope-guard`. Facts that can go stale go through `indie-studio:research`.
+  Money questions go through `indie-studio:monetization`.
 - Delegating to other agents or tools follows `indie-studio:ai-delegation`.
 - Every deliverable is a file or a commit, not just chat text.
 - Guest hats join for one task, then leave. Do not accumulate hats.

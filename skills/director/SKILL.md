@@ -78,6 +78,8 @@ fix; do not change things silently.
 8. Protected polish buffer in the Schedule section has not shrunk.
 9. `studio/KNOWLEDGE.md` has no entries past their re-check date that are still being relied on.
 10. `studio/ASSET_LEDGER.md` has a row for every shipped AI-generated asset (spot-check a few).
+11. From Kickoff: `docs/BUSINESS_CASE.md` exists and every target carries a source and a date. From the GDD
+    stage: `docs/ECONOMY.md` exists if the game earns from ads or purchases.
 
 ## 5. Hat (switch role)
 Read the matching file in `${CLAUDE_PLUGIN_ROOT}/skills/roles/references/roles/`, update `hats` in the state
