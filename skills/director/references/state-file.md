@@ -44,6 +44,11 @@ can tell whether anything happened outside the notebook. Commits that only touch
 
 Always set `updated` to today's date when editing.
 
+## One notebook, many branches
+Git keeps a copy of this file and of `studio/` on every branch, and the newest copy is the true one. If the
+session brief says "NEWER NOTEBOOK", carry that copy over before planning (`indie-studio:git-workflow`,
+section 8). Before a branch that will not be merged is deleted (every spike), carry its notebook to `develop`.
+
 ## Reconciling a stale state
 If the brief says the state is behind git, run `git log --oneline <last_synced_commit>..HEAD`, read the
 commit subjects (and diffs where unclear), summarize what changed since, update STUDIO_STATE.md, and

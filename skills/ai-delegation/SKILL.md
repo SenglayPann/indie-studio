@@ -45,9 +45,20 @@ Size: one session or about four hours at most. Split anything bigger. Vague brie
 3. Verify engine and SDK calls against the docs for the installed version. Never invent an API
    (`indie-studio:research`).
 4. Run, compile, or test before saying "done". Report results honestly, including failures and skipped steps.
-5. **Three strikes.** After three failed attempts at the same problem, stop. Write a short summary: what was
-   tried, what is now known, two or three hypotheses, and the options. Ask the human. Do not keep patching
-   symptoms, and do not widen the scope by rewriting things to "fix" it.
+5. **Three strikes.** After three failed attempts at the same problem, stop. Do not keep patching symptoms, and
+   do not widen the scope by rewriting things to "fix" it. Write a short summary (what was tried, what is now
+   known, two or three hypotheses), then offer the human these options with one marked as recommended. The
+   human may not be able to read the code, so give them choices they can act on:
+   - **Fresh session** (`indie-studio:session`, compact mode): failed attempts crowd the context and cause
+     repeats. Often the cheapest fix.
+   - **Look it up** (`indie-studio:research`, section 5): the exact error text with the engine and version,
+     plus the engine's issue tracker.
+   - **Make it smaller** (`indie-studio:scope-guard`): cut or simplify the feature, or reach the same result
+     another way. Anything that has cost three failed attempts is rarely worth its tier.
+   - **Ask people:** draft a question for the engine's official forum or community with the version, the exact
+     error, what was tried, and the shortest steps to reproduce. The human posts it under their own account.
+   - **Hands on:** talk the human through the step in the editor and watch what comes back.
+   When it is solved, record the cause and the fix in `studio/KNOWLEDGE.md` so the next session does not repeat it.
 6. No new dependencies, packages, or SDKs without approval. No unrelated refactors. No secrets read or printed.
 7. Subagents get a brief and return short findings. Only the main thread edits STUDIO_STATE.md, so updates do
    not collide.

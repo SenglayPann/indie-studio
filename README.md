@@ -15,7 +15,8 @@ scope, your schedule, and your project.
 - **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
   audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
 - **Gates, not guesses.** Six evidence-based checkpoints from idea to release. Only you approve them.
-- **Scope protection.** Every new idea is costed, then parked or traded. The feature freeze at Alpha is enforced.
+- **Scope protection.** Every new idea is costed, then parked or traded. The feature freeze at Alpha is enforced
+  by a git hook.
 - **Disciplined version control.** Practice branches, a commit convention, gate tags, safe undo, and real git hooks
   that block secrets, huge files, and direct commits to `main`.
 - **Looks things up.** Versions, store rules, prices, licenses, and AI-tool terms are verified and logged with a
@@ -79,7 +80,7 @@ Most skills also trigger on their own when the conversation calls for them.
 | **Skills** | Procedures and judgment, loaded when relevant |
 | **Session hook** | Deterministic: prints the project brief at session start (silent in projects without `STUDIO_STATE.md`) |
 | **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, GDD, style bible) |
-| **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main` |
+| **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
 
 | Phase | Stages | Skill |
 |---|---|---|

@@ -31,6 +31,7 @@ The gap: <one sentence>. Sources are logged in `studio/KNOWLEDGE.md`.
 - Hours per week: <n>   Target date: <date or none>
 - AI tool budget per month: <amount>
 - Test devices owned: <models>
+- Development computer: <Windows / Mac / Linux>   First store: <Android / iOS / both>
 - Skills the human brings: <...>   Skills the AI covers: <...>
 
 ## Scope tiers

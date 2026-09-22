@@ -9,7 +9,8 @@ The engine is one of the hardest decisions to reverse. The AI should recommend w
 human decide. Communication rules: [communication.md](../director/references/communication.md).
 
 ## 1. Gather the inputs
-Dimension (2D or 3D), target platforms, art style, the monetization plan (ads and purchases need mature SDKs),
+Dimension (2D or 3D), target platforms, the computer the human builds on (it decides how iOS builds are made),
+art style, the monetization plan (ads and purchases need mature SDKs),
 performance needs, the human's prior experience with any language, whether console or PC releases are
 possible later, budget and comfort with license terms, and the tools already set up in the user's Claude
 Code (which engine-specific skills, editor bridges, or MCP servers are installed).
@@ -22,6 +23,9 @@ Code (which engine-specific skills, editor bridges, or MCP servers are installed
   the editor and read its errors makes the self-checking loop possible.
 - **Text-based scene files** merge and diff better in git.
 - **Automation:** can builds and tests run from the command line?
+- **Build path from the human's computer:** iOS builds must be compiled, signed, and uploaded from macOS. If
+  they target iOS without a Mac, does the engine offer its own cloud build service, or a documented path
+  through a hosted macOS runner? Verify the current options, limits, and costs.
 - **Mobile SDK ecosystem:** ads, purchases, analytics, crash reporting. Mature official SDKs save weeks.
 - **Build size and startup cost** of an empty mobile project.
 - **License and fees:** terms change; verify the current terms at decision time.

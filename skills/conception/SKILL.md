@@ -18,6 +18,10 @@ Producer as guests). Kickoff = Producer + Designer. Off-limits: see the Idea, Va
 1. **Intake.** Ask at most three questions at a time, each with a suggested default:
    - Honest hours per week, and a target date (or none).
    - Monthly budget for AI tools, and which phone(s) the user owns for testing.
+   - Which computer they build on (Windows, Mac, or Linux), and whether iOS matters for the first release.
+     iOS builds are signed and uploaded from macOS, either on a Mac or through a cloud build service, and
+     Apple charges a yearly fee: verify today's options and costs with `indie-studio:research` before planning
+     both stores. Android-first is often the cheaper start; say so plainly if it applies.
    - Games they love and play, what they want from this project (learn, ship, earn), and what they can do
      themselves (drawing, music, code, none).
    Write the answers into the Schedule section of STUDIO_STATE.md and the constraints part of `docs/PITCH.md`
@@ -39,6 +43,8 @@ Producer as guests). Kickoff = Producer + Designer. Off-limits: see the Idea, Va
    cover, and which need the human. Estimate T1 roughly (for example, "12 levels x about 6 hours each plus
    about 40 hours of systems"), then do the capacity math: hours per week x weeks available. Multiply beginner
    estimates by 1.5 to 2. Flag showstoppers: multiplayer, servers, huge content, real-time networking, heavy 3D.
+   Check the build path to every target store from the human's own computer (see the intake), and the store
+   account steps and fees that only they can do.
 7. **Engine choice:** run `indie-studio:engine-selector`.
 8. Adjust the concept if feasibility or the market check demands it. Say plainly when something must shrink.
 
