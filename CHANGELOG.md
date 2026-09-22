@@ -9,9 +9,12 @@ All notable changes to this project are recorded here. The format follows
 - Plugin manifest and marketplace catalog (installable through `/plugin marketplace add`).
 - SessionStart hook that briefs Claude on the project state at startup, resume, clear, and compact, and flags
   state that is behind git. Silent in projects without `STUDIO_STATE.md`.
-- Sixteen skills: `director`, `session`, `git-workflow`, `research`, `scope-guard`, `gate-review`, `roles`
+- Seventeen skills: `director`, `session`, `git-workflow`, `research`, `scope-guard`, `gate-review`, `roles`
   (ten role files), `conception`, `preproduction`, `production`, `launch-live`, `playtest-loop`,
-  `engine-selector`, `ai-delegation`, `mobile-perf-budget`, `asset-pipeline`.
+  `engine-selector`, `ai-delegation`, `mobile-perf-budget`, `asset-pipeline`, `plugin-feedback`.
+- `plugin-feedback` records where the plugin itself was wrong, in the way, or missing, in
+  `studio/PLUGIN_FEEDBACK.md`, and turns those notes into a scrubbed report only when the human approves the
+  exact text. No telemetry, no automatic sending. A GitHub issue form matches the same fields.
 - Templates: project state file, `studio/` logs, pitch, GDD-lite, style bible, task brief, playtest sheet,
   post-mortem, CLAUDE.md block.
 - Git hooks (`commit-msg`, `pre-commit`) plus `.gitignore` and `.gitattributes` templates for Unity and Godot.

@@ -106,6 +106,7 @@ Most skills also trigger on their own when the conversation calls for them.
 | `ai-delegation` | Task briefs, three strikes, review protocol, project rules |
 | `mobile-perf-budget` | Budgets and real-device measurement |
 | `asset-pipeline` | Style bible, AI asset protocol, licensing, ledger |
+| `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
 
 The plugin is engine-agnostic. If engine-specific skills are installed (for example Unity ones), it uses them
 for engine work instead of reinventing them.
@@ -119,6 +120,15 @@ for engine work instead of reinventing them.
   `research` skill verifies them at the moment they matter.
 - **Not legal advice.** Licensing, ownership, and store-policy notes are guidance to check, not legal opinions.
 - The hook script and git hooks are short, readable shell scripts. Read them before you install.
+
+## Telling us what went wrong
+
+The studio writes down its own mistakes while they are fresh, in `studio/PLUGIN_FEEDBACK.md`: bad advice, a
+rule that got in the way, a skill that did not start, something missing. Run
+`/indie-studio:plugin-feedback send` when you feel like sharing them. Claude strips out everything about your
+game, shows you the exact text, and only then gives you a pre-filled issue link to open yourself.
+
+Nothing is ever sent on its own. The plugin has no telemetry and collects nothing about you or your project.
 
 ## Repository layout
 

@@ -38,8 +38,20 @@ with a version tag.
 
 ## Reporting bad advice
 
-If a skill gave wrong or outdated guidance, open an issue with: which skill, what it said, what was wrong, and the
-source that shows the correct answer (with the date). The post-mortem template has a section for exactly this.
+While you work, the studio logs its own misfires in your project's `studio/PLUGIN_FEEDBACK.md`. Run
+`/indie-studio:plugin-feedback send` to turn those notes into a report: it removes everything about your game,
+shows you the text, and hands you a pre-filled issue link. You can also open the **Plugin feedback** issue form
+directly and fill it in by hand.
+
+Either way, the useful parts are: plugin version, which skill, what it did, what you expected, and a source
+with a date when a fact has changed.
+
+### Triage (maintainers)
+1. Label the issue by kind (`wrong-advice`, `outdated`, `in-the-way`, `trigger`, `missing`, `setup`).
+2. Reproduce it with the matching scenario in `docs/TESTING.md`, or write the smallest scenario that shows it.
+3. Fix the skill, add that scenario to `docs/TESTING.md` so it cannot come back, and note it in `CHANGELOG.md`.
+4. Outdated facts are a design signal: if a skill stated something that goes stale, replace the fact with a
+   method and a pointer to `indie-studio:research`.
 
 ## Adding an engine or platform
 

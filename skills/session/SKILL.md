@@ -45,6 +45,8 @@ Run when the user is done for now, or before a long break.
 6. Commit the state and journal changes as `chore(state): wrap up <date>`.
 7. Tell the user in three lines: what is saved and where, what is unfinished, and what the first action
    next session will be. Recommend a fresh chat next time; the brief will restore the context.
+8. Add one short invitation, once, and drop it if they pass: anything the studio itself got wrong today
+   (`indie-studio:plugin-feedback`).
 
 ## Compact (context hygiene)
 You cannot see an exact token count. Watch for these triggers and, when one applies, recommend a reset
