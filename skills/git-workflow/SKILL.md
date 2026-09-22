@@ -1,7 +1,7 @@
 ---
 name: git-workflow
 description: Version control for game projects. Use for ANY git action (commit, branch, merge, tag, push, pull, revert, undo, checkpoint, save my work, back up) and to set up a repository in a game project (init mode). Applies phase-aware branching (throwaway spikes early, feature freeze after Alpha), the commit message convention, gate tags, safe undo, game-specific traps (engine cache folders, binary assets, .meta files, secrets), and the human's git permission contract.
-argument-hint: "[init | status | commit | merge | tag | undo]"
+argument-hint: "[init | status | commit | merge | tag | undo | notebook]"
 ---
 
 # Git workflow
@@ -11,7 +11,8 @@ AI does risky work in **practice copies** (branches); good work is copied into t
 is deleted with no harm. Communication rules: [communication.md](../director/references/communication.md).
 
 If `$ARGUMENTS` names a mode, jump to it: `init` = section 1, `status` = section 7, `commit` = section 4,
-`merge` or `tag` = section 3, `undo` = section 5. With no argument, use the section that matches the request.
+`merge` or `tag` = section 3, `undo` = section 5, `notebook` = section 8. With no argument, use the section
+that matches the request.
 
 Commit message format and examples: [commit-convention.md](references/commit-convention.md).
 Engine-specific notes (Unity, Godot): [engine-notes.md](references/engine-notes.md).
@@ -65,7 +66,7 @@ One repository per game, at the game project folder root. Docs first; the engine
 | `content/<desc>` | Art, audio, levels | Same as feature, but separate so big binary changes do not bury code changes. |
 | `fix/<desc>` | Bug fixes | Allowed at every stage. |
 | `polish/<desc>` | Juice, tuning, small UX | Allowed after Alpha. |
-| `spike/<idea>` | Throwaway experiments and prototypes | Never merged. When done: tag `archive/spike-<idea>`, then delete. Messy code is fine here. |
+| `spike/<idea>` | Throwaway experiments and prototypes | Never merged. When done: carry its notebook to `develop` (section 8), tag `archive/spike-<idea>`, then delete. Messy code is fine here. |
 | `release/<x.y.z>` | Stabilizing Beta to Gold Master | Fixes only. Merge into `main` and `develop`. |
 | `hotfix/<desc>` | Post-launch emergency fix | Branch from `main`; merge into `main` and `develop`. |
 
@@ -128,8 +129,31 @@ and getting a yes; amend or rebase commits that were already pushed.
   future updates: back it up somewhere private and outside the repo (tell the user; see `indie-studio:launch-live`).
 - Large binaries go through LFS (section 1, step 4); text-based engine files stay out of LFS.
 - Tag every gate; tags are the "bookmarks" the user can return to.
-- Commit `STUDIO_STATE.md` and `studio/` with the project; they are part of the project's history.
+- Commit `STUDIO_STATE.md` and `studio/` with the project; they are part of its history. Git keeps a copy on
+  each branch, so follow section 8 whenever branches split.
 
 ## 7. Status mode
 Report in a few lines: current branch and its purpose, uncommitted changes, commits ahead of `develop`
 and of the remote, last tag, whether the phase rules allow this branch, and the next git action to take.
+
+## 8. The notebook across branches
+The notebook (`STUDIO_STATE.md` and `studio/`) is one diary for the whole project, but git keeps a copy on
+every branch. Switching branches shows that branch's copy, and deleting a branch deletes its copy. The newest
+copy is the true one. Keep it that way:
+- Work on one branch at a time and merge it before starting the next, so notebook updates travel with the merge.
+- **Before archiving or deleting a branch that will not be merged** (every spike, any abandoned task), switch
+  to `develop` and carry that branch's notebook over first.
+- **When the session brief says "NEWER NOTEBOOK"**, carry that copy to the branch you are on before planning.
+
+To carry the notebook from `<other>` (a branch or an `archive/*` tag) to the branch you are on:
+1. Check whether this branch's copy also changed since the two split:
+   `git log --oneline <other>..HEAD -- STUDIO_STATE.md studio`.
+2. If that prints nothing, take the other copy: `git checkout <other> -- STUDIO_STATE.md studio`.
+3. If it prints commits, combine by hand. Read the other copy (`git show <other>:STUDIO_STATE.md`, and
+   `git diff HEAD <other> --stat -- studio` for the logs). Keep the newest state and every journal, decision,
+   playtest, and feedback entry from both sides.
+4. Set `last_synced_commit` to the latest code commit on this branch, then commit:
+   `chore(state): carry notebook over from <other>`.
+
+A merge conflict inside the notebook is solved the same way: it is plain text, so keep the newest state and
+every entry from both sides. Never solve it by taking one side wholesale.

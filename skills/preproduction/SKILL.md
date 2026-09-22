@@ -26,8 +26,10 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
 5. **Playtest early:** run `indie-studio:playtest-loop` with 3-5 outsiders as soon as the loop is playable.
 6. **Decide:** proceed, change the core once, or stop (iterate-or-kill in the playtest-loop skill). At most two
    focused rounds. Record it in `studio/DECISIONS.md`.
-7. **If proceeding:** with the human's approval, tag the spike `archive/spike-core-loop` and delete the branch.
-   The spike is reference only. Never merge it.
+7. **Close the spike** once the decision is to proceed or to stop. With the human's approval: switch to `develop`,
+   carry the notebook over from the spike so the playtest notes and the decision are kept (`indie-studio:git-workflow`,
+   section 8), then tag the spike `archive/spike-core-loop` and delete the branch. The spike is reference only.
+   Never merge it.
 
 ## Stage: GDD-lite (Designer + Producer; Engineer as guest)
 8. **Write `docs/GDD.md`** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/GDD_LITE.md`: 2-4 pages, a living document.

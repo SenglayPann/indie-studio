@@ -18,7 +18,8 @@ when the user says they are finishing, and `compact` when a trigger below applie
    questions). If there is none, read `STUDIO_STATE.md` yourself. If there is no state file, invoke
    `indie-studio:director` in init mode.
 2. If the brief flags the state as stale, reconcile first: follow "Reconciling a stale state" in
-   [state-file.md](../director/references/state-file.md).
+   [state-file.md](../director/references/state-file.md). If it reports a newer notebook on another branch or
+   tag, carry that copy over first (`indie-studio:git-workflow`, section 8).
 3. Check the working tree. If there are uncommitted changes from an earlier session, summarize them in
    one or two lines and ask what to do (commit them on the right branch, keep going, or set aside). Never
    discard changes without explicit approval.

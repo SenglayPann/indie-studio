@@ -72,6 +72,20 @@ if command -v git >/dev/null 2>&1 && git -C "$root" rev-parse --is-inside-work-t
     else
       echo "Note    : last_synced_commit is not set yet."
     fi
+    # The notebook is project-wide, but git keeps one copy per branch. Warn when another branch
+    # (or an archived spike tag) holds a newer copy than the one checked out here.
+    mine=$(git -C "$root" log -1 --format=%ct HEAD -- STUDIO_STATE.md studio 2>/dev/null)
+    best=${mine:-0}
+    newer_ref=""
+    for ref in $(git -C "$root" for-each-ref --format='%(refname:short)' refs/heads refs/tags/archive 2>/dev/null); do
+      ct=$(git -C "$root" log -1 --format=%ct "$ref" -- STUDIO_STATE.md studio 2>/dev/null)
+      if [ -n "$ct" ] && [ "$ct" -gt "$best" ]; then best=$ct; newer_ref=$ref; fi
+    done
+    if [ -n "$newer_ref" ]; then
+      when=$(git -C "$root" log -1 --format='%cr' "$newer_ref" -- STUDIO_STATE.md studio 2>/dev/null)
+      echo "! NEWER NOTEBOOK on '$newer_ref' (saved $when). The copy on this branch may be out of date."
+      echo "  Carry it over before planning (indie-studio:git-workflow, section 8)."
+    fi
   else
     echo "Git     : repository has no commits yet (branch $branch)."
   fi

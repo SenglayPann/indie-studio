@@ -43,7 +43,8 @@ State file rules are in [state-file.md](references/state-file.md).
 1. Read `STUDIO_STATE.md`. If it does not exist, offer `init` and stop.
 2. If a session brief was injected at the start, use it instead of re-reading; still open the state
    file before changing anything. If the brief says the state is behind git, reconcile first
-   (state-file.md, "Reconciling a stale state").
+   (state-file.md, "Reconciling a stale state"). If it reports a newer notebook elsewhere, carry that copy
+   over first (`indie-studio:git-workflow`, section 8).
 3. Report in at most six lines: phase and stage, next gate and how many criteria are met, active hats,
    current branch and whether the work is saved, the next three actions, open questions.
 4. Check the request against Off-limits. If the user wants something on that list, say so, offer to park
@@ -70,7 +71,8 @@ fix; do not change things silently.
    nothing important is unpushed; `git_permissions` is `set`.
 4. Tags match the Gates table (each passed gate has its tag on `main`).
 5. Branch names obey the phase rules (for example, no open `feature/*` branch after the Alpha gate).
-6. `last_synced_commit` exists in history and is not far behind HEAD.
+6. `last_synced_commit` exists in history and is not far behind HEAD, and no other branch or `archive/*` tag
+   holds a newer notebook (`indie-studio:git-workflow`, section 8).
 7. Scope: tasks in progress belong to a scope tier; no T3 work while T1 is incomplete; parking lot
    ideas have not leaked into code.
 8. Protected polish buffer in the Schedule section has not shrunk.
