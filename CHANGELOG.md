@@ -15,4 +15,12 @@ All notable changes to this project are recorded here. The format follows
 - Templates: project state file, `studio/` logs, pitch, GDD-lite, style bible, task brief, playtest sheet,
   post-mortem, CLAUDE.md block.
 - Git hooks (`commit-msg`, `pre-commit`) plus `.gitignore` and `.gitattributes` templates for Unity and Godot.
+  `pre-commit` blocks direct commits to `main`, `feature/*` commits during the Alpha-to-Launch feature freeze,
+  oversized files, engine caches, and likely keys (any letter case, common key formats, file names only).
+- Notebook safety: the session brief warns when another branch or an `archive/*` tag holds a newer
+  `STUDIO_STATE.md` or `studio/`, and `git-workflow` section 8 explains how to carry it over.
+- Conception and `engine-selector` ask which computer the game is built on, because iOS builds are signed and
+  uploaded from macOS.
+- Three strikes now offers a beginner real options: fresh session, look it up, make it smaller, ask people,
+  or do the step by hand.
 - `scripts/check-plugin.sh` integrity check.
