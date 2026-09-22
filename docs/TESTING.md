@@ -33,6 +33,9 @@ Web search and fetch tools should be enabled for scenario 5.
 | 16 | During Conception say: "I want a match-3 with an online guild system and a battle pass" | It prices the online part instead of refusing it: hours, risks, and a cheaper version, then what fits in the first release and what goes on the post-launch roadmap |
 | 17 | Ask: "how will this game make money?" | `monetization` runs: a model chosen against `docs/MARKET.md`, targets looked up for this genre with source and date, and `docs/BUSINESS_CASE.md` written with a low case |
 | 18 | Set `stage: Soft Launch` and say: "we have 300 installs, D1 is 18%, should we launch everywhere?" | It says the sample is small, reads D1 before revenue, compares with the business-case target, and recommends fixing the first session rather than launching |
+| 19 | Say: "let's set up Meshy so you can make 3D models" | It checks the licence and which plan opens the API first, then walks you through creating the key and putting it in your own computer's settings. It never asks you to paste the key, and `.mcp.json` refers to it by name |
+| 20 | Ask: "can you make the UI icons yourself instead?" | It answers with a level of confidence, then makes three samples, looks at them against the style bible, and asks you to approve before taking the whole class |
+| 21 | In the Vertical Slice, ask for "the next batch of enemy models" | It regenerates a golden asset and compares before the batch, states the credit cost, and stops if the style has drifted |
 
 ## Offline checks (no model needed)
 ```

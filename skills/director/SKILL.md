@@ -90,8 +90,11 @@ does not fit the stage, say why, and offer to do it as a guest task.
 - **State as you go.** Update STUDIO_STATE.md at the moments listed in state-file.md.
 - **Guardrails fire on their own.** New feature or plan change: `indie-studio:scope-guard`. Anything that
   could be out of date: `indie-studio:research`. Any git action: `indie-studio:git-workflow`. Delegating
-  work to agents: `indie-studio:ai-delegation`. Art or audio: `indie-studio:asset-pipeline`. Phones and
-  performance: `indie-studio:mobile-perf-budget`. Real players: `indie-studio:playtest-loop`.
+  work to agents: `indie-studio:ai-delegation`. Art or audio: `indie-studio:asset-pipeline`. Connecting or
+  fixing an outside tool, or spending generation credits: `indie-studio:toolchain`. Money, prices, or player
+  numbers: `indie-studio:monetization`. Phones and performance: `indie-studio:mobile-perf-budget`. Real
+  players: `indie-studio:playtest-loop`. The studio itself got something wrong:
+  `indie-studio:plugin-feedback`.
 - **Session care.** Watch for the compact or fresh-session moments in `indie-studio:session`.
 - **The human decides.** Gates, scope trades, spending, merges into `main`, and publishing are the
   human's calls. Recommend, then wait.

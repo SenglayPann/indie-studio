@@ -44,8 +44,10 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
     UI, and feedback it must include; and a definition of done. Everything outside that list waits.
 
 ## Stage: Vertical Slice (Engineer + Artist + Level Designer; Audio, QA, Producer as guests)
-12. **Style bible first:** `docs/STYLE_BIBLE.md` and the tool choices (`indie-studio:asset-pipeline`; time-boxed
-    tool comparison in `indie-studio:research`). Nothing final gets generated before this exists.
+12. **Style bible first:** `docs/STYLE_BIBLE.md` and the tool choices (`indie-studio:asset-pipeline`;
+    time-boxed comparison in `indie-studio:research`, setup and key handling in `indie-studio:toolchain`).
+    Decide who makes each asset class and approve three samples from each maker before production starts.
+    Nothing final gets generated before this exists.
 13. **Rebuild cleanly** on `feature/vertical-slice` from `develop`. Port the proven logic from the spike; do not
     copy the spike wholesale. The slice must use the same pipeline the rest of the game will use.
 14. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").

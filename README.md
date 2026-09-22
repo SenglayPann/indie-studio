@@ -27,6 +27,11 @@ scope, your schedule, and your project.
 - **Knows when to reset.** Recommends `/compact` or a fresh session at the right moments, saving state first.
 - **Built for AI-assisted work.** Task briefs, a delegation matrix, a three-strikes rule, and an asset ledger for
   AI-generated art and audio.
+- **Works with AI asset generators.** It walks you through connecting them (Meshy, Tripo, audio tools, Blender,
+  engine bridges) without ever seeing your API key, says honestly when Claude can make an asset itself, and
+  proves both with samples before a whole asset class is trusted to either.
+- **Keeps generated assets on-style.** Prompt recipes, reference images, and a golden set that catches it when
+  a tool quietly changes its model.
 
 ## Requirements
 
@@ -110,7 +115,8 @@ Most skills also trigger on their own when the conversation calls for them.
 | `ai-delegation` | Task briefs, three strikes, review protocol, project rules |
 | `monetization` | Business model, ads, purchases, the economy, analytics, and reading a soft launch |
 | `mobile-perf-budget` | Budgets and real-device measurement |
-| `asset-pipeline` | Style bible, AI asset protocol, licensing, ledger |
+| `asset-pipeline` | Style bible, who makes each asset, drift control, 3D for phones, licensing, ledger |
+| `toolchain` | Connects AI asset generators and other tools, keeps keys out of the chat, proves they work |
 | `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
 
 The plugin is engine-agnostic. If engine-specific skills are installed (for example Unity ones), it uses them

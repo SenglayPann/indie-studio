@@ -37,6 +37,9 @@ These are starting points. The truth is what the low-end device shows.
 - Handle pause, resume, and interruptions; save state when the app goes to the background.
 
 ## 4. Asset rules
+For 3D games, per-asset triangle, texture, and material budgets live in `indie-studio:asset-pipeline`
+(`references/3d-pipeline.md`); check the whole scene's triangles and draw calls on the device, not just
+single models.
 GPU-compressed textures in the format the devices support (verify for the engine version); atlases for UI and
 sprites; texture sizes capped to what appears on screen; short compressed audio with music streamed; only the
 font characters needed; strip unused assets. Check the engine's build report for the biggest files

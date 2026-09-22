@@ -1,80 +1,126 @@
 ---
 name: asset-pipeline
-description: Rules for making, naming, importing, and tracking game art, audio, and other assets, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when writing a style bible; when choosing or trying an AI asset tool; when organizing asset folders or import settings; or when a question comes up about licenses, ownership, or store disclosure of AI-generated content.
+description: Rules for making, naming, importing, and tracking game art, audio, and 3D models, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, or the human); when writing a style bible or prompt recipes; when generated assets drift out of style between batches or tool versions; when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
 argument-hint: "[asset type or question]"
 ---
 
 # Asset pipeline
 
 AI can produce a lot of assets fast. Without rules the result is a game that looks like ten different games,
-whose files nobody can trace, with license risks nobody checked. Communication rules:
-[communication.md](../director/references/communication.md).
+whose files nobody can trace, with licence risks nobody checked. Communication rules:
+[communication.md](../director/references/communication.md). 3D specifics:
+[3d-pipeline.md](references/3d-pipeline.md). Connecting the tools: `indie-studio:toolchain`.
 
 ## Principles
 1. Consistency beats fidelity. One coherent simple style beats a mix of impressive ones.
-2. Every shipped asset is traceable: which tool, which prompt, which license, which edits.
+2. Every shipped asset is traceable: which maker, which recipe, which licence, which edits.
 3. The human curates and approves. The AI generates, converts, and organizes.
-4. Measure production speed at the Vertical Slice; it drives the whole content plan.
-5. Nothing final is generated before the style bible exists.
+4. Nobody is trusted on their own say-so, including you: a maker earns an asset class by showing samples.
+5. Measure production speed at the Vertical Slice; it drives the whole content plan.
+6. Nothing final is generated before the style bible exists.
 
 ## 1. The style bible (`docs/STYLE_BIBLE.md`)
 Create it from `${CLAUDE_PLUGIN_ROOT}/templates/docs/STYLE_BIBLE.md` at the start of the Vertical Slice stage
-with the Artist hat. It fixes: palette (hex values), resolution and pixel density, line and shading style,
-perspective, UI kit rules, audio mood and loudness, reference images, and do and do-not examples. Every
-generated asset is checked against it.
+with the Artist hat. It fixes the palette (hex values), resolution and pixel density, line and shading style,
+perspective, UI rules, audio mood and loudness, reference images, the 3D technical spec, the **prompt recipes**,
+the **makers** table, and the **golden set**. Every generated asset is checked against it.
 
-## 2. Generation protocol (per asset class)
-1. Choose the tool through the comparison in [tool-evaluation.md](../research/references/tool-evaluation.md).
-   One tool per asset class; avoid switching mid-project.
-2. Lock the settings: model and version, aspect ratio, resolution, style references, and negative prompts.
-   Store them in the style bible so a later session reproduces the same look.
-3. Generate several variants; the human picks. Generate a class of assets in one batch or session for consistency.
-4. Clean up: background removal, cropping, palette fix, alignment, resizing. Keep the original in a
-   `Source/` folder (outside the engine's asset folder; large files through LFS or kept outside the repo).
-5. Import with the settings in section 5, then check it in the game at real phone size.
-6. Add a row to `studio/ASSET_LEDGER.md`: path, tool and version, plan or tier, prompt or source, date, license
-   URL and date checked, commercial use OK?, human edits, style-bible check.
-7. Commit on a `content/*` branch with an `art(...)` or `audio(...)` commit (`indie-studio:git-workflow`).
+## 2. Who makes each asset
+Decide per asset class (UI icons, character sprites, props, environment, sound effects, music), and write the
+answer in the makers table.
 
-## 3. Licensing, ownership, and disclosure (volatile; verify each time)
-- Before an asset from a tool ships, confirm that the plan actually used allows commercial use. Free tiers
-  often differ from paid tiers. Save the terms URL and the date in the ledger.
-- Ownership of purely AI-generated material is legally unsettled in some places, and rules differ by
-  country and change. Substantial human edits strengthen your position. Look up the current position for
-  your situation; this is not legal advice, and a lawyer is the right person for a real question.
-- App stores increasingly ask developers to disclose AI-generated content. Check the current rules for each
-  store you target (`indie-studio:research`) and follow them. Record what you found in `studio/KNOWLEDGE.md`.
-- Never prompt for existing copyrighted characters or logos, or for a living artist's name as a style.
-- Third-party assets (asset stores, free packs): keep the license text with the asset, follow the credit
+| Maker | Usually good at | Usually weak at |
+|---|---|---|
+| **Claude directly** (written as code or vector files) | Icons, flat and geometric shapes, UI layouts and states, colour work, particle and shader effects, simple animation, patterns, level data, all text | Illustration, characters and faces, detailed textures, music, voice |
+| **Claude driving a generator** (`indie-studio:toolchain`) | 3D models from text or a picture, illustrated sprites, textures, sound effects, voice, music | Fine control, consistency without recipes, anything the licence excludes |
+| **A bought or free pack** | A whole consistent set at once, cheaply | Looking like other games; licence tracking |
+| **The human** | Taste, final judgement, small fixes | Volume |
+
+**Samples decide, not confidence.** Claiming you can match a style proves nothing:
+1. Propose the maker for the class and say plainly how sure you are and why.
+2. Produce **three samples** exactly the way production would (same recipe, same settings).
+3. Look at them: render vector output to an image, take a screenshot of a model, and compare against the
+   style bible and the technical spec. If you cannot see the result, it is not verified: say so and ask the
+   human to look.
+4. The human approves or rejects. After two failed rounds, change the maker rather than the prompt.
+5. Record the decision, the date, and the samples in the makers table.
+Re-run this whenever the style bible changes or a tool changes its model.
+
+## 3. Generation protocol (per asset class)
+1. Choose the tool through [tool-evaluation.md](../research/references/tool-evaluation.md), connect it with
+   `indie-studio:toolchain`. One tool per asset class; do not switch mid-project.
+2. **Write the recipe** in the style bible: a **style block** that never changes (palette, line, shading,
+   perspective, background, framing, negative prompts) and a **subject slot** that does. Generate by filling
+   the slot, never by improvising the style block.
+3. **Attach the same reference images** every time the tool accepts them. Reference images hold a style far
+   better than words do. For 3D: approve a 2D concept in the locked style first, then turn that picture into
+   the model.
+4. Lock and record the settings: model name and version, aspect and resolution, seed if the tool has one.
+5. Generate several variants; the human picks. Do a whole class in one batch or session.
+6. Clean up: background removal, cropping, palette fix, alignment, resizing, loudness. Keep the original in
+   `Source/` (outside the engine's asset folder; large files through LFS or outside the repo).
+7. Import with the settings in section 6, then look at it in the game at real phone size.
+8. Add a row to `studio/ASSET_LEDGER.md` and commit on a `content/*` branch with an `art(...)` or `audio(...)`
+   message (`indie-studio:git-workflow`).
+
+## 4. Keeping the style from drifting
+Generators change models quietly, and prompts wander between sessions. Three habits prevent a game that looks
+like several games:
+- **The golden set.** Keep 3-5 approved assets per class in `Source/golden/` with their exact recipes,
+  settings, and reference images. At the start of every new batch, and after any tool or model update,
+  regenerate one golden asset and compare it with the original side by side.
+- **Stop when it drifts.** If the golden asset comes back different, do not "fix it later": re-tune the recipe
+  (or pin the older model version if the tool allows) before producing anything else. Note it in the ledger.
+- **Normalize after generation.** Remap to the palette, keep one canvas size and pivot per class, apply the
+  same outline and shadow treatment, normalize audio loudness. Tools vary; post-processing is what makes a set
+  look like a set.
+For 3D, the strongest control is to let the engine own the look: one shared material or shader and one
+lighting setup, so models from different batches match (3d-pipeline.md).
+
+## 5. Licences, ownership, and disclosure (volatile; verify every time)
+- Before an asset from a tool ships, confirm that **the plan actually used** allows commercial use. Free tiers
+  often differ from paid ones: some require crediting the tool in the game or the store listing, some grant
+  ownership only on paid plans. Save the terms URL and the date in the ledger.
+- **Look for game-shaped exclusions.** Some tools allow "commercial use" but carve out games, or games that
+  earn money, or games released on more than one platform, and push those to an enterprise licence. Search the
+  terms for "game", "interactive", "broadcast", and "enterprise" before you rely on a tool for music or voice.
+- Only upload reference images you own or have the right to use. Generating from someone else's artwork,
+  a trademarked character, or licensed material can void your rights to the output.
+- Ownership of purely AI-generated material is unsettled in some countries and changes. Substantial human
+  editing strengthens your position. This is guidance, not legal advice.
+- Stores may require disclosing AI-generated content, and what they ask changes. Check the current rules for
+  every store you target (`indie-studio:research`) and record what you found in `studio/KNOWLEDGE.md`.
+- Never prompt for existing copyrighted characters or logos, or a living artist's name as a style.
+- Third-party assets (asset stores, free packs): keep the licence text with the asset, follow the credit
   requirements, and add each to the ledger.
 - Re-check every tool's terms before the Beta and Gold Master gates.
 
-## 4. Folders and names (engine-agnostic; adapt to engine conventions)
+## 6. Folders, names, and import settings
 ```
 Assets/
-  Art/      Sprites/  UI/  VFX/  Animations/
+  Art/      Sprites/  UI/  VFX/  Animations/  Models/  Materials/
   Audio/    Music/    SFX/
   Fonts/
   Data/     (level and balance data)
-Source/     (raw and high-resolution originals, prompts; not imported by the engine)
+Source/     (raw originals, .blend files, prompts and recipes; not imported by the engine)
+Source/golden/  (the golden set and its recipes)
 ```
-Names: lowercase with underscores, `category_name_variant_state`, with a number where needed.
-Examples: `ui_button_primary_pressed.png`, `spr_player_run_01.png`, `sfx_match_clear_02.wav`,
+Names: lowercase with underscores, `category_name_variant_state`, with a number where needed. Examples:
+`ui_button_primary_pressed.png`, `spr_player_run_01.png`, `mdl_crate_small.glb`, `sfx_match_clear_02.wav`,
 `mus_garden_loop.ogg`. No spaces, no capitals, no "final_v2_REAL".
 
-## 5. Import settings for mobile (starting points; verify names and defaults for your engine version)
-- Textures: cap the maximum size to what is shown on screen; pack UI and sprites into atlases; use the
-  GPU-compressed format the target devices support; turn off mipmaps for UI.
-- Audio: short effects as small compressed clips; music streamed rather than fully loaded; mono for effects
-  where possible; consistent loudness across the set (normalize).
-- Fonts: include only the character sets the game needs.
-- Check the engine's build report to see which assets are largest, and keep totals within the size budget
-  (`indie-studio:mobile-perf-budget`). If engine-specific skills exist for atlases or import setup, use them.
+Import settings for mobile (starting points; verify the names for your engine version): cap texture size to
+what is shown on screen; pack UI and sprites into atlases; use the GPU-compressed format the target devices
+support; turn off mipmaps for UI; short effects as small compressed clips; music streamed; mono for effects
+where possible; include only the font characters the game needs. Check the engine's build report for the
+largest assets and keep totals inside the size budget (`indie-studio:mobile-perf-budget`). Use engine-specific
+skills for atlases and import setup when they are installed.
 
-## 6. Placeholders by stage
+## 7. Placeholders by stage
 Prototype: grey boxes and shapes only. Vertical Slice: final quality for the slice. Production: final assets
 in tier order. Beta: nothing placeholder remains in the build.
 
-## 7. Audio notes
-Sound effects on every meaningful action make a game feel alive. Check audio on the phone speaker and on earbuds.
-Provide volume and mute settings, respect the phone's silent mode, and pause on interruptions.
+## 8. Audio notes
+Sound effects on every meaningful action make a game feel alive. Check audio on the phone speaker and on
+earbuds. Provide volume and mute settings, respect the phone's silent mode, and pause on interruptions. Music
+licences are the ones most likely to exclude games: read section 5 before generating a note of it.

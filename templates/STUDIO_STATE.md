@@ -51,9 +51,10 @@ updated: <YYYY-MM-DD>
 | Global Launch | open | | |
 
 ## Permissions
-<!-- Set once by indie-studio:git-workflow. -->
+<!-- Git rules set once by indie-studio:git-workflow; the credit limit by indie-studio:toolchain. -->
 - Pre-approved: not set yet
 - Ask every time: not set yet
+- Generation credits per session without asking: not set yet
 
 ## Schedule
 - Hours per week: <n>

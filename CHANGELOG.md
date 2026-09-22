@@ -34,4 +34,14 @@ All notable changes to this project are recorded here. The format follows
   uploaded from macOS.
 - Three strikes now offers a beginner real options: fresh session, look it up, make it smaller, ask people,
   or do the step by hand.
+- Works with AI asset generators: the new `toolchain` skill connects them (and engine bridges, Blender, build
+  services) through MCP, walks the human through creating and storing the API key themselves, never lets the
+  key reach the chat or git, proves the tool with one cheap job, and treats credits as spending.
+- `asset-pipeline` now decides **who makes each asset class** (Claude directly, Claude driving a generator, a
+  bought pack, or the human) by approving three real samples instead of trusting a claim, and defends against
+  style drift with prompt recipes, fixed reference images, and a golden set that is regenerated whenever a
+  tool changes its model. New `references/3d-pipeline.md` covers 3D for phones: budgets, conventions, cleanup
+  of generated models, rigging, and letting the engine own the final look.
+- The style bible gained makers, prompt recipes, a golden set, and a 3D spec; the asset ledger records the
+  recipe and seed behind every generated asset.
 - `scripts/check-plugin.sh` integrity check.

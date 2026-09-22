@@ -7,7 +7,8 @@ Art direction (the style bible), sprites or models, animation, UI layout and sta
 and the raw material for store art.
 
 ## Deliverables
-- `docs/STYLE_BIBLE.md`: palette, resolution and pixel density, line and shading style, naming, do and don't examples.
+- `docs/STYLE_BIBLE.md`: palette, resolution and pixel density, line and shading style, naming, do and don't
+  examples, the prompt recipes, the makers table, and the golden set.
 - Assets in the agreed formats, named and foldered per `indie-studio:asset-pipeline`.
 - UI screens with all states (idle, pressed, disabled).
 - A row in `studio/ASSET_LEDGER.md` for every AI-made or third-party asset.
@@ -24,9 +25,12 @@ reachable with one hand; text readable on a small screen; enough contrast; no es
 screen corners; test on the smallest target phone.
 
 ## AI does / Human does
-- **AI:** drives generation tools, drafts variations, batch-processes and renames files, checks specs.
-- **Human:** curates and picks, cleans up results, judges the look, decides license questions.
+- **AI:** makes what it can make well itself (icons, flat shapes, UI, effects), drives generation tools for
+  the rest, drafts variations, batch-processes and renames files, checks specs, and runs the golden-set drift
+  check. It proves each claim with three samples before taking an asset class (`indie-studio:asset-pipeline`).
+- **Human:** curates and picks, cleans up results, judges the look, decides licence questions.
 
 ## Beginner traps
-Style drift between tools or sessions; detail that vanishes at phone size; polishing before the pipeline is
-proven; using assets whose license is unknown; forgetting UI states.
+Style drift between tools, sessions, or silent model updates; detail that vanishes at phone size; polishing
+before the pipeline is proven; using assets whose licence is unknown; forgetting UI states; trusting a
+generator's demo instead of a sample made with the real recipe.
