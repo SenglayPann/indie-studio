@@ -1,16 +1,18 @@
 #!/bin/sh
 # Indie Studio pre-commit hook.
-# Blocks: direct commits to main, oversized files that are not in Git LFS, likely secrets,
-# and engine cache or build folders. See indie-studio:git-workflow.
+# Blocks: direct commits to main, feature/* commits during the feature freeze, oversized files that are
+# not in Git LFS, likely secrets, and engine cache or build folders. See indie-studio:git-workflow.
 #
 # Overrides (only when the human explicitly asks):
 #   STUDIO_ALLOW_MAIN=1        allow a direct commit on main (used once, for the very first commit)
+#   STUDIO_ALLOW_FEATURE=1     allow a feature/* commit during the feature freeze
 #   STUDIO_MAX_FILE_MB=100     change the size limit (default 50)
 #   STUDIO_SKIP_SECRET_SCAN=1  skip the content scan for keys
 
 say() { printf '%s\n' "$*" >&2; }
 
 git_dir=$(git rev-parse --git-dir)
+top=$(git rev-parse --show-toplevel)
 branch=$(git symbolic-ref --short -q HEAD)
 
 # 1. main only receives gate merges and releases.
@@ -21,6 +23,23 @@ if [ "$branch" = "main" ] && [ "${STUDIO_ALLOW_MAIN:-}" != "1" ] && [ ! -f "$git
   exit 1
 fi
 
+# 2. Feature freeze: no feature/* work from the Alpha gate until launch (see indie-studio:scope-guard).
+case "$branch" in
+  feature/*)
+    if [ -f "$top/STUDIO_STATE.md" ] && [ "${STUDIO_ALLOW_FEATURE:-}" != "1" ]; then
+      stage=$(tr -d '\r' < "$top/STUDIO_STATE.md" | awk '
+        /^---[ \t]*$/ { n++; next }
+        n == 1 && /^stage:/ { sub(/^stage:[ \t]*/, ""); sub(/[ \t]+#.*$/, ""); sub(/[ \t]+$/, ""); print; exit }
+        n >= 2 { exit }')
+      case "$stage" in
+        Alpha|Beta|Launch)
+          say "Blocked: the project is in the $stage stage, so the feature freeze is on."
+          say "New features wait in studio/PARKING_LOT.md. Allowed now: fix/*, content/*, polish/* branches."
+          exit 1 ;;
+      esac
+    fi ;;
+esac
+
 files=$(git diff --cached --name-only --diff-filter=ACM)
 [ -z "$files" ] && exit 0
 
@@ -30,17 +49,17 @@ problems=$(mktemp)
 trap 'rm -f "$problems"' EXIT
 
 printf '%s\n' "$files" | while IFS= read -r f; do
-  # 2. Files that should never be committed (keys, certificates, environment files).
+  # 3. Files that should never be committed (keys, certificates, environment files).
   case "$f" in
     *.keystore|*.jks|*.p12|*.pfx|*.pem|*.p8|*.mobileprovision|.env|*/.env|.env.*|*/.env.*|*service-account*.json|*serviceaccount*.json)
       echo "$f : looks like a secret or signing file. Keep it out of git." >> "$problems" ;;
   esac
-  # 3. Engine caches and build output (a .gitignore should already cover these).
+  # 4. Engine caches and build output (a .gitignore should already cover these).
   case "$f" in
     Library/*|Temp/*|Obj/*|Logs/*|UserSettings/*|Builds/*|.godot/*)
       echo "$f : engine cache or build output. Add it to .gitignore." >> "$problems" ;;
   esac
-  # 4. Big files must be Git LFS pointers (pointers are tiny, so they pass).
+  # 5. Big files must be Git LFS pointers (pointers are tiny, so they pass).
   size=$(git cat-file -s ":$f" 2>/dev/null || echo 0)
   if [ "$size" -gt "$max_bytes" ]; then
     mb=$((size / 1024 / 1024))
@@ -48,11 +67,22 @@ printf '%s\n' "$files" | while IFS= read -r f; do
   fi
 done
 
-# 5. Content scan of added lines for private keys and common key formats.
+# 6. Content scan of added lines for private keys and API keys, in any letter case. Only file names are
+#    reported; the secret itself is never printed. Firebase config files are skipped: their key is meant
+#    to ship inside the app.
 if [ "${STUDIO_SKIP_SECRET_SCAN:-}" != "1" ]; then
-  if git diff --cached -U0 --no-color | grep '^+' | grep -Eq -- '-----BEGIN ([A-Z]+ )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|(api[_-]?key|secret|token)[[:space:]]*[=:][[:space:]]*["'"'"'][A-Za-z0-9_./+-]{20,}["'"'"']'; then
-    echo "staged changes : contain something that looks like a private key or API key." >> "$problems"
-  fi
+  q="[\"']"                          # a quote, either kind
+  v="[^\"'[:space:]\$\{\}]"          # a character of a written-out value (not a quote, space, or \${VAR})
+  re="-----BEGIN ([A-Z]+ )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}"
+  re="$re|(^|[^A-Za-z0-9_-])sk-[A-Za-z0-9_-]{32,}|(sk|rk)_(live|test)_[A-Za-z0-9]{16,}"
+  re="$re|gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{22,}|msy_[A-Za-z0-9_-]{16,}"
+  re="$re|(api[_-]?key|api[_-]?secret|client[_-]?secret|secret[_-]?key|access[_-]?token|auth[_-]?token"
+  re="$re|refresh[_-]?token|private[_-]?key|passw(or)?d)$q?[[:space:]]*[=:][[:space:]]*$q$v{12,}$q"
+  git diff --cached -U0 --no-color --diff-filter=ACM -- . ':!*google-services.json' ':!*GoogleService-Info.plist' \
+    | grep -Ei -e '^[+][+][+] ' -e "$re" \
+    | awk '/^[+][+][+] / { f = substr($0, 7); next }
+           /^[+]/ && !seen[f]++ { print f " : looks like it contains a private key or API key. Keep keys in an environment variable or an ignored file." }' \
+    >> "$problems"
 fi
 
 if [ -s "$problems" ]; then

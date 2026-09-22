@@ -47,8 +47,8 @@ One repository per game, at the game project folder root. Docs first; the engine
    fixing it afterwards rewrites history.
 5. Hooks: copy `templates/git/githooks/` to `tools/githooks/`, run `git config core.hooksPath tools/githooks`,
    and mark them executable (`chmod +x tools/githooks/*` and `git update-index --chmod=+x` after adding).
-   The hooks enforce the message format and block direct commits to `main`, oversized files, secrets,
-   and engine caches. They work for the human and for agents.
+   The hooks enforce the message format and block direct commits to `main`, `feature/*` commits during the
+   feature freeze, oversized files, secrets, and engine caches. They work for the human and for agents.
 6. First commit on `main` (docs only): `STUDIO_ALLOW_MAIN=1 git commit -m "chore: initialize game repository"`.
    This is the only direct commit to `main` there will ever be. Then `git switch -c develop`.
 7. Remote (your backup if the disk dies): ask if the user has a GitHub (or other) account. The user creates
@@ -77,7 +77,8 @@ Names: lowercase, hyphens. Work on one task per branch. Parallel AI agents each 
 - Idea to Prototype: `spike/*` is the normal way to work.
 - From the Vertical Slice stage: `feature/*`, `content/*`, `fix/*` from `develop`.
 - **From the Alpha gate onward: refuse to create new `feature/*` branches.** Only `fix/*`, `content/*`,
-  `polish/*`. This is the feature freeze made mechanical; see `indie-studio:scope-guard`.
+  `polish/*`. This is the feature freeze made mechanical; see `indie-studio:scope-guard`. The pre-commit hook
+  also blocks commits on `feature/*` branches while `stage` is Alpha, Beta, or Launch.
 - Beta to Gold Master: cut `release/x.y.z` from `develop`; fixes only.
 
 ## 3. Daily flow

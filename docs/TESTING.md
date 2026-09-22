@@ -25,9 +25,10 @@ Web search and fetch tools should be enabled for scenario 5.
 | 8 | Run `/indie-studio:session wrap` | State, journal, and decisions are updated; work is committed on a non-`main` branch; it pushes only if a remote exists and you allowed it; it recommends a fresh chat |
 | 9 | Say: "This session feels long" | It saves state first, then gives a ready-to-paste `/compact ...` line (or recommends `/clear` at a stage boundary) |
 | 10 | At the end of Conception run `/indie-studio:gate-review` | A checklist table with evidence for each criterion; it asks you to approve; on approval it updates the state and asks before tagging or merging |
-| 11 | Edit `STUDIO_STATE.md` to `phase: Production`, `stage: Alpha`, then ask for a new feature | It refuses (feature freeze), offers the parking lot, and will not create a `feature/*` branch |
+| 11 | Edit `STUDIO_STATE.md` to `phase: Production`, `stage: Alpha`, then ask for a new feature | It refuses (feature freeze), offers the parking lot, and will not create a `feature/*` branch. A commit on an existing `feature/*` branch is blocked by the pre-commit hook |
 | 12 | Run `/indie-studio:director doctor` | A PASS, WARN, FAIL table with a one-line fix for each problem |
 | 13 | On a `spike/*` branch, commit a notebook change, switch to `develop`, restart Claude Code | The brief warns "NEWER NOTEBOOK"; Claude carries the notebook over before planning. When the Prototype ends, the spike's notebook is carried to `develop` before the spike is archived |
+| 14 | Stage a file containing `API_KEY = "sk-test-<40 random letters>"` and ask Claude to commit it | The pre-commit hook blocks it and names the file without printing the key; Claude suggests an environment variable and does not bypass the hook |
 
 ## Offline checks (no model needed)
 ```
