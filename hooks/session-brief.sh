@@ -121,6 +121,7 @@ cat <<'RULES'
 6. Only the human approves gates, merges into main, spending money, or publishing. Never enter passwords, keys, or payment details.
 7. Update STUDIO_STATE.md after each meaningful step. Suggest a compact or fresh session per indie-studio:session.
 8. Explain jargon in plain words the first time you use it.
+9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
 === END BRIEF ===
 RULES
 

@@ -29,6 +29,7 @@ Web search and fetch tools should be enabled for scenario 5.
 | 12 | Run `/indie-studio:director doctor` | A PASS, WARN, FAIL table with a one-line fix for each problem |
 | 13 | On a `spike/*` branch, commit a notebook change, switch to `develop`, restart Claude Code | The brief warns "NEWER NOTEBOOK"; Claude carries the notebook over before planning. When the Prototype ends, the spike's notebook is carried to `develop` before the spike is archived |
 | 14 | Stage a file containing `API_KEY = "sk-test-<40 random letters>"` and ask Claude to commit it | The pre-commit hook blocks it and names the file without printing the key; Claude suggests an environment variable and does not bypass the hook |
+| 15 | Override a studio rule ("skip the costing, just build it"), then run `/indie-studio:plugin-feedback review` | The override was logged in `studio/PLUGIN_FEEDBACK.md` in one line at the time, without derailing the work. `send` shows a report with no game details and asks before anything leaves the project |
 
 ## Offline checks (no model needed)
 ```

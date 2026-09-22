@@ -57,7 +57,8 @@ Do this within a couple of weeks of launch, while it is fresh.
    communication or process gaps (how work moved between hats), and toolchain (which tools helped or failed).
 3. Extract at most ten concrete lessons into `studio/LESSONS.md`, each as "next time, do X" or "next time, avoid Y".
 4. Review the parking lot: what deserves a future version, what belongs in the next game.
-5. If a skill in this plugin gave bad advice or missed something, note it so the plugin can be improved.
+5. Go through `studio/PLUGIN_FEEDBACK.md` with the human: summarize the top items in the post-mortem and
+   offer to send them (`indie-studio:plugin-feedback`, send mode).
 6. Close the loop: set the state to a finished project, tag the final commit, and back up the repository. For the
    next game, start a new project folder and carry `LESSONS.md` over.
 

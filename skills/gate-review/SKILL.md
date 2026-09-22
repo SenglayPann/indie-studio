@@ -34,7 +34,9 @@ Checklists for all six gates are in [gates.md](references/gates.md).
       create the annotated gate tag, and push `main` and the tag. Update `last_synced_commit`.
       (For Gold Master, merge the `release/x.y.z` branch into `main` and `develop` instead; see `indie-studio:launch-live`.)
    4. Give one line on what this milestone means and one line on what the next stage is about.
-   5. Recommend a **fresh session** (`indie-studio:session`, compact mode): a gate is the cleanest reset point.
+   5. If `studio/PLUGIN_FEEDBACK.md` holds entries that were never sent, say how many and offer to send them
+      (`indie-studio:plugin-feedback`, send mode). A gate is a good moment to give something back.
+   6. Recommend a **fresh session** (`indie-studio:session`, compact mode): a gate is the cleanest reset point.
 8. **If not approved or not ready:** record the missing items as next actions. Do not advance the stage.
 
 ## Rules

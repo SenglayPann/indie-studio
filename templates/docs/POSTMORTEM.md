@@ -50,4 +50,4 @@ Which scope trades were made? Which gate was hardest? Was the buffer protected?
 Ideas worth a future version: <...>   Ideas for the next game: <...>
 
 ## Feedback for the Indie Studio plugin
-<Where a skill gave bad advice or missed something.>
+<The top items from `studio/PLUGIN_FEEDBACK.md`: where a skill was wrong, in the way, or missing.>
