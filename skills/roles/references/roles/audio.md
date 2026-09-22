@@ -18,7 +18,9 @@ per sound or track.
 
 ## AI does / Human does
 - **AI:** drives generation tools, batch-converts and normalizes files, wires triggers, builds the mixer.
-- **Human:** listens on the phone speaker AND earbuds, picks what to keep, checks each tool's license.
+- **Human:** listens on the phone speaker AND earbuds, picks what to keep, checks each tool's licence. Music
+  licences are the ones most likely to exclude games: read the terms before generating a note
+  (`indie-studio:asset-pipeline`, section 5).
 
 ## Beginner traps
 Sounds that are too loud or harsh; no feedback sound on key actions; long uncompressed files that bloat the
