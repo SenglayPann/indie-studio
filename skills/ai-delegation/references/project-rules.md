@@ -11,7 +11,8 @@ Show it to the human and get approval before writing it.
 - Read STUDIO_STATE.md first. Work only on the current task brief and stay inside its allowed files.
 - One branch per task. Small commits in the `type(scope): summary` format. Never commit to `main`.
 - Compile or run before saying "done". Report failures and skipped steps honestly.
-- Three failed attempts at the same problem: stop, summarize, and ask the human.
+- Three failed attempts at the same problem: stop, summarize, and give the human the options from
+  `indie-studio:ai-delegation` (fresh session, look it up, make it smaller, ask people, hands on).
 - Check engine and SDK calls against the docs for the installed version. Never invent an API.
 
 ### Code
