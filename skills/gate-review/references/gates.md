@@ -1,39 +1,50 @@
 # Gate checklists
 
-Every criterion needs evidence. Numbers below are sensible defaults for a solo mobile game; the human
-may adjust them by recording a decision. Store, platform, and price details are volatile: verify them
+Every criterion needs evidence. The numbers below are sensible defaults for a solo mobile game; the human may
+adjust them by recording a decision. Store, platform, price, and benchmark details are volatile: verify them
 with `indie-studio:research` and cite the source and date.
 
-Project documents live in the game project: `docs/PITCH.md`, `docs/GDD.md`, `docs/STYLE_BIBLE.md`, and the
-`studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
+Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `docs/BUSINESS_CASE.md`,
+`docs/GDD.md`, `docs/ECONOMY.md`, `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in
+`${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
 1. One-sentence game description and the core loop (action, goal, feedback) in `docs/PITCH.md`.
-2. Player, platform, and target session length defined.
-3. Market sanity check: three comparable games named, the gap stated, sources logged in `studio/KNOWLEDGE.md`.
-4. Feasibility: hours per week, target date, and AI tool budget recorded; a solo, AI-assisted plan is realistic.
-5. Engine chosen; reasons and verified versions in `studio/DECISIONS.md` (`indie-studio:engine-selector`).
-6. Scope tiers T1, T2, T3 written in STUDIO_STATE.md. T1 estimated at no more than about two thirds of
-   available hours, leaving room for unknowns.
-7. Top five risks, a pre-mortem, and kill or pivot criteria in `studio/RISKS.md`.
-8. Repository set up with a remote backup and the permission contract agreed (`indie-studio:git-workflow`).
-9. STUDIO_STATE.md filled in and current.
+2. Player, platform, and target session length defined; the computer the game is built on and the first store
+   recorded.
+3. `docs/MARKET.md`: three to five comparable games with how each earns, what brings players back, and what
+   reviewers complain about; the gap in one sentence; sources logged in `studio/KNOWLEDGE.md`.
+4. `docs/BUSINESS_CASE.md`: the model, researched targets with source and date, how players will find the
+   game, what it costs, a low and a middle case in plain arithmetic, and the soft-launch plan (or a recorded
+   decision to skip it).
+5. Feasibility: hours per week, target date, and tool budget recorded; every ambition priced rather than
+   refused; the first release fits in about two thirds of the available hours.
+6. Engine chosen; reasons and verified versions in `studio/DECISIONS.md` (`indie-studio:engine-selector`).
+7. Scope tiers in STUDIO_STATE.md: T1 is the first release, with T2, T3, and a post-launch roadmap for the
+   bigger ambitions.
+8. Top five risks, a pre-mortem, and kill or pivot criteria in `studio/RISKS.md`, including the business-case
+   numbers that would change or end the project.
+9. Repository set up with a remote backup and the permission contract agreed (`indie-studio:git-workflow`).
+10. STUDIO_STATE.md filled in and current.
 
 ## Gate 1: Vertical Slice (tag `m1-vertical-slice`)
 1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`;
    a clear signal (most understood the goal within a minute and wanted another go); an iterate-or-kill
    decision recorded.
-2. `docs/GDD.md` (GDD-lite, 2-4 pages) written from what playtests proved.
-3. A playable slice at final target quality: one complete level or segment with production art, UI, audio,
+2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, UI flow. As
+   long as it needs to be and no longer; anything unproven is written as an open question, not as a design.
+3. `docs/ECONOMY.md` drafted if the game earns from ads or purchases: what is sold, currencies, ad moments,
+   and the analytics event list (`indie-studio:monetization`). Nothing integrated yet.
+4. A playable slice at final target quality: one complete level or segment with production art, UI, audio,
    and feedback ("juice"), running on a real device.
-4. The slice was built the way the rest of the game will be: clean code on a `feature/*` branch (not the
+5. The slice was built the way the rest of the game will be: clean code on a `feature/*` branch (not the
    throwaway spike), a style bible in `docs/STYLE_BIBLE.md`, asset ledger rows filled in.
-5. **Pipeline timing measured:** hours per unit of content (per level, per item). Extrapolated to the full
+6. **Pipeline timing measured:** hours per unit of content (per level, per item). Extrapolated to the full
    T1 content list and compared with capacity in `studio/DECISIONS.md`. Tiers re-baselined from this.
-6. Runs at the target frame rate on the lowest-end target device; build size and start time measured in
+7. Runs at the target frame rate on the lowest-end target device; build size and start time measured in
    `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
-7. A fresh clone of the repository builds and runs (repo hygiene).
-8. Agent setup in place: `CLAUDE.md` project rules, task briefs in use (`indie-studio:ai-delegation`).
+8. A fresh clone of the repository builds and runs (repo hygiene).
+9. Agent setup in place: `CLAUDE.md` project rules, task briefs in use (`indie-studio:ai-delegation`).
 
 ## Gate 2: First Playable (tag `m2-first-playable`)
 1. A player can go from launch through a full core-loop session and back to the menu, using placeholders.
@@ -47,7 +58,8 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/GDD.md`, `doc
    item by item against `docs/GDD.md` and the tiers.
 2. All screens and flows exist: menus, settings, pause, results, first-time experience.
 3. Save and load work; pausing, backgrounding, and resuming the app work.
-4. Monetization is integrated in test mode if in scope, or explicitly deferred with a recorded reason.
+4. Analytics, ads, and purchases integrated in **test mode** and reachable, or explicitly deferred with a
+   recorded reason (`indie-studio:monetization`); the consent flow drafted.
 5. No open `feature/*` branches; the parking lot has been reviewed and nothing in it is being built.
 6. Remaining content listed with per-unit timing; capacity check recorded.
 7. A known-bug list exists.
@@ -61,19 +73,42 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/GDD.md`, `doc
 4. At least 5 outsiders played the Beta build; difficulty and onboarding tuned from their notes.
 5. The real-device smoke test passed on at least two devices, one of them low-end
    (see `indie-studio:mobile-perf-budget`).
-6. `studio/ASSET_LEDGER.md` is complete; tool license pages were re-checked (`indie-studio:asset-pipeline`).
-7. Store paperwork under way: developer accounts exist, privacy policy drafted, store forms started.
-8. The polish buffer is intact and scheduled.
+6. Analytics verified end to end: every event in `docs/ECONOMY.md` arrives in the dashboard with the right
+   properties. A sandbox purchase and a rewarded ad completed in test mode.
+7. `studio/ASSET_LEDGER.md` is complete; tool license pages were re-checked (`indie-studio:asset-pipeline`).
+8. Store paperwork under way: developer accounts exist, privacy policy drafted, store forms started. If a
+   store requires a closed test before it will allow publishing (Google Play does for new personal accounts),
+   that test is already running: verify the current tester count and duration, because it costs weeks of
+   calendar time and needs real people (`indie-studio:research`).
+9. The polish buffer is intact and scheduled.
 
 ## Gate 5: Gold Master (tag `v1.0.0`; release candidates `v1.0.0-rc.N`)
-1. Release candidate built from `release/x.y.z`, versioned, signed with the release key, size within
-   current store limits (verified).
+1. Release candidate built from `release/x.y.z`, versioned, signed with the release key, size within current
+   store limits (verified).
 2. No known crash or progress-blocking bugs; a regression pass on real devices.
-3. Store listing complete: title, description, icon, screenshots, age rating, privacy policy URL, data
-   and privacy forms, content declarations including any AI-content disclosure (all checked against the
-   current store requirements, with source and date).
-4. Ads and purchases: production IDs configured, test purchases verified, consent flows in place where required.
+3. Store listing complete: title, description, icon, screenshots, age rating, privacy policy URL, data and
+   privacy forms, content declarations including any AI-content disclosure (all checked against the current
+   store requirements, with source and date).
+4. Ads and purchases: production IDs configured, test purchases verified, consent flows in place where
+   required.
 5. Crash reporting and analytics active, and consistent with the privacy declarations.
 6. Signing keys backed up in two private places (human confirms; never paste them anywhere).
-7. Rollout plan (staged or test track) and a hotfix plan are ready.
+7. Release plan ready: the soft-launch countries (or a recorded decision to skip the soft launch), the
+   rollout, and the hotfix path.
 8. The human approves submission and submits with their own accounts.
+
+## Gate 6: Global Launch (tag `m5-global-launch`)
+Passed at the end of the Soft Launch stage, before the worldwide release. If the soft launch was skipped by
+decision, judge whatever evidence exists and say plainly how much weaker it is.
+1. The soft launch ran for the planned time, with enough players for the numbers to mean anything (sample
+   size researched, not guessed).
+2. Retention read in order (D1, then D7, then D30 where time allows) against the targets in
+   `docs/BUSINESS_CASE.md`, by cohort, with paid and organic players kept apart.
+3. Revenue per player read against the same targets; a real purchase and a rewarded ad verified in production.
+4. Crash-free rate and store rating acceptable; the worst reported problems fixed.
+5. Every change made during the soft launch listed with the number that prompted it.
+6. The decision recorded in `studio/DECISIONS.md` (scale up, keep fixing, or stop), using the rules written
+   before any results arrived.
+7. Launch plan ready: countries, store listing localized where it matters, announcement, and the first update
+   already planned.
+8. Support plan: who answers reviews and how often, and what would trigger a hotfix or a paused rollout.

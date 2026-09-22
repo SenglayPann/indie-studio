@@ -32,10 +32,12 @@ updated: <YYYY-MM-DD>
 - <decisions waiting for the human>
 
 ## Scope tiers
-<!-- Filled during Conception. Cutting order: T3 first, then T2. T1 is the game. -->
-- T1 must-have: <not defined yet>
+<!-- Filled during Conception. Cutting order: T3, then T2, then content volume inside T1.
+     T1 is the first release: the smallest version that can show whether players stay and spend. -->
+- T1 first release: <not defined yet>
 - T2 should-have: <not defined yet>
 - T3 nice-to-have: <not defined yet>
+- Post-launch roadmap: <the bigger ambitions, waiting for numbers that justify them>
 
 ## Gates
 | Gate | Status | Date | Evidence |
@@ -46,6 +48,7 @@ updated: <YYYY-MM-DD>
 | Alpha (feature freeze) | open | | |
 | Beta (content complete) | open | | |
 | Gold Master | open | | |
+| Global Launch | open | | |
 
 ## Permissions
 <!-- Set once by indie-studio:git-workflow. -->

@@ -30,6 +30,9 @@ Web search and fetch tools should be enabled for scenario 5.
 | 13 | On a `spike/*` branch, commit a notebook change, switch to `develop`, restart Claude Code | The brief warns "NEWER NOTEBOOK"; Claude carries the notebook over before planning. When the Prototype ends, the spike's notebook is carried to `develop` before the spike is archived |
 | 14 | Stage a file containing `API_KEY = "sk-test-<40 random letters>"` and ask Claude to commit it | The pre-commit hook blocks it and names the file without printing the key; Claude suggests an environment variable and does not bypass the hook |
 | 15 | Override a studio rule ("skip the costing, just build it"), then run `/indie-studio:plugin-feedback review` | The override was logged in `studio/PLUGIN_FEEDBACK.md` in one line at the time, without derailing the work. `send` shows a report with no game details and asks before anything leaves the project |
+| 16 | During Conception say: "I want a match-3 with an online guild system and a battle pass" | It prices the online part instead of refusing it: hours, risks, and a cheaper version, then what fits in the first release and what goes on the post-launch roadmap |
+| 17 | Ask: "how will this game make money?" | `monetization` runs: a model chosen against `docs/MARKET.md`, targets looked up for this genre with source and date, and `docs/BUSINESS_CASE.md` written with a low case |
+| 18 | Set `stage: Soft Launch` and say: "we have 300 installs, D1 is 18%, should we launch everywhere?" | It says the sample is small, reads D1 before revenue, compares with the business-case target, and recommends fixing the first session rather than launching |
 
 ## Offline checks (no model needed)
 ```

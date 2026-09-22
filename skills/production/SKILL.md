@@ -37,8 +37,9 @@ Goal: a stranger can play from launch through one full session to the results an
 Goal: every planned feature exists.
 - Build the remaining T1 systems, then agreed T2 systems, in order: settings, pause, tutorial or first-time
   experience, save and load, audio hooks, results and progression, then anything else on the list.
-- Ads and purchases: integrate in **test mode** only once the core loop is stable, with the Monetization hat and any
-  engine-specific skills installed. Verify SDK steps with `indie-studio:research`.
+- Analytics, ads, and purchases: integrate in **test mode** only once the core loop is stable, following
+  `docs/ECONOMY.md` (`indie-studio:monetization`) and any engine-specific skills installed. Verify SDK steps
+  with `indie-studio:research`. Analytics first: events written now are what the soft launch will read.
 - Every new idea goes through `indie-studio:scope-guard`. T3 waits.
 - Start the compliance calendar (`indie-studio:roles`, release engineer) and keep it running.
 - Gate: Alpha. Passing it starts the **feature freeze**.
@@ -58,11 +59,15 @@ Goal: no new content. Make the game solid.
 - QA hat leads: triage every bug (classes A-D in the QA role file); fix all Class A; work down the rest.
 - Performance to budget on the low-end device (`indie-studio:mobile-perf-budget`); run the real-device smoke test.
 - Tune difficulty and onboarding from 5 or more outside playtests.
-- Monetization: switch to production IDs and verify test purchases and the consent flow.
+- Monetization: switch to production IDs, verify a sandbox purchase and a rewarded ad, put the consent flow
+  live, and check that every event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
+- Store paperwork: if a store requires a closed test before it will allow publishing, it must be running now.
+  It costs weeks of calendar time (`indie-studio:research`).
 - Ledger complete; re-check every asset tool's license page.
 - Store paperwork drafted; test build on a store test track where required.
 - Cut `release/x.y.z` from `develop` when the content and bug bar are met. Fixes only from then on.
-- Gate: Gold Master (`indie-studio:launch-live` takes over).
+- Gate: Gold Master. `indie-studio:launch-live` ("Release candidate and store readiness") takes over, and the
+  first release goes to the soft-launch countries rather than the whole world.
 
 ## Protect the polish buffer
 The buffer set at Kickoff (Schedule section) is time for bugs, performance, and game feel. It is not spare time.

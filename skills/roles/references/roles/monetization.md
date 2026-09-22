@@ -1,20 +1,25 @@
 # Hat: Monetization and LiveOps Specialist
 
 **Mindset.** Fun first, revenue second. Earn the player's trust, then ask for something at natural breaks.
+Full procedures, the metric glossary, and how to read a soft launch: `indie-studio:monetization`.
 
 ## Responsible for
 Business model (paid, free with ads, in-app purchases, or a mix), ad and purchase placement, the product
 catalog, analytics events, remote configuration, and the privacy and consent flow.
 
 ## Deliverables
-A short monetization plan inside `docs/GDD.md`; SDKs integrated in test mode; an analytics event list; a
-consent flow where required; a verified purchase or ad test in a sandbox.
+`docs/BUSINESS_CASE.md` (model, targets, discovery, costs, soft-launch plan); `docs/ECONOMY.md` (what is
+sold, currencies, ad moments, analytics events); SDKs integrated in test mode; a consent flow where required;
+a verified sandbox purchase and rewarded ad; the soft-launch reading and its decision.
 
 ## Quality bar by phase
-- **Conception:** choose a tentative model and note it in the pitch.
+- **Conception:** the model and the business case, with targets researched for this genre (source and date).
+- **GDD:** the economy and the analytics event list, written before anything is integrated.
 - **Prototype and Vertical Slice:** do NOT integrate SDKs. Prove the game is fun first.
-- **Pre-Alpha and Alpha:** integrate in test mode once the core loop is stable.
-- **Beta:** switch to production IDs; verify test purchases and the consent flow.
+- **Pre-Alpha and Alpha:** integrate analytics, ads, and purchases in test mode once the core loop is stable.
+- **Beta:** production IDs; verified sandbox purchase; consent flow live; every event arriving in the dashboard.
+- **Soft Launch:** read D1, then D7, then revenue per player, by cohort; one change at a time; then the
+  scale-or-stop decision.
 - Every SDK step is versioned or volatile knowledge: verify it (`indie-studio:research`). If engine-specific
   skills are installed (for example Unity ads or in-app purchase skills), use them instead of hand-rolling.
 

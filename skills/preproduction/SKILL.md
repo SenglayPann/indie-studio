@@ -1,6 +1,6 @@
 ---
 name: preproduction
-description: Phase 2 of an Indie Studio project. Use when the project is in Pre-Production (stage Prototype, GDD-lite, or Vertical Slice), when the user wants to create the engine project, build or test a first prototype, decide whether the core loop is fun, write the lightweight design document, build the Vertical Slice, or measure how long content takes to produce. Runs the messy prototype on a throwaway branch, outside playtests, the iterate-or-kill decision, GDD-lite, the production-quality slice with timing math, and the Vertical Slice gate.
+description: Phase 2 of an Indie Studio project. Use when the project is in Pre-Production (stage Prototype, GDD, or Vertical Slice), when the user wants to create the engine project, build or test a first prototype, decide whether the core loop is fun, write the design document, plan the economy and analytics events, build the Vertical Slice, or measure how long content takes to produce. Runs the messy prototype on a throwaway branch, outside playtests, the iterate-or-kill decision, the design document, the production-quality slice with timing math, and the Vertical Slice gate.
 ---
 
 # Phase 2: Pre-Production
@@ -31,28 +31,33 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
    section 8), then tag the spike `archive/spike-core-loop` and delete the branch. The spike is reference only.
    Never merge it.
 
-## Stage: GDD-lite (Designer + Producer; Engineer as guest)
-8. **Write `docs/GDD.md`** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/GDD_LITE.md`: 2-4 pages, a living document.
-   Include only what is proven or decided. Do not document imagined systems.
-9. **Record technical decisions** (folder layout, data-driven approach, naming) in `studio/DECISIONS.md`.
-10. **Define the Vertical Slice exactly:** one level or one complete segment; the list of systems, art, audio, UI,
-    and feedback it must include; and a definition of done. Everything outside that list waits.
+## Stage: GDD (Designer + Producer; Engineer and Monetization as guests)
+8. **Write `docs/GDD.md`** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/GDD.md`: a living document, as long as
+   the game needs and no longer. Include only what playtests proved or the human decided; write open questions
+   as open questions. Split anything that grows on its own into its own file, so a session loads only what it
+   needs.
+9. **Draft `docs/ECONOMY.md`** if the game earns from ads or purchases (`indie-studio:monetization`): what is
+   sold, currencies, sources and sinks, ad moments, and the analytics event list. Nothing is integrated yet;
+   this is the plan the build will follow from Pre-Alpha.
+10. **Record technical decisions** (folder layout, data-driven approach, naming) in `studio/DECISIONS.md`.
+11. **Define the Vertical Slice exactly:** one level or one complete segment; the list of systems, art, audio,
+    UI, and feedback it must include; and a definition of done. Everything outside that list waits.
 
 ## Stage: Vertical Slice (Engineer + Artist + Level Designer; Audio, QA, Producer as guests)
-11. **Style bible first:** `docs/STYLE_BIBLE.md` and the tool choices (`indie-studio:asset-pipeline`; time-boxed
+12. **Style bible first:** `docs/STYLE_BIBLE.md` and the tool choices (`indie-studio:asset-pipeline`; time-boxed
     tool comparison in `indie-studio:research`). Nothing final gets generated before this exists.
-12. **Rebuild cleanly** on `feature/vertical-slice` from `develop`. Port the proven logic from the spike; do not
+13. **Rebuild cleanly** on `feature/vertical-slice` from `develop`. Port the proven logic from the spike; do not
     copy the spike wholesale. The slice must use the same pipeline the rest of the game will use.
-13. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
-14. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
+14. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
+15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
     design, art, audio, integration, testing, including AI generation and cleanup time. Compute the cost per
     content unit, extrapolate to the T1 content list, and compare it with capacity. Record the numbers in
-    `studio/DECISIONS.md`. Re-baseline the tiers. If the math does not fit, shrink scope now.
-15. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
+    `studio/DECISIONS.md`. Re-baseline the tiers. If the math does not fit, shrink the first release now.
+16. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
-16. **Fresh-clone test:** clone the repository to a new folder and build. If it does not, fix the repository.
-17. **Playtest** with 5 outsiders on the slice.
-18. **Gate:** run `indie-studio:gate-review` for Vertical Slice.
+17. **Fresh-clone test:** clone the repository to a new folder and build. If it does not, fix the repository.
+18. **Playtest** with 5 outsiders on the slice.
+19. **Gate:** run `indie-studio:gate-review` for Vertical Slice.
 
 ## Pitfalls to guard against
 - A slice polished with hacks or manual work that cannot scale. If it took six months to make ten minutes, the

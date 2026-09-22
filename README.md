@@ -1,9 +1,9 @@
 # Indie Studio for Claude Code
 
-A virtual game studio for **solo indie developers who build with AI**. It turns Claude Code into a small
-professional team: it knows which phase your project is in, which role to play right now, what is off-limits
-yet, when to look things up instead of guessing, how to keep your work safe in git, and where you left off
-last time.
+A virtual game studio for **solo indie developers who build commercial mobile games with AI**. It turns
+Claude Code into a small professional team: it knows which phase your project is in, which role to play right
+now, what is off-limits yet, how the game is meant to earn, when to look things up instead of guessing, how
+to keep your work safe in git, and where you left off last time.
 
 You stay the decision-maker. The plugin makes the AI act like an experienced studio lead who protects your
 scope, your schedule, and your project.
@@ -14,7 +14,10 @@ scope, your schedule, and your project.
   questions. A session-start hook briefs Claude on it automatically, even after `/clear` or a compaction.
 - **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
   audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
-- **Gates, not guesses.** Six evidence-based checkpoints from idea to release. Only you approve them.
+- **Gates, not guesses.** Seven evidence-based checkpoints from idea to worldwide launch. Only you approve them.
+- **Built to earn.** A business case with researched targets, an economy and analytics plan, and a soft launch
+  in a few countries that decides whether to scale up, keep fixing, or stop. Ambitious ideas get priced, not
+  refused.
 - **Scope protection.** Every new idea is costed, then parked or traded. The feature freeze at Alpha is enforced
   by a git hook.
 - **Disciplined version control.** Practice branches, a commit convention, gate tags, safe undo, and real git hooks
@@ -69,6 +72,7 @@ Useful commands (all under `/indie-studio:`):
 | `gate-review` | Check whether you are ready for the next gate |
 | `scope-guard <idea>` | Cost a new idea before building it |
 | `research <question>` | Verify something that may be out of date |
+| `monetization` | Decide or check how the game earns |
 | `git-workflow` | Any git action, with the rules applied |
 
 Most skills also trigger on their own when the conversation calls for them.
@@ -79,15 +83,15 @@ Most skills also trigger on their own when the conversation calls for them.
 |---|---|
 | **Skills** | Procedures and judgment, loaded when relevant |
 | **Session hook** | Deterministic: prints the project brief at session start (silent in projects without `STUDIO_STATE.md`) |
-| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, GDD, style bible) |
+| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, business case, GDD, economy, style bible) |
 | **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
 
 | Phase | Stages | Skill |
 |---|---|---|
 | Conception | Idea, Validation, Kickoff | `conception` |
-| Pre-Production | Prototype, GDD-lite, Vertical Slice | `preproduction` |
+| Pre-Production | Prototype, GDD, Vertical Slice | `preproduction` |
 | Production | First Playable, Pre-Alpha, Alpha, Beta | `production` |
-| Launch and Live | Launch, Live Ops, Post-Mortem | `launch-live` |
+| Launch and Live | Soft Launch, Launch, Live Ops, Post-Mortem | `launch-live` |
 
 ## Skills
 
@@ -104,6 +108,7 @@ Most skills also trigger on their own when the conversation calls for them.
 | `playtest-loop` | Real-player testing and the iterate-or-kill decision |
 | `engine-selector` | Engine choice for an AI-assisted beginner |
 | `ai-delegation` | Task briefs, three strikes, review protocol, project rules |
+| `monetization` | Business model, ads, purchases, the economy, analytics, and reading a soft launch |
 | `mobile-perf-budget` | Budgets and real-device measurement |
 | `asset-pipeline` | Style bible, AI asset protocol, licensing, ledger |
 | `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
