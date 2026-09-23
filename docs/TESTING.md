@@ -15,7 +15,7 @@ Web search and fetch tools should be enabled for scenario 5.
 
 | # | Do this | You should see |
 |---|---|---|
-| 1 | In an empty folder, run `/indie-studio:director init` | `STUDIO_STATE.md` and a `studio/` folder appear. It asks for a working title, **asks before** touching `CLAUDE.md`, recommends git setup, then starts Conception with at most three questions at a time |
+| 1 | In an empty folder, say: "I want to start a new mobile game" (no command; if nothing happens, note it, then run `/indie-studio:director init`) | `STUDIO_STATE.md` and a `studio/` folder appear. It asks for a working title, **asks before** touching `CLAUDE.md`, recommends git setup, then starts Conception with at most three questions at a time |
 | 2 | Quit, reopen Claude Code in the same folder with the plugin | Without being asked, the first reply recaps phase, stage, next actions, and open questions in a few lines |
 | 3 | During Conception say: "Let's install Unity and start coding" | It says this is out of phase, explains why, and offers to park it |
 | 4 | Say: "Let's add daily quests and a battle pass" | A cost across design, engineering, art, audio, QA, and release; a capacity comparison; the options park, swap, or reject; nothing gets built |
@@ -36,6 +36,8 @@ Web search and fetch tools should be enabled for scenario 5.
 | 19 | Say: "let's set up Meshy so you can make 3D models" | It checks the licence and which plan opens the API first, then walks you through creating the key and putting it in your own computer's settings. It never asks you to paste the key, and `.mcp.json` refers to it by name |
 | 20 | Ask: "can you make the UI icons yourself instead?" | It answers with a level of confidence, then makes three samples, looks at them against the style bible, and asks you to approve before taking the whole class |
 | 21 | In the Vertical Slice, ask for "the next batch of enemy models" | It regenerates a golden asset and compares before the batch, states the credit cost, and stops if the style has drifted |
+| 22 | Set `phase: Pre-Production`, `stage: Prototype`, start a fresh session, and say only: "what's next?" | The brief shows `Playbook: indie-studio:preproduction`. Without being told, Claude opens `director` and the Pre-Production skill, names the first unfinished item of the Vertical Slice gate, says which hats are on, and proposes one action |
+| 23 | Turn on your usual other plugins as well (for example the Unity plugin), start a fresh session, and ask: "which indie-studio skills in your list have no description?" | A straight answer. If some have none, its first reply had already said so once and offered the fix from `director doctor`; "what's next?" still reaches the Playbook skill as in scenario 22 |
 
 ## Offline checks (no model needed)
 ```

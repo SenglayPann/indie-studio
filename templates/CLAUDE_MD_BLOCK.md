@@ -6,5 +6,6 @@ This project uses the `indie-studio` plugin.
 - Supporting logs live in `studio/` (JOURNAL, DECISIONS, KNOWLEDGE, PARKING_LOT, RISKS, ASSET_LEDGER,
   PLUGIN_FEEDBACK).
 - Do not start anything listed under "Off-limits right now" in `STUDIO_STATE.md`.
+- To choose the next task, follow `indie-studio:director` (next). Before calling a stage done, run `indie-studio:gate-review`.
 - New features or plan changes go through `indie-studio:scope-guard`. Git work follows `indie-studio:git-workflow`. Facts that can go out of date (versions, store rules, prices, licenses, tool features) are verified with `indie-studio:research`.
 - Only the human approves gates, merges into `main`, spending money, and publishing.

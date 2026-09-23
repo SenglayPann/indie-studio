@@ -52,8 +52,8 @@ State file rules are in [state-file.md](references/state-file.md).
 5. Continue with the `next` procedure unless the user asked something else.
 
 ## 3. Next (decide and start the next action)
-1. Load the phase skill for the current phase (table in phases-and-stages.md). It defines the steps of
-   each stage and the gate.
+1. Load the phase skill for the current phase (the brief's `Playbook` line names it; otherwise use the table
+   in phases-and-stages.md). It defines the steps of each stage and the gate.
 2. Find the first unmet criterion of the next gate (`indie-studio:gate-review`,
    [gates.md](../gate-review/references/gates.md)). That is the next action unless a task in "Next actions"
    is already in progress.
@@ -80,6 +80,12 @@ fix; do not change things silently.
 10. `studio/ASSET_LEDGER.md` has a row for every shipped AI-generated asset (spot-check a few).
 11. From Kickoff: `docs/BUSINESS_CASE.md` exists and every target carries a source and a date. From the GDD
     stage: `docs/ECONOMY.md` exists if the game earns from ads or purchases.
+12. Skill list: every `indie-studio:` skill in your own list of available skills shows a description. If some
+    show only a name, Claude Code ran out of room for skill descriptions (too many skills or plugins), and
+    those skills rarely start on their own. Offer two fixes in the game project's `.claude/settings.json`:
+    give the list more room (`skillListingBudgetFraction`, for example `0.02`; costs a little context every
+    turn), or switch off plugins this project does not use yet (`enabledPlugins`). These are Claude Code
+    settings and can change: verify the names with `indie-studio:research` before writing them.
 
 ## 5. Hat (switch role)
 Read the matching file in `${CLAUDE_PLUGIN_ROOT}/skills/roles/references/roles/`, update `hats` in the state

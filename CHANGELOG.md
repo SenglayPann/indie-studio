@@ -9,9 +9,15 @@ All notable changes to this project are recorded here. The format follows
 - Plugin manifest and marketplace catalog (installable through `/plugin marketplace add`).
 - SessionStart hook that briefs Claude on the project state at startup, resume, clear, and compact, and flags
   state that is behind git. Silent in projects without `STUDIO_STATE.md`.
-- Seventeen skills: `director`, `session`, `git-workflow`, `research`, `scope-guard`, `gate-review`, `roles`
+- The brief names the skill that runs the current phase (`Playbook:`) and sends "what next", finished stages,
+  and role standards to `director`, `gate-review`, and `roles` by name. Skill names always reach Claude, so the
+  core workflow holds even when a crowded skill list has dropped descriptions.
+- The brief and `director doctor` notice studio skills listed without a description (too many plugins) and
+  offer the settings fix. `gate-review` names all seven gates, including Global Launch.
+- Nineteen skills: `director`, `session`, `git-workflow`, `research`, `scope-guard`, `gate-review`, `roles`
   (ten role files), `conception`, `preproduction`, `production`, `launch-live`, `playtest-loop`,
-  `engine-selector`, `ai-delegation`, `mobile-perf-budget`, `asset-pipeline`, `plugin-feedback`.
+  `engine-selector`, `ai-delegation`, `mobile-perf-budget`, `asset-pipeline`, `monetization`, `toolchain`,
+  `plugin-feedback`.
 - `plugin-feedback` records where the plugin itself was wrong, in the way, or missing, in
   `studio/PLUGIN_FEEDBACK.md`, and turns those notes into a scrubbed report only when the human approves the
   exact text. No telemetry, no automatic sending. A GitHub issue form matches the same fields.
