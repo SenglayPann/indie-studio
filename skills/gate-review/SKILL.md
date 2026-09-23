@@ -1,6 +1,6 @@
 ---
 name: gate-review
-description: Run a phase or milestone exit review ("gate") in an Indie Studio project - Conception Exit, Vertical Slice, First Playable, Alpha, Beta, or Gold Master. Use when a stage's work looks finished, when the user asks "are we ready to move on", "can we start the next phase", or wants to declare a milestone. Checks each criterion against evidence, reports gaps, and on the human's approval advances the state, tags the release line, and resets the session.
+description: Run a phase or milestone exit review ("gate") in an Indie Studio project - Conception Exit, Vertical Slice, First Playable, Alpha, Beta, Gold Master, or Global Launch. Use when a stage's work looks finished, when the user asks "are we ready to move on", "can we start the next phase", or wants to declare a milestone. Checks each criterion against evidence, reports gaps, and on the human's approval advances the state, tags the release line, and resets the session.
 argument-hint: "[gate name]"
 ---
 

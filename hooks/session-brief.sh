@@ -46,6 +46,20 @@ echo "=== INDIE STUDIO BRIEF (generated automatically at session start) ==="
 echo "Project : $(val project '(untitled)')"
 echo "Phase   : $(val phase '?')   Stage: $(val stage '?')   Next gate: $(val next_gate '?')"
 echo "Hats    : $(val hats '?')   Engine: $(val engine 'undecided')   Platform: $(val platform '?')"
+# Name the skill that runs this phase: skill names always reach Claude, even when a crowded
+# skill list has dropped their descriptions.
+case "$(fm phase)" in
+  [Cc]onception*) playbook="indie-studio:conception" ;;
+  [Pp]re*)        playbook="indie-studio:preproduction" ;;
+  [Pp]roduction*) playbook="indie-studio:production" ;;
+  [Ll]aunch*)     playbook="indie-studio:launch-live" ;;
+  *)              playbook="" ;;
+esac
+if [ -n "$playbook" ]; then
+  echo "Playbook: $playbook (the steps of this phase and its gates)"
+else
+  echo "Playbook: phase not recognized. Run indie-studio:director (doctor) to fix STUDIO_STATE.md."
+fi
 echo "State last updated: $(val updated '?')"
 
 if command -v git >/dev/null 2>&1 && git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -122,6 +136,8 @@ cat <<'RULES'
 7. Update STUDIO_STATE.md after each meaningful step. Suggest a compact or fresh session per indie-studio:session.
 8. Explain jargon in plain words the first time you use it.
 9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
+10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done: indie-studio:gate-review. For a hat's standards: indie-studio:roles.
+11. If an indie-studio skill in your skill list shows no description, the list is over its size limit and studio skills may not start on their own: tell the human once and offer the fix in indie-studio:director (doctor).
 === END BRIEF ===
 RULES
 

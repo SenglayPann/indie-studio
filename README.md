@@ -60,7 +60,8 @@ Run `/reload-plugins` after changing files. Check the plugin with `claude plugin
 ## Quick start
 
 1. Make an empty folder for your game and open Claude Code in it.
-2. Run `/indie-studio:director init`. It creates `STUDIO_STATE.md` and `studio/` and starts Conception.
+2. Say "I want to start a new game" (or run `/indie-studio:director init`). It creates `STUDIO_STATE.md` and
+   `studio/` and starts Conception.
 3. Answer its questions. It will help you find an idea, check the market, choose an engine, set scope, and
    reach the first gate.
 4. Next time, just open Claude Code in the same folder. The brief appears on its own; say what you want to do.
@@ -80,14 +81,22 @@ Useful commands (all under `/indie-studio:`):
 | `monetization` | Decide or check how the game earns |
 | `git-workflow` | Any git action, with the rules applied |
 
-Most skills also trigger on their own when the conversation calls for them.
+You rarely need these. Skills start on their own when the conversation calls for them, and the session brief
+names the ones that matter most (the skill for the current phase, `director` for "what next", `gate-review`,
+and the guardrails), so the core workflow runs even if Claude cannot see every skill's description.
+
+**Many plugins installed?** Claude Code shows Claude a list of every skill with a short description, but keeps
+that list to a small share of the context (1% by default in September 2026). When the list is too long, the
+least-used skills keep only their names and seldom start on their own. If the brief or `director doctor`
+reports this, give the list more room in your game project's `.claude/settings.json`, for example
+`"skillListingBudgetFraction": 0.02`, or switch off plugins that project does not use (`enabledPlugins`).
 
 ## How it works
 
 | Layer | Purpose |
 |---|---|
 | **Skills** | Procedures and judgment, loaded when relevant |
-| **Session hook** | Deterministic: prints the project brief at session start (silent in projects without `STUDIO_STATE.md`) |
+| **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase (silent in projects without `STUDIO_STATE.md`) |
 | **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, business case, GDD, economy, style bible) |
 | **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
 
