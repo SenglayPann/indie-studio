@@ -19,7 +19,8 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
    (organic, paid installs, or a publisher) and how they will find the game, the languages, what it costs, a
    low and a middle case in plain arithmetic, and the soft-launch plan (or a recorded decision to skip it).
 5. Feasibility: hours per week, target date, and tool budget recorded; every ambition priced rather than
-   refused; the first release fits in about two thirds of the available hours.
+   refused; the first release fits in about two thirds of the available hours; every gate has a Planned date
+   in the Gates table.
 6. Engine chosen; reasons and verified versions in `studio/DECISIONS.md` (`indie-studio:engine-selector`).
 7. Scope tiers in STUDIO_STATE.md: T1 is the first release, with T2, T3, and a post-launch roadmap for the
    bigger ambitions.

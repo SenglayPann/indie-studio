@@ -64,8 +64,9 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
 15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
     design, art, audio, integration, testing, including AI generation and cleanup time. Compute the cost per
     content unit, extrapolate to the T1 content list, and compare it with capacity. Record the numbers in
-    `studio/DECISIONS.md` (and the time per level in `docs/LEVELS.md`, section 7). Re-baseline the tiers. If the
-    math does not fit, shrink the first release now.
+    `studio/DECISIONS.md` (and the time per level in `docs/LEVELS.md`, section 7). Re-baseline the tiers and
+    re-forecast every remaining gate date in the Gates table. If the math does not fit, shrink the first release
+    now.
 16. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
 17. **Fresh-clone test:** clone the repository to a new folder and build it with the one-command build from

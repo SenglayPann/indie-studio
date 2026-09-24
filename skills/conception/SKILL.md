@@ -68,7 +68,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
     whether players stay and spend; at most about two thirds of available hours), T2 (should have), T3 (nice
     to have), plus a **post-launch roadmap** where the bigger ambitions wait. Add content targets as ranges
     (for example, 10-15 levels) and a short "not doing" list. Cutting order: T3, then T2, then content volume
-    inside T1.
+    inside T1. **Planned dates:** split the corrected T1 estimate by stage, divide by the real weekly hours, keep
+    the polish buffer before Gold Master and the soft launch's length before Global Launch, and write a Planned
+    date (and the same Forecast) for every gate in the Gates table.
 11. **Risks:** run a pre-mortem ("imagine this failed; why?") and fill `studio/RISKS.md`: the top five risks,
     kill or pivot criteria (both kinds: "if 3 of 5 outsiders are not keen to replay the prototype after two
     rounds" and the business-case numbers from the soft launch), and a time-box for the Prototype stage.

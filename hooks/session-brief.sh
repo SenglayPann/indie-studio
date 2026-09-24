@@ -42,6 +42,22 @@ val() {
   if [ -n "$v" ]; then printf '%s' "$v"; else printf '%s' "$2"; fi
 }
 
+# "Planned|Forecast" cells of a gate's row in the Gates table (the row whose name starts with $1).
+gate_dates() {
+  tr -d '\r' < "$state" | awk -v g="$1" '
+    /^## / { on = ($0 == "## Gates"); next }
+    on && /^\|/ {
+      split($0, c, "|")
+      name = c[2]; gsub(/^[ \t]+|[ \t]+$/, "", name)
+      if (g != "" && g != "none" && index(name, g) == 1) {
+        p = c[4]; f = c[5]
+        gsub(/^[ \t]+|[ \t]+$/, "", p); gsub(/^[ \t]+|[ \t]+$/, "", f)
+        print p "|" f
+        exit
+      }
+    }'
+}
+
 # How much to explain: `new` (the default) or `experienced`.
 case "$(fm experience)" in
   [Ee]xperienced*|[Pp]ro*|[Ee]xpert*) experience=experienced ;;
@@ -50,7 +66,21 @@ esac
 
 echo "=== INDIE STUDIO BRIEF (generated automatically at session start) ==="
 echo "Project : $(val project '(untitled)')   Experience: $experience"
-echo "Phase   : $(val phase '?')   Stage: $(val stage '?')   Next gate: $(val next_gate '?')"
+gate=$(val next_gate '?')
+dates=$(gate_dates "$(fm next_gate)")
+planned=${dates%%|*}
+forecast=${dates#*|}
+when=""
+if [ -n "$planned" ] && [ -n "$forecast" ]; then when=" (planned $planned, forecast $forecast)"
+elif [ -n "$planned" ]; then when=" (planned $planned)"
+elif [ -n "$forecast" ]; then when=" (forecast $forecast)"
+fi
+echo "Phase   : $(val phase '?')   Stage: $(val stage '?')   Next gate: $gate$when"
+if awk -v p="$planned" -v f="$forecast" 'BEGIN {
+     d = "^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$"
+     exit !(p ~ d && f ~ d && f > p) }'; then
+  echo "! SLIPPING: $gate is forecast for $forecast, after its planned $planned. Re-plan with indie-studio:scope-guard (cut scope, never the polish buffer)."
+fi
 echo "Hats    : $(val hats '?')   Engine: $(val engine 'undecided')   Platform: $(val platform '?')"
 # Name the skill that runs this phase: skill names always reach Claude, even when a crowded
 # skill list has dropped their descriptions.

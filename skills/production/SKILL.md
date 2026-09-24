@@ -21,7 +21,9 @@ rules: [communication.md](../director/references/communication.md). Hats and off
 3. **Device build weekly:** install on the real test device and play it. Every two weeks, run a playtest
    (`indie-studio:playtest-loop`).
 4. **Review (end of the week, Producer):** hours worked; estimate versus actual; adjust the estimate multiplier;
-   top three for next week; risks and time-boxes. Update STUDIO_STATE.md and the journal (`indie-studio:session` wrap).
+   re-forecast the remaining gates in the Gates table (remaining work divided by real weekly hours); top three for
+   next week; risks and time-boxes. A forecast past its planned date goes to `indie-studio:scope-guard` now, not
+   at the deadline. Update STUDIO_STATE.md and the journal (`indie-studio:session` wrap).
 
 A task is done when its acceptance criteria pass, it runs on the device, it is committed and merged, and its
 brief is updated with the actuals.

@@ -13,6 +13,8 @@ gate preparation, decision hygiene, the post-mortem.
 - A weekly plan (three to five task briefs) and a capacity number: hours per week x weeks left, minus the
   polish buffer.
 - Estimate versus actual per task in `studio/JOURNAL.md`.
+- A Planned and a Forecast date for every gate in the Gates table of STUDIO_STATE.md: planned at Kickoff,
+  re-forecast every week.
 - Gate readiness reports (`indie-studio:gate-review`) and the post-mortem (`indie-studio:launch-live`).
 
 ## Quality bar by phase
@@ -27,6 +29,8 @@ gate preparation, decision hygiene, the post-mortem.
 2. Tasks finished; estimate versus actual; adjust the multiplier for future estimates.
 3. Top three tasks for next week, tied to the next gate.
 4. Any risk grown, any kill criterion triggered, any time-box overrun.
+5. Re-forecast the remaining gates from the work left and the real weekly hours. A forecast past its planned
+   date goes to `indie-studio:scope-guard` this week.
 
 ## AI does / Human does
 - **AI:** drafts plans, does the capacity arithmetic, tracks estimates, reminds about time-boxes, prepares gate reports.
