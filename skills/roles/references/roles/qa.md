@@ -30,7 +30,9 @@ incoming call or notification mid-play; rotation if supported; low battery mode;
 behavior; nearly full storage; different screen sizes and notches; mute and volume; app update keeps the save.
 
 ## AI does / Human does
-- **AI:** writes test plans and checklists, triages logs and stack traces, automates what can be automated.
+- **AI:** writes test plans and checklists, triages logs and stack traces, and automates what can be
+  automated: the test list in `docs/TECH.md` (section 8) grows by one test for every Class A bug the engine
+  can reproduce in a test.
 - **Human:** plays on real phones, recruits outside testers, and verifies fixes by hand.
 
 ## Beginner traps

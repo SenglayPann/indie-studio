@@ -36,9 +36,9 @@ belongs in a file of its own, so a session only loads what it needs.
 ## 7. Look and sound (summary; details in the style bible)
 <Art style in two sentences; audio mood in one.>
 
-## 8. Technical notes
+## 8. Technical summary (the rulebook is `docs/TECH.md`)
 - Engine and version: <...>   Target devices and minimum spec: <...>   Orientation: <...>
-- Data-driven decisions, save format, anything special: <...>
+- Anything the design needs from the tech (offline play, cloud save, live events): <...>
 
 ## 9. Money
 <One paragraph: the model from `docs/BUSINESS_CASE.md`. The detail lives in `docs/ECONOMY.md`. No SDK work

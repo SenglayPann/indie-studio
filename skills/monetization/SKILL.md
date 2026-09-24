@@ -71,7 +71,8 @@ until the soft launch shows real numbers.
 - **Price:** use the store's own price points. Look at what comparable games charge (`docs/MARKET.md`). One
   cheap entry item matters most: the first purchase is the hard one.
 - **Must work before launch:** restoring purchases, checking the receipt, a purchase interrupted by a call or
-  a lost connection, and a refund leaving the player in a sane state.
+  a lost connection, and a refund leaving the player in a sane state. Keep purchases behind one wrapper
+  (`docs/TECH.md`) and cover each of these cases with an automated test against a faked store.
 - **Never:** pay-to-win that spoils the loop, hidden prices, pressure aimed at children, or anything the store
   forbids. Use the engine's own purchase skills where they exist.
 

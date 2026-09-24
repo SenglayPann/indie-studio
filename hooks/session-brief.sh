@@ -154,6 +154,7 @@ cat <<'RULES'
 9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
 10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done: indie-studio:gate-review. For a hat's standards: indie-studio:roles.
 11. If an indie-studio skill in your skill list shows no description, the list is over its size limit and studio skills may not start on their own: tell the human once and offer the fix in indie-studio:director (doctor).
+12. Before changing how the code is organized, what is saved, or how a service is called: read docs/TECH.md (once it exists), keep it current in the same branch, and build and run the tests before saying "done".
 === END BRIEF ===
 RULES
 

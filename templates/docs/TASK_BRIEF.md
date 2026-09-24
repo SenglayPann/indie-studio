@@ -13,9 +13,10 @@
 - [ ] <When I do X, Y happens>
 - [ ] <No crash when Z>
 - [ ] <Runs at the target frame rate on the test device>
+- [ ] Build and automated tests pass (CI green); a new test covers it if it touches saves, purchases, or economy math
 
 ## Allowed to touch
-<files, folders, or scenes>
+<files, folders, or scenes. Follow `docs/TECH.md`; a change to structure, saves, or services updates it.>
 
 ## Out of scope
 <things the agent must not do or change>

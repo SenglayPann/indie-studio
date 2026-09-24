@@ -39,7 +39,10 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
 9. **Draft `docs/ECONOMY.md`** if the game earns from ads or purchases (`indie-studio:monetization`): what is
    sold, currencies, sources and sinks, ad moments, and the analytics event list. Nothing is integrated yet;
    this is the plan the build will follow from Pre-Alpha.
-10. **Record technical decisions** (folder layout, data-driven approach, naming) in `studio/DECISIONS.md`.
+10. **Write `docs/TECH.md`** (Engineer) from `${CLAUDE_PLUGIN_ROOT}/templates/docs/TECH.md`: the architecture
+    map, conventions, the save format with its version number, one wrapper per service (ads, purchases,
+    analytics, remote settings, consent), text rules, build and release settings, and the test plan. Size it
+    to the game; it is the rulebook every later session codes by. Record the reasons in `studio/DECISIONS.md`.
 11. **Define the Vertical Slice exactly:** one level or one complete segment; the list of systems, art, audio,
     UI, and feedback it must include; and a definition of done. Everything outside that list waits.
 
@@ -48,8 +51,11 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
     time-boxed comparison in `indie-studio:research`, setup and key handling in `indie-studio:toolchain`).
     Decide who makes each asset class and approve three samples from each maker before production starts.
     Nothing final gets generated before this exists.
-13. **Rebuild cleanly** on `feature/vertical-slice` from `develop`. Port the proven logic from the spike; do not
-    copy the spike wholesale. The slice must use the same pipeline the rest of the game will use.
+13. **Rebuild cleanly** on `feature/vertical-slice` from `develop`, following `docs/TECH.md`. Port the proven
+    logic from the spike; do not copy the spike wholesale. The slice must use the same pipeline the rest of the
+    game will use. **Automated checks start here:** a one-command build, and tests for saving and loading
+    (including a save from an older version). Set up CI now if you can (`indie-studio:toolchain`); it is due
+    by the First Playable gate.
 14. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
 15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
     design, art, audio, integration, testing, including AI generation and cleanup time. Compute the cost per
@@ -57,7 +63,8 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
     `studio/DECISIONS.md`. Re-baseline the tiers. If the math does not fit, shrink the first release now.
 16. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
-17. **Fresh-clone test:** clone the repository to a new folder and build. If it does not, fix the repository.
+17. **Fresh-clone test:** clone the repository to a new folder and build it with the one-command build from
+    `docs/TECH.md`. If it does not build, fix the repository.
 18. **Playtest** with 5 outsiders on the slice.
 19. **Gate:** run `indie-studio:gate-review` for Vertical Slice.
 

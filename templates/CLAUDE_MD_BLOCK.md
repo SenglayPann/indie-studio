@@ -7,5 +7,6 @@ This project uses the `indie-studio` plugin.
   PLUGIN_FEEDBACK).
 - Do not start anything listed under "Off-limits right now" in `STUDIO_STATE.md`.
 - To choose the next task, follow `indie-studio:director` (next). Before calling a stage done, run `indie-studio:gate-review`.
+- Before changing how the code is organized, what is saved, or how a service is called, read `docs/TECH.md`, and keep it current in the same branch.
 - New features or plan changes go through `indie-studio:scope-guard`. Git work follows `indie-studio:git-workflow`. Facts that can go out of date (versions, store rules, prices, licenses, tool features) are verified with `indie-studio:research`.
 - Only the human approves gates, merges into `main`, spending money, and publishing.

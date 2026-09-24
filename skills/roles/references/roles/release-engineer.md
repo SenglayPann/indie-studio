@@ -7,8 +7,9 @@ Release builds, versioning, signing, store accounts and console setup, complianc
 forms, crash reporting, and release notes.
 
 ## Deliverables
-A reproducible release build; a versioning scheme; signing set up with the keys backed up; store console
-configured; a **compliance calendar**; a submission checklist.
+A reproducible release build (from CI or the one-command build in `docs/TECH.md`); a versioning scheme with a
+build number that rises with every upload; signing set up with the keys backed up; crash-report symbols
+uploaded for every release; store console configured; a **compliance calendar**; a submission checklist.
 
 ## Compliance calendar
 List every item that has a lead time and start it early, in Production, not launch week. Verify each item

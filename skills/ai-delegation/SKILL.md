@@ -15,7 +15,7 @@ rules keep the speed and remove the damage. Communication rules:
 |---|---|---|---|
 | Now | `STUDIO_STATE.md` | Phase, stage, next actions | About 80 lines |
 | Rules | `CLAUDE.md` (and `AGENTS.md` if other tools are used) | How to work in THIS project | Under about 100 lines; project-specific only |
-| Specs | `docs/*.md` | Detail per subsystem (GDD, style bible, data formats) | Read only when working on that subsystem |
+| Specs | `docs/*.md` | Detail per subsystem (GDD, TECH, style bible, data formats) | Read only when working on that subsystem |
 Every line in CLAUDE.md must prevent a real mistake; delete lines that do not. When an agent repeats a
 mistake twice, add one line. Start from [project-rules.md](references/project-rules.md) once the engine is chosen
 (Pre-Production, Prototype stage) and adapt it to the engine and language.
@@ -39,12 +39,14 @@ Size: one session or about four hours at most. Split anything bigger. Vague brie
 | Deleting, renaming across the project, history rewrites | No | Explicit approval first |
 
 ## 4. Rules every agent follows
-1. Read STUDIO_STATE.md and the task brief first. Touch only the allowed files.
+1. Read STUDIO_STATE.md and the task brief first. Touch only the allowed files. Before changing structure,
+   saves, or services, read `docs/TECH.md`, and update it in the same branch when they change.
 2. **Checkpoint first.** Before a large change, make sure the working tree is clean (commit or set aside) on a
    branch made for this task, so undo is one command (`indie-studio:git-workflow`).
 3. Verify engine and SDK calls against the docs for the installed version. Never invent an API
    (`indie-studio:research`).
-4. Run, compile, or test before saying "done". Report results honestly, including failures and skipped steps.
+4. Build and run the automated tests before saying "done". Report results honestly, including failures and
+   skipped steps. A change to saves, purchases, or economy math comes with a test.
 5. **Three strikes.** After three failed attempts at the same problem, stop. Do not keep patching symptoms, and
    do not widen the scope by rewriting things to "fix" it. Write a short summary (what was tried, what is now
    known, two or three hypotheses), then offer the human these options with one marked as recommended. The
@@ -63,6 +65,9 @@ Size: one session or about four hours at most. Split anything bigger. Vague brie
 7. Subagents get a brief and return short findings. Only the main thread edits STUDIO_STATE.md, so updates do
    not collide.
 8. Parallel agents work on separate branches or worktrees, never in the same folder.
+9. **Engine plugins do the engine-specific how.** If an installed engine plugin offers a skill for the task
+   (its skills appear in your skill list under the engine vendor's prefix), use it for the implementation
+   steps. The task brief still decides what is built, what is out of scope, and when it counts as done.
 
 ## 5. Reviewing before a merge
 For every change to be merged, give:
@@ -74,8 +79,9 @@ For every change to be merged, give:
 Then ask before merging into `develop`.
 
 ## 6. Closed-loop testing
-Where the engine allows it, let the agent run the build or the game headlessly (or through an editor-control
-tool), read the console errors, and fix them, within the three-strikes limit. What tools exist changes
+Where the engine allows it, let the agent run the build, the tests, or the game headlessly (or through an
+editor-control tool), read the console errors, and fix them, within the three-strikes limit. CI repeats the
+same checks on every merge (`indie-studio:toolchain`), so a fix that only works on one machine is caught. What tools exist changes
 quickly: verify the current options for the chosen engine with `indie-studio:research`. Never let a loop run
 unattended past its retry limit.
 
