@@ -136,3 +136,5 @@ decision, judge whatever evidence exists and say plainly how much weaker it is.
 7. Launch plan ready: countries, store listing localized where it matters, announcement, and the first update
    already planned.
 8. Support plan: who answers reviews and how often, and what would trigger a hotfix or a paused rollout.
+9. Upkeep scheduled: the next store and SDK requirement deadlines are in the compliance calendar, each with a
+   start date. For a live game, the first month's live calendar fits the human's real hours.

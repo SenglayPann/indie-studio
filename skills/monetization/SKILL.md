@@ -28,7 +28,7 @@ mode, measure, and explain.
 | Beta | Production IDs, a real sandbox purchase verified, consent flow live, events checked end to end |
 | Gold Master | Verified on a real device; store data declarations match what the game and its SDKs collect |
 | Soft Launch | Read the numbers, tune, decide (`indie-studio:launch-live`); CPI and payback if you pay for installs |
-| Live Ops | Offers, events, and balance changes driven by data, through `indie-studio:scope-guard` |
+| Live Ops | Offers, events (the live calendar in `docs/ECONOMY.md`), and balance changes driven by data, through `indie-studio:scope-guard` |
 
 ## 1. Principles
 - Fun first, money second. Never block the core fun behind a payment or an ad.

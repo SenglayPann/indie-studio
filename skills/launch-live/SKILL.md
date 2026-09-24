@@ -1,6 +1,6 @@
 ---
 name: launch-live
-description: Phase 4 of an Indie Studio project. Use when the project is at or near release (Gold Master gate), in soft launch, or live (stage Soft Launch, Launch, Live Ops, or Post-Mortem), or when the user asks about store submission, the release build, store listings, launch day, staged rollouts, which countries to soft launch in, what the soft-launch numbers mean, fixing bugs after launch, updates, reading reviews and crash reports, or writing a post-mortem. Covers the release candidate, store readiness and the human-only steps, the soft launch and its scale-or-stop decision, the worldwide rollout, live monitoring and hotfixes, and the post-mortem that produces lessons for the next game.
+description: Phase 4 of an Indie Studio project. Use when the project is at or near release (Gold Master gate), in soft launch, or live (stage Soft Launch, Launch, Live Ops, or Post-Mortem), or when the user asks about store submission, the release build, store listings, launch day, staged rollouts, which countries to soft launch in, what the soft-launch numbers mean, fixing bugs after launch, updates, yearly store deadlines, live events, reading reviews and crash reports, or writing a post-mortem. Covers the release candidate, store readiness and the human-only steps, the soft launch and its scale-or-stop decision, the worldwide rollout, live monitoring and hotfixes, and the post-mortem that produces lessons for the next game.
 ---
 
 # Phase 4: Launch and Live
@@ -89,8 +89,18 @@ mistakes are still cheap. Skipping this is a decision to record, not a default.
 5. **Tune from data, not feeling:** move numbers through remote settings where possible, one change at a time,
    and measure the result (`indie-studio:monetization`). That includes per-level difficulty: retune the levels
    outside their band, keep their IDs, and log each change in `docs/LEVELS.md`.
-6. **Answer reviews** kindly and briefly (a draft by the AI, posted by the human).
-7. Protect the human's energy: a live game should not swallow their life. Set a support rhythm and keep it.
+6. **Keep up with the stores.** Both stores raise their minimum requirements regularly (for example the Android
+   version a game must target, or the SDK an iOS upload must be built with), and ad, analytics, and purchase
+   SDKs ship required updates. Missing a deadline can block every future update or hide the game from new
+   players on newer phones. Keep the compliance calendar running after launch (`indie-studio:roles`, release
+   engineer): check each store's requirement pages every quarter (`indie-studio:research`), enter each deadline
+   with a start date at least two months earlier, and ship the update early.
+7. **Live calendar** (only if the business case calls this a live game): regular events, limited-time offers,
+   and content drops, sized to the human's real hours. Build one reusable event template once (through
+   `indie-studio:scope-guard`), run events through remote settings rather than new builds, and measure each one
+   against the number it was meant to move. The plan lives in `docs/ECONOMY.md` (Live events and offers).
+8. **Answer reviews** kindly and briefly (a draft by the AI, posted by the human).
+9. Protect the human's energy: a live game should not swallow their life. Set a support rhythm and keep it.
 
 ## Stage: Post-Mortem (Producer; Designer and Engineer as guests)
 Do this within a couple of weeks of launch, while it is fresh.

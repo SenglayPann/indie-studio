@@ -46,6 +46,13 @@ One naming scheme, decided here. Same names in code, dashboards, and reports.
 ## Remote settings
 <Which numbers should be changeable without an app update, and which service holds them.>
 
+## Live events and offers (live games only; planned after launch)
+One reusable event template, run through remote settings, sized to real hours. Each event names the number it
+is meant to move.
+
+| Event or offer | Template | When and how long | What it changes (remote keys) | Number it should move | Result |
+|---|---|---|---|---|---|
+
 ## Consent and privacy
 <Which consent flow applies where, what data each SDK collects, and where that is declared. Verify current
 rules with `indie-studio:research` and record source and date in `studio/KNOWLEDGE.md`.>

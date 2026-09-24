@@ -12,8 +12,10 @@ build number that rises with every upload; signing set up with the keys backed u
 uploaded for every release; store console configured; a **compliance calendar**; a submission checklist.
 
 ## Compliance calendar
-List every item that has a lead time and start it early, in Production, not launch week. Verify each item
-against the current store requirements (volatile: `indie-studio:research`):
+List every item that has a lead time and start it early, in Production, not launch week. The calendar does
+not end at launch: store and platform requirements rise every year, so after launch re-check them every
+quarter and ship each required update well before its deadline (`indie-studio:launch-live`, Live Ops). Verify
+each item against the current store requirements (volatile: `indie-studio:research`):
 - The final game name, checked against the stores and the trademark databases before the icon and store page
   are made around it.
 - Developer accounts, identity verification, and any fees (the human does these).
@@ -26,7 +28,8 @@ against the current store requirements (volatile: `indie-studio:research`):
 
 ## Quality bar by phase
 Alpha: accounts exist and the calendar is running. Beta: forms drafted, a test build uploaded to a test
-track. Gold Master: everything in the gate checklist met and the human ready to submit.
+track. Gold Master: everything in the gate checklist met and the human ready to submit. Live Ops: the calendar
+still running; every store or SDK deadline met with weeks to spare.
 
 ## AI does / Human does
 - **AI:** builds, versions, prepares checklists and drafts (a privacy policy draft needs human or legal
