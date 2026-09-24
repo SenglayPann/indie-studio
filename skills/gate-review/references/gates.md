@@ -9,14 +9,15 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
-1. One-sentence game description and the core loop (action, goal, feedback) in `docs/PITCH.md`.
+1. One-sentence game description and the core loop (action, goal, feedback) in `docs/PITCH.md`. The working
+   title was searched in the stores and trademark databases (source and date in `studio/KNOWLEDGE.md`).
 2. Player, platform, and target session length defined; the computer the game is built on and the first store
    recorded.
 3. `docs/MARKET.md`: three to five comparable games with how each earns, what brings players back, and what
    reviewers complain about; the gap in one sentence; sources logged in `studio/KNOWLEDGE.md`.
-4. `docs/BUSINESS_CASE.md`: the model, researched targets with source and date, how players will find the
-   game, what it costs, a low and a middle case in plain arithmetic, and the soft-launch plan (or a recorded
-   decision to skip it).
+4. `docs/BUSINESS_CASE.md`: the model, researched targets with source and date, the route to players
+   (organic, paid installs, or a publisher) and how they will find the game, the languages, what it costs, a
+   low and a middle case in plain arithmetic, and the soft-launch plan (or a recorded decision to skip it).
 5. Feasibility: hours per week, target date, and tool budget recorded; every ambition priced rather than
    refused; the first release fits in about two thirds of the available hours.
 6. Engine chosen; reasons and verified versions in `studio/DECISIONS.md` (`indie-studio:engine-selector`).
@@ -53,6 +54,8 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 12. If the game is built from levels: `docs/LEVELS.md` holds the building blocks and where each is taught, the
     template rules and level checklist, the difficulty plan with researched bands, and the slice's levels with
     the measured time per level.
+13. If the route to players depends on paid installs or a publisher: the marketability test ran and its numbers
+    are in `docs/BUSINESS_CASE.md`, or the reason it was skipped is recorded (`indie-studio:monetization`).
 
 ## Gate 2: First Playable (tag `m2-first-playable`)
 1. A player can go from launch through a full core-loop session and back to the menu, using placeholders.
@@ -90,7 +93,8 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 6. Analytics verified end to end: every event in `docs/ECONOMY.md` arrives in the dashboard with the right
    properties. A sandbox purchase and a rewarded ad completed in test mode.
 7. `studio/ASSET_LEDGER.md` is complete; tool license pages were re-checked (`indie-studio:asset-pipeline`).
-8. Store paperwork under way: developer accounts exist, privacy policy drafted, store forms started. If a
+8. Store paperwork under way: the final name cleared, developer accounts exist, privacy policy drafted, store
+   forms started, featuring and pre-launch sign-up options checked with their lead times. If a
    store requires a closed test before it will allow publishing (Google Play does for new personal accounts),
    that test is already running: verify the current tester count and duration, because it costs weeks of
    calendar time and needs real people (`indie-studio:research`).

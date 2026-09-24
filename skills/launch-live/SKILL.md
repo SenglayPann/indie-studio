@@ -37,7 +37,9 @@ payment details, or personal identity data, and never says something was approve
    repository, never in a chat). Losing them can block updates forever.
 4. **Release plan.** Decide the soft-launch countries from `docs/BUSINESS_CASE.md` (or record the decision to
    skip the soft launch), the staged rollout, what would make you pause it (crash rate, one-star flood), and
-   the hotfix path (`hotfix/*` from `main`).
+   the hotfix path (`hotfix/*` from `main`). If the route includes paid installs: the soft-launch ad budget,
+   attribution set up and verified, and the payback rule that stops spending (`indie-studio:monetization`,
+   growth).
 5. **Gate:** run `indie-studio:gate-review` for Gold Master. On approval the human submits with their own
    accounts. Merge `release/x.y.z` into `main` and `develop` and tag `v1.0.0` (each with the human's approval).
    Set the stage to Soft Launch, or to Launch if the soft launch was skipped by decision.
@@ -69,8 +71,10 @@ mistakes are still cheap. Skipping this is a decision to record, not a default.
    retention between steps. Pause on the rules agreed in the release plan.
 2. **Store listing per country:** localized where the data says it matters; screenshots and text from the real
    game.
-3. **Marketing basics.** Announcement text, a few short gameplay clips, community posts. Drafted by the AI,
-   posted by the human, honest about the game.
+3. **Marketing.** Announcement text, a few short gameplay clips, community posts, and the featuring pitch if
+   the stores' lead times allowed it. Paid installs scale country by country only while return on ad spend
+   holds (`indie-studio:monetization`, growth). Drafted by the AI, posted and paid for by the human, honest about
+   the game.
 4. **Support rhythm from day one:** who answers reviews, how often, and what counts as a hotfix.
 5. Tag the launch and update the Gates table; set the stage to Live Ops once the rollout is complete.
 

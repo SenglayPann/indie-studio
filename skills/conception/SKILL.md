@@ -73,8 +73,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
     kill or pivot criteria (both kinds: "if 3 of 5 outsiders are not keen to replay the prototype after two
     rounds" and the business-case numbers from the soft launch), and a time-box for the Prototype stage.
 12. **Foundations:** set up version control with `indie-studio:git-workflow` (init mode: repo, remote backup,
-    permission contract). Offer the CLAUDE.md block from `indie-studio:director`. Make sure STUDIO_STATE.md and
-    `studio/` are current.
+    permission contract). Offer the CLAUDE.md block from `indie-studio:director`. Search the stores and the
+    trademark databases for the working title (`indie-studio:research`); if it is taken, change it now, before
+    anything is built around it. Make sure STUDIO_STATE.md and `studio/` are current.
 13. **Gate:** run `indie-studio:gate-review` for Conception Exit. On approval: tag `m0-kickoff`; set phase
     Pre-Production, stage Prototype, hats Engineer + Designer; refresh Off-limits and Next actions (first
     action: create the engine project and a `spike/core-loop` branch); recommend a fresh session.

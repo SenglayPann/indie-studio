@@ -14,6 +14,8 @@ uploaded for every release; store console configured; a **compliance calendar**;
 ## Compliance calendar
 List every item that has a lead time and start it early, in Production, not launch week. Verify each item
 against the current store requirements (volatile: `indie-studio:research`):
+- The final game name, checked against the stores and the trademark databases before the icon and store page
+  are made around it.
 - Developer accounts, identity verification, and any fees (the human does these).
 - Any testing-track requirements for new developer accounts.
 - Privacy policy, data and privacy declarations, age rating questionnaire, content declarations (including

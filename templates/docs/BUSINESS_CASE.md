@@ -27,9 +27,15 @@ the source and date beside each, and never borrow a number from another genre.
 | Cost per install | Only if you pay for installs | | | |
 
 ## How players will find it
-- **Free:** store listing and keywords, short videos, communities, store featuring. Who does what, and when.
-- **Paid:** budget, where, and the rule that stops it (keep paying only while a player earns back more than
-  they cost).
+See `indie-studio:monetization` (growth) for each step.
+- **Route:** <self-publish organic / self-publish with paid installs / publisher>, and why.
+- **Free:** store listing and keywords per language, short videos, communities, store featuring and pre-launch
+  sign-ups. Who does what, and when.
+- **Marketability test:** <skipped (why) / date, videos tested, CPI, click-through rate, store conversion,
+  decision>
+- **Paid:** budget, where, the CPI and payback time the plan can afford, and the rule that stops it (keep paying
+  only while paid players earn back more than they cost, within the payback time).
+- **Publisher (if any):** <revenue share, recoupment, IP and account ownership, exclusivity; reviewed by>
 - **If nobody finds it:** <does the project still make sense, and what would you do next>
 
 ## Languages

@@ -25,7 +25,9 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
    it working, not tidy.
 5. **Playtest early:** run `indie-studio:playtest-loop` with 3-5 outsiders as soon as the loop is playable.
 6. **Decide:** proceed, change the core once, or stop (iterate-or-kill in the playtest-loop skill). At most two
-   focused rounds. Record it in `studio/DECISIONS.md`.
+   focused rounds. Record it in `studio/DECISIONS.md`. If the business case depends on paid installs or a
+   publisher, run the marketability test before proceeding: short ads cut from the prototype show what an
+   install costs (`indie-studio:monetization`, growth). It spends real money, so the human approves it.
 7. **Close the spike** once the decision is to proceed or to stop. With the human's approval: switch to `develop`,
    carry the notebook over from the spike so the playtest notes and the decision are kept (`indie-studio:git-workflow`,
    section 8), then tag the spike `archive/spike-core-loop` and delete the branch. The spike is reference only.
