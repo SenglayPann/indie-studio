@@ -1,6 +1,6 @@
 ---
 name: asset-pipeline
-description: Rules for making, naming, importing, and tracking game art, audio, and 3D models, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, or the human); when writing a style bible or prompt recipes; when generated assets drift out of style between batches or tool versions; when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
+description: Rules for making, naming, importing, and tracking game art, audio, 3D models, and text, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when preparing text for translation or translating the game or its store page (localization); when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, a hired freelancer, or the human); when writing a style bible, character sheets, the writing voice, or prompt recipes; when generated assets drift out of style between batches or tool versions; when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
 argument-hint: "[asset type or question]"
 ---
 
@@ -9,7 +9,8 @@ argument-hint: "[asset type or question]"
 AI can produce a lot of assets fast. Without rules the result is a game that looks like ten different games,
 whose files nobody can trace, with licence risks nobody checked. Communication rules:
 [communication.md](../director/references/communication.md). 3D specifics:
-[3d-pipeline.md](references/3d-pipeline.md). Connecting the tools: `indie-studio:toolchain`.
+[3d-pipeline.md](references/3d-pipeline.md). Text and translations: [localization.md](references/localization.md).
+Connecting the tools: `indie-studio:toolchain`.
 
 ## Principles
 1. Consistency beats fidelity. One coherent simple style beats a mix of impressive ones.
@@ -22,8 +23,10 @@ whose files nobody can trace, with licence risks nobody checked. Communication r
 ## 1. The style bible (`docs/STYLE_BIBLE.md`)
 Create it from `${CLAUDE_PLUGIN_ROOT}/templates/docs/STYLE_BIBLE.md` at the start of the Vertical Slice stage
 with the Artist hat. It fixes the palette (hex values), resolution and pixel density, line and shading style,
-perspective, UI rules, audio mood and loudness, reference images, the 3D technical spec, the **prompt recipes**,
-the **makers** table, and the **golden set**. Every generated asset is checked against it.
+perspective, UI rules with the accessibility basics, audio mood and loudness, the world, characters, and
+writing voice (with the Designer), reference images, the 3D technical spec, the **prompt recipes**, the
+**makers** table, and the **golden set**. Every generated asset, and every line of player-facing text, is
+checked against it.
 
 ## 2. Who makes each asset
 Decide per asset class (UI icons, character sprites, props, environment, sound effects, music), and write the
@@ -34,6 +37,7 @@ answer in the makers table.
 | **Claude directly** (written as code or vector files) | Icons, flat and geometric shapes, UI layouts and states, colour work, particle and shader effects, simple animation, patterns, level data, all text | Illustration, characters and faces, detailed textures, music, voice |
 | **Claude driving a generator** (`indie-studio:toolchain`) | 3D models from text or a picture, illustrated sprites, textures, sound effects, voice, music | Fine control, consistency without recipes, anything the licence excludes |
 | **A bought or free pack** | A whole consistent set at once, cheaply | Looking like other games; licence tracking |
+| **A hired freelancer** (section 10) | A signature look, characters, music and voice with feeling, native-quality translation | Cost at volume, turnaround of revisions; needs a contract first |
 | **The human** | Taste, final judgement, small fixes | Volume |
 
 **Samples decide, not confidence.** Claiming you can match a style proves nothing:
@@ -53,8 +57,8 @@ Re-run this whenever the style bible changes or a tool changes its model.
    perspective, background, framing, negative prompts) and a **subject slot** that does. Generate by filling
    the slot, never by improvising the style block.
 3. **Attach the same reference images** every time the tool accepts them. Reference images hold a style far
-   better than words do. For 3D: approve a 2D concept in the locked style first, then turn that picture into
-   the model.
+   better than words do. A named character always gets its reference sheet from the style bible's character
+   table. For 3D: approve a 2D concept in the locked style first, then turn that picture into the model.
 4. Lock and record the settings: model name and version, aspect and resolution, seed if the tool has one.
 5. Generate several variants; the human picks. Do a whole class in one batch or session.
 6. Clean up: background removal, cropping, palette fix, alignment, resizing, loudness. Keep the original in
@@ -124,3 +128,25 @@ in tier order. Beta: nothing placeholder remains in the build.
 Sound effects on every meaningful action make a game feel alive. Check audio on the phone speaker and on
 earbuds. Provide volume and mute settings, respect the phone's silent mode, and pause on interruptions. Music
 licences are the ones most likely to exclude games: read section 5 before generating a note of it.
+
+## 9. Text and translations
+Text is an asset too. From the Vertical Slice, every player-facing string lives in a string table (never in
+code or images), layouts leave room for longer languages, and fonts cover the target scripts, even if the game
+launches in one language. The languages themselves are chosen at Kickoff from market data, starting with the
+store page. How to build for translation, choose languages, translate with AI and native review, and check the
+result: [localization.md](references/localization.md).
+
+## 10. Working with freelancers
+A hired artist, composer, sound designer, voice actor, or translator is a maker like any other: they earn an
+asset class with samples, work from the style bible, and every delivery goes into the ledger.
+- **Choosing:** a portfolio in the target style, then a small paid test task made from the real brief.
+- **Brief:** the style bible, the recipe or character sheet for the class, the golden set, exact specs (sizes,
+  formats, loudness, file names), the deadlines, and what "done" means.
+- **Contract, before any work starts:** the rights pass to the human (an assignment of copyright, not just a
+  licence, where the law allows); whether the freelancer may use AI tools, and how that is disclosed; every
+  piece of third-party material listed with its licence; source files delivered; credit wording;
+  confidentiality. Laws differ by country: this is a checklist, not legal advice, and the human signs.
+- **Payment by milestone,** each paid on acceptance against the brief (a first sample, then batches), through the
+  human's own accounts. The AI never handles payment details.
+- **Record it:** a ledger row for every delivered asset with the freelancer's name and the contract reference,
+  and the signed contract kept privately, outside the repository.

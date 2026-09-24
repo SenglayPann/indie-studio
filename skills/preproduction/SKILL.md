@@ -25,21 +25,28 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
    it working, not tidy.
 5. **Playtest early:** run `indie-studio:playtest-loop` with 3-5 outsiders as soon as the loop is playable.
 6. **Decide:** proceed, change the core once, or stop (iterate-or-kill in the playtest-loop skill). At most two
-   focused rounds. Record it in `studio/DECISIONS.md`.
+   focused rounds. Record it in `studio/DECISIONS.md`. If the business case depends on paid installs or a
+   publisher, run the marketability test before proceeding: short ads cut from the prototype show what an
+   install costs (`indie-studio:monetization`, growth). It spends real money, so the human approves it.
 7. **Close the spike** once the decision is to proceed or to stop. With the human's approval: switch to `develop`,
    carry the notebook over from the spike so the playtest notes and the decision are kept (`indie-studio:git-workflow`,
    section 8), then tag the spike `archive/spike-core-loop` and delete the branch. The spike is reference only.
    Never merge it.
 
-## Stage: GDD (Designer + Producer; Engineer and Monetization as guests)
+## Stage: GDD (Designer + Producer; Engineer, Level Designer, and Monetization as guests)
 8. **Write `docs/GDD.md`** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/GDD.md`: a living document, as long as
    the game needs and no longer. Include only what playtests proved or the human decided; write open questions
    as open questions. Split anything that grows on its own into its own file, so a session loads only what it
-   needs.
+   needs. If the game is built from levels (or stages, waves, missions), start **`docs/LEVELS.md`** from
+   `${CLAUDE_PLUGIN_ROOT}/templates/docs/LEVELS.md` with the Level Designer hat: building blocks and where each
+   is taught, the template's rules, the level checklist, and the difficulty plan with researched bands.
 9. **Draft `docs/ECONOMY.md`** if the game earns from ads or purchases (`indie-studio:monetization`): what is
    sold, currencies, sources and sinks, ad moments, and the analytics event list. Nothing is integrated yet;
    this is the plan the build will follow from Pre-Alpha.
-10. **Record technical decisions** (folder layout, data-driven approach, naming) in `studio/DECISIONS.md`.
+10. **Write `docs/TECH.md`** (Engineer) from `${CLAUDE_PLUGIN_ROOT}/templates/docs/TECH.md`: the architecture
+    map, conventions, the save format with its version number, one wrapper per service (ads, purchases,
+    analytics, remote settings, consent), text rules, build and release settings, and the test plan. Size it
+    to the game; it is the rulebook every later session codes by. Record the reasons in `studio/DECISIONS.md`.
 11. **Define the Vertical Slice exactly:** one level or one complete segment; the list of systems, art, audio,
     UI, and feedback it must include; and a definition of done. Everything outside that list waits.
 
@@ -48,16 +55,22 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
     time-boxed comparison in `indie-studio:research`, setup and key handling in `indie-studio:toolchain`).
     Decide who makes each asset class and approve three samples from each maker before production starts.
     Nothing final gets generated before this exists.
-13. **Rebuild cleanly** on `feature/vertical-slice` from `develop`. Port the proven logic from the spike; do not
-    copy the spike wholesale. The slice must use the same pipeline the rest of the game will use.
+13. **Rebuild cleanly** on `feature/vertical-slice` from `develop`, following `docs/TECH.md`. Port the proven
+    logic from the spike; do not copy the spike wholesale. The slice must use the same pipeline the rest of the
+    game will use. **Automated checks start here:** a one-command build, and tests for saving and loading
+    (including a save from an older version). Set up CI now if you can (`indie-studio:toolchain`); it is due
+    by the First Playable gate.
 14. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
 15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
     design, art, audio, integration, testing, including AI generation and cleanup time. Compute the cost per
     content unit, extrapolate to the T1 content list, and compare it with capacity. Record the numbers in
-    `studio/DECISIONS.md`. Re-baseline the tiers. If the math does not fit, shrink the first release now.
+    `studio/DECISIONS.md` (and the time per level in `docs/LEVELS.md`, section 7). Re-baseline the tiers and
+    re-forecast every remaining gate date in the Gates table. If the math does not fit, shrink the first release
+    now.
 16. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
-17. **Fresh-clone test:** clone the repository to a new folder and build. If it does not, fix the repository.
+17. **Fresh-clone test:** clone the repository to a new folder and build it with the one-command build from
+    `docs/TECH.md`. If it does not build, fix the repository.
 18. **Playtest** with 5 outsiders on the slice.
 19. **Gate:** run `indie-studio:gate-review` for Vertical Slice.
 

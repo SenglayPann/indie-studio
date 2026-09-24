@@ -28,6 +28,16 @@ date in `docs/BUSINESS_CASE.md`. Never reuse a benchmark from another genre.
 | CPI | What one install costs when you pay for it | Paying for installs only makes sense while LTV is comfortably above CPI |
 | Store cut | The share the store keeps from each purchase | Your revenue is what is left, and it arrives weeks later |
 
+## Getting players ([growth.md](growth.md))
+| Term | What it means | Why it matters |
+|---|---|---|
+| CTR | Click-through rate: the share of people who saw an ad and tapped it | Tells you whether the hook in the first seconds works |
+| Store conversion | The share of store-page visitors who install | Tells you whether the page keeps the ad's promise |
+| ROAS | Return on ad spend: revenue from paid players divided by what they cost, by day 7, 30, and so on | The number that says whether to keep spending |
+| Payback time | How long until paid players have earned back what they cost | Cash flow: a long payback needs money to wait with |
+| Attribution | Knowing which ad or channel brought which player | Without it, paid and organic players blur together |
+| Organic uplift | Extra organic installs that paid campaigns bring (ranking, word of mouth) | Real but hard to measure; never plan on it |
+
 ## Quality
 | Term | What it means |
 |---|---|

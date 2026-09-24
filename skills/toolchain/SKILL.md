@@ -1,6 +1,6 @@
 ---
 name: toolchain
-description: Connect, check, and look after the outside tools the studio uses: AI asset generators for 3D, 2D, and audio (Meshy, Tripo, and the like), engine editor bridges and MCP servers, Blender, and build or analytics services. Use when the user wants to set up or connect a tool, asks which tools they are missing for the current stage or what else they should install, when a tool or MCP server fails, errors, or stops responding, when an API key or a paid plan is needed, after a tool was chosen through the tool comparison, or when generation credits are about to be spent in bulk. Walks the human through every step, keeps keys out of the chat and out of git, proves the tool works with one cheap test job, and records it.
+description: Connect, check, and look after the outside tools the studio uses: AI asset generators for 3D, 2D, and audio (Meshy, Tripo, and the like), engine editor bridges, engine plugins, and MCP servers, Blender, automated builds and tests (CI), and build or analytics services. Use when the user wants to set up or connect a tool, asks which tools they are missing for the current stage or what else they should install, when a tool or MCP server fails, errors, or stops responding, when an API key or a paid plan is needed, after a tool was chosen through the tool comparison, or when generation credits are about to be spent in bulk. Walks the human through every step, keeps keys out of the chat and out of git, proves the tool works with one cheap test job, and records it.
 argument-hint: "[check | connect <tool> | test <tool> | fix <tool>]"
 ---
 
@@ -38,13 +38,16 @@ the one that matches the request.
 | Conception | Web search and fetch, for `indie-studio:research` |
 | Prototype | Engine and its command-line tools; a way to build onto the test phone; an engine bridge if one exists |
 | GDD | Nothing new |
-| Vertical Slice | The chosen asset tools (2D, 3D, audio), image or model viewing, Blender if 3D |
+| Vertical Slice | The chosen asset tools (2D, 3D, audio), image or model viewing, Blender if 3D; a one-command build and a test runner |
+| First Playable | CI: every merge into `develop` built and tested automatically (section 5) |
 | Pre-Alpha, Alpha | Analytics, ad, and purchase SDK accounts (`indie-studio:monetization`) |
 | Beta | Store consoles, a test track, crash reporting |
 | Soft Launch, Live Ops | Analytics dashboards, store consoles |
 
 2. See what is already there: `claude mcp list` for connected servers, `/mcp` for their status inside a
    session, the installed skills for engine helpers, and `docs/STYLE_BIBLE.md` for the tools already chosen.
+   An installed engine plugin (the engine vendor's own skills in your skill list) handles the engine-specific
+   how of its jobs: record it and what it covers in `docs/TECH.md`, section 9.
 3. Report a short table: tool, needed now or later, present or missing, what it would cost. Recommend at most
    one thing to set up now. Missing tools are not a crisis: say what the work looks like without them.
 
@@ -89,7 +92,23 @@ When a tool fails: read the actual error first. Check in this order, stopping at
 Three failed attempts: stop and use the options in `indie-studio:ai-delegation`. A broken tool is never a
 reason to hand-edit scene or resource files.
 
-## 5. Keep it tidy
+## 5. Automated builds and tests (CI)
+CI (continuous integration) builds the game and runs the tests on every merge, so a broken `develop` is caught
+the same day instead of at the next device build. Start at the Vertical Slice; it is due by First Playable.
+1. **Choose the service** with the human, and verify today's options, free minutes, and engine support
+   (`indie-studio:research`): the git host's own runners with a community game-CI action, the engine vendor's
+   build service, or a mobile build service. iOS builds need a macOS runner.
+2. **The human stores every secret** in the service's own secret settings: the engine licence, signing keys and
+   their passwords, store upload keys. Never in the repository, the workflow file, or the chat.
+3. **You write the pipeline:** build each target platform, run the automated tests from `docs/TECH.md`
+   (section 8), keep the build as an artifact, and fail loudly. Show the diff first; commit it as
+   `build(ci): ...` (`indie-studio:git-workflow`).
+4. **Prove it can fail:** push a branch with a deliberately failing test, watch CI go red, then fix it. A CI that
+   has never failed has not been tested.
+5. **Record it:** the service, what runs, and what it costs in `docs/TECH.md` (section 8) and
+   `studio/KNOWLEDGE.md`. From then on, a red CI on `develop` stops the line (`indie-studio:production`).
+
+## 6. Keep it tidy
 - One tool per job (`indie-studio:asset-pipeline`). Switching mid-project costs consistency.
 - Review paid tools monthly with the human: what was used, what was not, what to cancel.
 - Re-check each tool's terms before the Beta and Gold Master gates; terms change quietly.

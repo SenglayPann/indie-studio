@@ -5,6 +5,7 @@ phase: Conception            # Conception | Pre-Production | Production | Launch
 stage: Idea                  # see the stage list for the phase
 next_gate: Conception Exit
 hats: Producer, Designer     # at most 3 active roles
+experience: new              # new | experienced (how much to explain; director communication rules)
 engine: undecided
 platform: mobile
 git_permissions: not-set     # set | not-set (see ## Permissions)
@@ -40,15 +41,17 @@ updated: <YYYY-MM-DD>
 - Post-launch roadmap: <the bigger ambitions, waiting for numbers that justify them>
 
 ## Gates
-| Gate | Status | Date | Evidence |
-|---|---|---|---|
-| Conception Exit | open | | |
-| Vertical Slice | open | | |
-| First Playable | open | | |
-| Alpha (feature freeze) | open | | |
-| Beta (content complete) | open | | |
-| Gold Master | open | | |
-| Global Launch | open | | |
+<!-- Planned: set at Kickoff from the capacity math (YYYY-MM-DD). Forecast: re-estimated every weekly review.
+     Passed: the approval date. The brief warns when a forecast passes its planned date. -->
+| Gate | Status | Planned | Forecast | Passed | Evidence |
+|---|---|---|---|---|---|
+| Conception Exit | open | | | | |
+| Vertical Slice | open | | | | |
+| First Playable | open | | | | |
+| Alpha (feature freeze) | open | | | | |
+| Beta (content complete) | open | | | | |
+| Gold Master | open | | | | |
+| Global Launch | open | | | | |
 
 ## Permissions
 <!-- Git rules set once by indie-studio:git-workflow; the credit limit by indie-studio:toolchain. -->

@@ -27,10 +27,13 @@ Beta: zero Class A. Gold Master: a regression pass on real devices.
 ## Mobile smoke test (run at each milestone, on two or more devices, one low-end)
 Install and launch; cold start time; a full core-loop session; pause and resume; background and return; an
 incoming call or notification mid-play; rotation if supported; low battery mode; airplane mode and offline
-behavior; nearly full storage; different screen sizes and notches; mute and volume; app update keeps the save.
+behavior; nearly full storage; different screen sizes and notches; mute and volume; app update keeps the save;
+every shipped language (nothing cut off, no missing characters).
 
 ## AI does / Human does
-- **AI:** writes test plans and checklists, triages logs and stack traces, automates what can be automated.
+- **AI:** writes test plans and checklists, triages logs and stack traces, and automates what can be
+  automated: the test list in `docs/TECH.md` (section 8) grows by one test for every Class A bug the engine
+  can reproduce in a test.
 - **Human:** plays on real phones, recruits outside testers, and verifies fixes by hand.
 
 ## Beginner traps

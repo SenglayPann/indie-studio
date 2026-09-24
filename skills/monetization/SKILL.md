@@ -1,7 +1,7 @@
 ---
 name: monetization
-description: Design how the game earns money, and check whether it actually does. Use when choosing a business model (paid, ads, in-app purchases, both, subscription), deciding where ads go and how often, deciding what to sell and at what price, designing the in-game economy (currencies, rewards, sinks), planning analytics events, setting or reading numbers such as retention, revenue per player, or payer share, preparing or reading a soft launch, or integrating ad, purchase, analytics, or consent SDKs. Also when the user asks how this game will make money, where ads should go, what to sell, whether the price is right, or whether the game is earning enough.
-argument-hint: "[model | ads | purchases | economy | events | numbers]"
+description: Design how the game earns money, and check whether it actually does. Use when choosing a business model (paid, ads, in-app purchases, both, subscription), deciding where ads go and how often, deciding what to sell and at what price, designing the in-game economy (currencies, rewards, sinks), planning analytics events, setting or reading numbers such as retention, revenue per player, or payer share, preparing or reading a soft launch, or integrating ad, purchase, analytics, or consent SDKs. Also how the game gets players: a marketability test, self-publishing or a publisher, paid installs, and store featuring. Also when the user asks how this game will make money or find players, where ads should go, what to sell, whether the price is right, or whether the game is earning enough.
+argument-hint: "[model | ads | purchases | economy | events | numbers | growth]"
 ---
 
 # Making money, and knowing whether it works
@@ -9,7 +9,8 @@ argument-hint: "[model | ads | purchases | economy | events | numbers]"
 Revenue follows players who come back. A game nobody returns to earns nothing, whatever you put in it. So the
 order is always: the loop works, players return, then the game asks for something. Communication rules:
 [communication.md](../director/references/communication.md). Words and numbers explained:
-[metrics.md](references/metrics.md).
+[metrics.md](references/metrics.md). Getting players, the other half of the money:
+[growth.md](references/growth.md).
 
 The human owns every money decision: accounts, terms, prices, and spending. You design, integrate in test
 mode, measure, and explain.
@@ -17,15 +18,17 @@ mode, measure, and explain.
 ## Where this happens
 | Stage | What to do |
 |---|---|
+| Conception (Validation) | The route to players: organic, paid installs, or a publisher (growth.md, section 1) |
 | Conception (Kickoff) | The model and `docs/BUSINESS_CASE.md`: how it earns, targets from research, how players find it, costs, soft-launch plan |
+| Prototype (end) | If the plan depends on paid installs or a publisher: the marketability test (growth.md, section 2) |
 | GDD | `docs/ECONOMY.md`: what is sold, currencies and rewards, ad moments, the analytics event list |
 | Vertical Slice | Integrate nothing. Check the loop leaves natural room for the planned ad and offer moments |
 | Pre-Alpha | Integrate analytics, ads, and purchases in **test mode**, through the engine's own skills when they are installed |
 | Alpha | Every ad and purchase path reachable and testable; consent flow drafted |
 | Beta | Production IDs, a real sandbox purchase verified, consent flow live, events checked end to end |
 | Gold Master | Verified on a real device; store data declarations match what the game and its SDKs collect |
-| Soft Launch | Read the numbers, tune, decide (`indie-studio:launch-live`) |
-| Live Ops | Offers, events, and balance changes driven by data, through `indie-studio:scope-guard` |
+| Soft Launch | Read the numbers, tune, decide (`indie-studio:launch-live`); CPI and payback if you pay for installs |
+| Live Ops | Offers, events (the live calendar in `docs/ECONOMY.md`), and balance changes driven by data, through `indie-studio:scope-guard` |
 
 ## 1. Principles
 - Fun first, money second. Never block the core fun behind a payment or an ad.
@@ -71,7 +74,8 @@ until the soft launch shows real numbers.
 - **Price:** use the store's own price points. Look at what comparable games charge (`docs/MARKET.md`). One
   cheap entry item matters most: the first purchase is the hard one.
 - **Must work before launch:** restoring purchases, checking the receipt, a purchase interrupted by a call or
-  a lost connection, and a refund leaving the player in a sane state.
+  a lost connection, and a refund leaving the player in a sane state. Keep purchases behind one wrapper
+  (`docs/TECH.md`) and cover each of these cases with an automated test against a faked store.
 - **Never:** pay-to-win that spoils the loop, hidden prices, pressure aimed at children, or anything the store
   forbids. Use the engine's own purchase skills where they exist.
 
@@ -96,7 +100,8 @@ tuning needs no new build, and plan to move the important numbers to remote sett
 ## 7. Reading a soft launch
 1. Check you have enough players for the numbers to mean anything. If not, wait; do not redesign on noise.
 2. **D1 first.** If players do not come back the next day, no ad placement or price fixes it. The problem is
-   the first session: clarity, difficulty, length, or the promise the store page made.
+   the first session: clarity, difficulty, length, or the promise the store page made. In a game built from
+   levels, the per-level funnel shows exactly where they leave (`docs/LEVELS.md`).
 3. **Then D7.** It shows whether a habit forms. If D1 is fine and D7 collapses, the game runs out of reasons
    to return: progression, variety, or goals.
 4. **Then money per player**, and only then prices and placements.
@@ -104,14 +109,20 @@ tuning needs no new build, and plan to move the important numbers to remote sett
 6. Decide with the rules written in `docs/BUSINESS_CASE.md` before any results arrived: scale, keep fixing, or
    stop. Record the decision in `studio/DECISIONS.md`.
 
-## 8. AI does / Human does
+## 8. Getting players
+Players are the other half of revenue. Choose the route early (organic, paid installs, or a publisher), test
+what an install costs before production commits when the plan depends on paying for players, and buy installs
+only while they pay back, with the stop rule written first. The procedures, publisher terms to check, and
+traps: [growth.md](references/growth.md).
+
+## 9. AI does / Human does
 - **AI:** designs the model and economy, drafts the event plan, integrates SDKs in test mode, builds the
   analysis, drafts store declarations and the privacy policy for review.
 - **Human:** creates every account (ad network, store, payments, tax), accepts the terms, sets prices,
   approves spending, and submits. The AI never enters payment, bank, or identity details and never accepts
   terms on someone else's behalf.
 
-## 9. Beginner traps
+## 10. Beginner traps
 Ads in the first minute; an interstitial after every single round; three ad networks in one build; no
 consent flow; test IDs shipped to production; a paywall in front of the fun; an economy tuned by feel and
 never measured; reading results from a handful of players; treating downloads as success; building a season

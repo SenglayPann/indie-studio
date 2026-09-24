@@ -1,7 +1,7 @@
-# <Working title>: style bible
+# <Working title>: style bible (art, sound, and story)
 
-Every asset is checked against this. If an asset does not match, change the asset, not the bible (unless the
-human deliberately changes the bible and records it in `studio/DECISIONS.md`).
+Every asset and every line of player-facing text is checked against this. If an asset does not match, change the
+asset, not the bible (unless the human deliberately changes the bible and records it in `studio/DECISIONS.md`).
 
 ## Look in two sentences
 <e.g. Flat, soft-shaded shapes in warm pastel colours with thick rounded outlines. Friendly and calm.>
@@ -26,16 +26,32 @@ human deliberately changes the bible and records it in `studio/DECISIONS.md`).
 - Buttons: <shape, corner radius, states: idle / pressed / disabled>
 - Text: <fonts, minimum size on the smallest phone, contrast rule>
 - Touch target minimum: <size, verify current platform guidance>
+- Accessibility basics: never rely on colour alone (add a shape, icon, or pattern); text follows the phone's
+  text-size setting where the engine allows; an option to reduce motion and flashing; separate switches for
+  sound, music, and vibration; captions for any voice.
 
 ## Audio mood and loudness
 - Music: <mood, tempo range, instruments>   Effects: <soft / crisp / playful>
 - Loudness target: <how the set is normalized>
 
+## World, characters, and voice
+Skip the world and characters if the game has none; every game still needs the writing voice.
+
+- Setting in two sentences: <where and when, and what makes it feel like this game>
+- Characters (each one's reference sheet is attached to every generation of that character):
+
+| Name | Role in the game | Look (reference sheet path) | Personality | A line they would say |
+|---|---|---|---|---|
+
+- Writing voice: <tone, reading level, sentence length, humour or not, words to avoid>
+  - A button: <...>   A tutorial line: <...>   A fail message: <...>   The store description's first line: <...>
+- Text volume: <rough word count by area (UI, tutorial, story); drives the translation cost>
+
 ## Makers (who makes each asset class)
 Filled by `indie-studio:asset-pipeline` after three samples were approved. Re-check when the style changes or
 a tool changes its model.
 
-| Asset class | Maker (Claude / tool name / pack / human) | Samples approved | Notes |
+| Asset class | Maker (Claude / tool name / pack / freelancer / human) | Samples approved | Notes |
 |---|---|---|---|
 | UI icons | | | |
 | Sprites or models | | | |

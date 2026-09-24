@@ -18,7 +18,7 @@ the hats the current stage needs (at most three in one session; see the stage ta
 | Designer | [designer.md](references/roles/designer.md) | Core loop, rules, progression, GDD | Idea to Pre-Alpha |
 | Engineer | [engineer.md](references/roles/engineer.md) | Code, architecture, builds | Prototype to Live Ops |
 | Artist and UI/UX | [artist.md](references/roles/artist.md) | Style, sprites or models, animation, UI | Vertical Slice to Beta |
-| Level Designer | [level-designer.md](references/roles/level-designer.md) | Levels, pacing, difficulty curve | Vertical Slice to Alpha |
+| Level Designer | [level-designer.md](references/roles/level-designer.md) | Levels, pacing, difficulty curve, `docs/LEVELS.md` | GDD to Live Ops |
 | Audio | [audio.md](references/roles/audio.md) | Sound effects, music, mixing | Vertical Slice to Beta |
 | QA | [qa.md](references/roles/qa.md) | Testing, bugs, devices, performance | Prototype to Live Ops |
 | Monetization | [monetization.md](references/roles/monetization.md) | Ads, purchases, economy, analytics, consent | Conception, then Pre-Alpha to Live Ops |
@@ -26,7 +26,8 @@ the hats the current stage needs (at most three in one session; see the stage ta
 | Marketer | [marketer.md](references/roles/marketer.md) | Market check, store listing, community | Idea, Beta to Live Ops |
 
 ## How to wear a hat
-1. Read the role file (only the ones needed now; they cost context).
+1. Read the role file (only the ones needed now; they cost context). When `experience` is `experienced`,
+   skip its "Beginner traps" section unless one of them is happening right now.
 2. Say in one line which hat is on and what it will focus on. Update `hats` in STUDIO_STATE.md.
 3. Work to that role's quality bar **for the current phase**. Prototype-stage engineering is deliberately
    messy; Beta-stage engineering is not. Do not apply late-phase standards early.

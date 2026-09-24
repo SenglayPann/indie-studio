@@ -10,7 +10,7 @@ A gate is an "are we ready to move on?" check. It stops the project drifting for
 human approves a gate.** You gather evidence and make a recommendation. Communication rules:
 [communication.md](../director/references/communication.md).
 
-Checklists for all six gates are in [gates.md](references/gates.md).
+Checklists for all seven gates are in [gates.md](references/gates.md).
 
 ## Procedure
 1. **Pick the gate:** from `next_gate` in STUDIO_STATE.md, or from `$ARGUMENTS`.
@@ -27,8 +27,9 @@ Checklists for all six gates are in [gates.md](references/gates.md).
      informed choice; record it in DECISIONS.md as an override with the reason.
 6. **Ask for approval** explicitly: "Approve the <gate> gate?" Do not treat silence or enthusiasm as approval.
 7. **If approved:**
-   1. Update STUDIO_STATE.md: Gates table (passed, date, evidence), `phase`, `stage`, `next_gate`, `hats`, "Off-limits right now",
-      three new "Next actions", `updated`. Use [phases-and-stages.md](../director/references/phases-and-stages.md).
+   1. Update STUDIO_STATE.md: Gates table (status passed, the Passed date, evidence; re-forecast the remaining
+      gates), `phase`, `stage`, `next_gate`, `hats`, "Off-limits right now", three new "Next actions", `updated`.
+      Use [phases-and-stages.md](../director/references/phases-and-stages.md).
    2. Append the decision to `studio/DECISIONS.md` and an entry to `studio/JOURNAL.md`.
    3. Git (`indie-studio:git-workflow`): with the user's approval, merge `develop` into `main` with `--no-ff`,
       create the annotated gate tag, and push `main` and the tag. Update `last_synced_commit`.

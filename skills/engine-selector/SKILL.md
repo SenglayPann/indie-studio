@@ -15,21 +15,23 @@ performance needs, the human's prior experience with any language, whether conso
 possible later, budget and comfort with license terms, and the tools already set up in the user's Claude
 Code (which engine-specific skills, editor bridges, or MCP servers are installed).
 
-## 2. Factors that matter for an AI-assisted beginner
+## 2. Factors that matter for an AI-assisted solo developer
 - **AI reliability:** how much good, current documentation and example code exists for the engine's language and
   APIs. Test it: ask for a small piece of code and check it against the docs.
 - **Agent tooling:** are engine-specific skills or editor-control servers available and maintained? (Check the
   installed skills list, and verify anything else with `indie-studio:research`.) A tool that lets the AI drive
   the editor and read its errors makes the self-checking loop possible.
 - **Text-based scene files** merge and diff better in git.
-- **Automation:** can builds and tests run from the command line?
+- **Automation:** can builds and tests run from the command line, and in CI (`indie-studio:toolchain`)?
+- **The human's experience:** an engine they already know well is worth a lot; weigh it honestly against the
+  factors above.
 - **Build path from the human's computer:** iOS builds must be compiled, signed, and uploaded from macOS. If
   they target iOS without a Mac, does the engine offer its own cloud build service, or a documented path
   through a hosted macOS runner? Verify the current options, limits, and costs.
 - **Mobile SDK ecosystem:** ads, purchases, analytics, crash reporting. Mature official SDKs save weeks.
 - **Build size and startup cost** of an empty mobile project.
 - **License and fees:** terms change; verify the current terms at decision time.
-- **Community:** how easy it is to find answers to beginner problems.
+- **Community:** how easy it is to find answers to common problems.
 
 ## 3. Starting tendencies (heuristics from the research docs; verify before relying on them)
 - Simple 2D games where small builds and fast iteration matter: Godot is a strong candidate.

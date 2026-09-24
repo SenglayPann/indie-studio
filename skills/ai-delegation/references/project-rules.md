@@ -9,8 +9,9 @@ Show it to the human and get approval before writing it.
 
 ### Workflow
 - Read STUDIO_STATE.md first. Work only on the current task brief and stay inside its allowed files.
+- Read `docs/TECH.md` before changing structure, saves, or services, and keep it current in the same branch.
 - One branch per task. Small commits in the `type(scope): summary` format. Never commit to `main`.
-- Compile or run before saying "done". Report failures and skipped steps honestly.
+- Build and run the tests (`<test command>`) before saying "done". Report failures and skipped steps honestly.
 - Three failed attempts at the same problem: stop, summarize, and give the human the options from
   `indie-studio:ai-delegation` (fresh session, look it up, make it smaller, ask people, hands on).
 - Check engine and SDK calls against the docs for the installed version. Never invent an API.
@@ -20,6 +21,9 @@ Show it to the human and get approval before writing it.
 - Cache references at load time. Pool objects that spawn often (projectiles, effects, floating text).
 - Gameplay code never queries UI objects directly. Use events or signals between them.
 - Numbers that designers tune (speeds, costs, rewards) live in data files, not in code.
+- Game code never calls ad, purchase, or analytics SDKs directly: use the wrappers listed in `docs/TECH.md`.
+- Every save carries a version number. Changing what is saved raises it and adds a migration and a test.
+- Player-facing text comes from string tables, never from code or images.
 - Handle pause, resume, and interruptions (calls, notifications). Respect safe areas and notches.
 - Touch targets must be large enough for a thumb (see `indie-studio:mobile-perf-budget`).
 

@@ -61,6 +61,8 @@ the change is meant to move, size it as usual, and record it. "Players quit in t
 target" is a reason; "it would be cool" is still not.
 
 ## When the schedule slips
+A slip shows first as a gate's Forecast passing its Planned date in the Gates table (the session brief warns
+with "SLIPPING"). Act then, while the options are still cheap.
 Cut scope, never the polish buffer. In order: drop T3, then trim T2, then shrink content volume within T1.
 Do not solve a slip with heroic extra hours; that is how burnout and skipped testing happen. Tell the human
 plainly: "We are two weeks behind. Options: cut X, or move the target date."

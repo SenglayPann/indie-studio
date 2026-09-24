@@ -13,6 +13,8 @@ onboarding, the reason to return, and the design document.
   progression, the tier list.
 - Balance and progression tables kept in data files, not hard-coded.
 - A first-minute onboarding flow.
+- The writing voice and, if the game has a story, the world and its characters, in the style bible's "World,
+  characters, and voice" section (with the Artist).
 
 ## Quality bar by phase
 - **Idea:** one core verb; the loop fits in one sentence.
@@ -30,7 +32,8 @@ Design the first release to be the smallest version that can prove players stay;
 post-launch roadmap.
 
 ## AI does / Human does
-- **AI:** proposes options, drafts documents, builds balance tables and simulations, writes tutorial text.
+- **AI:** proposes options, drafts documents, builds balance tables and simulations, writes tutorial and UI
+  text in the agreed voice.
 - **Human:** plays the game, watches other people play, decides what is fun, and picks between options.
 
 ## Beginner traps

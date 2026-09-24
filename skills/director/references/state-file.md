@@ -13,6 +13,7 @@ The SessionStart hook reads it, so keep the headings and front-matter keys exact
 | `stage` | Step in the phase | see `phases-and-stages.md` |
 | `next_gate` | Gate being worked toward | gate names, or `none` |
 | `hats` | Roles active this session, at most 3 | role names |
+| `experience` | How much to explain, and how estimates are corrected ([communication.md](communication.md)) | `new`, `experienced` |
 | `engine` | Chosen engine | `undecided`, `Unity`, `Godot`, ... |
 | `platform` | Target platforms | `mobile`, `Android`, `iOS`, ... |
 | `git_permissions` | Whether the git permission contract was agreed | `set`, `not-set` |
@@ -24,6 +25,12 @@ Only put a `#` comment after a value, never inside one (the hook strips text aft
 ## Body sections (keep these exact headings; the hook reads three of them)
 `Now`, `Next actions` (hook), `Off-limits right now` (hook), `Open questions` (hook), `Scope tiers`,
 `Gates`, `Permissions`, `Schedule`, `Last session`.
+
+The **Gates** table has the columns Gate, Status, Planned, Forecast, Passed, and Evidence. Dates are
+`YYYY-MM-DD`. Planned is set at Kickoff from the capacity math and changes only by a recorded decision.
+Forecast is re-estimated at every weekly review and after the Vertical Slice timing exercise (remaining work
+divided by real weekly hours). Passed is the approval date. The hook prints the next gate's planned and
+forecast dates and warns when the forecast is later than the plan.
 
 Keep the whole file under about 80 lines. It is read at every session start; every line costs context.
 Move history to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verified facts to
