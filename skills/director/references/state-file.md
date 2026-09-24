@@ -13,6 +13,7 @@ The SessionStart hook reads it, so keep the headings and front-matter keys exact
 | `stage` | Step in the phase | see `phases-and-stages.md` |
 | `next_gate` | Gate being worked toward | gate names, or `none` |
 | `hats` | Roles active this session, at most 3 | role names |
+| `experience` | How much to explain, and how estimates are corrected ([communication.md](communication.md)) | `new`, `experienced` |
 | `engine` | Chosen engine | `undecided`, `Unity`, `Godot`, ... |
 | `platform` | Target platforms | `mobile`, `Android`, `iOS`, ... |
 | `git_permissions` | Whether the git permission contract was agreed | `set`, `not-set` |

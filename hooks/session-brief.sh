@@ -42,8 +42,14 @@ val() {
   if [ -n "$v" ]; then printf '%s' "$v"; else printf '%s' "$2"; fi
 }
 
+# How much to explain: `new` (the default) or `experienced`.
+case "$(fm experience)" in
+  [Ee]xperienced*|[Pp]ro*|[Ee]xpert*) experience=experienced ;;
+  *) experience=new ;;
+esac
+
 echo "=== INDIE STUDIO BRIEF (generated automatically at session start) ==="
-echo "Project : $(val project '(untitled)')"
+echo "Project : $(val project '(untitled)')   Experience: $experience"
 echo "Phase   : $(val phase '?')   Stage: $(val stage '?')   Next gate: $(val next_gate '?')"
 echo "Hats    : $(val hats '?')   Engine: $(val engine 'undecided')   Platform: $(val platform '?')"
 # Name the skill that runs this phase: skill names always reach Claude, even when a crowded
@@ -125,16 +131,26 @@ if [ -n "$off" ]; then
   printf '%s\n' "$off" | sed 's/^/  /'
 fi
 
+if [ "$experience" = experienced ]; then
+  recap="Open your first reply with a one-line recap (phase, stage, next action), then propose the first action. Skip it if the user is clearly mid-task."
+  tone="The user is experienced: use normal industry terms, no explanations, and skip beginner-trap lists."
+else
+  recap="Open your first reply with a 3-5 line recap of this brief (phase, stage, next actions, open questions), then propose the first action. Skip the recap only if the user is clearly mid-task."
+  tone="Explain jargon in plain words the first time you use it."
+fi
+
+echo "--- Studio operating rules for this project ---"
+echo "1. Trust STUDIO_STATE.md for the phase and stage. Do not guess them."
+echo "2. $recap"
 cat <<'RULES'
---- Studio operating rules for this project ---
-1. Trust STUDIO_STATE.md for the phase and stage. Do not guess them.
-2. Open your first reply with a 3-5 line recap of this brief (phase, stage, next actions, open questions), then propose the first action. Skip the recap only if the user is clearly mid-task.
 3. User asks for a new feature, mechanic, asset, or plan change: invoke indie-studio:scope-guard BEFORE doing it.
 4. Answer depends on a version, API, store rule, price, license, tool feature, or an unfamiliar error: invoke indie-studio:research BEFORE answering.
 5. Any git action (commit, branch, merge, tag, push, undo): follow indie-studio:git-workflow.
 6. Only the human approves gates, merges into main, spending money, or publishing. Never enter passwords, keys, or payment details.
 7. Update STUDIO_STATE.md after each meaningful step. Suggest a compact or fresh session per indie-studio:session.
-8. Explain jargon in plain words the first time you use it.
+RULES
+echo "8. $tone"
+cat <<'RULES'
 9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
 10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done: indie-studio:gate-review. For a hat's standards: indie-studio:roles.
 11. If an indie-studio skill in your skill list shows no description, the list is over its size limit and studio skills may not start on their own: tell the human once and offer the fix in indie-studio:director (doctor).

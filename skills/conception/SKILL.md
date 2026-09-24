@@ -25,6 +25,8 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
    - What this game is for: money, learning, a portfolio piece, or a mix. If money, what "worth it" would look
      like in the first year, and whether there is any budget to pay for installs.
    - Games they love and play, and what they can do themselves (drawing, music, code, none).
+   - Games they have shipped before, and how their estimates compared with reality. This sets `experience`
+     if init did not, and the estimate correction in step 6.
    Write the answers into the Schedule section of STUDIO_STATE.md and the constraints part of `docs/PITCH.md`
    (copy `${CLAUDE_PLUGIN_ROOT}/templates/docs/PITCH.md` first).
 2. **If the user already has an idea,** skip to step 4 and stress-test it. Do not replace it with your own.
@@ -46,7 +48,8 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
 6. **Feasibility** (Producer with the Engineer as guest): list the skills the game needs, which the AI can
    cover, and which need the human. Estimate the first release roughly (for example, "12 levels at about 6
    hours each plus about 40 hours of systems"), then do the capacity math: hours per week x weeks available.
-   Multiply beginner estimates by 1.5 to 2. Price every ambition from the cost table in idea-filters.md
+   Correct the estimates as the experience setting says (communication.md): 1.5 to 2 times for `new`, the
+   human's own track record for `experienced`. Price every ambition from the cost table in idea-filters.md
    instead of refusing it. Check the build path to every target store from the human's own computer (see the
    intake), and the store account steps and fees that only they can do.
 7. **Engine choice:** run `indie-studio:engine-selector`.
@@ -82,4 +85,4 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
 - Do not let the concept grow while validating it. If a nice extra appears, park it (`indie-studio:scope-guard`).
 - If the honest math does not fit the hours available, shrink the first release, not the estimates.
 - Money plans stay tentative here: no SDKs, no store accounts, no spending yet.
-- Explain every unfamiliar term once. Keep chat replies short; the long text goes in `docs/`.
+- Explain terms as the experience setting says. Keep chat replies short; the long text goes in `docs/`.

@@ -25,8 +25,8 @@ when the user says they are finishing, and `compact` when a trigger below applie
    discard changes without explicit approval.
 4. If `git_permissions` is `not-set` and a repository exists, run the permission contract in
    `indie-studio:git-workflow` before any git action.
-5. Give the recap in at most six lines: phase and stage, next gate, hats, branch, the next three actions,
-   open questions.
+5. Give the recap in at most six lines (one line when `experience` is `experienced`): phase and stage, next
+   gate, hats, branch, the next three actions, open questions.
 6. Ask how much time the user has today if it is not obvious, and propose a plan that fits: one to
    three tasks, each with a rough estimate. Name any time-box in `studio/RISKS.md` that is close or overrun.
 7. Begin with the first task once the user agrees.

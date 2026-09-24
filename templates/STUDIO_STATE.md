@@ -5,6 +5,7 @@ phase: Conception            # Conception | Pre-Production | Production | Launch
 stage: Idea                  # see the stage list for the phase
 next_gate: Conception Exit
 hats: Producer, Designer     # at most 3 active roles
+experience: new              # new | experienced (how much to explain; director communication rules)
 engine: undecided
 platform: mobile
 git_permissions: not-set     # set | not-set (see ## Permissions)

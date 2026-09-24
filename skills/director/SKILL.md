@@ -27,8 +27,10 @@ State file rules are in [state-file.md](references/state-file.md).
 2. If `STUDIO_STATE.md` already exists, do not overwrite it. Run status instead.
 3. Copy `${CLAUDE_PLUGIN_ROOT}/templates/STUDIO_STATE.md` to `./STUDIO_STATE.md` and the folder
    `${CLAUDE_PLUGIN_ROOT}/templates/studio/` to `./studio/` (use `cp`, or Read and Write if `cp` fails).
-4. Ask for the working title (default "untitled") and fill the front matter: project, phase
-   `Conception`, stage `Idea`, next_gate `Conception Exit`, hats `Producer, Designer`, today's date.
+4. Ask for the working title (default "untitled") and whether they have shipped a game before (sets
+   `experience`: `new` or `experienced`; see [communication.md](references/communication.md)), and fill the
+   front matter: project, experience, phase `Conception`, stage `Idea`, next_gate `Conception Exit`, hats
+   `Producer, Designer`, today's date.
    Write "Off-limits right now" from the Idea row of the off-limits table and three real "Next actions".
    Replace every remaining `<placeholder>` line in the state file (for example, set "Open questions" to
    "- none yet"), because the session hook prints these sections verbatim.
@@ -45,8 +47,9 @@ State file rules are in [state-file.md](references/state-file.md).
    file before changing anything. If the brief says the state is behind git, reconcile first
    (state-file.md, "Reconciling a stale state"). If it reports a newer notebook elsewhere, carry that copy
    over first (`indie-studio:git-workflow`, section 8).
-3. Report in at most six lines: phase and stage, next gate and how many criteria are met, active hats,
-   current branch and whether the work is saved, the next three actions, open questions.
+3. Report in at most six lines (one line when `experience` is `experienced`): phase and stage, next gate and
+   how many criteria are met, active hats, current branch and whether the work is saved, the next three
+   actions, open questions.
 4. Check the request against Off-limits. If the user wants something on that list, say so, offer to park
    it in `studio/PARKING_LOT.md`, and say when it becomes appropriate.
 5. Continue with the `next` procedure unless the user asked something else.
@@ -65,7 +68,7 @@ State file rules are in [state-file.md](references/state-file.md).
 Check each item; report a table of PASS / WARN / FAIL with a one-line fix for each problem. Offer to
 fix; do not change things silently.
 1. STUDIO_STATE.md exists; `phase` and `stage` are valid together; `next_gate` matches the stage; `updated`
-   is not older than the last real work.
+   is not older than the last real work; `experience` is `new` or `experienced`.
 2. At most 3 hats, and they suit the stage.
 3. Git: repo exists; `main` and `develop` exist; hooks path set (`core.hooksPath`); a remote exists and
    nothing important is unpushed; `git_permissions` is `set`.
@@ -104,4 +107,5 @@ does not fit the stage, say why, and offer to do it as a guest task.
 - **Session care.** Watch for the compact or fresh-session moments in `indie-studio:session`.
 - **The human decides.** Gates, scope trades, spending, merges into `main`, and publishing are the
   human's calls. Recommend, then wait.
-- **Beginner-friendly.** Explain new terms once, in plain words; keep replies short; put long output in files.
+- **Match the experience setting** (communication.md): explain new terms once for `new`; use industry terms
+  and skip the beginner-trap lists for `experienced`. Keep replies short either way; long output goes in files.

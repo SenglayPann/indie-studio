@@ -1,6 +1,6 @@
 ---
 name: ai-delegation
-description: Rules for handing game-development work to AI coding agents, subagents, editor-control tools, and generators. Use when delegating a task, writing or updating the project's CLAUDE.md or AGENTS.md rules, planning multi-step or parallel agent work, reviewing agent-written code for a beginner, or when an agent keeps failing at the same problem. Provides task briefs, a delegation matrix, the three-strikes rule, the checkpoint-before-big-runs rule, and the human review protocol.
+description: Rules for handing game-development work to AI coding agents, subagents, editor-control tools, and generators. Use when delegating a task, writing or updating the project's CLAUDE.md or AGENTS.md rules, planning multi-step or parallel agent work, reviewing agent-written code before a merge, or when an agent keeps failing at the same problem. Provides task briefs, a delegation matrix, the three-strikes rule, the checkpoint-before-big-runs rule, and the human review protocol.
 argument-hint: "[task to delegate or brief to write]"
 ---
 
@@ -64,11 +64,12 @@ Size: one session or about four hours at most. Split anything bigger. Vague brie
    not collide.
 8. Parallel agents work on separate branches or worktrees, never in the same folder.
 
-## 5. Reviewing for a beginner
-The human may not read code. For every change to be merged, give:
-1. A plain-language summary of what changed and why.
+## 5. Reviewing before a merge
+For every change to be merged, give:
+1. A summary of what changed and why: in plain language for `new` (the human may not read code), short and
+   technical for `experienced`, with the diff or the files to read.
 2. The riskiest part, and anything touching save data, purchases, permissions, or networking.
-3. How to test it (exact steps on the device or in the editor).
+3. How to test it (exact steps on the device or in the editor), and whether the automated tests passed.
 4. The size of the change (files and lines).
 Then ask before merging into `develop`.
 

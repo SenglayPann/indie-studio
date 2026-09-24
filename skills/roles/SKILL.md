@@ -26,7 +26,8 @@ the hats the current stage needs (at most three in one session; see the stage ta
 | Marketer | [marketer.md](references/roles/marketer.md) | Market check, store listing, community | Idea, Beta to Live Ops |
 
 ## How to wear a hat
-1. Read the role file (only the ones needed now; they cost context).
+1. Read the role file (only the ones needed now; they cost context). When `experience` is `experienced`,
+   skip its "Beginner traps" section unless one of them is happening right now.
 2. Say in one line which hat is on and what it will focus on. Update `hats` in STUDIO_STATE.md.
 3. Work to that role's quality bar **for the current phase**. Prototype-stage engineering is deliberately
    messy; Beta-stage engineering is not. Do not apply late-phase standards early.
