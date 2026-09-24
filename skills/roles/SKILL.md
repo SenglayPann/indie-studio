@@ -18,7 +18,7 @@ the hats the current stage needs (at most three in one session; see the stage ta
 | Designer | [designer.md](references/roles/designer.md) | Core loop, rules, progression, GDD | Idea to Pre-Alpha |
 | Engineer | [engineer.md](references/roles/engineer.md) | Code, architecture, builds | Prototype to Live Ops |
 | Artist and UI/UX | [artist.md](references/roles/artist.md) | Style, sprites or models, animation, UI | Vertical Slice to Beta |
-| Level Designer | [level-designer.md](references/roles/level-designer.md) | Levels, pacing, difficulty curve | Vertical Slice to Alpha |
+| Level Designer | [level-designer.md](references/roles/level-designer.md) | Levels, pacing, difficulty curve, `docs/LEVELS.md` | GDD to Live Ops |
 | Audio | [audio.md](references/roles/audio.md) | Sound effects, music, mixing | Vertical Slice to Beta |
 | QA | [qa.md](references/roles/qa.md) | Testing, bugs, devices, performance | Prototype to Live Ops |
 | Monetization | [monetization.md](references/roles/monetization.md) | Ads, purchases, economy, analytics, consent | Conception, then Pre-Alpha to Live Ops |

@@ -31,11 +31,13 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
    section 8), then tag the spike `archive/spike-core-loop` and delete the branch. The spike is reference only.
    Never merge it.
 
-## Stage: GDD (Designer + Producer; Engineer and Monetization as guests)
+## Stage: GDD (Designer + Producer; Engineer, Level Designer, and Monetization as guests)
 8. **Write `docs/GDD.md`** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/GDD.md`: a living document, as long as
    the game needs and no longer. Include only what playtests proved or the human decided; write open questions
    as open questions. Split anything that grows on its own into its own file, so a session loads only what it
-   needs.
+   needs. If the game is built from levels (or stages, waves, missions), start **`docs/LEVELS.md`** from
+   `${CLAUDE_PLUGIN_ROOT}/templates/docs/LEVELS.md` with the Level Designer hat: building blocks and where each
+   is taught, the template's rules, the level checklist, and the difficulty plan with researched bands.
 9. **Draft `docs/ECONOMY.md`** if the game earns from ads or purchases (`indie-studio:monetization`): what is
    sold, currencies, sources and sinks, ad moments, and the analytics event list. Nothing is integrated yet;
    this is the plan the build will follow from Pre-Alpha.
@@ -60,7 +62,8 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
 15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
     design, art, audio, integration, testing, including AI generation and cleanup time. Compute the cost per
     content unit, extrapolate to the T1 content list, and compare it with capacity. Record the numbers in
-    `studio/DECISIONS.md`. Re-baseline the tiers. If the math does not fit, shrink the first release now.
+    `studio/DECISIONS.md` (and the time per level in `docs/LEVELS.md`, section 7). Re-baseline the tiers. If the
+    math does not fit, shrink the first release now.
 16. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
 17. **Fresh-clone test:** clone the repository to a new folder and build it with the one-command build from

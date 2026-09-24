@@ -30,7 +30,7 @@ brief is updated with the actuals.
 Goal: a stranger can play from launch through one full session to the results and back, using placeholders.
 - List every system the full path needs (input, core mechanic, win and lose, scoring, screen flow, minimal
   saving). Build them in dependency order from the tier list.
-- Use the level template from the slice. Placeholder art is fine.
+- Use the level template from the slice (`docs/LEVELS.md`). Placeholder art is fine.
 - Playtest with 3 outsiders; log a `studio/PERF_LOG.md` entry on the test device.
 - Gate: First Playable (`indie-studio:gate-review`).
 
@@ -52,6 +52,8 @@ Goal: all the content, produced fast, using the measured pipeline.
   and polish that adds no new system. Only `fix/*`, `content/*`, `polish/*` branches (`indie-studio:git-workflow`).
 - Produce content by template using the timing measured at the Vertical Slice. Track throughput weekly against plan.
   If behind, shrink content volume inside T1 (scope-guard). Never shrink the buffer.
+- Every new level goes into the level list in `docs/LEVELS.md` and through its checklist: the automated data
+  check, a proven clear (solver, bot, or recorded human clear), and a difficulty band.
 - Artist and Audio hats bring assets to final quality (`indie-studio:asset-pipeline`); keep the ledger current.
 - Playtest each new kind of level or content.
 - Gate: Beta (content complete).
@@ -62,7 +64,8 @@ Goal: no new content. Make the game solid.
 - Performance to budget on the low-end device (`indie-studio:mobile-perf-budget`); run the real-device smoke test.
 - Updates keep saves: install the previous build, play, update to the new one, and check the progress survives;
   the automated migration tests cover every earlier save version.
-- Tune difficulty and onboarding from 5 or more outside playtests.
+- Tune difficulty and onboarding from 5 or more outside playtests, against the difficulty plan in
+  `docs/LEVELS.md`.
 - Monetization: switch to production IDs, verify a sandbox purchase and a rewarded ad, put the consent flow
   live, and check that every event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
 - Store paperwork: if a store requires a closed test before it will allow publishing, it must be running now.

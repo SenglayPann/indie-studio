@@ -51,8 +51,9 @@ mistakes are still cheap. Skipping this is a decision to record, not a default.
 3. **Wait for enough players.** Decide the number before looking (`indie-studio:monetization`, section 7).
    Reading a handful of installs is worse than reading nothing, because it feels like evidence.
 4. **Read in order:** D1, then D7, then revenue per player, always by cohort, and never mixing paid traffic
-   with organic. Write each reading in `studio/PERF_LOG.md` or a soft-launch section of `studio/JOURNAL.md`
-   with the date and the cohort size.
+   with organic. For a game built from levels, read the per-level funnel beside D1: the levels where players
+   quit are usually where D1 is lost (`docs/LEVELS.md`, section 8). Write each reading in `studio/PERF_LOG.md`
+   or a soft-launch section of `studio/JOURNAL.md` with the date and the cohort size.
 5. **Change one thing at a time.** Every change names the number it is meant to move and goes through
    `indie-studio:scope-guard`; the feature freeze is lifted here for exactly that reason. Ship each round as a
    new `release/x.y.z` and let it run long enough to compare.
@@ -81,7 +82,8 @@ mistakes are still cheap. Skipping this is a decision to record, not a default.
    `indie-studio:scope-guard`, with a fresh scope tier list and a buffer of its own. Do not promise dates you
    cannot keep.
 5. **Tune from data, not feeling:** move numbers through remote settings where possible, one change at a time,
-   and measure the result (`indie-studio:monetization`).
+   and measure the result (`indie-studio:monetization`). That includes per-level difficulty: retune the levels
+   outside their band, keep their IDs, and log each change in `docs/LEVELS.md`.
 6. **Answer reviews** kindly and briefly (a draft by the AI, posted by the human).
 7. Protect the human's energy: a live game should not swallow their life. Set a support rhythm and keep it.
 

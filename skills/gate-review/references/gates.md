@@ -5,8 +5,8 @@ adjust them by recording a decision. Store, platform, price, and benchmark detai
 with `indie-studio:research` and cite the source and date.
 
 Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `docs/BUSINESS_CASE.md`,
-`docs/GDD.md`, `docs/ECONOMY.md`, `docs/TECH.md`, `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates
-are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
+`docs/GDD.md`, `docs/LEVELS.md` (games built from levels), `docs/ECONOMY.md`, `docs/TECH.md`,
+`docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
 1. One-sentence game description and the core loop (action, goal, feedback) in `docs/PITCH.md`.
@@ -48,6 +48,9 @@ are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 10. `docs/TECH.md` written, and the slice follows it: architecture map, conventions, save format with a version
     number, one wrapper per service, text rules, build and release settings, test plan.
 11. Automated tests for saving and loading pass, including loading a save from an older version.
+12. If the game is built from levels: `docs/LEVELS.md` holds the building blocks and where each is taught, the
+    template rules and level checklist, the difficulty plan with researched bands, and the slice's levels with
+    the measured time per level.
 
 ## Gate 2: First Playable (tag `m2-first-playable`)
 1. A player can go from launch through a full core-loop session and back to the menu, using placeholders.
@@ -67,7 +70,8 @@ are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
    recorded reason (`indie-studio:monetization`); the consent flow drafted. Each sits behind its wrapper as
    `docs/TECH.md` describes; no game code calls an SDK directly.
 5. No open `feature/*` branches; the parking lot has been reviewed and nothing in it is being built.
-6. Remaining content listed with per-unit timing; capacity check recorded.
+6. Remaining content listed with per-unit timing (for levels, the level list in `docs/LEVELS.md`); capacity
+   check recorded.
 7. A known-bug list exists.
 8. **Feature freeze declared:** state, Off-limits, and branch rules updated.
 9. Automated tests cover purchase handling (with the store faked) and the economy math, and pass in CI.
@@ -77,7 +81,8 @@ are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 2. Zero known crash or progress-blocking bugs; the rest of the bug list is triaged.
 3. Performance within budget on the lowest-end target device (`studio/PERF_LOG.md`): frame rate, memory,
    build size, start time.
-4. At least 5 outsiders played the Beta build; difficulty and onboarding tuned from their notes.
+4. At least 5 outsiders played the Beta build; difficulty and onboarding tuned from their notes. Every level in
+   the build is in the level list, passed its checklist, was proven winnable, and sits in its difficulty band.
 5. The real-device smoke test passed on at least two devices, one of them low-end
    (see `indie-studio:mobile-perf-budget`).
 6. Analytics verified end to end: every event in `docs/ECONOMY.md` arrives in the dashboard with the right
@@ -116,7 +121,8 @@ decision, judge whatever evidence exists and say plainly how much weaker it is.
    `docs/BUSINESS_CASE.md`, by cohort, with paid and organic players kept apart.
 3. Revenue per player read against the same targets; a real purchase and a rewarded ad verified in production.
 4. Crash-free rate and store rating acceptable; the worst reported problems fixed.
-5. Every change made during the soft launch listed with the number that prompted it.
+5. Every change made during the soft launch listed with the number that prompted it. For a game built from
+   levels: the per-level funnel was read, and the levels where most players quit were retuned.
 6. The decision recorded in `studio/DECISIONS.md` (scale up, keep fixing, or stop), using the rules written
    before any results arrived.
 7. Launch plan ready: countries, store listing localized where it matters, announcement, and the first update

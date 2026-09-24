@@ -25,7 +25,7 @@ to events; every tunable number comes from a data file>.
 
 ## 3. Conventions
 - Asset folders and names: `indie-studio:asset-pipeline`. Code folders and names: <...>
-- Code style: <...>   Where tuning data lives: <...>
+- Code style: <...>   Where tuning data lives: <...>   Level data format and IDs: `docs/LEVELS.md`
 - How to add a system: <steps>   How to add a content item: <steps>
 - Packages and dependencies: each one approved by the human and listed here with its version.
 
@@ -65,6 +65,7 @@ Game code calls the wrapper, never the SDK, so a provider can change without tou
   - [ ] Save and load, including loading a save from every earlier save version
   - [ ] Purchase handling with the store faked: success, failure, pending, restore, refund
   - [ ] Economy math: rewards, prices, and sinks, read from the real data files
+  - [ ] Level data: every level loads and passes its automated checks; solver or bot clears (`docs/LEVELS.md`)
 - CI: <service> builds <platforms> and runs the tests on every merge into `develop`. Status: <...>.
   Secrets live in the CI service's secret settings, never in the repository (`indie-studio:toolchain`).
 

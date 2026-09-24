@@ -24,6 +24,7 @@ belongs in a file of its own, so a session only loads what it needs.
 - Difficulty curve: <what changes and when>
 - Unlocks or rewards: <...>
 - Numbers live in: <data file path>
+- Level-by-level detail (building blocks, difficulty bands, the level list): `docs/LEVELS.md`
 
 ## 5. Content plan
 | Content type | Count target | Made from | Time per unit (measured at the slice) |

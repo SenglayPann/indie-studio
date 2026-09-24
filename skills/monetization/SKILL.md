@@ -97,7 +97,8 @@ tuning needs no new build, and plan to move the important numbers to remote sett
 ## 7. Reading a soft launch
 1. Check you have enough players for the numbers to mean anything. If not, wait; do not redesign on noise.
 2. **D1 first.** If players do not come back the next day, no ad placement or price fixes it. The problem is
-   the first session: clarity, difficulty, length, or the promise the store page made.
+   the first session: clarity, difficulty, length, or the promise the store page made. In a game built from
+   levels, the per-level funnel shows exactly where they leave (`docs/LEVELS.md`).
 3. **Then D7.** It shows whether a habit forms. If D1 is fine and D7 collapses, the game runs out of reasons
    to return: progression, variety, or goals.
 4. **Then money per player**, and only then prices and placements.
