@@ -34,8 +34,9 @@ belongs in a file of its own, so a session only loads what it needs.
 ## 6. UI flow
 <Screens and how the player moves between them: start > play > result > menu; settings; pause.>
 
-## 7. Look and sound (summary; details in the style bible)
-<Art style in two sentences; audio mood in one.>
+## 7. Look, sound, and story (summary; details in the style bible)
+<Art style in two sentences; audio mood in one; the setting and main characters in one, if any; the writing
+voice in a few words.>
 
 ## 8. Technical summary (the rulebook is `docs/TECH.md`)
 - Engine and version: <...>   Target devices and minimum spec: <...>   Orientation: <...>

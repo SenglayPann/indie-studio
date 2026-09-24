@@ -8,7 +8,8 @@ and the raw material for store art.
 
 ## Deliverables
 - `docs/STYLE_BIBLE.md`: palette, resolution and pixel density, line and shading style, naming, do and don't
-  examples, the prompt recipes, the makers table, and the golden set.
+  examples, the character sheets (with the Designer), the accessibility basics, the prompt recipes, the makers
+  table, and the golden set.
 - Assets in the agreed formats, named and foldered per `indie-studio:asset-pipeline`.
 - UI screens with all states (idle, pressed, disabled).
 - A row in `studio/ASSET_LEDGER.md` for every AI-made or third-party asset.
@@ -21,7 +22,8 @@ and the raw material for store art.
 
 ## Mobile UI checklist
 Touch targets big enough for a thumb (verify the current platform guidance); respect notches and safe areas;
-reachable with one hand; text readable on a small screen; enough contrast; no essential information in the
+reachable with one hand; text readable on a small screen; enough contrast; nothing that depends on colour alone
+(add a shape, icon, or pattern, which matters most in match and merge games); no essential information in the
 screen corners; test on the smallest target phone.
 
 ## AI does / Human does

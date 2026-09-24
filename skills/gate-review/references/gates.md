@@ -103,6 +103,8 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
     green on `develop`.
 11. Translations for the soft-launch languages are in the build and checked on the smallest phone: nothing cut
     off, no missing characters (`docs/BUSINESS_CASE.md`, Languages).
+12. Accessibility basics checked (`docs/STYLE_BIBLE.md`, UI kit): nothing depends on colour alone, text is
+    readable on the smallest phone, and sound, music, and vibration can each be switched off.
 
 ## Gate 5: Gold Master (tag `v1.0.0`; release candidates `v1.0.0-rc.N`)
 1. Release candidate built from `release/x.y.z` by CI or the one-command build, versioned, with a build number
