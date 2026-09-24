@@ -3,7 +3,47 @@
 All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses semantic versioning.
 
-## [0.1.0] - unreleased
+## [0.2.0] - unreleased
+
+The professional layer: the same studio for a solo developer's first game and their tenth.
+
+### Added
+- **Experience setting** (`experience: new | experienced` in `STUDIO_STATE.md`): plain words, explained terms,
+  and beginner traps for `new`; industry language, one-line recaps, and estimates from the developer's own
+  track record for `experienced`. Approvals and safety rules are the same for both.
+- **Technical design** (`docs/TECH.md`): architecture map, conventions, versioned saves with migrations, one
+  wrapper per service, text rules, build and release settings, automated checks, engine plugins, technical
+  debt. Written at the GDD stage and followed from the Vertical Slice.
+- **Automated checks:** save, purchase, economy, and level-data tests, and CI on every merge into `develop`
+  from First Playable (`toolchain` walks through the setup; secrets stay in the CI service).
+- **Level design document** (`docs/LEVELS.md`) for games built from levels: building blocks, template rules, a
+  checklist every level passes (including a proven clear), a difficulty plan with researched bands, the level
+  list, production numbers, and per-level tuning after launch.
+- **Translation** (`asset-pipeline`, `references/localization.md`): string tables and room for longer text from
+  the Vertical Slice, languages chosen at Kickoff from market data, AI drafts with native review, and checks on
+  the smallest phone.
+- **Getting players** (`monetization`, `references/growth.md`): the route (organic, paid installs, or a
+  publisher) with publisher terms to read, an optional marketability test after the prototype, featuring and
+  pre-launch sign-ups, and paid installs only while they pay back. New metrics: CTR, store conversion, ROAS,
+  payback, attribution.
+- **Life after launch:** a compliance calendar that keeps running (stores raise their requirements every
+  year), and an optional live calendar of events and offers built on one reusable template.
+- **Style bible for art, sound, and story:** setting, character sheets attached to every generation of a
+  character, the writing voice, and accessibility basics (never rely on colour alone).
+- **Freelancers** as a maker in the asset pipeline: brief, contract checklist (rights assignment, AI use,
+  third-party material, source files), payment by milestone, ledger records.
+- **Milestone dates:** Planned, Forecast, and Passed columns in the Gates table; the brief prints the next
+  gate's dates and warns "SLIPPING" when the forecast passes the plan.
+- A name check for the game against the stores and trademark databases, at Kickoff and before the store page.
+
+### Changed
+- Review before a merge, the session recap, estimates, and the role files' beginner traps follow the experience
+  setting instead of assuming a beginner. `engine-selector` weighs the engine the developer already knows.
+- Installed engine plugins do the engine-specific how; the task brief still decides what is built and when it
+  is done.
+- The gates check the new documents and checks at the stage each one belongs to.
+
+## [0.1.0] - test build, installed from `develop`, never released
 
 ### Added
 - Plugin manifest and marketplace catalog (installable through `/plugin marketplace add`).

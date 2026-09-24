@@ -1,9 +1,10 @@
 # Indie Studio for Claude Code
 
-A virtual game studio for **solo indie developers who build commercial mobile games with AI**. It turns
-Claude Code into a small professional team: it knows which phase your project is in, which role to play right
-now, what is off-limits yet, how the game is meant to earn, when to look things up instead of guessing, how
-to keep your work safe in git, and where you left off last time.
+A virtual game studio for **solo indie developers who build commercial mobile games with AI**, whether it is
+your first game or your tenth. It turns Claude Code into a small professional team: it knows which phase your
+project is in, which role to play right now, what is off-limits yet, how the game is meant to earn and find
+players, when to look things up instead of guessing, how to keep your work safe in git, and where you left off
+last time.
 
 You stay the decision-maker. The plugin makes the AI act like an experienced studio lead who protects your
 scope, your schedule, and your project.
@@ -12,12 +13,25 @@ scope, your schedule, and your project.
 
 - **Always knows where you are.** A `STUDIO_STATE.md` notebook tracks phase, stage, next actions, and open
   questions. A session-start hook briefs Claude on it automatically, even after `/clear` or a compaction.
+- **Matches your experience.** New developers get plain words and explained terms. Experienced ones get
+  industry language, one-line recaps, and estimates based on their own track record.
+- **A professional document set.** Pitch, market check, business case, game design, level design, economy,
+  technical design, and a style bible covering art, sound, story, and writing voice. Each one is written at the
+  stage it is needed and checked at the gates.
+- **Code that stays healthy.** A technical design every AI session codes by, saves with version numbers and
+  migration tests, one wrapper per ads, purchase, or analytics SDK, and automatic builds and tests (CI) on every
+  merge. Installed engine plugins, such as the engine vendor's own skills, do the engine-specific work.
+- **Dates that warn early.** Every gate gets a planned and a forecast date, and the brief says SLIPPING as soon
+  as the forecast passes the plan.
 - **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
   audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
 - **Gates, not guesses.** Seven evidence-based checkpoints from idea to worldwide launch. Only you approve them.
 - **Built to earn.** A business case with researched targets, an economy and analytics plan, and a soft launch
   in a few countries that decides whether to scale up, keep fixing, or stop. Ambitious ideas get priced, not
   refused.
+- **Built to be found.** The route to players (organic, paid installs, or a publisher), an optional
+  marketability test before production commits, translation built in from the Vertical Slice, and the stores'
+  yearly requirement deadlines tracked after launch.
 - **Scope protection.** Every new idea is costed, then parked or traded. The feature freeze at Alpha is enforced
   by a git hook.
 - **Disciplined version control.** Practice branches, a commit convention, gate tags, safe undo, and real git hooks
@@ -30,8 +44,9 @@ scope, your schedule, and your project.
 - **Works with AI asset generators.** It walks you through connecting them (Meshy, Tripo, audio tools, Blender,
   engine bridges) without ever seeing your API key, says honestly when Claude can make an asset itself, and
   proves both with samples before a whole asset class is trusted to either.
-- **Keeps generated assets on-style.** Prompt recipes, reference images, and a golden set that catches it when
-  a tool quietly changes its model.
+- **Keeps generated assets on-style.** Prompt recipes, reference images, character sheets, and a golden set
+  that catches it when a tool quietly changes its model. Hired freelancers work from the same bible, under a
+  contract checklist.
 
 ## Requirements
 
@@ -96,8 +111,8 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | Layer | Purpose |
 |---|---|
 | **Skills** | Procedures and judgment, loaded when relevant |
-| **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase (silent in projects without `STUDIO_STATE.md`) |
-| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, business case, GDD, economy, style bible) |
+| **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase, the next gate's planned and forecast dates, and your experience setting (silent in projects without `STUDIO_STATE.md`) |
+| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, business case, GDD, level design, economy, technical design, style bible) |
 | **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
 
 | Phase | Stages | Skill |
@@ -120,12 +135,12 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | `roles` | The ten hats, one reference file each |
 | `conception`, `preproduction`, `production`, `launch-live` | The four phases |
 | `playtest-loop` | Real-player testing and the iterate-or-kill decision |
-| `engine-selector` | Engine choice for an AI-assisted beginner |
-| `ai-delegation` | Task briefs, three strikes, review protocol, project rules |
-| `monetization` | Business model, ads, purchases, the economy, analytics, and reading a soft launch |
+| `engine-selector` | Engine choice for an AI-assisted solo developer |
+| `ai-delegation` | Task briefs, three strikes, review before a merge, engine plugins, project rules |
+| `monetization` | Business model, ads, purchases, the economy, analytics, reading a soft launch, and getting players (route, marketability test, paid installs, featuring) |
 | `mobile-perf-budget` | Budgets and real-device measurement |
-| `asset-pipeline` | Style bible, who makes each asset, drift control, 3D for phones, licensing, ledger |
-| `toolchain` | Connects AI asset generators and other tools, keeps keys out of the chat, proves they work |
+| `asset-pipeline` | Style bible, who makes each asset (freelancers included), drift control, 3D for phones, translation, licensing, ledger |
+| `toolchain` | Connects AI asset generators, engine plugins, and CI; keeps keys out of the chat; proves each tool works |
 | `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
 
 The plugin is engine-agnostic. If engine-specific skills are installed (for example Unity ones), it uses them

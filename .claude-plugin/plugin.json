@@ -1,7 +1,7 @@
 {
   "name": "indie-studio",
-  "description": "A virtual game studio for solo indie developers who build commercial mobile games with AI. Tracks your project phase and stage, switches between studio roles (producer, designer, engineer, QA...), prices ideas instead of refusing them, plans how the game earns and measures it in a soft launch, runs disciplined git branching, knows when to look things up, and briefs you at the start of every session.",
-  "version": "0.1.0",
+  "description": "A virtual game studio for solo indie developers, from their first game to their tenth, who build commercial mobile games with AI. Tracks your phase, stage, and milestone dates, switches between studio roles (producer, designer, engineer, QA...), prices ideas instead of refusing them, writes a professional document set (pitch, business case, game and level design, technical design, style bible), plans how the game earns and finds players, keeps the code tested with CI, runs disciplined git branching, knows when to look things up, and briefs you at the start of every session.",
+  "version": "0.2.0",
   "author": {
     "name": "Senglay Pann"
   },
