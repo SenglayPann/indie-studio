@@ -1,6 +1,6 @@
 ---
 name: asset-pipeline
-description: Rules for making, naming, importing, and tracking game art, audio, and 3D models, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, or the human); when writing a style bible or prompt recipes; when generated assets drift out of style between batches or tool versions; when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
+description: Rules for making, naming, importing, and tracking game art, audio, 3D models, and text, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when preparing text for translation or translating the game or its store page (localization); when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, or the human); when writing a style bible or prompt recipes; when generated assets drift out of style between batches or tool versions; when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
 argument-hint: "[asset type or question]"
 ---
 
@@ -9,7 +9,8 @@ argument-hint: "[asset type or question]"
 AI can produce a lot of assets fast. Without rules the result is a game that looks like ten different games,
 whose files nobody can trace, with licence risks nobody checked. Communication rules:
 [communication.md](../director/references/communication.md). 3D specifics:
-[3d-pipeline.md](references/3d-pipeline.md). Connecting the tools: `indie-studio:toolchain`.
+[3d-pipeline.md](references/3d-pipeline.md). Text and translations: [localization.md](references/localization.md).
+Connecting the tools: `indie-studio:toolchain`.
 
 ## Principles
 1. Consistency beats fidelity. One coherent simple style beats a mix of impressive ones.
@@ -124,3 +125,10 @@ in tier order. Beta: nothing placeholder remains in the build.
 Sound effects on every meaningful action make a game feel alive. Check audio on the phone speaker and on
 earbuds. Provide volume and mute settings, respect the phone's silent mode, and pause on interruptions. Music
 licences are the ones most likely to exclude games: read section 5 before generating a note of it.
+
+## 9. Text and translations
+Text is an asset too. From the Vertical Slice, every player-facing string lives in a string table (never in
+code or images), layouts leave room for longer languages, and fonts cover the target scripts, even if the game
+launches in one language. The languages themselves are chosen at Kickoff from market data, starting with the
+store page. How to build for translation, choose languages, translate with AI and native review, and check the
+result: [localization.md](references/localization.md).

@@ -60,8 +60,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
 9. **Business case** (`indie-studio:monetization`): copy
    `${CLAUDE_PLUGIN_ROOT}/templates/docs/BUSINESS_CASE.md` to `docs/BUSINESS_CASE.md` and fill it with the
    human: how the game earns, what it will sell or where ads appear, the numbers to aim for (researched for
-   this genre, with source and date), how players will find the game, what it all costs, a low and a
-   middle case in plain arithmetic, and the soft-launch plan. Be honest that most mobile games earn little:
+   this genre, with source and date), how players will find the game, which languages the store page and
+   the game need and when (from the market check), what it all costs, a low and a middle case in plain
+   arithmetic, and the soft-launch plan. Be honest that most mobile games earn little:
    the plan has to survive the low case, or the project has to be worth it for other reasons.
 10. **Scope tiers** in STUDIO_STATE.md: T1 is the **first release** (the smallest version that can show
     whether players stay and spend; at most about two thirds of available hours), T2 (should have), T3 (nice

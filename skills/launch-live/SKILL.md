@@ -22,7 +22,8 @@ payment details, or personal identity data, and never says something was approve
    build), and install it on real devices. Only fixes go in. Tag candidates `v1.0.0-rc.N`.
 2. **Store readiness.** For each store, verify the current requirements, then complete:
    - Listing: title, short and full description, icon, screenshots from real gameplay, and any required
-     graphics. Screenshots and trailers must show the actual game.
+     graphics, in each soft-launch country's language (screenshot text included; `indie-studio:asset-pipeline`,
+     localization). Screenshots and trailers must show the actual game.
    - Privacy policy at a public URL (draft with the AI; the human reviews and, for real risk, gets legal
      help), and the data and privacy declarations that match what the game and its SDKs actually collect.
    - Age rating questionnaire, content declarations (including any AI-content disclosure), and ad or purchase

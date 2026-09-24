@@ -47,7 +47,9 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 9. Agent setup in place: `CLAUDE.md` project rules, task briefs in use (`indie-studio:ai-delegation`).
 10. `docs/TECH.md` written, and the slice follows it: architecture map, conventions, save format with a version
     number, one wrapper per service, text rules, build and release settings, test plan.
-11. Automated tests for saving and loading pass, including loading a save from an older version.
+11. Automated tests for saving and loading pass, including loading a save from an older version. All
+    player-facing text in the slice comes from string tables: a pseudo-translation pass shows nothing
+    hard-coded and nothing cut off (`indie-studio:asset-pipeline`, localization).
 12. If the game is built from levels: `docs/LEVELS.md` holds the building blocks and where each is taught, the
     template rules and level checklist, the difficulty plan with researched bands, and the slice's levels with
     the measured time per level.
@@ -95,15 +97,17 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 9. The polish buffer is intact and scheduled.
 10. An update from the previous build keeps the player's save: tested automatically and on a device. CI is
     green on `develop`.
+11. Translations for the soft-launch languages are in the build and checked on the smallest phone: nothing cut
+    off, no missing characters (`docs/BUSINESS_CASE.md`, Languages).
 
 ## Gate 5: Gold Master (tag `v1.0.0`; release candidates `v1.0.0-rc.N`)
 1. Release candidate built from `release/x.y.z` by CI or the one-command build, versioned, with a build number
    higher than any build already uploaded, signed with the release key, size within current store limits
    (verified), and crash-report symbols uploaded. SDK versions in `docs/TECH.md` match the build.
 2. No known crash or progress-blocking bugs; a regression pass on real devices.
-3. Store listing complete: title, description, icon, screenshots, age rating, privacy policy URL, data and
-   privacy forms, content declarations including any AI-content disclosure (all checked against the current
-   store requirements, with source and date).
+3. Store listing complete in each soft-launch language: title, description, icon, screenshots (with their
+   text translated), age rating, privacy policy URL, data and privacy forms, content declarations including any
+   AI-content disclosure (all checked against the current store requirements, with source and date).
 4. Ads and purchases: production IDs configured, test purchases verified, consent flows in place where
    required.
 5. Crash reporting and analytics active, and consistent with the privacy declarations.

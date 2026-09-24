@@ -32,6 +32,16 @@ the source and date beside each, and never borrow a number from another genre.
   they cost).
 - **If nobody finds it:** <does the project still make sense, and what would you do next>
 
+## Languages
+| What | Languages at soft launch | At global launch | Later | Why (market data) and cost |
+|---|---|---|---|---|
+| Store page (text and screenshots) | | | | |
+| First session (tutorial, menus) | | | | |
+| The rest of the game | | | | |
+
+How: `indie-studio:asset-pipeline` (localization). The game is built for translation from the Vertical Slice
+either way.
+
 ## What it costs
 | Item | Cost | When |
 |---|---|---|

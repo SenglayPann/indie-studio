@@ -55,6 +55,9 @@ Goal: all the content, produced fast, using the measured pipeline.
 - Every new level goes into the level list in `docs/LEVELS.md` and through its checklist: the automated data
   check, a proven clear (solver, bot, or recorded human clear), and a difficulty band.
 - Artist and Audio hats bring assets to final quality (`indie-studio:asset-pipeline`); keep the ledger current.
+- Translations: as each screen's text becomes final, translate it into the soft-launch languages with a
+  glossary and context notes; a native speaker reviews the first session (`indie-studio:asset-pipeline`,
+  localization).
 - Playtest each new kind of level or content.
 - Gate: Beta (content complete).
 
