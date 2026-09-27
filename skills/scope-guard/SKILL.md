@@ -21,7 +21,9 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
      treat it as a new feature.
    - A change of plan (engine, platform, art style, core loop): treat as major. Recommend a gate-level
      review, and recommend against it after the Vertical Slice.
-3. **Cost it across the studio** with a quick range in hours. Do not skip a row: hidden costs are the point.
+3. **Cost it across the studio** with a quick range in hours, in two columns: the AI's build time and the
+   human's hands-on time (deciding, reviewing, testing, store work), plus any new calendar wait
+   (`indie-studio:roles`, producer, "Estimating in three columns"). Do not skip a row: hidden costs are the point.
 
 | Area | Ask |
 |---|---|
@@ -33,10 +35,11 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
 | QA | New paths to test, new devices or states? |
 | Monetization and release | New SDK, store text, screenshots, privacy declarations? Does it change `docs/ECONOMY.md`, the prices, or the analytics events? |
 
-   Calibrate with history: if `studio/JOURNAL.md` shows tasks ran over their estimates, scale up by that
-   ratio and say so.
-4. **Compare with capacity:** hours left before the next gate or target date (hours per week x weeks),
-   minus the protected polish buffer, minus remaining T1 work. Show the numbers.
+   Calibrate with history: scale each column by its measured ratio (STUDIO_STATE.md, Schedule, from the
+   journal) and say so.
+4. **Compare with capacity:** the human's hours left before the next gate or the target date (their hours per
+   week x weeks), minus the protected polish buffer, minus the first release's remaining work (the human's
+   column). Show the numbers.
 5. **Offer options, with a recommendation:**
    - **Park it** (default when it does not strengthen the first release): add to `studio/PARKING_LOT.md` with
      the cost and when to revisit. If it is a real intention for later rather than a maybe, put it on the

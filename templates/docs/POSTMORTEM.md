@@ -15,15 +15,16 @@ Date: <YYYY-MM-DD>   Project length: <weeks>   Total hours: <n>   Outcome: <ship
 - <...>
 
 ## Estimates versus actuals
-| Area | Estimated hours | Actual hours | Ratio | Why |
-|---|---|---|---|---|
-| Systems and code | | | | |
-| Content (levels, items) | | | | |
-| Art and UI | | | | |
-| Audio | | | | |
-| QA and fixes | | | | |
-| Release and store setup | | | | |
-Your estimate multiplier for next time: <n>
+| Area | AI hours: estimated | AI hours: actual | Human hours: estimated | Human hours: actual | Why |
+|---|---|---|---|---|---|
+| Systems and code | | | | | |
+| Content (levels, items) | | | | | |
+| Art and UI | | | | | |
+| Audio | | | | | |
+| QA and fixes | | | | | |
+| Release and store setup | | | | | |
+Your ratios for next time (actual divided by estimate): human <n>, AI <n>.
+The waits that cost the most calendar time, and how to start them earlier: <...>
 
 ## Pipeline
 Where did work pile up or slow down? Which steps were repeated by hand that should be automated?

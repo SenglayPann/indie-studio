@@ -6,10 +6,21 @@ risks that can go into the feasibility math, so the human chooses with open eyes
 Two things stay as rules, because they cost nothing and protect everything else:
 1. **The core loop fits in one sentence** (action, goal, feedback). A loop nobody can state in a sentence is
    not ready to build, at any size.
-2. **The first release fits the hours.** T1, the version that reaches the store first, fits in about two
-   thirds of the hours available before the target date. Everything else lives in T2, T3, or the post-launch
-   roadmap. Big games grow from a first release that earned the right, not from a first release that tried
-   to be everything.
+2. **Prove it before you widen it, and fit the first release to the hours.** Breadth waits for proof: the core
+   loop is proven with outsiders before more is designed around it (the Prototype), and the reasons to return
+   are checked with players who keep the game for days (an Alpha playtest round, a closed test, then the soft
+   launch) before anything bigger is built on top of them (live events, passes, the post-launch roadmap).
+   Within that, the first release is as big as the human chooses: T1, T1-T2, or T1-T3, with the tiers kept as
+   the cutting order either way. Whatever it includes passes the capacity rule: the first release fits when
+   the human's corrected hands-on hours for everything it includes, plus the protected polish buffer, fit in
+   the weeks before the target date at their real weekly hours, with every wait that cannot run alongside the
+   work (such as the final store review) added as weeks. With no target date, the same sum sets the Planned
+   dates instead.
+
+   How big it should be depends on the route to players (`indie-studio:monetization`, growth). A free game
+   found only through store search gets one big moment of attention at launch (the first reviews, any
+   featuring), which argues for a first release that feels complete. A game that buys installs can test the
+   install cost and retention cheaply with a smaller first release, and grow from real numbers.
 
 ## What each ambition costs
 Price every row that applies, in hours and in risk. The "cheaper version" is the first thing to offer when

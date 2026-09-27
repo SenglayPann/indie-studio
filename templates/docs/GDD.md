@@ -46,9 +46,9 @@ voice in a few words.>
 <One paragraph: the model from `docs/BUSINESS_CASE.md`. The detail lives in `docs/ECONOMY.md`. No SDK work
 before Pre-Alpha.>
 
-## 10. Scope tiers (mirror of STUDIO_STATE.md)
-- T1 (first release): <...>   T2: <...>   T3: <...>
-- Post-launch roadmap: <...>   Not doing: <...>
+## 10. Scope
+The tiers, the first-release line, the post-launch roadmap, and the not-doing list live only in
+`STUDIO_STATE.md` (Scope tiers), so they cannot drift apart. Link there; do not copy them here.
 
 ## 11. Open questions
 - <...>

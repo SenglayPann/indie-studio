@@ -1,7 +1,8 @@
 # T-<###>: <short title>
 
 - Status: <todo / in progress / done>   Tier: <T1 / T2 / T3>   Hat: <role>
-- Branch: <feature/scope-desc>   Estimate: <hours>   Actual: <hours>
+- Branch: <feature/scope-desc>   Waits: <none / what this task waits on>
+- Estimate: AI <h>, human <h>   Actual: AI <h>, human <h>
 
 ## Why
 <Which part of the game or which gate criterion this serves, in one or two sentences.>

@@ -76,13 +76,14 @@ fix; do not change things silently.
 5. Branch names obey the phase rules (for example, no open `feature/*` branch after the Alpha gate).
 6. `last_synced_commit` exists in history and is not far behind HEAD, and no other branch or `archive/*` tag
    holds a newer notebook (`indie-studio:git-workflow`, section 8).
-7. Scope: tasks in progress belong to a scope tier; no T3 work while T1 is incomplete; parking lot
-   ideas have not leaked into code.
-8. Protected polish buffer in the Schedule section has not shrunk.
+7. Scope: the first-release line is set; tasks in progress belong to a tier the first release includes (or
+   to a recorded trade); no T3 work while T1 is incomplete; parking lot ideas have not leaked into code.
+8. Schedule: the protected polish buffer has not shrunk, and the journal records the human's hours and the AI
+   session time separately.
 9. `studio/KNOWLEDGE.md` has no entries past their re-check date that are still being relied on.
 10. `studio/ASSET_LEDGER.md` has a row for every shipped AI-generated asset (spot-check a few).
-11. From Kickoff: `docs/BUSINESS_CASE.md` exists and every target carries a source and a date, and every gate
-    has a Planned date. From the GDD stage: `docs/TECH.md` exists; `docs/ECONOMY.md` if the game earns from ads
+11. From Kickoff: `docs/FEASIBILITY.md` and `docs/BUSINESS_CASE.md` exist, every target carries a source and a
+    date, and every gate has a Planned date. From the GDD stage: `docs/TECH.md` exists; `docs/ECONOMY.md` if the game earns from ads
     or purchases; `docs/LEVELS.md` if it is built from levels. From First Playable: CI builds and tests every
     merge into `develop`, or a recorded reason why not.
 12. Skill list: every `indie-studio:` skill in your own list of available skills shows a description. If some

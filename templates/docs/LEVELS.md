@@ -55,8 +55,9 @@ One new element at a time: teach it safely, let the player practise it, then tes
 
 ## 7. Production numbers
 - Time per level, measured at the Vertical Slice: <hours for design, build, test, and tuning>
-- Levels in the first release (T1): <range>   Per update after launch: <number>
-- Capacity check: <levels x hours per level against the hours available> (STUDIO_STATE.md, Schedule)
+- Levels in the first release: <range>   Per update after launch: <number>
+- Capacity check: <levels x the human's hours per level against their hours available> (STUDIO_STATE.md,
+  Schedule; `docs/FEASIBILITY.md`)
 
 ## 8. Tuning after launch
 - Per-level funnel: where players quit, retry, or spend, read by cohort (`indie-studio:monetization`).

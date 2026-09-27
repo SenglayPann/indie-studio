@@ -21,8 +21,8 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
 2. **Baseline check.** Build the empty project onto the real test device. Record the empty build size and start
    time in `studio/PERF_LOG.md`. This proves the whole path from code to phone works before any game exists.
    Then, with the human's approval, merge `chore/<engine>-project` into `develop`.
-3. **Time-box.** Use the Prototype time-box in `studio/RISKS.md` (default: about 2-3 weeks or about 30 hours,
-   whichever comes first).
+3. **Time-box.** Use the Prototype time-box in `studio/RISKS.md` (default: about 2-3 weeks of calendar time or
+   about 30 of the human's hands-on hours, whichever comes first).
 4. **Build on `spike/core-loop`, branched from `develop`** once the empty project is there. Grey boxes,
    placeholder shapes, only the core loop. No menus beyond a start
    button, no saving, no audio, no ads, no polish, no architecture. Messy code is correct here. Ask the AI to keep
@@ -65,12 +65,13 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
     (including a save from an older version). Set up CI now if you can (`indie-studio:toolchain`); it is due
     by the First Playable gate.
 14. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
-15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice: level
-    design, art, audio, integration, testing, including AI generation and cleanup time. Compute the cost per
-    content unit, extrapolate to the T1 content list, and compare it with capacity. Record the numbers in
-    `studio/DECISIONS.md` (and the time per level in `docs/LEVELS.md`, section 7). Re-baseline the tiers and
-    re-forecast every remaining gate date in the Gates table. If the math does not fit, shrink the first release
-    now.
+15. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice (level
+    design, art, audio, integration, testing, including AI generation and cleanup) in two columns: the AI's
+    session time and the human's hands-on time. Compute both per content unit, extrapolate to the content list
+    of the first release, and compare the human's hours with capacity (the capacity rule in `indie-studio:roles`,
+    producer). Record the numbers and both measured ratios in `studio/DECISIONS.md` (and the time per level in
+    `docs/LEVELS.md`, section 7). Re-baseline the tiers, update `docs/FEASIBILITY.md`, and re-forecast every
+    remaining gate date in the Gates table. If the math does not fit, shrink the first release now.
 16. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
 17. **Fresh-clone test:** clone the repository to a new folder and build it with the one-command build from

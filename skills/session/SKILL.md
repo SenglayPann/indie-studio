@@ -28,7 +28,9 @@ when the user says they are finishing, and `compact` when a trigger below applie
 5. Give the recap in at most six lines (one line when `experience` is `experienced`): phase and stage, next
    gate, hats, branch, the next three actions, open questions.
 6. Ask how much time the user has today if it is not obvious, and propose a plan that fits: one to
-   three tasks, each with a rough estimate. Name any time-box in `studio/RISKS.md` that is close or overrun.
+   three tasks, each with a rough estimate of the AI's time and the human's time. Name any time-box in
+   `studio/RISKS.md` that is close or overrun. Note the start time (`date`), so the wrap can record the AI
+   session time.
 7. Begin with the first task once the user agrees.
 
 ## Wrap
@@ -37,8 +39,12 @@ Run when the user is done for now, or before a long break.
    working branch (never directly on `main`). Do not leave work only in the working tree.
 2. Update `STUDIO_STATE.md`: Now, the next three actions, open questions, Last session, `updated`, and
    `last_synced_commit` (the latest code commit, not a state-only commit).
-3. Append a journal entry to `studio/JOURNAL.md` using the format in that file. Ask roughly how many hours
-   were worked and, for finished tasks, the estimate versus the actual (this feeds the post-mortem).
+3. Append a journal entry to `studio/JOURNAL.md` using the format in that file, with both kinds of hours:
+   the AI session time (from the start time noted at session start, or the session's first and last commits)
+   and the human's own hands-on hours today, including work outside the session (playing builds, store tasks,
+   recruiting testers). Ask for the second; you cannot see it. For finished tasks, give the estimate versus the
+   actual in each column, and note any wait that started or ended. This feeds the weekly review and the
+   post-mortem.
 4. Append any decisions made to `studio/DECISIONS.md`. Move any parked ideas to `studio/PARKING_LOT.md`.
 5. Back up: if the permission contract allows it, push the working branch to the remote. If there is no
    remote yet, say so and recommend setting one up.

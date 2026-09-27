@@ -59,13 +59,16 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
    download or revenue estimates (label them rough, with source and date). End with the gap this game fills in
    one sentence. A crowded category is not fatal; a category where nothing earns the way you plan to is a
    warning.
-8. **Feasibility** (Producer with the Engineer as guest): list the skills the game needs, which the AI can
-   cover, and which need the human. Estimate the first release roughly (for example, "12 levels at about 6
-   hours each plus about 40 hours of systems"), then do the capacity math: hours per week x weeks available.
-   Correct the estimates as the experience setting says (communication.md): 1.5 to 2 times for `new`, the
-   human's own track record for `experienced`. Price every ambition from the cost table in idea-filters.md
-   instead of refusing it. Check the build path to every target store from the human's own computer (see the
-   intake), and the store account steps and fees that only they can do.
+8. **Feasibility** (Producer with the Engineer as guest): copy
+   `${CLAUDE_PLUGIN_ROOT}/templates/docs/FEASIBILITY.md` to `docs/FEASIBILITY.md`. List the skills the game
+   needs, which the AI can cover, and which need the human. Estimate every part in three columns, as the
+   producer role file describes ([producer.md](../roles/references/roles/producer.md), "Estimating in three
+   columns"): the AI's build time, the human's hands-on hours (playing, reviewing, testing, store tasks,
+   recruiting testers, decisions), and the calendar waits (store reviews, required tests, identity checks).
+   Correct only the human's column, as the experience setting says (communication.md), and do the capacity
+   math on it: their real hours per week x weeks available. Price every ambition from the cost table in
+   idea-filters.md instead of refusing it. Check the build path to every target store from the human's own
+   computer (see the intake), and the store account steps, fees, and waits that only they can do.
 9. **Engine choice:** run `indie-studio:engine-selector`.
 10. Adjust the concept if feasibility or the market check demands it. Say plainly what must move to a later
     release, and offer the cheaper version of anything that does not fit.
@@ -78,13 +81,19 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
     the game need and when (from the market check), what it all costs, a low and a middle case in plain
     arithmetic, and the soft-launch plan. Be honest that most mobile games earn little:
     the plan has to survive the low case, or the project has to be worth it for other reasons.
-12. **Scope tiers** in STUDIO_STATE.md: T1 is the **first release** (the smallest version that can show
-    whether players stay and spend; at most about two thirds of available hours), T2 (should have), T3 (nice
-    to have), plus a **post-launch roadmap** where the bigger ambitions wait. Add content targets as ranges
-    (for example, 10-15 levels) and a short "not doing" list. Cutting order: T3, then T2, then content volume
-    inside T1. **Planned dates:** split the corrected T1 estimate by stage, divide by the real weekly hours, keep
-    the polish buffer before Gold Master and the soft launch's length before Global Launch, and write a Planned
-    date (and the same Forecast) for every gate in the Gates table.
+12. **Scope tiers** in STUDIO_STATE.md. T1 (must have), T2 (should have), and T3 (nice to have) set the
+    **build and cutting order**: T1 is built first and cut last; cut T3 first, then T2, then content volume
+    inside T1. Add content targets as ranges (for example, 10-15 levels), a **post-launch roadmap** where the
+    bigger ambitions wait, and a short "not doing" list. Then the human chooses what the **first release
+    includes**: T1, T1-T2, or T1-T3 (T1 unless they choose otherwise). How big it should be depends on the
+    route to players (idea-filters.md, rule 2), and the choice must pass the capacity rule: the first release
+    fits when the human's corrected hands-on hours for everything it includes, plus the protected polish
+    buffer, fit in the weeks before the target date at their real weekly hours, with every wait that cannot
+    run alongside the work (such as the final store review) added as weeks. With no target date, the same sum
+    sets the Planned dates instead. **Planned dates:** split the human's corrected hours by stage, divide by
+    their real weekly hours, add the waits that cannot run alongside the work, keep the polish buffer before
+    Gold Master and the soft launch's length before Global Launch, and write a Planned date (and the same
+    Forecast) for every gate in the Gates table.
 13. **Risks:** run a pre-mortem ("imagine this failed; why?") and fill `studio/RISKS.md`: the top five risks,
     kill or pivot criteria (both kinds: "if 3 of 5 outsiders are not keen to replay the prototype after two
     rounds" and the business-case numbers from the soft launch), and a time-box for the Prototype stage.

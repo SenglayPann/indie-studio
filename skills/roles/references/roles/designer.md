@@ -28,8 +28,8 @@ Ambition is priced, not refused: use the cost table in
 a design cheap: one core verb, short sessions, content that repeats from data instead of bespoke work, simple
 readable art, one-handed play, and tolerance of interruptions. What makes it expensive: real-time
 multiplayer, your own backend, open worlds, voiced story, a large animated cast, and several modes at once.
-Design the first release to be the smallest version that can prove players stay; the rest waits on the
-post-launch roadmap.
+The human sizes the first release (T1, T1-T2, or T1-T3) under the capacity rule in the producer role file; the
+rest waits on the post-launch roadmap.
 
 ## AI does / Human does
 - **AI:** proposes options, drafts documents, builds balance tables and simulations, writes tutorial and UI

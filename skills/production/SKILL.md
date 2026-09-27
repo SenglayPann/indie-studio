@@ -20,9 +20,10 @@ rules: [communication.md](../director/references/communication.md). Hats and off
    until it is fixed.
 3. **Device build weekly:** install on the real test device and play it. Every two weeks, run a playtest
    (`indie-studio:playtest-loop`).
-4. **Review (end of the week, Producer):** hours worked; estimate versus actual; adjust the estimate multiplier;
-   re-forecast the remaining gates in the Gates table (remaining work divided by real weekly hours); top three for
-   next week; risks and time-boxes. A forecast past its planned date goes to `indie-studio:scope-guard` now, not
+4. **Review (end of the week, Producer):** the human's hours and the AI session hours; estimate versus actual in
+   each column; update the measured ratios; re-forecast the remaining gates in the Gates table (the human's
+   remaining corrected hours divided by their real weekly hours, plus the waits ahead); top three for next week;
+   risks, time-boxes, and waits that could start now. A forecast past its planned date goes to `indie-studio:scope-guard` now, not
    at the deadline. Update STUDIO_STATE.md and the journal (`indie-studio:session` wrap).
 
 A task is done when its acceptance criteria pass, it runs on the device, it is committed and merged, and its
@@ -38,8 +39,9 @@ Goal: a stranger can play from launch through one full session to the results an
 
 ## Stage: Pre-Alpha (systems)
 Goal: every planned feature exists.
-- Build the remaining T1 systems, then agreed T2 systems, in order: settings, pause, tutorial or first-time
-  experience, save and load, audio hooks, results and progression, then anything else on the list.
+- Build the rest of the first release in tier order (T1 first, then T2 and T3 if the first-release line
+  includes them), starting with what every game needs: settings, pause, tutorial or first-time experience, save
+  and load, audio hooks, results and progression, then anything else on the list.
 - Analytics, ads, and purchases: integrate in **test mode** only once the core loop is stable, following
   `docs/ECONOMY.md` (`indie-studio:monetization`), each behind its wrapper from `docs/TECH.md`, and through any
   engine-specific skills installed. Verify SDK steps with `indie-studio:research`. Analytics first: events
@@ -53,7 +55,8 @@ Goal: all the content, produced fast, using the measured pipeline.
 - Feature freeze: no new systems, mechanics, or screens. Allowed: content within existing systems, fixes, tuning,
   and polish that adds no new system. Only `fix/*`, `content/*`, `polish/*` branches (`indie-studio:git-workflow`).
 - Produce content by template using the timing measured at the Vertical Slice. Track throughput weekly against plan.
-  If behind, shrink content volume inside T1 (scope-guard). Never shrink the buffer.
+  If behind, cut in the cutting order (`indie-studio:scope-guard`): T3, then T2, then content volume inside T1.
+  Never shrink the buffer.
 - Every new level goes into the level list in `docs/LEVELS.md` and through its checklist: the automated data
   check, a proven clear (solver, bot, or recorded human clear), and a difficulty band.
 - Artist and Audio hats bring assets to final quality (`indie-studio:asset-pipeline`); keep the ledger current.
