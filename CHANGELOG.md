@@ -3,6 +3,58 @@
 All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses semantic versioning.
 
+## [0.3.0] - unreleased
+
+The design layer, built from the critique of the first real project run with the plugin (a solo developer's
+card roguelite for Android, from Conception to the first phone playtest). Every change below has a scenario in
+`docs/TESTING.md` (35-50).
+
+### Added
+- **Systems design for the designer hat** (`preproduction`, `references/systems-design.md`): the round loop and
+  the return loop with the feature that carries each, the genre contract, power against targets, luck against
+  skill, choice health, what each currency is for, and how to simulate (fixed seeds, enough games, a careful
+  bot checked against a random one, then people).
+- **Balance before strangers play:** in the Prototype, games with score targets, random content, or upgrades
+  that stack are simulated before the outsider round. New `docs/BALANCE.md` for run-based and systemic games.
+  From the Vertical Slice the rules live in one engine-free library shared by the game, the tests, and the
+  bots, and balance targets run as automated checks.
+- **Creator pass** (`playtest-loop`): the creator's own runs, sorted by the AI into tuning, design, scope, and
+  bugs, with the numbers checked and one change to try first, before every outsider round. A creator variant of
+  the playtest sheet, and a closed-test row for checking reasons to return.
+- **Hook score** beside the fit score for every concept (a named pull, fresh but familiar, a share engine, an
+  organic route), with each concept's audience and reason to come back tomorrow.
+- **Salvage and pivot** for a build the human already has: the parts worth keeping, both scores, priced pivots
+  beside the human's own plan, and a time-boxed test with a kill rule.
+- **Throwaway concept sketches** are allowed in Idea and Validation, outside the game's repository.
+- **Screen list** at Kickoff in `docs/PITCH.md`, each screen with its tier; the GDD's UI flow connects them.
+- **Feasibility template** (`docs/FEASIBILITY.md`): every part estimated in three columns, the waits, and the
+  capacity check.
+- **Re-plan checklist** in `scope-guard` for a major change, and `Replaces` and `Status` lines for decisions
+  (active, amended, superseded).
+- **Two soft-launch shapes:** a few countries with paid installs, or a quiet worldwide release for organic-only
+  games, with the promotion held back for the global launch.
+- **Studio-wide knowledge (opt-in):** facts that hold for any game are copied at wrap-up to
+  `~/.indie-studio/KNOWLEDGE.md`, and research in the next game reads them.
+
+### Changed
+- **The tiers are the build and cutting order only.** A separate line in `STUDIO_STATE.md` says what the first
+  release includes (T1, T1-T2, or T1-T3), chosen by the human; the right size depends on the route to players.
+- **One capacity rule** replaces "the first release fits in about two thirds of the hours". It is worded the
+  same in all five places that state it, and `scripts/check-plugin.sh` fails if a copy drifts.
+- **Estimates for an AI studio:** the AI's build time, the human's hands-on hours, and calendar waits are
+  estimated apart. Capacity and the first-game correction use the human's column; the journal, task briefs,
+  weekly review, timing exercise, and post-mortem track both kinds of hours.
+- **Reasons to return are checked:** each business-case target names the first-release feature that carries
+  it, the market check lists the genre contract, Conception Exit checks both, and `scope-guard` flags a cut
+  that removes a carrier.
+- **One home per plan fact:** scope and dates in `STUDIO_STATE.md`, targets in the business case, the estimate
+  in the feasibility file, screens in the pitch. Other documents link instead of copying, and every gate review
+  runs a consistency pass.
+- The empty engine project is created on `chore/<engine>-project` and merged into `develop` before the spike
+  branches from it; spikes start at the Prototype.
+- The session wrap removes answered open questions (their answers go to decisions or the journal), so the brief
+  stays lean.
+
 ## [0.2.0] - unreleased
 
 The professional layer: the same studio for a solo developer's first game and their tenth.
