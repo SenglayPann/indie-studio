@@ -1,0 +1,33 @@
+# --- OS and editor noise ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vs/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Secrets and signing material: never commit ---
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+*.p8
+*.mobileprovision
+.env
+.env.*
+*service-account*.json
+
+# --- Personal Claude Code settings ---
+.claude/settings.local.json
+
+# --- Build output and logs ---
+Builds/
+Build/
+*.apk
+*.aab
+*.ipa
+*.log

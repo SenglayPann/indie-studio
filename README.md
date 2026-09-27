@@ -1,0 +1,193 @@
+# Indie Studio for Claude Code
+
+A virtual game studio for **solo indie developers who build commercial mobile games with AI**, whether it is
+your first game or your tenth. It turns Claude Code into a small professional team: it knows which phase your
+project is in, which role to play right now, what is off-limits yet, how the game is meant to earn and find
+players, when to look things up instead of guessing, how to keep your work safe in git, and where you left off
+last time.
+
+You stay the decision-maker. The plugin makes the AI act like an experienced studio lead who protects your
+scope, your schedule, and your project.
+
+## What you get
+
+- **Always knows where you are.** A `STUDIO_STATE.md` notebook tracks phase, stage, next actions, and open
+  questions. A session-start hook briefs Claude on it automatically, even after `/clear` or a compaction.
+- **Matches your experience.** New developers get plain words and explained terms. Experienced ones get
+  industry language, one-line recaps, and estimates based on their own track record.
+- **A professional document set.** Pitch, market check, feasibility estimate, business case, game design,
+  level design, balance, economy, technical design, and a style bible covering art, sound, story, and writing
+  voice. Each one is written at the stage it is needed and checked at the gates, and each plan fact lives in
+  one place, so the documents cannot drift apart.
+- **Designs the numbers, not just the words.** A systems-design toolkit for the designer hat: reasons to return
+  carried by named features, the promises of the game's genre, power against targets, luck against skill, and
+  choices that are real choices. Games with score targets, random content, or stacking upgrades are checked
+  with bot simulations before strangers play, and the balance targets become automated tests.
+- **Playtests that start with you.** Your own runs come first: the AI sorts what felt off into tuning, design,
+  and scope, checks the numbers, and fixes the tuning before outsiders spend their time on it.
+- **Code that stays healthy.** A technical design every AI session codes by, saves with version numbers and
+  migration tests, one wrapper per ads, purchase, or analytics SDK, and automatic builds and tests (CI) on every
+  merge. Installed engine plugins, such as the engine vendor's own skills, do the engine-specific work.
+- **Estimates made for an AI studio.** The AI's build time, your own hours, and calendar waits are estimated
+  separately; your hours decide the schedule, and measured ratios replace the guesses after two weeks.
+- **Dates that warn early.** Every gate gets a planned and a forecast date, and the brief says SLIPPING as soon
+  as the forecast passes the plan.
+- **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
+  audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
+- **Gates, not guesses.** Seven evidence-based checkpoints from idea to worldwide launch. Only you approve them.
+- **Built to earn.** Ideas scored for their hook as well as their fit, a business case with researched
+  targets, an economy and analytics plan, and a soft launch (a few countries with paid installs, or a quiet
+  worldwide release for organic-only games) that decides whether to scale up, keep fixing, or stop. Ambitious
+  ideas get priced, not refused.
+- **Built to be found.** The route to players (organic, paid installs, or a publisher), an optional
+  marketability test before production commits, translation built in from the Vertical Slice, and the stores'
+  yearly requirement deadlines tracked after launch.
+- **Scope protection.** Every new idea is costed, then parked or traded. The tiers set the build and cutting
+  order, you choose how much of them the first release includes, and a cut that would remove a reason to return
+  is flagged. The feature freeze at Alpha is enforced by a git hook.
+- **Disciplined version control.** Practice branches, a commit convention, gate tags, safe undo, and real git hooks
+  that block secrets, huge files, and direct commits to `main`.
+- **Looks things up.** Versions, store rules, prices, licenses, and AI-tool terms are verified and logged with a
+  date instead of answered from memory. If you allow it, facts verified in one game carry over to the next.
+- **Knows when to reset.** Recommends `/compact` or a fresh session at the right moments, saving state first.
+- **Built for AI-assisted work.** Task briefs, a delegation matrix, a three-strikes rule, and an asset ledger for
+  AI-generated art and audio.
+- **Works with AI asset generators.** It walks you through connecting them (Meshy, Tripo, audio tools, Blender,
+  engine bridges) without ever seeing your API key, says honestly when Claude can make an asset itself, and
+  proves both with samples before a whole asset class is trusted to either.
+- **Keeps generated assets on-style.** Prompt recipes, reference images, character sheets, and a golden set
+  that catches it when a tool quietly changes its model. Hired freelancers work from the same bible, under a
+  contract checklist.
+
+## Requirements
+
+- [Claude Code](https://code.claude.com)
+- Git (on Windows, Git for Windows, which also provides the shell the hooks use)
+- Recommended: web search and fetch tools enabled, so the `research` skill can verify facts
+
+## Install
+
+Once this repository is on GitHub:
+
+```
+/plugin marketplace add <owner>/<repo>
+/plugin install indie-studio@indie-studio
+```
+
+To try it from a local copy without installing:
+
+```
+claude --plugin-dir /path/to/this/repository
+```
+
+Run `/reload-plugins` after changing files. Check the plugin with `claude plugin validate .` and
+`sh scripts/check-plugin.sh`.
+
+## Quick start
+
+1. Make an empty folder for your game and open Claude Code in it.
+2. Say "I want to start a new game" (or run `/indie-studio:director init`). It creates `STUDIO_STATE.md` and
+   `studio/` and starts Conception.
+3. Answer its questions. It will help you find an idea, check the market, choose an engine, set scope, and
+   reach the first gate.
+4. Next time, just open Claude Code in the same folder. The brief appears on its own; say what you want to do.
+
+Useful commands (all under `/indie-studio:`):
+
+| Command | Use it to |
+|---|---|
+| `director status` / `director next` | See where you are, or start the next action |
+| `director doctor` | Health-check the project state, git, and rules |
+| `director hat <role>` | Switch role |
+| `session wrap` | Finish a session cleanly (state, journal, commit, backup) |
+| `session compact` | Get advice on compacting or starting fresh |
+| `gate-review` | Check whether you are ready for the next gate |
+| `scope-guard <idea>` | Cost a new idea before building it |
+| `research <question>` | Verify something that may be out of date |
+| `monetization` | Decide or check how the game earns |
+| `git-workflow` | Any git action, with the rules applied |
+
+You rarely need these. Skills start on their own when the conversation calls for them, and the session brief
+names the ones that matter most (the skill for the current phase, `director` for "what next", `gate-review`,
+and the guardrails), so the core workflow runs even if Claude cannot see every skill's description.
+
+**Many plugins installed?** Claude Code shows Claude a list of every skill with a short description, but keeps
+that list to a small share of the context (1% by default in September 2026). When the list is too long, the
+least-used skills keep only their names and seldom start on their own. If the brief or `director doctor`
+reports this, give the list more room in your game project's `.claude/settings.json`, for example
+`"skillListingBudgetFraction": 0.02`, or switch off plugins that project does not use (`enabledPlugins`).
+
+## How it works
+
+| Layer | Purpose |
+|---|---|
+| **Skills** | Procedures and judgment, loaded when relevant |
+| **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase, the next gate's planned and forecast dates, and your experience setting (silent in projects without `STUDIO_STATE.md`) |
+| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, feasibility, business case, GDD, level design, balance, economy, technical design, style bible) |
+| **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
+
+| Phase | Stages | Skill |
+|---|---|---|
+| Conception | Idea, Validation, Kickoff | `conception` |
+| Pre-Production | Prototype, GDD, Vertical Slice | `preproduction` |
+| Production | First Playable, Pre-Alpha, Alpha, Beta | `production` |
+| Launch and Live | Soft Launch, Launch, Live Ops, Post-Mortem | `launch-live` |
+
+## Skills
+
+| Skill | What it does |
+|---|---|
+| `director` | Entry point: init, status, next, doctor, hats |
+| `session` | Start, wrap, and compact routines |
+| `git-workflow` | Branching, commits, tags, backups, safe undo, permission contract |
+| `research` | Verify-before-you-rely protocol and AI-tool evaluation |
+| `scope-guard` | Costs ideas; park, swap, or reject; Alpha freeze |
+| `gate-review` | Evidence-based gate checklists |
+| `roles` | The ten hats, one reference file each |
+| `conception`, `preproduction`, `production`, `launch-live` | The four phases |
+| `playtest-loop` | The creator pass, real-player testing, and the iterate-or-kill decision |
+| `engine-selector` | Engine choice for an AI-assisted solo developer |
+| `ai-delegation` | Task briefs, three strikes, review before a merge, engine plugins, project rules |
+| `monetization` | Business model, ads, purchases, the economy, analytics, reading a soft launch, and getting players (route, marketability test, paid installs, featuring) |
+| `mobile-perf-budget` | Budgets and real-device measurement |
+| `asset-pipeline` | Style bible, who makes each asset (freelancers included), drift control, 3D for phones, translation, licensing, ledger |
+| `toolchain` | Connects AI asset generators, engine plugins, and CI; keeps keys out of the chat; proves each tool works |
+| `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
+
+The plugin is engine-agnostic. If engine-specific skills are installed (for example Unity ones), it uses them
+for engine work instead of reinventing them.
+
+## Safety and honesty
+
+- **You approve** gates, merges into `main`, spending, and publishing. The plugin recommends; you decide.
+- **It never handles credentials.** It will not enter passwords, keys, or payment details, and it tells you which
+  steps are yours to do (store accounts, tax and payment details, submitting).
+- **Facts go stale.** Version numbers, store rules, prices, and licenses in any skill are starting points. The
+  `research` skill verifies them at the moment they matter.
+- **Not legal advice.** Licensing, ownership, and store-policy notes are guidance to check, not legal opinions.
+- The hook script and git hooks are short, readable shell scripts. Read them before you install.
+
+## Telling us what went wrong
+
+The studio writes down its own mistakes while they are fresh, in `studio/PLUGIN_FEEDBACK.md`: bad advice, a
+rule that got in the way, a skill that did not start, something missing. Run
+`/indie-studio:plugin-feedback send` when you feel like sharing them. Claude strips out everything about your
+game, shows you the exact text, and only then gives you a pre-filled issue link to open yourself.
+
+Nothing is ever sent on its own. The plugin has no telemetry and collects nothing about you or your project.
+
+## Repository layout
+
+```
+.claude-plugin/    plugin.json and marketplace.json
+hooks/             SessionStart hook (hooks.json, session-brief.sh)
+skills/            one folder per skill: SKILL.md plus references/
+templates/         state file, studio/ logs, docs/ templates, git hooks and ignore files
+scripts/           check-plugin.sh (integrity checks for maintainers)
+docs/research/     background research this plugin was designed from (reference only)
+```
+
+## Contributing and license
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under the [MIT License](LICENSE). The files in `docs/research/`
+are reference material and are not covered by that license.

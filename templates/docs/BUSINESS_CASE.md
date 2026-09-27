@@ -1,0 +1,87 @@
+# <Working title>: business case
+
+Filled at Kickoff with `indie-studio:monetization`, and re-checked at every gate. It answers one question:
+if this game works, what does "works" look like in numbers, and what happens if it does not?
+
+Benchmarks change and differ by genre. Look up current ones (`indie-studio:research`, volatile tier), write
+the source and date beside each, and never borrow a number from another genre.
+
+## What this game is for
+<Money, learning, a portfolio piece, or a mix. What "worth it" would mean in the first year.>
+
+## How it earns
+- Model: <paid / free with ads / free with purchases / both / subscription>
+- What players can buy: <...>
+- Where ads appear, if any: <...>
+- Why this fits the genre: <evidence from docs/MARKET.md>
+
+## Targets (from research: source and date in every row)
+| Number | What it means | Benchmark for this genre | Our target | Carried by (first-release feature) | Why |
+|---|---|---|---|---|---|
+| D1 | Share of players who come back the next day | | | | |
+| D7 | The same, a week later | | | | |
+| D30 | The same, a month later | | | | |
+| Session length and sessions per day | How long and how often they play | | | | |
+| ARPDAU | Average revenue per daily player | | | | |
+| Payer share | Share of players who ever buy anything | | | | |
+| Cost per install | Only if you pay for installs | | | | |
+
+"Carried by" names the feature in the first release that produces the number (for D7, for example, a daily
+challenge or progress that carries over between runs). A target whose carrier is not in the first release is a
+wish: bring the carrier in, or lower the target and record why. `indie-studio:scope-guard` checks this column
+before anything leaves the first release. This table is the only copy of the targets; other documents link here.
+
+## How players will find it
+See `indie-studio:monetization` (growth) for each step.
+- **Route:** <self-publish organic / self-publish with paid installs / publisher>, and why.
+- **Free:** store listing and keywords per language, short videos, communities, store featuring and pre-launch
+  sign-ups. Who does what, and when.
+- **Marketability test:** <skipped (why) / date, videos tested, CPI, click-through rate, store conversion,
+  decision>
+- **Paid:** budget, where, the CPI and payback time the plan can afford, and the rule that stops it (keep paying
+  only while paid players earn back more than they cost, within the payback time).
+- **Publisher (if any):** <revenue share, recoupment, IP and account ownership, exclusivity; reviewed by>
+- **If nobody finds it:** <does the project still make sense, and what would you do next>
+
+## Languages
+| What | Languages at soft launch | At global launch | Later | Why (market data) and cost |
+|---|---|---|---|---|
+| Store page (text and screenshots) | | | | |
+| First session (tutorial, menus) | | | | |
+| The rest of the game | | | | |
+
+How: `indie-studio:asset-pipeline` (localization). The game is built for translation from the Vertical Slice
+either way.
+
+## What it costs
+| Item | Cost | When |
+|---|---|---|
+| Store accounts and fees | | |
+| Tools and subscriptions | | |
+| Managed services (analytics, cloud save, remote settings) | | |
+| Paid installs, if any | | |
+| Your hours (the human's column in `docs/FEASIBILITY.md`) | | |
+
+## Simple arithmetic
+Revenue per day is about (daily players) x (revenue per daily player). Daily players only grow while new
+installs outnumber the players who drift away. Fill in two cases with your own researched numbers, and plan
+from the low one.
+
+- **Low case:** <installs a day> with <retention> gives <daily players>, x <ARPDAU> = <a day> / <a month>
+- **Middle case:** <the same arithmetic with better numbers>
+- **Break-even:** <what has to be true to cover the costs above>
+
+## Soft launch plan
+- Shape, and why: <limited countries (with paid installs or a publisher) / quiet worldwide (organic only)>
+  (`indie-studio:monetization`, growth, section 6)
+- Dates: from the Gates table in `STUDIO_STATE.md` (Gold Master to Global Launch), not copied here.
+- Countries or languages, and why: <limited countries: a few cheap markets that resemble the target audience;
+  quiet worldwide: the first store-page languages. Verify current advice>
+- Held back for the global launch (quiet worldwide): <announcement, translated store pages, featuring pitch,
+  community posts>
+- How long, and how many players before the numbers mean anything: <from research>
+- The numbers that decide it: <which rows from the table above>
+- Decision rules, written before any results arrive: scale / keep fixing / stop.
+
+## Kill or pivot rules
+<Copy these into `studio/RISKS.md`: "If <number> is not <target> by <date>, we <change this / stop>.">

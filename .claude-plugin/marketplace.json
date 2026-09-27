@@ -1,0 +1,18 @@
+{
+  "name": "indie-studio",
+  "owner": {
+    "name": "Senglay Pann"
+  },
+  "metadata": {
+    "description": "Skills, hooks, and templates that turn Claude Code into a virtual game studio for solo indie developers building commercial mobile games with AI."
+  },
+  "plugins": [
+    {
+      "name": "indie-studio",
+      "source": "./",
+      "description": "A virtual game studio for solo indie developers who build commercial mobile games with AI: phase tracking with milestone dates, role switching, scope guard, game, level, and technical design documents, money plan, growth, and soft launch, tested code with CI, git workflow, research rules, and session briefings.",
+      "license": "MIT",
+      "keywords": ["gamedev", "indie", "mobile", "workflow", "git"]
+    }
+  ]
+}

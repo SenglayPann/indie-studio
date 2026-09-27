@@ -1,0 +1,20 @@
+{
+  "name": "indie-studio",
+  "description": "A virtual game studio for solo indie developers, from their first game to their tenth, who build commercial mobile games with AI. Tracks your phase, stage, and milestone dates, switches between studio roles (producer, designer, engineer, QA...), prices ideas instead of refusing them, writes a professional document set (pitch, feasibility, business case, game and level design, balance, technical design, style bible), checks the numbers with bot simulations, plans how the game earns and finds players, keeps the code tested with CI, runs disciplined git branching, knows when to look things up, and briefs you at the start of every session.",
+  "version": "0.3.0",
+  "author": {
+    "name": "Senglay Pann"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "indie",
+    "mobile",
+    "unity",
+    "godot",
+    "workflow",
+    "git",
+    "project-management",
+    "solo-developer"
+  ]
+}

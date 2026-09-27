@@ -1,0 +1,132 @@
+---
+name: launch-live
+description: Phase 4 of an Indie Studio project. Use when the project is at or near release (Gold Master gate), in soft launch, or live (stage Soft Launch, Launch, Live Ops, or Post-Mortem), or when the user asks about store submission, the release build, store listings, launch day, staged rollouts, which countries to soft launch in, what the soft-launch numbers mean, fixing bugs after launch, updates, yearly store deadlines, live events, reading reviews and crash reports, or writing a post-mortem. Covers the release candidate, store readiness and the human-only steps, the soft launch and its scale-or-stop decision, the worldwide rollout, live monitoring and hotfixes, and the post-mortem that produces lessons for the next game.
+---
+
+# Phase 4: Launch and Live
+
+**Goal:** ship safely, find out what real players actually do, and turn that into either a bigger game or an
+honest stop. Store rules, fees, and requirements are volatile: verify every one with `indie-studio:research`
+when you reach it (source and date in `studio/KNOWLEDGE.md`). Communication rules:
+[communication.md](../director/references/communication.md). Reading the numbers:
+`indie-studio:monetization`.
+
+## Human-only steps (say this early and clearly)
+The human, not the AI, must: create and pay for developer accounts, complete identity verification, enter tax
+and payment details, accept agreements, sign in to store consoles, back up signing keys, and press submit. The
+AI prepares checklists, drafts text, builds the release, and guides each step, but never enters credentials,
+payment details, or personal identity data, and never says something was approved before the human confirms it.
+
+## Release candidate and store readiness (end of Beta, before the Gold Master gate)
+1. **Release candidate.** From `release/x.y.z`: bump the version, build a signed release build (not a debug
+   build), and install it on real devices. Only fixes go in. Tag candidates `v1.0.0-rc.N`.
+2. **Store readiness.** For each store, verify the current requirements, then complete:
+   - Listing: title, short and full description, icon, screenshots from real gameplay, and any required
+     graphics, in each soft-launch language (screenshot text included; `indie-studio:asset-pipeline`,
+     localization). Screenshots and trailers must show the actual game.
+   - Privacy policy at a public URL (draft with the AI; the human reviews and, for real risk, gets legal
+     help), and the data and privacy declarations that match what the game and its SDKs actually collect.
+   - Age rating questionnaire, content declarations (including any AI-content disclosure), and ad or purchase
+     declarations.
+   - Required target platform version, file format, and size limits.
+   - Any closed test the store demands before it will allow publishing. For new personal accounts on Google
+     Play this takes weeks of calendar time and a group of real testers: verify the current rules and start
+     early (this belongs in the compliance calendar from Pre-Alpha).
+   - Pricing, regions, and consent flows for ads and analytics where required.
+3. **Signing keys.** Confirm the human has backed up the signing keys in two private places (never in the
+   repository, never in a chat). Losing them can block updates forever.
+4. **Release plan.** Confirm the soft-launch shape from `docs/BUSINESS_CASE.md` and its countries or
+   languages (`indie-studio:monetization`, growth, section 6), or record the decision to skip the soft launch;
+   then the staged rollout, what would make you pause it (crash rate, one-star flood), and
+   the hotfix path (`hotfix/*` from `main`). If the route includes paid installs: the soft-launch ad budget,
+   attribution set up and verified, and the payback rule that stops spending (`indie-studio:monetization`,
+   growth).
+5. **Gate:** run `indie-studio:gate-review` for Gold Master. On approval the human submits with their own
+   accounts. Merge `release/x.y.z` into `main` and `develop` and tag `v1.0.0` (each with the human's approval).
+   Set the stage to Soft Launch, or to Launch if the soft launch was skipped by decision.
+
+## Stage: Soft Launch (Monetization + Producer + Engineer; QA, Marketer, Release Engineer, Designer as guests)
+Release the finished game quietly first, and learn whether players stay and spend while mistakes are still
+cheap. Skipping this is a decision to record, not a default.
+1. **Release in the planned shape.** Limited countries: release there only, with the small paid flow of
+   installs from the plan. Quiet worldwide (organic only): release everywhere with no announcement, no
+   featuring pitch, and no paid installs, and keep every promotion for the global launch. Either way, keep the
+   store listing and price the same as the global plan, so the numbers mean something.
+2. **Check the plumbing before reading anything:** events arriving with the right properties, purchases
+   completing, ads filling, crash-free rate, no install or first-run failures on real devices.
+3. **Wait for enough players.** Decide the number before looking (`indie-studio:monetization`, section 7).
+   Reading a handful of installs is worse than reading nothing, because it feels like evidence.
+4. **Read in order:** D1, then D7, then revenue per player, always by cohort, and never mixing paid traffic
+   with organic. For a game built from levels, read the per-level funnel beside D1: the levels where players
+   quit are usually where D1 is lost (`docs/LEVELS.md`, section 8). Write each reading in `studio/PERF_LOG.md`
+   or a soft-launch section of `studio/JOURNAL.md` with the date and the cohort size.
+5. **Change one thing at a time.** Every change names the number it is meant to move and goes through
+   `indie-studio:scope-guard`; the feature freeze is lifted here for exactly that reason. Ship each round as a
+   new `release/x.y.z` and let it run long enough to compare.
+6. **Protect the human:** a soft launch can run for weeks. Agree a rhythm and a stop date rather than watching
+   dashboards daily.
+7. **Gate:** run `indie-studio:gate-review` for Global Launch. The decision is scale up, keep fixing, or stop,
+   using the rules written in `docs/BUSINESS_CASE.md` before the results existed. Stopping is a real, honest
+   outcome: the post-mortem still runs and the lessons still count.
+
+## Stage: Launch (Release Engineer + Marketer; QA, Monetization, Producer as guests)
+1. **Open up in steps.** After a limited-countries soft launch, add countries with a staged rollout where the
+   store supports it, and watch crash rate, rating, and retention between steps. After a quiet worldwide soft
+   launch, the launch is the promotion push that was held back: translated store pages, the announcement, the
+   featuring pitch, community posts. Pause on the rules agreed in the release plan.
+2. **Store listing per country:** localized where the data says it matters; screenshots and text from the real
+   game.
+3. **Marketing.** Announcement text, a few short gameplay clips, community posts, and the featuring pitch if
+   the stores' lead times allowed it. Paid installs scale country by country only while return on ad spend
+   holds (`indie-studio:monetization`, growth). Drafted by the AI, posted and paid for by the human, honest about
+   the game.
+4. **Support rhythm from day one:** who answers reviews, how often, and what counts as a hotfix.
+5. Tag the launch and update the Gates table; set the stage to Live Ops once the rollout is complete.
+
+## Stage: Live Ops (Engineer + QA; Monetization, Marketer, Producer as guests)
+1. **Watch:** crash reports, reviews, analytics, and player feedback; daily for the first week, then weekly.
+2. **Triage** every item into: hotfix now, next patch, idea for later (parking lot), or ignore. Log it.
+3. **Hotfix:** branch `hotfix/*` from `main`, fix, test on devices, merge into `main` and `develop`, tag
+   `v1.0.1`. Keep it small.
+4. **Updates:** plan the next version from the parking lot, the post-launch roadmap, and real numbers through
+   `indie-studio:scope-guard`, with a fresh scope tier list and a buffer of its own. Do not promise dates you
+   cannot keep.
+5. **Tune from data, not feeling:** move numbers through remote settings where possible, one change at a time,
+   and measure the result (`indie-studio:monetization`). That includes per-level difficulty: retune the levels
+   outside their band, keep their IDs, and log each change in `docs/LEVELS.md`.
+6. **Keep up with the stores.** Both stores raise their minimum requirements regularly (for example the Android
+   version a game must target, or the SDK an iOS upload must be built with), and ad, analytics, and purchase
+   SDKs ship required updates. Missing a deadline can block every future update or hide the game from new
+   players on newer phones. Keep the compliance calendar running after launch (`indie-studio:roles`, release
+   engineer): check each store's requirement pages every quarter (`indie-studio:research`), enter each deadline
+   with a start date at least two months earlier, and ship the update early.
+7. **Live calendar** (only if the business case calls this a live game): regular events, limited-time offers,
+   and content drops, sized to the human's real hours. Build one reusable event template once (through
+   `indie-studio:scope-guard`), run events through remote settings rather than new builds, and measure each one
+   against the number it was meant to move. The plan lives in `docs/ECONOMY.md` (Live events and offers).
+8. **Answer reviews** kindly and briefly (a draft by the AI, posted by the human).
+9. Protect the human's energy: a live game should not swallow their life. Set a support rhythm and keep it.
+
+## Stage: Post-Mortem (Producer; Designer and Engineer as guests)
+Do this within a couple of weeks of launch, while it is fresh.
+1. Gather the data: `studio/JOURNAL.md`, `studio/DECISIONS.md`, `studio/RISKS.md`, estimates versus actuals,
+   the playtest notes, the perf log, and the soft-launch and live numbers against `docs/BUSINESS_CASE.md`.
+2. Fill in `${CLAUDE_PLUGIN_ROOT}/templates/docs/POSTMORTEM.md` and save it as `docs/POSTMORTEM.md`: what went
+   well, what went badly, what surprised us, and the review areas: estimates versus actuals, pipeline
+   bottlenecks, communication or process gaps, toolchain, and what the business case got right or wrong.
+3. Extract at most ten concrete lessons into `studio/LESSONS.md`, each as "next time, do X" or "next time,
+   avoid Y".
+4. Review the parking lot and the post-launch roadmap: what deserves an update, what belongs in the next game.
+5. Go through `studio/PLUGIN_FEEDBACK.md` with the human: summarize the top items in the post-mortem and offer
+   to send them (`indie-studio:plugin-feedback`, send mode).
+6. Close the loop: set the state to a finished project, tag the final commit, and back up the repository. For
+   the next game, start a new project folder and carry `LESSONS.md` over. If the human keeps the studio-wide
+   knowledge file (`~/.indie-studio/`, outside the project), make sure every `general` fact from
+   `studio/KNOWLEDGE.md` is in it; that folder is also a good home for `LESSONS.md`.
+
+## Rules
+- A gate is only passed when the human says so. "Ready to submit" is not "approved by the store".
+- Never hide a known Class A bug from a gate. Tell the human plainly.
+- Keep launches boring: everything with a waiting period was started weeks ago (`indie-studio:roles`,
+  compliance calendar).
+- Numbers decide scaling, not hope. If the soft launch says stop, say stop, and say what it taught.
