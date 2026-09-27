@@ -72,8 +72,13 @@ from the low one.
 - **Break-even:** <what has to be true to cover the costs above>
 
 ## Soft launch plan
+- Shape, and why: <limited countries (with paid installs or a publisher) / quiet worldwide (organic only)>
+  (`indie-studio:monetization`, growth, section 6)
 - Dates: from the Gates table in `STUDIO_STATE.md` (Gold Master to Global Launch), not copied here.
-- Countries, and why: <a few cheap markets that resemble the target audience; verify current advice>
+- Countries or languages, and why: <limited countries: a few cheap markets that resemble the target audience;
+  quiet worldwide: the first store-page languages. Verify current advice>
+- Held back for the global launch (quiet worldwide): <announcement, translated store pages, featuring pitch,
+  community posts>
 - How long, and how many players before the numbers mean anything: <from research>
 - The numbers that decide it: <which rows from the table above>
 - Decision rules, written before any results arrive: scale / keep fixing / stop.

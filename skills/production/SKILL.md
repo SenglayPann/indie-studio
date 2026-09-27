@@ -83,7 +83,8 @@ Goal: no new content. Make the game solid.
 - Store paperwork drafted; test build on a store test track where required.
 - Cut `release/x.y.z` from `develop` when the content and bug bar are met. Fixes only from then on.
 - Gate: Gold Master. `indie-studio:launch-live` ("Release candidate and store readiness") takes over, and the
-  first release goes to the soft-launch countries rather than the whole world.
+  first release goes out in the soft-launch shape (a few countries, or quietly worldwide) before the full
+  launch.
 
 ## Protect the polish buffer
 The buffer set at Kickoff (Schedule section) is time for bugs, performance, and game feel. It is not spare time.

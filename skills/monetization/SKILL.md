@@ -19,7 +19,7 @@ mode, measure, and explain.
 | Stage | What to do |
 |---|---|
 | Conception (Validation) | The route to players: organic, paid installs, or a publisher (growth.md, section 1) |
-| Conception (Kickoff) | The model and `docs/BUSINESS_CASE.md`: how it earns, targets from research (each carried by a named first-release feature), how players find it, costs, soft-launch plan |
+| Conception (Kickoff) | The model and `docs/BUSINESS_CASE.md`: how it earns, targets from research (each carried by a named first-release feature), how players find it, costs, the soft-launch plan and its shape (growth.md, section 6) |
 | Prototype (end) | If the plan depends on paid installs or a publisher: the marketability test (growth.md, section 2) |
 | GDD | `docs/ECONOMY.md`: what is sold, currencies and rewards, ad moments, the analytics event list |
 | Vertical Slice | Integrate nothing. Check the loop leaves natural room for the planned ad and offer moments |

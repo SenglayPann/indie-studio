@@ -19,7 +19,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    reviewers complain about; the gap in one sentence; sources logged in `studio/KNOWLEDGE.md`.
 4. `docs/BUSINESS_CASE.md`: the model, researched targets with source and date, the route to players
    (organic, paid installs, or a publisher) and how they will find the game, the languages, what it costs, a
-   low and a middle case in plain arithmetic, and the soft-launch plan (or a recorded decision to skip it).
+   low and a middle case in plain arithmetic, and the soft-launch plan with its shape (limited countries, or
+   quiet worldwide for an organic-only game), or a recorded decision to skip it.
 5. Feasibility in `docs/FEASIBILITY.md`: every part estimated in three columns (the AI's build time, the
    human's hands-on hours, calendar waits); hours per week, target date, and tool budget recorded; every
    ambition priced rather than refused; every gate has a Planned date in the Gates table. The capacity rule
@@ -137,13 +138,14 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    required.
 5. Crash reporting and analytics active, and consistent with the privacy declarations.
 6. Signing keys backed up in two private places (human confirms; never paste them anywhere).
-7. Release plan ready: the soft-launch countries (or a recorded decision to skip the soft launch), the
-   rollout, and the hotfix path.
+7. Release plan ready: the soft-launch shape and its countries or languages (or a recorded decision to skip
+   the soft launch), what is held back for the global launch, the rollout, and the hotfix path.
 8. The human approves submission and submits with their own accounts.
 
 ## Gate 6: Global Launch (tag `m5-global-launch`)
-Passed at the end of the Soft Launch stage, before the worldwide release. If the soft launch was skipped by
-decision, judge whatever evidence exists and say plainly how much weaker it is.
+Passed at the end of the Soft Launch stage, before the full launch: new countries after a limited-countries
+soft launch, or the promotion push after a quiet worldwide one. If the soft launch was skipped by decision,
+judge whatever evidence exists and say plainly how much weaker it is.
 1. The soft launch ran for the planned time, with enough players for the numbers to mean anything (sample
    size researched, not guessed).
 2. Retention read in order (D1, then D7, then D30 where time allows) against the targets in
@@ -154,8 +156,9 @@ decision, judge whatever evidence exists and say plainly how much weaker it is.
    levels: the per-level funnel was read, and the levels where most players quit were retuned.
 6. The decision recorded in `studio/DECISIONS.md` (scale up, keep fixing, or stop), using the rules written
    before any results arrived.
-7. Launch plan ready: countries, store listing localized where it matters, announcement, and the first update
-   already planned.
+7. Launch plan ready: the countries to add (limited-countries shape) or the promotion held back until now
+   (quiet worldwide shape), the store listing localized where it matters, the announcement, and the first
+   update already planned.
 8. Support plan: who answers reviews and how often, and what would trigger a hotfix or a paused rollout.
 9. Upkeep scheduled: the next store and SDK requirement deadlines are in the compliance calendar, each with a
    start date. For a live game, the first month's live calendar fits the human's real hours.

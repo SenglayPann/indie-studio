@@ -12,10 +12,12 @@ chapter) > **Cycle** (the current short list of tasks, kept in STUDIO_STATE.md u
 | Production | First Playable > Pre-Alpha > Alpha > Beta | `indie-studio:production` | First Playable, Alpha, Beta (one at the end of each of the first three stages), Gold Master (end of Beta) |
 | Launch-Live | Soft Launch > Launch > Live Ops > Post-Mortem | `indie-studio:launch-live` | Global Launch (end of Soft Launch); none afterwards |
 
-GDD means game design document. The **Soft Launch** stage releases the finished game in a few small countries
-to find out whether players stay and spend before the worldwide launch. A game with no money plan (a paid
-game, or one built to learn) may skip it: record that as a decision, and the Global Launch gate is then judged
-on whatever evidence exists.
+GDD means game design document. The **Soft Launch** stage releases the finished game quietly, to find out
+whether players stay and spend before the full launch. It has two shapes, chosen at Kickoff by the route to
+players (`indie-studio:monetization`, growth, section 6): a few countries with a small paid flow of installs,
+or, for an organic-only game, a quiet worldwide release with every promotion held back for the global launch.
+A game with no money plan (a paid game, or one built to learn) may skip it: record that as a decision, and the
+Global Launch gate is then judged on whatever evidence exists.
 
 A stage is named for the milestone reached at its start (industry usage): "in Pre-Alpha" means the
 First Playable gate has passed and the systems are being built. The stage called First Playable is
@@ -77,7 +79,7 @@ If the user asks for something on the list, say it is out of phase, offer to par
 | Pre-Alpha | T3 features; systems not in the scope tiers (go through scope-guard); store submission |
 | Alpha | New features of any kind (feature freeze). Allowed: content, fixes, polish, tuning |
 | Beta | New content beyond the plan; risky refactors; new SDKs or packages |
-| Soft Launch | Changes no measurement asked for; adding countries before the numbers have been read; spending on marketing beyond the soft-launch budget |
+| Soft Launch | Changes no measurement asked for; adding countries, or promoting a quiet worldwide release, before the numbers have been read; spending on marketing beyond the soft-launch budget |
 | Launch | Gameplay changes; unrelated features |
 | Live Ops | Large features outside the agreed update plan |
 
