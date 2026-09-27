@@ -33,7 +33,9 @@ State file rules are in [state-file.md](references/state-file.md).
    `Producer, Designer`, today's date.
    Write "Off-limits right now" from the Idea row of the off-limits table and three real "Next actions".
    Replace every remaining `<placeholder>` line in the state file (for example, set "Open questions" to
-   "- none yet"), because the session hook prints these sections verbatim.
+   "- none yet"), because the session hook prints these sections verbatim. If a studio-wide knowledge file
+   from earlier games exists (`~/.indie-studio/KNOWLEDGE.md` in the human's home folder), say in one line that
+   research will reuse its facts, and set its Permissions line to yes.
 5. Offer to add the short workflow block to the project's `CLAUDE.md`: show the text of
    `${CLAUDE_PLUGIN_ROOT}/templates/CLAUDE_MD_BLOCK.md` and ask first. If `CLAUDE.md` exists, append;
    otherwise create it. Never overwrite existing content.

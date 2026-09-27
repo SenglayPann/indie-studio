@@ -120,7 +120,9 @@ Do this within a couple of weeks of launch, while it is fresh.
 5. Go through `studio/PLUGIN_FEEDBACK.md` with the human: summarize the top items in the post-mortem and offer
    to send them (`indie-studio:plugin-feedback`, send mode).
 6. Close the loop: set the state to a finished project, tag the final commit, and back up the repository. For
-   the next game, start a new project folder and carry `LESSONS.md` over.
+   the next game, start a new project folder and carry `LESSONS.md` over. If the human keeps the studio-wide
+   knowledge file (`~/.indie-studio/`, outside the project), make sure every `general` fact from
+   `studio/KNOWLEDGE.md` is in it; that folder is also a good home for `LESSONS.md`.
 
 ## Rules
 - A gate is only passed when the human says so. "Ready to submit" is not "approved by the store".

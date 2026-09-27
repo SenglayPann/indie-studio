@@ -30,6 +30,7 @@ updated: <YYYY-MM-DD>
 - <things that must not be started yet in this phase>
 
 ## Open questions
+<!-- Most urgent first; the brief prints four lines. Answered questions leave the same day (to DECISIONS or JOURNAL). -->
 - <decisions waiting for the human>
 
 ## Scope tiers
@@ -61,6 +62,7 @@ updated: <YYYY-MM-DD>
 - Pre-approved: not set yet
 - Ask every time: not set yet
 - Generation credits per session without asking: not set yet
+- Studio-wide knowledge file (~/.indie-studio/KNOWLEDGE.md, outside this project): not asked yet
 
 ## Schedule
 - Hours per week (the human's own): <n>

@@ -24,8 +24,13 @@ If unsure which tier, treat it as the higher-risk tier. Being wrong about a stor
 far more than one search.
 
 ## 2. Check what is already known
-Read `studio/KNOWLEDGE.md`. If there is a matching entry that is inside its re-check window, reuse it and
-cite it. If it is stale or missing, continue.
+1. Read `studio/KNOWLEDGE.md`, the project's own verified facts.
+2. If the human keeps a studio-wide file (`~/.indie-studio/KNOWLEDGE.md` in their home folder; STUDIO_STATE.md,
+   Permissions, says whether they do), read it next: facts verified in earlier games, such as store rules, tool
+   bugs, engine install steps, and benchmark sources.
+3. A matching entry inside its re-check window can be reused and cited; copy it into the project's file. A
+   stale one is checked again like a new question, and the new result replaces it in both files. If nothing
+   matches, continue.
 
 ## 3. Look it up
 1. Find the project's real versions first: Unity `ProjectSettings/ProjectVersion.txt` and
@@ -58,7 +63,10 @@ or private code into a search query.
 ## 6. Answer and record
 - Give the answer first, then the label: **"Verified <date> from <source>"** or **"From memory, not checked"**.
 - Add caveats: which version it applies to, and anything that looked inconsistent between sources.
-- Append to `studio/KNOWLEDGE.md`: fact, source URL, date verified, re-check window.
+- Append to `studio/KNOWLEDGE.md`: fact, source URL, date verified, re-check window, and its kind: `general`
+  when it holds for any game (a store rule, a tool's bug or setting, an engine install step, a benchmark
+  source), `game` when it is about this game only. The session wrap copies `general` entries to the studio-wide
+  file when the human keeps one.
 - If the finding changes a plan, tell the user and record the decision in `studio/DECISIONS.md`.
 
 ## 7. When web tools are not available

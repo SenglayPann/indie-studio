@@ -37,21 +37,30 @@ when the user says they are finishing, and `compact` when a trigger below applie
 Run when the user is done for now, or before a long break.
 1. Save the work. Show `git status`. Commit per `indie-studio:git-workflow` on the current
    working branch (never directly on `main`). Do not leave work only in the working tree.
-2. Update `STUDIO_STATE.md`: Now, the next three actions, open questions, Last session, `updated`, and
-   `last_synced_commit` (the latest code commit, not a state-only commit).
+2. Update `STUDIO_STATE.md`: Now, the next three actions, Last session, `updated`, and `last_synced_commit`
+   (the latest code commit, not a state-only commit). Clean up **Open questions**: remove every question
+   answered today, moving its answer to `studio/DECISIONS.md` if it is a decision and into the journal entry
+   otherwise, and put the most urgent first (the brief prints only the first four lines).
 3. Append a journal entry to `studio/JOURNAL.md` using the format in that file, with both kinds of hours:
    the AI session time (from the start time noted at session start, or the session's first and last commits)
    and the human's own hands-on hours today, including work outside the session (playing builds, store tasks,
    recruiting testers). Ask for the second; you cannot see it. For finished tasks, give the estimate versus the
    actual in each column, and note any wait that started or ended. This feeds the weekly review and the
    post-mortem.
-4. Append any decisions made to `studio/DECISIONS.md`. Move any parked ideas to `studio/PARKING_LOT.md`.
-5. Back up: if the permission contract allows it, push the working branch to the remote. If there is no
+4. Append any decisions made to `studio/DECISIONS.md`, and set the Status of any decision they replace. Move
+   any parked ideas to `studio/PARKING_LOT.md`.
+5. **Studio-wide knowledge.** If today's research added `general` entries to `studio/KNOWLEDGE.md`: when the
+   Permissions section says yes to the studio-wide file, copy the new ones into `~/.indie-studio/KNOWLEDGE.md`
+   (skip any already there; keep their dates and re-check windows; nothing about this game, so no title,
+   numbers, private links, or account details). When it says "not asked yet", ask once whether to keep such a
+   file for future games. It lives outside the project folder, so the choice is theirs; record the answer in
+   Permissions.
+6. Back up: if the permission contract allows it, push the working branch to the remote. If there is no
    remote yet, say so and recommend setting one up.
-6. Commit the state and journal changes as `chore(state): wrap up <date>`.
-7. Tell the user in three lines: what is saved and where, what is unfinished, and what the first action
+7. Commit the state and journal changes as `chore(state): wrap up <date>`.
+8. Tell the user in three lines: what is saved and where, what is unfinished, and what the first action
    next session will be. Recommend a fresh chat next time; the brief will restore the context.
-8. Add one short invitation, once, and drop it if they pass: anything the studio itself got wrong today
+9. Add one short invitation, once, and drop it if they pass: anything the studio itself got wrong today
    (`indie-studio:plugin-feedback`).
 
 ## Compact (context hygiene)
