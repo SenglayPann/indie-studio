@@ -86,5 +86,6 @@ To test the hook by hand, create a folder with a `STUDIO_STATE.md`, then run
 3. Update `CHANGELOG.md` and bump `version` in `.claude-plugin/plugin.json` **only**. Do not also set it in
    `marketplace.json`: Claude Code silently prefers the `plugin.json` value, so a stale second copy would hide
    updates. Users only receive an update when the version changes, so bump it on every release.
-4. Fill `homepage` and `repository` in `plugin.json`, and the `<owner>/<repo>` placeholders in the README.
+4. Check that `homepage` and `repository` in `plugin.json` and the install line in the README point at the
+   plugin's repository (`plugin-feedback` builds its issue links from `repository`).
 5. Merge `develop` into `main` with `--no-ff` and tag `vX.Y.Z`.

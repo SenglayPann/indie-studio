@@ -67,12 +67,12 @@ scope, your schedule, and your project.
 
 ## Install
 
-Once this repository is on GitHub:
-
 ```
-/plugin marketplace add <owner>/<repo>
+/plugin marketplace add https://github.com/SenglayPann/indie-studio
 /plugin install indie-studio@indie-studio
 ```
+
+The Claude desktop app accepts the same address when you add a marketplace there.
 
 To try it from a local copy without installing:
 
