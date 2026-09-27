@@ -26,22 +26,32 @@ Only put a `#` comment after a value, never inside one (the hook strips text aft
 `Now`, `Next actions` (hook), `Off-limits right now` (hook), `Open questions` (hook), `Scope tiers`,
 `Gates`, `Permissions`, `Schedule`, `Last session`.
 
+The brief prints only the first five lines of Next actions, four of Open questions, and five of Off-limits,
+so keep the most urgent item first and each item to a line or two. A comment inside these three sections must
+fit on one line starting with `<!--`, or the brief prints it.
+
 The **Gates** table has the columns Gate, Status, Planned, Forecast, Passed, and Evidence. Dates are
 `YYYY-MM-DD`. Planned is set at Kickoff from the capacity math and changes only by a recorded decision.
-Forecast is re-estimated at every weekly review and after the Vertical Slice timing exercise (remaining work
-divided by real weekly hours). Passed is the approval date. The hook prints the next gate's planned and
-forecast dates and warns when the forecast is later than the plan.
+Forecast is re-estimated at every weekly review and after the Vertical Slice timing exercise: the human's
+remaining corrected hours divided by their real weekly hours, plus the waits still ahead that cannot run
+alongside the work (`indie-studio:roles`, producer). Passed is the approval date. The hook prints the next
+gate's planned and forecast dates and warns when the forecast is later than the plan.
 
 Keep the whole file under about 80 lines. It is read at every session start; every line costs context.
 Move history to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verified facts to
 `studio/KNOWLEDGE.md`.
 
+**One home per fact.** The Scope tiers section is the only copy of the scope and the first-release line, the
+Gates table the only copy of the dates, and the Schedule section the only copy of the weekly hours and the
+target date. Other documents link here instead of repeating them, so a change is made once.
+
 ## When to update (state as you go)
 Update the file at each of these moments, not only at the end of a session:
 1. A task finishes or the "Next actions" list changes.
-2. A decision is made (also append to DECISIONS.md).
+2. A decision is made (also append to DECISIONS.md, and set the Status of any decision it replaces).
 3. A gate passes or a stage changes (also update Off-limits, Hats, next_gate, and the Gates table).
-4. The human answers or raises an open question.
+4. The human answers or raises an open question. An answered question leaves the list the same day: its
+   answer goes to DECISIONS.md if it is a decision, otherwise to the journal.
 5. Before recommending a compact or a fresh session.
 6. At wrap-up.
 

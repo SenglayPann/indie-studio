@@ -1,6 +1,6 @@
 ---
 name: playtest-loop
-description: Run real-player playtests and decide what to do with the results. Use when a prototype, slice, or build is ready for outside eyes, when the user asks "is it fun", how to test with friends, how to read feedback, or whether to keep, change, or drop a concept; and on a regular rhythm at every stage. Provides the observe-do-not-explain protocol, an observation sheet, how to read signals, and the iterate-or-kill decision.
+description: Run real-player playtests and decide what to do with the results. Use when a prototype, slice, or build is ready for outside eyes, when the creator has played their own build and shares notes or screenshots of what feels off, when the user asks "is it fun", how to test with friends, how to read feedback, or whether to keep, change, or drop a concept; and on a regular rhythm at every stage. Provides the creator pass, the observe-do-not-explain protocol, an observation sheet, how to read signals, and the iterate-or-kill decision.
 argument-hint: "[build or stage to test]"
 ---
 
@@ -10,6 +10,25 @@ Creators cannot see their own game clearly, and an AI cannot tell whether someth
 players can. Testing early, while changes are cheap, is the best money-saving habit in game development.
 Communication rules: [communication.md](../director/references/communication.md).
 
+## The creator pass (before every outsider round)
+The creator cannot judge whether strangers will enjoy the game, but their own runs find broken numbers, dead
+ends, and bugs cheaply, before an outsider's time is spent on them.
+1. **The creator plays** two or three full runs or levels on the real device and notes what felt wrong and what
+   felt good, with screenshots where they help. A seed or level ID makes a run replayable.
+2. **The AI reviews** the notes and screenshots, reconstructs what happened (scores, choices, where it went
+   wrong), and sorts every point into one bucket:
+   - **Tuning** (numbers: targets, costs, rates, timings): check the numbers behind it by replaying the seed or
+     running the simulator (`indie-studio:preproduction`, `references/systems-design.md`), then fix it before
+     the outsider round, with the human's approval.
+   - **Design** (rules, a missing reason to return, choices that do not feel like choices): test it in the
+     simulator or in the next outsider round. One person's view is not yet a design change.
+   - **Scope** (a new feature, currency, or screen): `indie-studio:scope-guard`.
+   - **Bug:** fix it (classes in `indie-studio:roles`, QA).
+3. **Summarize in chat:** the buckets, the numbers behind them, and one recommended change to try first. The
+   human decides.
+4. **Record it** as `studio/playtests/YYYY-MM-DD-00.md` (00 marks a creator pass) with the creator variant of
+   the sheet. Then run the outsider round: only strangers show whether the game is understood and wanted.
+
 ## When and how many
 | Stage | Players | Question the round answers |
 |---|---|---|
@@ -18,7 +37,9 @@ Communication rules: [communication.md](../director/references/communication.md)
 | First Playable | 3 | Can a stranger get through a whole session? |
 | Alpha | 5 | Is the difficulty and the reason-to-return right? |
 | Beta | 5 or more | Bugs, devices, onboarding, and difficulty |
-Three to five players find most big problems; more rounds beat more players per round.
+| Closed test (where a store requires one, or by choice) | The testers, over one to two weeks | Do people come back on their own? Read it from analytics. The sample is tiny and friendly: nobody returning is a warning sign, and people returning is not proof |
+Three to five players find most big problems; more rounds beat more players per round. A creator pass comes
+before each outsider round.
 
 ## Who to recruit
 People who are not developers and ideally not close friends (friends are too kind). Include at least one
@@ -40,8 +61,8 @@ distribution service). Never send a build to someone through an untrusted file h
    would you change? Then watch: did they ask for another go without being asked?
 5. Thank them. Do not ask "would you pay for it"; people answer that unreliably. Watch behavior instead.
 
-Use the sheet in `${CLAUDE_PLUGIN_ROOT}/templates/docs/PLAYTEST_SHEET.md`. Save each session as
-`studio/playtests/YYYY-MM-DD-NN.md`.
+Use the sheet in `${CLAUDE_PLUGIN_ROOT}/templates/docs/PLAYTEST_SHEET.md` (its creator variant for a creator
+pass). Save each session as `studio/playtests/YYYY-MM-DD-NN.md`, numbering outsiders from 01.
 
 ## Reading the signals
 | Strong signs | Warning signs |

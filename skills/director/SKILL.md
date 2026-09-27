@@ -33,7 +33,9 @@ State file rules are in [state-file.md](references/state-file.md).
    `Producer, Designer`, today's date.
    Write "Off-limits right now" from the Idea row of the off-limits table and three real "Next actions".
    Replace every remaining `<placeholder>` line in the state file (for example, set "Open questions" to
-   "- none yet"), because the session hook prints these sections verbatim.
+   "- none yet"), because the session hook prints these sections verbatim. If a studio-wide knowledge file
+   from earlier games exists (`~/.indie-studio/KNOWLEDGE.md` in the human's home folder), say in one line that
+   research will reuse its facts, and set its Permissions line to yes.
 5. Offer to add the short workflow block to the project's `CLAUDE.md`: show the text of
    `${CLAUDE_PLUGIN_ROOT}/templates/CLAUDE_MD_BLOCK.md` and ask first. If `CLAUDE.md` exists, append;
    otherwise create it. Never overwrite existing content.
@@ -76,21 +78,27 @@ fix; do not change things silently.
 5. Branch names obey the phase rules (for example, no open `feature/*` branch after the Alpha gate).
 6. `last_synced_commit` exists in history and is not far behind HEAD, and no other branch or `archive/*` tag
    holds a newer notebook (`indie-studio:git-workflow`, section 8).
-7. Scope: tasks in progress belong to a scope tier; no T3 work while T1 is incomplete; parking lot
-   ideas have not leaked into code.
-8. Protected polish buffer in the Schedule section has not shrunk.
+7. Scope: the first-release line is set; tasks in progress belong to a tier the first release includes (or
+   to a recorded trade); no T3 work while T1 is incomplete; parking lot ideas have not leaked into code; every
+   retention target in the business case is carried by a feature the first release includes.
+8. Schedule: the protected polish buffer has not shrunk, and the journal records the human's hours and the AI
+   session time separately.
 9. `studio/KNOWLEDGE.md` has no entries past their re-check date that are still being relied on.
 10. `studio/ASSET_LEDGER.md` has a row for every shipped AI-generated asset (spot-check a few).
-11. From Kickoff: `docs/BUSINESS_CASE.md` exists and every target carries a source and a date, and every gate
-    has a Planned date. From the GDD stage: `docs/TECH.md` exists; `docs/ECONOMY.md` if the game earns from ads
-    or purchases; `docs/LEVELS.md` if it is built from levels. From First Playable: CI builds and tests every
-    merge into `develop`, or a recorded reason why not.
+11. From Kickoff: `docs/FEASIBILITY.md` and `docs/BUSINESS_CASE.md` exist, every target carries a source and a
+    date, and every gate has a Planned date. From the GDD stage: `docs/TECH.md` exists; `docs/ECONOMY.md` if the
+    game earns from ads or purchases; `docs/LEVELS.md` if it is built from levels; `docs/BALANCE.md` if it has
+    score targets, random content, or upgrades that stack. From First Playable: CI builds and tests every merge
+    into `develop`, or a recorded reason why not.
 12. Skill list: every `indie-studio:` skill in your own list of available skills shows a description. If some
     show only a name, Claude Code ran out of room for skill descriptions (too many skills or plugins), and
     those skills rarely start on their own. Offer two fixes in the game project's `.claude/settings.json`:
     give the list more room (`skillListingBudgetFraction`, for example `0.02`; costs a little context every
     turn), or switch off plugins this project does not use yet (`enabledPlugins`). These are Claude Code
     settings and can change: verify the names with `indie-studio:research` before writing them.
+13. Decisions and copies: every decision a newer one replaced says so in its Status line
+    (`studio/DECISIONS.md`), and no document repeats a scope, date, or target that disagrees with its home
+    (the consistency pass in `indie-studio:gate-review`).
 
 ## 5. Hat (switch role)
 Read the matching file in `${CLAUDE_PLUGIN_ROOT}/skills/roles/references/roles/`, update `hats` in the state

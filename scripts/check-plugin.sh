@@ -7,6 +7,7 @@
 #   3. Every relative markdown link inside skills/ resolves to a real file.
 #   4. Every ${CLAUDE_PLUGIN_ROOT}/<path> mention points at a real file or folder.
 #   5. Shell scripts parse (sh -n) and JSON files are valid (when node is available).
+#   6. The capacity rule is worded the same in every file that states it.
 # Exit status is the number of problems found (0 means clean).
 
 cd "$(dirname "$0")/.." || exit 1
@@ -69,6 +70,13 @@ if command -v node >/dev/null 2>&1; then
     node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "$j" 2>/dev/null || fail "$j: invalid JSON"
   done
 fi
+
+# 6. The capacity rule, word for word (line breaks and indentation ignored). Change all copies together.
+rule="the first release fits when the human's corrected hands-on hours for everything it includes, plus the protected polish buffer, fit in the weeks before the target date at their real weekly hours, with every wait that cannot run alongside the work (such as the final store review) added as weeks."
+for f in skills/roles/references/roles/producer.md skills/conception/references/idea-filters.md \
+         skills/conception/SKILL.md skills/gate-review/references/gates.md templates/docs/FEASIBILITY.md; do
+  tr '\r\n' '  ' < "$f" | tr -s ' ' | grep -qF "$rule" || fail "$f: capacity rule missing or worded differently (see producer.md)"
+done
 
 count=$(find skills -name SKILL.md | wc -l | tr -d ' ')
 if [ "$errors" -eq 0 ]; then

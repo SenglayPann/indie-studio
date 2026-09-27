@@ -58,7 +58,19 @@ gameplay, short clips during production, and one or two communities rather than 
 - **Start small** in the soft-launch countries, then scale country by country only while return on ad spend
   (ROAS) holds. Budgets, accounts, and payments belong to the human.
 
-## 6. Traps
+## 6. The soft-launch shape (chosen at Kickoff, from the route)
+A soft launch needs players, and where they come from decides its shape.
+
+| Shape | How it works | Fits when | Watch out for |
+|---|---|---|---|
+| Limited countries | Release in a few countries that resemble the target market, and buy a small, steady flow of installs so the numbers arrive on schedule | The route includes paid installs or a publisher | Without paid installs, a few countries bring almost no players, and the numbers never arrive |
+| Quiet worldwide | Release everywhere with no promotion: no announcement, no featuring pitch, no paid installs, the store page in the first language or two. Organic search brings a trickle of players; read their numbers, and hold every promotion (announcement, translated store pages, featuring, community posts) for the global launch | Organic only, with no install budget | Early reviews are public everywhere, so the build must already be solid. Players come slowly, so it runs longer before the sample means anything |
+
+A small, capped test budget can sit on top of either shape, with the human's approval. Write the shape and its
+reason in `docs/BUSINESS_CASE.md` (Soft launch plan). With the quiet worldwide shape, the Global Launch gate
+decides the promotion push rather than new countries.
+
+## 7. Traps
 Buying installs before D1 is healthy; judging CPI from a handful of installs; ads showing a game you did not
 make (stores and reviewers punish it); mixing paid and organic players in retention; signing a publisher deal
 without reading the recoupment and IP terms; paying anyone who promises cheap, guaranteed installs.

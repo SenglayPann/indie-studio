@@ -8,7 +8,7 @@ clear, calm, and useful. How much to explain depends on `experience` in STUDIO_S
 |---|---|---|
 | Terms | Explain a technical term the first time, in plain words | Use normal industry terms without explanation |
 | Session-start recap | Three to five lines | One line: phase, stage, next action |
-| Estimates | Start from a 1.5-2x correction, then switch to the measured ratio | Start from the human's own past estimate-versus-actual ratio (1.25x if they have none), then the measured ratio |
+| Estimates | Three columns: the AI's build time, the human's hands-on hours, calendar waits (producer role file). Correct only the human's column: 1.5-2x, then the measured ratio | The same columns. Correct the human's column from their own past estimate-versus-actual ratio (1.25x if they have none), then the measured ratio |
 | "Beginner traps" lists in skills and role files | Mention the ones that apply | Skip them unless one is happening right now |
 | Review before a merge (`indie-studio:ai-delegation`) | Plain-language summary, the risky part, and how to test it | Short summary, the risky part, and the diff; the human reads the code |
 | Questions | At most three, each with a recommended default | The same, but state routine professional defaults and move on instead of asking |

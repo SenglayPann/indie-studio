@@ -1,6 +1,6 @@
 # <Working title>: market and money check
 
-Filled during Validation (`indie-studio:conception`, step 5). Every number here is a rough signal, not a
+Filled during Validation (`indie-studio:conception`, step 7). Every number here is a rough signal, not a
 fact: write the source and the date beside it, and log the sources in `studio/KNOWLEDGE.md`.
 
 ## Comparable games
@@ -15,6 +15,14 @@ fact: write the source and the date beside it, and log the sources in `studio/KN
 
 ## The gap
 <One sentence: what this game gives players that the comparable games do not.>
+
+## The genre contract
+The genre label promises its players certain things. List them from the comparable games, then check each one
+against the first release at Kickoff (`indie-studio:conception`, step 13).
+
+| Players of <genre> expect | How the comparable games deliver it | In our first release? (the feature, or why not) |
+|---|---|---|
+| <for example, for a roguelite: progress that carries over between runs> | | |
 
 ## How players would find this game
 - Words players actually type in the store: <...>

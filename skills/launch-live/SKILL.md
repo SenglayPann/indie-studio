@@ -22,7 +22,7 @@ payment details, or personal identity data, and never says something was approve
    build), and install it on real devices. Only fixes go in. Tag candidates `v1.0.0-rc.N`.
 2. **Store readiness.** For each store, verify the current requirements, then complete:
    - Listing: title, short and full description, icon, screenshots from real gameplay, and any required
-     graphics, in each soft-launch country's language (screenshot text included; `indie-studio:asset-pipeline`,
+     graphics, in each soft-launch language (screenshot text included; `indie-studio:asset-pipeline`,
      localization). Screenshots and trailers must show the actual game.
    - Privacy policy at a public URL (draft with the AI; the human reviews and, for real risk, gets legal
      help), and the data and privacy declarations that match what the game and its SDKs actually collect.
@@ -35,8 +35,9 @@ payment details, or personal identity data, and never says something was approve
    - Pricing, regions, and consent flows for ads and analytics where required.
 3. **Signing keys.** Confirm the human has backed up the signing keys in two private places (never in the
    repository, never in a chat). Losing them can block updates forever.
-4. **Release plan.** Decide the soft-launch countries from `docs/BUSINESS_CASE.md` (or record the decision to
-   skip the soft launch), the staged rollout, what would make you pause it (crash rate, one-star flood), and
+4. **Release plan.** Confirm the soft-launch shape from `docs/BUSINESS_CASE.md` and its countries or
+   languages (`indie-studio:monetization`, growth, section 6), or record the decision to skip the soft launch;
+   then the staged rollout, what would make you pause it (crash rate, one-star flood), and
    the hotfix path (`hotfix/*` from `main`). If the route includes paid installs: the soft-launch ad budget,
    attribution set up and verified, and the payback rule that stops spending (`indie-studio:monetization`,
    growth).
@@ -45,10 +46,12 @@ payment details, or personal identity data, and never says something was approve
    Set the stage to Soft Launch, or to Launch if the soft launch was skipped by decision.
 
 ## Stage: Soft Launch (Monetization + Producer + Engineer; QA, Marketer, Release Engineer, Designer as guests)
-Release the finished game in a few small countries first, and learn whether players stay and spend while
-mistakes are still cheap. Skipping this is a decision to record, not a default.
-1. **Release to the planned countries only.** Keep the store listing and price the same as the global plan,
-   so the numbers mean something.
+Release the finished game quietly first, and learn whether players stay and spend while mistakes are still
+cheap. Skipping this is a decision to record, not a default.
+1. **Release in the planned shape.** Limited countries: release there only, with the small paid flow of
+   installs from the plan. Quiet worldwide (organic only): release everywhere with no announcement, no
+   featuring pitch, and no paid installs, and keep every promotion for the global launch. Either way, keep the
+   store listing and price the same as the global plan, so the numbers mean something.
 2. **Check the plumbing before reading anything:** events arriving with the right properties, purchases
    completing, ads filling, crash-free rate, no install or first-run failures on real devices.
 3. **Wait for enough players.** Decide the number before looking (`indie-studio:monetization`, section 7).
@@ -67,8 +70,10 @@ mistakes are still cheap. Skipping this is a decision to record, not a default.
    outcome: the post-mortem still runs and the lessons still count.
 
 ## Stage: Launch (Release Engineer + Marketer; QA, Monetization, Producer as guests)
-1. **Open up in steps.** Use a staged rollout where the store supports it, and watch crash rate, rating, and
-   retention between steps. Pause on the rules agreed in the release plan.
+1. **Open up in steps.** After a limited-countries soft launch, add countries with a staged rollout where the
+   store supports it, and watch crash rate, rating, and retention between steps. After a quiet worldwide soft
+   launch, the launch is the promotion push that was held back: translated store pages, the announcement, the
+   featuring pitch, community posts. Pause on the rules agreed in the release plan.
 2. **Store listing per country:** localized where the data says it matters; screenshots and text from the real
    game.
 3. **Marketing.** Announcement text, a few short gameplay clips, community posts, and the featuring pitch if
@@ -115,7 +120,9 @@ Do this within a couple of weeks of launch, while it is fresh.
 5. Go through `studio/PLUGIN_FEEDBACK.md` with the human: summarize the top items in the post-mortem and offer
    to send them (`indie-studio:plugin-feedback`, send mode).
 6. Close the loop: set the state to a finished project, tag the final commit, and back up the repository. For
-   the next game, start a new project folder and carry `LESSONS.md` over.
+   the next game, start a new project folder and carry `LESSONS.md` over. If the human keeps the studio-wide
+   knowledge file (`~/.indie-studio/`, outside the project), make sure every `general` fact from
+   `studio/KNOWLEDGE.md` is in it; that folder is also a good home for `LESSONS.md`.
 
 ## Rules
 - A gate is only passed when the human says so. "Ready to submit" is not "approved by the store".

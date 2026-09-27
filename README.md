@@ -15,29 +15,40 @@ scope, your schedule, and your project.
   questions. A session-start hook briefs Claude on it automatically, even after `/clear` or a compaction.
 - **Matches your experience.** New developers get plain words and explained terms. Experienced ones get
   industry language, one-line recaps, and estimates based on their own track record.
-- **A professional document set.** Pitch, market check, business case, game design, level design, economy,
-  technical design, and a style bible covering art, sound, story, and writing voice. Each one is written at the
-  stage it is needed and checked at the gates.
+- **A professional document set.** Pitch, market check, feasibility estimate, business case, game design,
+  level design, balance, economy, technical design, and a style bible covering art, sound, story, and writing
+  voice. Each one is written at the stage it is needed and checked at the gates, and each plan fact lives in
+  one place, so the documents cannot drift apart.
+- **Designs the numbers, not just the words.** A systems-design toolkit for the designer hat: reasons to return
+  carried by named features, the promises of the game's genre, power against targets, luck against skill, and
+  choices that are real choices. Games with score targets, random content, or stacking upgrades are checked
+  with bot simulations before strangers play, and the balance targets become automated tests.
+- **Playtests that start with you.** Your own runs come first: the AI sorts what felt off into tuning, design,
+  and scope, checks the numbers, and fixes the tuning before outsiders spend their time on it.
 - **Code that stays healthy.** A technical design every AI session codes by, saves with version numbers and
   migration tests, one wrapper per ads, purchase, or analytics SDK, and automatic builds and tests (CI) on every
   merge. Installed engine plugins, such as the engine vendor's own skills, do the engine-specific work.
+- **Estimates made for an AI studio.** The AI's build time, your own hours, and calendar waits are estimated
+  separately; your hours decide the schedule, and measured ratios replace the guesses after two weeks.
 - **Dates that warn early.** Every gate gets a planned and a forecast date, and the brief says SLIPPING as soon
   as the forecast passes the plan.
 - **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
   audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
 - **Gates, not guesses.** Seven evidence-based checkpoints from idea to worldwide launch. Only you approve them.
-- **Built to earn.** A business case with researched targets, an economy and analytics plan, and a soft launch
-  in a few countries that decides whether to scale up, keep fixing, or stop. Ambitious ideas get priced, not
-  refused.
+- **Built to earn.** Ideas scored for their hook as well as their fit, a business case with researched
+  targets, an economy and analytics plan, and a soft launch (a few countries with paid installs, or a quiet
+  worldwide release for organic-only games) that decides whether to scale up, keep fixing, or stop. Ambitious
+  ideas get priced, not refused.
 - **Built to be found.** The route to players (organic, paid installs, or a publisher), an optional
   marketability test before production commits, translation built in from the Vertical Slice, and the stores'
   yearly requirement deadlines tracked after launch.
-- **Scope protection.** Every new idea is costed, then parked or traded. The feature freeze at Alpha is enforced
-  by a git hook.
+- **Scope protection.** Every new idea is costed, then parked or traded. The tiers set the build and cutting
+  order, you choose how much of them the first release includes, and a cut that would remove a reason to return
+  is flagged. The feature freeze at Alpha is enforced by a git hook.
 - **Disciplined version control.** Practice branches, a commit convention, gate tags, safe undo, and real git hooks
   that block secrets, huge files, and direct commits to `main`.
 - **Looks things up.** Versions, store rules, prices, licenses, and AI-tool terms are verified and logged with a
-  date instead of answered from memory.
+  date instead of answered from memory. If you allow it, facts verified in one game carry over to the next.
 - **Knows when to reset.** Recommends `/compact` or a fresh session at the right moments, saving state first.
 - **Built for AI-assisted work.** Task briefs, a delegation matrix, a three-strikes rule, and an asset ledger for
   AI-generated art and audio.
@@ -112,7 +123,7 @@ reports this, give the list more room in your game project's `.claude/settings.j
 |---|---|
 | **Skills** | Procedures and judgment, loaded when relevant |
 | **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase, the next gate's planned and forecast dates, and your experience setting (silent in projects without `STUDIO_STATE.md`) |
-| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, business case, GDD, level design, economy, technical design, style bible) |
+| **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, feasibility, business case, GDD, level design, balance, economy, technical design, style bible) |
 | **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
 
 | Phase | Stages | Skill |
@@ -134,7 +145,7 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | `gate-review` | Evidence-based gate checklists |
 | `roles` | The ten hats, one reference file each |
 | `conception`, `preproduction`, `production`, `launch-live` | The four phases |
-| `playtest-loop` | Real-player testing and the iterate-or-kill decision |
+| `playtest-loop` | The creator pass, real-player testing, and the iterate-or-kill decision |
 | `engine-selector` | Engine choice for an AI-assisted solo developer |
 | `ai-delegation` | Task briefs, three strikes, review before a merge, engine plugins, project rules |
 | `monetization` | Business model, ads, purchases, the economy, analytics, reading a soft launch, and getting players (route, marketability test, paid installs, featuring) |

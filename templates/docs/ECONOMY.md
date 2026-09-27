@@ -9,8 +9,12 @@ file, never in code, so it can be tuned without a new build. Note which file hol
 | Remove ads | | one-off | | | |
 
 ## Currencies
-| Currency | Soft or hard | Earned from | Spent on | Starting amount | Data file |
-|---|---|---|---|---|---|
+| Currency | Soft or hard | Earned from | Spent on | For (progress / cosmetics / convenience / power) | Earned per session (typical / heavy) | Starting amount | Data file |
+|---|---|---|---|---|---|---|---|
+
+A currency that buys power, and can itself be bought with money, makes the game pay-to-win unless it is capped:
+check it against `indie-studio:monetization` and the fairness promises in the business case. A lost run should
+still earn a little. Sessions until each unlock, from the simulator: `docs/BALANCE.md`.
 
 ## Sources and sinks
 Every way currency enters the game, and every way it leaves. If the sources outweigh the sinks, the economy

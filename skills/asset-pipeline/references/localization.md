@@ -21,7 +21,8 @@ installed, and verify current tooling with `indie-studio:research`.
   through. Any text still in plain English is hard-coded; anything cut off needs more room.
 
 ## 2. At Kickoff: which languages, in which order
-- Choose from data, not habit: the soft-launch and launch countries in `docs/BUSINESS_CASE.md`, where
+- Choose from data, not habit: the soft-launch plan (its countries, or the first languages of a quiet worldwide
+  release) and the launch countries in `docs/BUSINESS_CASE.md`, where
   comparable games earn (`docs/MARKET.md`), and the cost of each language (word count x rate, or review hours).
 - The usual order: the store page (title, descriptions, and the screenshots' text), then the first session
   (tutorial and main menus), then the rest of the game, then any story.

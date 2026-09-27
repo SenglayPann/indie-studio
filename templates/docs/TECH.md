@@ -19,9 +19,15 @@ One row per system. A new system gets a row before it gets code.
 | Game loop | <...> | <folder or scene> | <events / direct calls> |
 | Save system | Saving, loading, and migrating player data | | |
 | Services | Ads, purchases, analytics, remote settings, consent (section 5) | | |
+| Rules library | The game's rules and math (scoring, dealing, targets, upgrades, economy), with no engine dependency | | Called by the game, the tests, and the balance simulator |
 
 Screen flow: <boot > menu > play > results>. Rules: <for example: gameplay never reads UI objects; UI listens
 to events; every tunable number comes from a data file>.
+
+**Rules library** (games with scoring, random content, or upgrades that stack): the rules live in one library
+with no engine dependency, used by the game, the automated tests, and the headless bots of `docs/BALANCE.md`.
+There is never a second copy of the rules in another language for the simulator. How this engine runs such
+code outside the editor: <verified with `indie-studio:research`, date>.
 
 ## 3. Conventions
 - Asset folders and names: `indie-studio:asset-pipeline`. Code folders and names: <...>
@@ -66,6 +72,7 @@ Game code calls the wrapper, never the SDK, so a provider can change without tou
   - [ ] Purchase handling with the store faked: success, failure, pending, restore, refund
   - [ ] Economy math: rewards, prices, and sinks, read from the real data files
   - [ ] Level data: every level loads and passes its automated checks; solver or bot clears (`docs/LEVELS.md`)
+  - [ ] Balance: on fixed seeds, the bots' numbers stay inside the targets in `docs/BALANCE.md`
 - CI: <service> builds <platforms> and runs the tests on every merge into `develop`. Status: <...>.
   Secrets live in the CI service's secret settings, never in the repository (`indie-studio:toolchain`).
 

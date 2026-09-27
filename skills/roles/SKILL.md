@@ -15,7 +15,7 @@ the hats the current stage needs (at most three in one session; see the stage ta
 | Hat | File | Focus | Main stages |
 |---|---|---|---|
 | Producer | [producer.md](references/roles/producer.md) | Scope, schedule, risk, gates | All (standing supervisor) |
-| Designer | [designer.md](references/roles/designer.md) | Core loop, rules, progression, GDD | Idea to Pre-Alpha |
+| Designer | [designer.md](references/roles/designer.md) | Core loop, rules and numbers, reasons to return, GDD and balance | Idea to Pre-Alpha |
 | Engineer | [engineer.md](references/roles/engineer.md) | Code, architecture, builds | Prototype to Live Ops |
 | Artist and UI/UX | [artist.md](references/roles/artist.md) | Style, sprites or models, animation, UI | Vertical Slice to Beta |
 | Level Designer | [level-designer.md](references/roles/level-designer.md) | Levels, pacing, difficulty curve, `docs/LEVELS.md` | GDD to Live Ops |

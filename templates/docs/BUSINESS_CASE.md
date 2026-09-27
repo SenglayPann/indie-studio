@@ -16,15 +16,20 @@ the source and date beside each, and never borrow a number from another genre.
 - Why this fits the genre: <evidence from docs/MARKET.md>
 
 ## Targets (from research: source and date in every row)
-| Number | What it means | Benchmark for this genre | Our target | Why |
-|---|---|---|---|---|
-| D1 | Share of players who come back the next day | | | |
-| D7 | The same, a week later | | | |
-| D30 | The same, a month later | | | |
-| Session length and sessions per day | How long and how often they play | | | |
-| ARPDAU | Average revenue per daily player | | | |
-| Payer share | Share of players who ever buy anything | | | |
-| Cost per install | Only if you pay for installs | | | |
+| Number | What it means | Benchmark for this genre | Our target | Carried by (first-release feature) | Why |
+|---|---|---|---|---|---|
+| D1 | Share of players who come back the next day | | | | |
+| D7 | The same, a week later | | | | |
+| D30 | The same, a month later | | | | |
+| Session length and sessions per day | How long and how often they play | | | | |
+| ARPDAU | Average revenue per daily player | | | | |
+| Payer share | Share of players who ever buy anything | | | | |
+| Cost per install | Only if you pay for installs | | | | |
+
+"Carried by" names the feature in the first release that produces the number (for D7, for example, a daily
+challenge or progress that carries over between runs). A target whose carrier is not in the first release is a
+wish: bring the carrier in, or lower the target and record why. `indie-studio:scope-guard` checks this column
+before anything leaves the first release. This table is the only copy of the targets; other documents link here.
 
 ## How players will find it
 See `indie-studio:monetization` (growth) for each step.
@@ -55,7 +60,7 @@ either way.
 | Tools and subscriptions | | |
 | Managed services (analytics, cloud save, remote settings) | | |
 | Paid installs, if any | | |
-| Your hours | | |
+| Your hours (the human's column in `docs/FEASIBILITY.md`) | | |
 
 ## Simple arithmetic
 Revenue per day is about (daily players) x (revenue per daily player). Daily players only grow while new
@@ -67,7 +72,13 @@ from the low one.
 - **Break-even:** <what has to be true to cover the costs above>
 
 ## Soft launch plan
-- Countries, and why: <a few cheap markets that resemble the target audience; verify current advice>
+- Shape, and why: <limited countries (with paid installs or a publisher) / quiet worldwide (organic only)>
+  (`indie-studio:monetization`, growth, section 6)
+- Dates: from the Gates table in `STUDIO_STATE.md` (Gold Master to Global Launch), not copied here.
+- Countries or languages, and why: <limited countries: a few cheap markets that resemble the target audience;
+  quiet worldwide: the first store-page languages. Verify current advice>
+- Held back for the global launch (quiet worldwide): <announcement, translated store pages, featuring pitch,
+  community posts>
 - How long, and how many players before the numbers mean anything: <from research>
 - The numbers that decide it: <which rows from the table above>
 - Decision rules, written before any results arrive: scale / keep fixing / stop.
