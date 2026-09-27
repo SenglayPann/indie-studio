@@ -11,16 +11,20 @@ commit to Production. Everything here is about removing uncertainty cheaply. Com
 [phases-and-stages.md](../director/references/phases-and-stages.md).
 
 ## Stage: Prototype (Engineer + Designer; QA and Producer as guests)
-1. **Create the project.** Use the engine-specific skills installed in the user's setup if there are any
-   (for example project creation and command-line skills for Unity). Otherwise follow the engine's official docs
-   (`indie-studio:research`). Pin and record the engine version. Extend `.gitignore` and decide the LFS plan
-   (`indie-studio:git-workflow`). Add project rules to `CLAUDE.md` from
-   `indie-studio:ai-delegation` (`references/project-rules.md`) with the human's approval.
-2. **Baseline check.** Build an empty project onto the real test device. Record the empty build size and start
+1. **Create the empty project on a branch that is kept.** From `develop`, create `chore/<engine>-project` (for
+   example `chore/unity-project`) and make the empty engine project there, never on the spike: a spike is never
+   merged, so a project created on it would be lost and rebuilt later. Use the engine-specific skills installed
+   in the user's setup if there are any (for example project creation and command-line skills for Unity).
+   Otherwise follow the engine's official docs (`indie-studio:research`). Pin and record the engine version.
+   Extend `.gitignore` and decide the LFS plan (`indie-studio:git-workflow`). Add project rules to `CLAUDE.md`
+   from `indie-studio:ai-delegation` (`references/project-rules.md`) with the human's approval.
+2. **Baseline check.** Build the empty project onto the real test device. Record the empty build size and start
    time in `studio/PERF_LOG.md`. This proves the whole path from code to phone works before any game exists.
+   Then, with the human's approval, merge `chore/<engine>-project` into `develop`.
 3. **Time-box.** Use the Prototype time-box in `studio/RISKS.md` (default: about 2-3 weeks or about 30 hours,
    whichever comes first).
-4. **Build on `spike/core-loop`.** Grey boxes, placeholder shapes, only the core loop. No menus beyond a start
+4. **Build on `spike/core-loop`, branched from `develop`** once the empty project is there. Grey boxes,
+   placeholder shapes, only the core loop. No menus beyond a start
    button, no saving, no audio, no ads, no polish, no architecture. Messy code is correct here. Ask the AI to keep
    it working, not tidy.
 5. **Playtest early:** run `indie-studio:playtest-loop` with 3-5 outsiders as soon as the loop is playable.

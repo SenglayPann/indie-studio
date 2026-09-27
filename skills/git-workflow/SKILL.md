@@ -65,6 +65,7 @@ One repository per game, at the game project folder root. Docs first; the engine
 | `feature/<scope>-<desc>` | One task or feature | Short-lived; branch from `develop`; delete after merging. |
 | `content/<desc>` | Art, audio, levels | Same as feature, but separate so big binary changes do not bury code changes. |
 | `fix/<desc>` | Bug fixes | Allowed at every stage. |
+| `chore/<desc>` | Setup and housekeeping the game keeps: the empty engine project, ignore rules, tool and CI config | Branch from `develop`; merge into `develop`. The empty engine project is always made here, never on a spike. |
 | `polish/<desc>` | Juice, tuning, small UX | Allowed after Alpha. |
 | `spike/<idea>` | Throwaway experiments and prototypes | Never merged. When done: carry its notebook to `develop` (section 8), tag `archive/spike-<idea>`, then delete. Messy code is fine here. |
 | `release/<x.y.z>` | Stabilizing Beta to Gold Master | Fixes only. Merge into `main` and `develop`. |
@@ -74,7 +75,8 @@ Names: lowercase, hyphens. Work on one task per branch. Parallel AI agents each 
 (or `git worktree`); never let two agents edit the same working folder at once.
 
 **Phase rules** (read `stage` from STUDIO_STATE.md):
-- Idea to Prototype: `spike/*` is the normal way to work.
+- Prototype: `spike/*` is the normal way to work, branched from `develop` after the empty engine project was
+  merged there from `chore/<engine>-project`.
 - From the Vertical Slice stage: `feature/*`, `content/*`, `fix/*` from `develop`.
 - **From the Alpha gate onward: refuse to create new `feature/*` branches.** Only `fix/*`, `content/*`,
   `polish/*`. This is the feature freeze made mechanical; see `indie-studio:scope-guard`. The pre-commit hook

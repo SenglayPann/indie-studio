@@ -80,7 +80,8 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
     anything is built around it. Make sure STUDIO_STATE.md and `studio/` are current.
 13. **Gate:** run `indie-studio:gate-review` for Conception Exit. On approval: tag `m0-kickoff`; set phase
     Pre-Production, stage Prototype, hats Engineer + Designer; refresh Off-limits and Next actions (first
-    action: create the engine project and a `spike/core-loop` branch); recommend a fresh session.
+    action: create the empty engine project on `chore/<engine>-project` and merge it into `develop`, then
+    branch `spike/core-loop` from `develop`); recommend a fresh session.
 
 ## Rules for this phase
 - The human chooses the idea and the size. You supply options, evidence, prices, and honest numbers.

@@ -82,7 +82,8 @@ If the user asks for something on the list, say it is out of phase, offer to par
 | Live Ops | Large features outside the agreed update plan |
 
 ## Branch rules by stage (see `indie-studio:git-workflow`)
-- Idea to Prototype: `spike/*` allowed and encouraged; messy code is fine there.
+- Prototype: `spike/*` allowed and encouraged; messy code is fine there. The empty engine project comes first,
+  on `chore/<engine>-project` merged into `develop`, and the spike branches from `develop`.
 - From Vertical Slice on: `feature/*`, `content/*`, `fix/*` off `develop`.
 - From the Alpha gate on: no new `feature/*` branches. Only `fix/*`, `content/*`, `polish/*`. The pre-commit
   hook blocks `feature/*` commits while the stage is Alpha, Beta, or Launch.
