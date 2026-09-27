@@ -8,8 +8,9 @@ Two things stay as rules, because they cost nothing and protect everything else:
    not ready to build, at any size.
 2. **Prove it before you widen it, and fit the first release to the hours.** Breadth waits for proof: the core
    loop is proven with outsiders before more is designed around it (the Prototype), and the reasons to return
-   are checked with players who keep the game for days (an Alpha playtest round, a closed test, then the soft
-   launch) before anything bigger is built on top of them (live events, passes, the post-launch roadmap).
+   are checked before anything bigger is built on top of them (live events, passes, the post-launch roadmap):
+   asked about in the Alpha playtest round, then watched in players who keep the game for days (a closed test,
+   then the soft launch).
    Within that, the first release is as big as the human chooses: T1, T1-T2, or T1-T3, with the tiers kept as
    the cutting order either way. Whatever it includes passes the capacity rule: the first release fits when
    the human's corrected hands-on hours for everything it includes, plus the protected polish buffer, fit in

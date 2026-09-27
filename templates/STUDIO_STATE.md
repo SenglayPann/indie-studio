@@ -30,7 +30,7 @@ updated: <YYYY-MM-DD>
 - <things that must not be started yet in this phase>
 
 ## Open questions
-<!-- Most urgent first; the brief prints four lines. Answered questions leave the same day (to DECISIONS or JOURNAL). -->
+<!-- Most urgent first; the brief shows four lines. Answered ones move to DECISIONS or JOURNAL the same day. -->
 - <decisions waiting for the human>
 
 ## Scope tiers

@@ -24,8 +24,9 @@ rules: [communication.md](../director/references/communication.md). Hats and off
 4. **Review (end of the week, Producer):** the human's hours and the AI session hours; estimate versus actual in
    each column; update the measured ratios; re-forecast the remaining gates in the Gates table (the human's
    remaining corrected hours divided by their real weekly hours, plus the waits ahead); top three for next week;
-   risks, time-boxes, and waits that could start now. A forecast past its planned date goes to `indie-studio:scope-guard` now, not
-   at the deadline. Update STUDIO_STATE.md and the journal (`indie-studio:session` wrap).
+   risks, time-boxes, and waits that could start now. A forecast past its planned date goes to
+   `indie-studio:scope-guard` now, not at the deadline. Update STUDIO_STATE.md and the journal
+   (`indie-studio:session` wrap).
 
 A task is done when its acceptance criteria pass, it runs on the device, it is committed and merged, and its
 brief is updated with the actuals.
@@ -47,7 +48,8 @@ Goal: every planned feature exists.
   `docs/ECONOMY.md` (`indie-studio:monetization`), each behind its wrapper from `docs/TECH.md`, and through any
   engine-specific skills installed. Verify SDK steps with `indie-studio:research`. Analytics first: events
   written now are what the soft launch will read. Purchase handling and economy math get automated tests.
-- Every new idea goes through `indie-studio:scope-guard`. T3 waits.
+- Every new idea goes through `indie-studio:scope-guard`. T3 waits until T1 and T2 are done, and is built only
+  if the first release includes it.
 - Start the compliance calendar (`indie-studio:roles`, release engineer) and keep it running.
 - Gate: Alpha. Passing it starts the **feature freeze**.
 

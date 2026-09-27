@@ -75,8 +75,8 @@ If the user asks for something on the list, say it is out of phase, offer to par
 | Prototype | Ad or purchase SDKs; final art (use grey boxes and placeholders); audio; menus beyond a start button; save systems; frameworks or architecture (a throwaway balance simulator is fine); anything store-related |
 | GDD | Building beyond what is needed to answer open design questions; new systems not in the pitch |
 | Vertical Slice | Features outside the slice; mass-producing content before the per-level time is measured |
-| First Playable | Polish; T2 and T3 features; live ad or purchase integration |
-| Pre-Alpha | T3 features; systems not in the scope tiers (go through scope-guard); store submission |
+| First Playable | Polish; T2 and T3 features (they come in Pre-Alpha, in tier order); live ad or purchase integration |
+| Pre-Alpha | Tiers the first release does not include; T3 work while T1 or T2 is unfinished; systems not in the scope tiers (go through scope-guard); store submission |
 | Alpha | New features of any kind (feature freeze). Allowed: content, fixes, polish, tuning |
 | Beta | New content beyond the plan; risky refactors; new SDKs or packages |
 | Soft Launch | Changes no measurement asked for; adding countries, or promoting a quiet worldwide release, before the numbers have been read; spending on marketing beyond the soft-launch budget |

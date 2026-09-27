@@ -39,7 +39,8 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
 3. **If the user already has a build** (a prototype or an earlier project), judge what it is worth before
    planning around it, with "Salvage and pivot" in idea-filters.md: the parts worth keeping, both scores for the
    build as it stands, two or three priced pivots beside the human's own plan, and a time-boxed test with a kill
-   rule for any pivot they choose. Sunk cost is not a reason to continue; the parts that work are.
+   rule for any pivot they choose. Sunk cost is not a reason to continue; the parts that work are. Then go to
+   step 6 with the option the human picks.
 4. **Generate 4-6 concepts** that fit the intake (idea-filters.md). For each: one sentence, the audience (who,
    and what they play now), the core verb, session length, the reason to come back tomorrow, how content is
    produced, the twist that makes it not a clone, the biggest risk, how it would earn, and a rough size in hours

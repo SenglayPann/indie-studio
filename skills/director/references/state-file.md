@@ -34,8 +34,8 @@ The **Gates** table has the columns Gate, Status, Planned, Forecast, Passed, and
 `YYYY-MM-DD`. Planned is set at Kickoff from the capacity math and changes only by a recorded decision.
 Forecast is re-estimated at every weekly review and after the Vertical Slice timing exercise: the human's
 remaining corrected hours divided by their real weekly hours, plus the waits still ahead that cannot run
-alongside the work (`indie-studio:roles`, producer). Passed is the approval date. The hook prints the next gate's planned and
-forecast dates and warns when the forecast is later than the plan.
+alongside the work (`indie-studio:roles`, producer). Passed is the approval date. The hook prints the next
+gate's planned and forecast dates and warns when the forecast is later than the plan.
 
 Keep the whole file under about 80 lines. It is read at every session start; every line costs context.
 Move history to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verified facts to

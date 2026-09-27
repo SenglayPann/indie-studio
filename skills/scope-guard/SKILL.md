@@ -24,7 +24,8 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
      style, or core loop after the Vertical Slice.
 3. **Cost it across the studio** with a quick range in hours, in two columns: the AI's build time and the
    human's hands-on time (deciding, reviewing, testing, store work), plus any new calendar wait
-   (`indie-studio:roles`, producer, "Estimating in three columns"). Do not skip a row: hidden costs are the point.
+   (`indie-studio:roles`, producer, "Estimating in three columns"). Do not skip a row: hidden costs are the
+   point.
 
 | Area | Ask |
 |---|---|
