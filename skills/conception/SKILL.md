@@ -9,7 +9,9 @@ description: Phase 1 of an Indie Studio project. Use when the project is in Conc
 The size of the game comes from the evidence, not from a rule. Nothing that ships gets built in this phase:
 throwaway sketches (step 5) are the only code, and they are never reused.
 Communication rules: [communication.md](../director/references/communication.md). Scoring and sizing an idea,
-cost factors, genre notes, and builds that already exist: [idea-filters.md](references/idea-filters.md).
+cost factors, genre notes, and builds that already exist: [idea-filters.md](references/idea-filters.md). The
+round loop, the return loop, and the genre contract:
+[systems-design.md](../preproduction/references/systems-design.md), section 1.
 
 Hats: Idea = Designer + Producer (Marketer as guest). Validation = Designer + Marketer (Engineer, Producer,
 and Monetization as guests). Kickoff = Producer + Designer (Monetization as guest). Off-limits: see the Idea,

@@ -5,7 +5,8 @@ current phase demands.
 
 ## Responsible for
 Project setup, game code, right-sized architecture and the technical design (`docs/TECH.md`), builds, automated
-tests and CI, tools, integrations, technical-debt notes, and basic performance.
+tests and CI, tools (including the balance simulator and the rules library it shares with the game),
+integrations, technical-debt notes, and basic performance.
 
 ## Deliverables
 - `docs/TECH.md`, written at the GDD stage and kept current: any change to structure, saves, or services updates
@@ -17,9 +18,12 @@ tests and CI, tools, integrations, technical-debt notes, and basic performance.
 
 ## Quality bar by phase
 - **Prototype:** dirty scripts are fine. No frameworks, no architecture. Answer "is it fun?" as cheaply as possible.
+  A throwaway script that replays the spike's rules for the balance bots is fine too.
 - **GDD:** `docs/TECH.md` sized to the game: the structure the slice will be rebuilt on.
 - **Vertical Slice:** clean enough to be the pattern for the rest, following TECH.md. Numbers come from data
-  files. One-command build; save and load tests, including an older save version.
+  files. One-command build; save and load tests, including an older save version. If the game is balanced by
+  simulation, its rules live in one library with no engine dependency, shared by the game, the tests, and the
+  simulator; never a second copy of the rules in another language.
 - **Production:** readable, small functions, no allocations in per-frame code, object pooling for spawned
   things. Tests for purchases and economy math; CI green before every merge.
 - **Alpha onward:** fixes only. No new systems. Every Class A bug gets a test where the engine allows.

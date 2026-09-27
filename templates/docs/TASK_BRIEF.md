@@ -15,6 +15,7 @@
 - [ ] <No crash when Z>
 - [ ] <Runs at the target frame rate on the test device>
 - [ ] Build and automated tests pass (CI green); a new test covers it if it touches saves, purchases, or economy math
+- [ ] If it changes rules or numbers: the balance checks pass and `docs/BALANCE.md` is updated
 
 ## Allowed to touch
 <files, folders, or scenes. Follow `docs/TECH.md`; a change to structure, saves, or services updates it.>

@@ -27,6 +27,7 @@ belongs in a file of its own, so a session only loads what it needs.
 - Unlocks or rewards: <...>
 - Numbers live in: <data file path>
 - Level-by-level detail (building blocks, difficulty bands, the level list): `docs/LEVELS.md`
+- Rules and numbers (targets, power, luck, choices), measured by simulation: `docs/BALANCE.md`
 
 ## 5. Content plan
 Count targets follow the tiers in `STUDIO_STATE.md`.

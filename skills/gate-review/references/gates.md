@@ -4,8 +4,9 @@ Every criterion needs evidence. The numbers below are sensible defaults for a so
 adjust them by recording a decision. Store, platform, price, and benchmark details are volatile: verify them
 with `indie-studio:research` and cite the source and date.
 
-Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `docs/BUSINESS_CASE.md`,
-`docs/GDD.md`, `docs/LEVELS.md` (games built from levels), `docs/ECONOMY.md`, `docs/TECH.md`,
+Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `docs/FEASIBILITY.md`,
+`docs/BUSINESS_CASE.md`, `docs/GDD.md`, `docs/LEVELS.md` (games built from levels), `docs/BALANCE.md` (games
+with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, `docs/TECH.md`,
 `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
@@ -42,7 +43,8 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 ## Gate 1: Vertical Slice (tag `m1-vertical-slice`)
 1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`;
    a clear signal (most understood the goal within a minute and wanted another go); an iterate-or-kill
-   decision recorded.
+   decision recorded. A creator pass came first, and for a game with score targets, random content, or
+   upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
 2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, UI flow. As
    long as it needs to be and no longer; anything unproven is written as an open question, not as a design.
 3. `docs/ECONOMY.md` drafted if the game earns from ads or purchases: what is sold, currencies, ad moments,
@@ -69,6 +71,9 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
     the measured time per level.
 13. If the route to players depends on paid installs or a publisher: the marketability test ran and its numbers
     are in `docs/BUSINESS_CASE.md`, or the reason it was skipped is recorded (`indie-studio:monetization`).
+14. If the game has score targets, random content, or upgrades that stack: `docs/BALANCE.md` holds power against
+    targets, the difficulty plan measured by the reference bot, the skill share, and choice health, from a
+    simulator that runs the game's own rules library; the key balance targets run as automated checks.
 
 ## Gate 2: First Playable (tag `m2-first-playable`)
 1. A player can go from launch through a full core-loop session and back to the menu, using placeholders.

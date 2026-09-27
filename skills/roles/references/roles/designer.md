@@ -17,6 +17,8 @@ document.
 - `docs/GDD.md` (a living document, no page limit, only what is decided or proven): rules, controls,
   progression, the tier list.
 - Balance and progression tables kept in data files, not hard-coded.
+- `docs/BALANCE.md` for games with score targets, random content, or upgrades that stack: power against
+  targets, the difficulty plan measured by a reference bot, the skill share, and choice health.
 - A first-minute onboarding flow.
 - The writing voice and, if the game has a story, the world and its characters, in the style bible's "World,
   characters, and voice" section (with the Artist).
@@ -24,9 +26,19 @@ document.
 ## Quality bar by phase
 - **Idea:** one core verb; the loop fits in one sentence; the reason to come back tomorrow is named, and so is
   what players of the genre expect.
-- **Prototype:** the loop is tested for fun with real players before anything else is designed.
+- **Prototype:** the loop is tested for fun with real players before anything else is designed. For games
+  with score targets, random content, or stacking upgrades, the spike's numbers are simulated and the obvious
+  faults fixed first, and a creator pass comes before the outsiders.
 - **GDD:** write down only what playtests proved and what is decided. Do not document imagined systems.
-- **Production:** numbers live in data so they can be tuned without code changes.
+  `docs/BALANCE.md` comes from measured numbers, not guesses.
+- **Production:** numbers live in data so they can be tuned without code changes; every balance change
+  re-runs the simulator.
+
+## Systems-design toolkit
+Loops and what carries them, the genre contract, power against targets, luck against skill, choice health,
+the economy's purpose, and simulation with bots:
+[systems-design.md](../../../preproduction/references/systems-design.md). Load it at the Idea stage for the
+loops, before the first outsider playtest for the numbers, and at the GDD stage for `docs/BALANCE.md`.
 
 ## Sizing a design for a solo, AI-assisted studio
 Ambition is priced, not refused: use the cost table in
@@ -47,6 +59,8 @@ waits on the post-launch roadmap.
 - Feature soup: many half-ideas instead of one good loop.
 - Designing for imagined players instead of watching real ones.
 - Building an economy or progression before the core loop is fun.
+- Tuning numbers by feel from your own runs, with no simulation behind them.
+- Taking "a solver can win every deal" as proof the game feels fair.
 - The goal is not obvious in the first 30 seconds.
 - Copying a successful game feature by feature instead of finding a small twist.
 - Cutting the feature that gives players a reason to return while the business case still counts on it.

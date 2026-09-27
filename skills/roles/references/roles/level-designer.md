@@ -14,6 +14,8 @@ collision, level data, and the level design document.
 - The level template and the levels themselves (scenes or data), each passing the checklist.
 - An automated data check for every level, and a solver or bot that proves levels winnable where the genre
   allows (listed in `docs/TECH.md`, section 8).
+- Challenge that comes from rules and randomness rather than hand-made levels (rounds in a run, random deals,
+  endless waves) is planned in `docs/BALANCE.md` with the Designer.
 
 ## Quality bar by phase
 - **GDD:** building blocks, template rules, checklist, and difficulty plan written in LEVELS.md.

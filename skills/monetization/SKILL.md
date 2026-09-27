@@ -81,8 +81,9 @@ until the soft launch shows real numbers.
 
 ## 5. The economy (`docs/ECONOMY.md`)
 Write it at the GDD stage from
-`${CLAUDE_PLUGIN_ROOT}/templates/docs/ECONOMY.md`: currencies (one soft currency, at most one hard one),
-every source and every sink, the reward schedule, prices, and the ad moments. Keep all of it in data files so
+`${CLAUDE_PLUGIN_ROOT}/templates/docs/ECONOMY.md`: currencies (one soft currency, at most one hard one) and
+what each is for (progress, cosmetics, convenience, or power), every source and every sink, the reward
+schedule, prices, and the ad moments. Check earn rates in the balance simulator when there is one. Keep all of it in data files so
 tuning needs no new build, and plan to move the important numbers to remote settings before launch.
 
 ## 6. Measuring

@@ -27,3 +27,20 @@
 - Biggest problem: <...>
 - Best moment: <...>
 - One change to try next: <...>
+
+---
+
+## Creator variant (when the creator plays: use this part instead of everything above it)
+- Build / branch: <...>   Device: <model, OS>   Saved as: `studio/playtests/<YYYY-MM-DD>-00.md`
+
+### What was played
+| Run or level | Seed or ID | Result | Choices made | What felt wrong or right |
+|---|---|---|---|---|
+
+### Sorted by the AI (`indie-studio:playtest-loop`, creator pass)
+| Point | Bucket (tuning / design / scope / bug) | Checked how (replay, simulation, numbers) | Action |
+|---|---|---|---|
+
+- Numbers from the simulation, if any: <pass rate per round, skill share, stacking, dead or dominant picks>
+- One change to try first: <...>
+- Best moment: <ask the creator what was fun, not only what was wrong>

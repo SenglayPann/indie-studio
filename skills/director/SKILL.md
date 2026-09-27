@@ -84,9 +84,10 @@ fix; do not change things silently.
 9. `studio/KNOWLEDGE.md` has no entries past their re-check date that are still being relied on.
 10. `studio/ASSET_LEDGER.md` has a row for every shipped AI-generated asset (spot-check a few).
 11. From Kickoff: `docs/FEASIBILITY.md` and `docs/BUSINESS_CASE.md` exist, every target carries a source and a
-    date, and every gate has a Planned date. From the GDD stage: `docs/TECH.md` exists; `docs/ECONOMY.md` if the game earns from ads
-    or purchases; `docs/LEVELS.md` if it is built from levels. From First Playable: CI builds and tests every
-    merge into `develop`, or a recorded reason why not.
+    date, and every gate has a Planned date. From the GDD stage: `docs/TECH.md` exists; `docs/ECONOMY.md` if the
+    game earns from ads or purchases; `docs/LEVELS.md` if it is built from levels; `docs/BALANCE.md` if it has
+    score targets, random content, or upgrades that stack. From First Playable: CI builds and tests every merge
+    into `develop`, or a recorded reason why not.
 12. Skill list: every `indie-studio:` skill in your own list of available skills shows a description. If some
     show only a name, Claude Code ran out of room for skill descriptions (too many skills or plugins), and
     those skills rarely start on their own. Offer two fixes in the game project's `.claude/settings.json`:
