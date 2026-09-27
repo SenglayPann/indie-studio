@@ -3,7 +3,7 @@
 All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses semantic versioning.
 
-## [0.3.0] - unreleased
+## [0.3.0] - 2026-09-27
 
 The design layer, built from the critique of the first real project run with the plugin (a solo developer's
 card roguelite for Android, from Conception to the first phone playtest). Every change below has a scenario in
@@ -54,8 +54,10 @@ card roguelite for Android, from Conception to the first phone playtest). Every 
   branches from it; spikes start at the Prototype.
 - The session wrap removes answered open questions (their answers go to decisions or the journal), so the brief
   stays lean.
+- `plugin.json` names the repository and homepage, so `plugin-feedback` can build a pre-filled issue link, and
+  the README's install line uses the real address.
 
-## [0.2.0] - unreleased
+## [0.2.0] - installed from `develop`, never released
 
 The professional layer: the same studio for a solo developer's first game and their tenth.
 
