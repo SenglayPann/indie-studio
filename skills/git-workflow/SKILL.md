@@ -76,7 +76,8 @@ Names: lowercase, hyphens. Work on one task per branch. Parallel AI agents each 
 
 **Phase rules** (read `stage` from STUDIO_STATE.md):
 - Prototype: `spike/*` is the normal way to work, branched from `develop` after the empty engine project was
-  merged there from `chore/<engine>-project`.
+  merged there from `chore/<engine>-project`. Concept sketches from Idea and Validation are not committed here:
+  they live outside the game's repository.
 - From the Vertical Slice stage: `feature/*`, `content/*`, `fix/*` from `develop`.
 - **From the Alpha gate onward: refuse to create new `feature/*` branches.** Only `fix/*`, `content/*`,
   `polish/*`. This is the feature freeze made mechanical; see `indie-studio:scope-guard`. The pre-commit hook

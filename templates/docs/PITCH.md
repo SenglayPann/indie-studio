@@ -14,8 +14,12 @@
 - Platform and orientation: <Android / iOS / both; portrait or landscape>
 - Session length: <about N minutes>
 
-## The twist
-<What makes this different from the closest comparable games.>
+## The hook
+- The pull: <the feeling that keeps players tapping: mastery, surprise, collecting, completing, showing off>
+- The twist: <what makes this different from the closest comparable games>
+- What players share: <the daily result, seed, score, or moment worth sending to someone>
+- How they find it without paid ads: <words typed in the store, the ten-second video, communities>
+- Scores at the Idea stage: fit <n>/18, hook <n>/8 (`indie-studio:conception`, idea-filters.md)
 
 ## Comparable games and the gap
 | Game | What it does well | What players complain about | How it earns |

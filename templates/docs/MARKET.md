@@ -1,6 +1,6 @@
 # <Working title>: market and money check
 
-Filled during Validation (`indie-studio:conception`, step 5). Every number here is a rough signal, not a
+Filled during Validation (`indie-studio:conception`, step 7). Every number here is a rough signal, not a
 fact: write the source and the date beside it, and log the sources in `studio/KNOWLEDGE.md`.
 
 ## Comparable games

@@ -69,7 +69,7 @@ If the user asks for something on the list, say it is out of phase, offer to par
 
 | Stage | Not yet |
 |---|---|
-| Idea, Validation, Kickoff | Creating an engine project; writing game code; final art or audio; ad or purchase SDKs; store accounts or paperwork (only note lead times); buying tools or assets |
+| Idea, Validation, Kickoff | Creating an engine project; writing game code (throwaway sketches excepted: see below); final art or audio; ad or purchase SDKs; store accounts or paperwork (only note lead times); buying tools or assets |
 | Prototype | Ad or purchase SDKs; final art (use grey boxes and placeholders); audio; menus beyond a start button; save systems; frameworks or architecture; anything store-related |
 | GDD | Building beyond what is needed to answer open design questions; new systems not in the pitch |
 | Vertical Slice | Features outside the slice; mass-producing content before the per-level time is measured |
@@ -80,6 +80,12 @@ If the user asks for something on the list, say it is out of phase, offer to par
 | Soft Launch | Changes no measurement asked for; adding countries before the numbers have been read; spending on marketing beyond the soft-launch budget |
 | Launch | Gameplay changes; unrelated features |
 | Live Ops | Large features outside the agreed update plan |
+
+**Throwaway sketches in Idea and Validation.** Small playable sketches that help choose between concepts (for
+example one HTML page per concept), and a time-boxed test of a pivot on a build the human already has
+(`indie-studio:conception`, "Salvage and pivot"), are allowed. They stay outside the game's repository, are
+labelled throwaway, are time-boxed, and their code is never reused, so they carry none of the risks this list
+guards against. The real prototype still starts after Conception Exit.
 
 ## Branch rules by stage (see `indie-studio:git-workflow`)
 - Prototype: `spike/*` allowed and encouraged; messy code is fine there. The empty engine project comes first,
