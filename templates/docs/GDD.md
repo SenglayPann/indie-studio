@@ -13,6 +13,8 @@ belongs in a file of its own, so a session only loads what it needs.
 
 ## 2. Core loop and controls
 - Loop: <action, goal, feedback, reason to go again>
+- Return loop: <why a player opens the game tomorrow and next week, and the features that carry it
+  (`docs/BUSINESS_CASE.md`, Targets, "Carried by")>
 - Controls: <touch gestures and what each does; one-handed?>
 - Session length: <...>
 
@@ -27,12 +29,16 @@ belongs in a file of its own, so a session only loads what it needs.
 - Level-by-level detail (building blocks, difficulty bands, the level list): `docs/LEVELS.md`
 
 ## 5. Content plan
+Count targets follow the tiers in `STUDIO_STATE.md`.
+
 | Content type | Count target | Made from | Time per unit (measured at the slice) |
 |---|---|---|---|
 | Levels | | template + data | |
 
 ## 6. UI flow
-<Screens and how the player moves between them: start > play > result > menu; settings; pause.>
+<Start from the screen list in `docs/PITCH.md` (Screens) and connect those screens: how the player moves
+between them (start > play > results > menu; settings; pause). A screen that is not on that list goes through
+`indie-studio:scope-guard` first.>
 
 ## 7. Look, sound, and story (summary; details in the style bible)
 <Art style in two sentences; audio mood in one; the setting and main characters in one, if any; the writing

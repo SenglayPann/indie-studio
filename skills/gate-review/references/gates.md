@@ -9,8 +9,9 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
-1. One-sentence game description and the core loop (action, goal, feedback) in `docs/PITCH.md`. The working
-   title was searched in the stores and trademark databases (source and date in `studio/KNOWLEDGE.md`).
+1. One-sentence game description, the core loop (action, goal, feedback), the reason to come back tomorrow,
+   and the hook in `docs/PITCH.md`. The working title was searched in the stores and trademark databases
+   (source and date in `studio/KNOWLEDGE.md`).
 2. Player, platform, and target session length defined; the computer the game is built on and the first store
    recorded.
 3. `docs/MARKET.md`: three to five comparable games with how each earns, what brings players back, and what
@@ -26,12 +27,17 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
    real weekly hours, with every wait that cannot run alongside the work (such as the final store review)
    added as weeks. With no target date, the same sum sets the Planned dates instead.
 6. Engine chosen; reasons and verified versions in `studio/DECISIONS.md` (`indie-studio:engine-selector`).
-7. Scope tiers in STUDIO_STATE.md: T1, T2, and T3 as the build and cutting order, the first-release line the
-   human chose (T1, T1-T2, or T1-T3), and a post-launch roadmap for the bigger ambitions.
+7. Scope tiers in STUDIO_STATE.md, the only copy of the scope: T1, T2, and T3 as the build and cutting order,
+   the first-release line the human chose (T1, T1-T2, or T1-T3), a post-launch roadmap for the bigger
+   ambitions, and the not-doing list. The screen list in `docs/PITCH.md`: every screen with its tier, and any
+   screen left out with its reason.
 8. Top five risks, a pre-mortem, and kill or pivot criteria in `studio/RISKS.md`, including the business-case
    numbers that would change or end the project.
 9. Repository set up with a remote backup and the permission contract agreed (`indie-studio:git-workflow`).
 10. STUDIO_STATE.md filled in and current.
+11. What the first release carries: every retention target in `docs/BUSINESS_CASE.md` names the first-release
+    feature that carries it (or was lowered by a recorded decision), and every line of the genre contract in
+    `docs/MARKET.md` is kept by the first release or has a written reason.
 
 ## Gate 1: Vertical Slice (tag `m1-vertical-slice`)
 1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`;

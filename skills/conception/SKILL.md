@@ -28,8 +28,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
    - Games they love and play, and what they can do themselves (drawing, music, code, none).
    - Games they have shipped before, and how their estimates compared with reality. This sets `experience`
      if init did not, and the estimate correction in step 8.
-   Write the answers into the Schedule section of STUDIO_STATE.md and the constraints part of `docs/PITCH.md`
-   (copy `${CLAUDE_PLUGIN_ROOT}/templates/docs/PITCH.md` first).
+   Write the hours and the target date into the Schedule section of STUDIO_STATE.md (their only home) and the
+   other answers into the constraints part of `docs/PITCH.md` (copy
+   `${CLAUDE_PLUGIN_ROOT}/templates/docs/PITCH.md` first).
 2. **If the user already has an idea,** score it with both tables in idea-filters.md (fit and hook), stress-test
    it, then go to step 6. Their idea stays the baseline: if the scores call for it, put named, priced pivots
    beside it, but never replace it with your own.
@@ -48,8 +49,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
    game's repository (a sibling folder, or a page the human can open), labelled throwaway. Never reuse their
    code: the real prototype starts after Conception Exit (the sketch note in
    [phases-and-stages.md](../director/references/phases-and-stages.md)).
-6. **The human picks** (or combines). Write the one-sentence game and the core loop (action, goal, feedback)
-   in `docs/PITCH.md`, and check it against the two rules in idea-filters.md.
+6. **The human picks** (or combines). Write the one-sentence game, the core loop (action, goal, feedback),
+   the reason to come back tomorrow, and the hook in `docs/PITCH.md`, and check it against the two rules in
+   idea-filters.md.
 
 ## Stage: Validation
 7. **Market and money check** (Marketer hat, Monetization as guest; `indie-studio:research`, sources logged in
@@ -57,8 +59,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
    it: three to five comparable games, what each does well, how each earns (what it sells, where its ads
    appear), what keeps players coming back, what reviewers complain about, and any rough size signals such as
    download or revenue estimates (label them rough, with source and date). End with the gap this game fills in
-   one sentence. A crowded category is not fatal; a category where nothing earns the way you plan to is a
-   warning.
+   one sentence, and the **genre contract**: what players of this genre expect from any game wearing its label
+   (for a roguelite, for example, progress that carries over between runs). A crowded category is not fatal; a
+   category where nothing earns the way you plan to is a warning.
 8. **Feasibility** (Producer with the Engineer as guest): copy
    `${CLAUDE_PLUGIN_ROOT}/templates/docs/FEASIBILITY.md` to `docs/FEASIBILITY.md`. List the skills the game
    needs, which the AI can cover, and which need the human. Estimate every part in three columns, as the
@@ -77,31 +80,37 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
 11. **Business case** (`indie-studio:monetization`): copy
     `${CLAUDE_PLUGIN_ROOT}/templates/docs/BUSINESS_CASE.md` to `docs/BUSINESS_CASE.md` and fill it with the
     human: how the game earns, what it will sell or where ads appear, the numbers to aim for (researched for
-    this genre, with source and date), how players will find the game, which languages the store page and
-    the game need and when (from the market check), what it all costs, a low and a middle case in plain
-    arithmetic, and the soft-launch plan. Be honest that most mobile games earn little:
-    the plan has to survive the low case, or the project has to be worth it for other reasons.
-12. **Scope tiers** in STUDIO_STATE.md. T1 (must have), T2 (should have), and T3 (nice to have) set the
+    this genre, with source and date) and the feature that carries each one, how players will find the game,
+    which languages the store page and the game need and when (from the market check), what it all costs, a
+    low and a middle case in plain arithmetic, and the soft-launch plan. Be honest that most mobile games earn
+    little: the plan has to survive the low case, or the project has to be worth it for other reasons.
+12. **Scope tiers** in STUDIO_STATE.md, the only copy of the scope (the pitch, the GDD, and the business case
+    link to it instead of repeating it). T1 (must have), T2 (should have), and T3 (nice to have) set the
     **build and cutting order**: T1 is built first and cut last; cut T3 first, then T2, then content volume
     inside T1. Add content targets as ranges (for example, 10-15 levels), a **post-launch roadmap** where the
-    bigger ambitions wait, and a short "not doing" list. Then the human chooses what the **first release
-    includes**: T1, T1-T2, or T1-T3 (T1 unless they choose otherwise). How big it should be depends on the
-    route to players (idea-filters.md, rule 2), and the choice must pass the capacity rule: the first release
-    fits when the human's corrected hands-on hours for everything it includes, plus the protected polish
-    buffer, fit in the weeks before the target date at their real weekly hours, with every wait that cannot
-    run alongside the work (such as the final store review) added as weeks. With no target date, the same sum
-    sets the Planned dates instead. **Planned dates:** split the human's corrected hours by stage, divide by
-    their real weekly hours, add the waits that cannot run alongside the work, keep the polish buffer before
-    Gold Master and the soft launch's length before Global Launch, and write a Planned date (and the same
-    Forecast) for every gate in the Gates table.
-13. **Risks:** run a pre-mortem ("imagine this failed; why?") and fill `studio/RISKS.md`: the top five risks,
+    bigger ambitions wait, and a short "not doing" list. List every **screen** in `docs/PITCH.md` (Screens),
+    one line each with its tier, and write down any screen left out (for example leaderboards) with the reason.
+13. **The first release.** The human chooses what it includes: T1, T1-T2, or T1-T3 (T1 unless they choose
+    otherwise). How big it should be depends on the route to players (idea-filters.md, rule 2), and the choice
+    must pass the capacity rule: the first release fits when the human's corrected hands-on hours for
+    everything it includes, plus the protected polish buffer, fit in the weeks before the target date at their
+    real weekly hours, with every wait that cannot run alongside the work (such as the final store review)
+    added as weeks. With no target date, the same sum sets the Planned dates instead. Then **check what it
+    carries**: every retention target in the business case names a first-release feature in its "Carried by"
+    column, and every line of the genre contract in `docs/MARKET.md` is kept or has a written reason. If not,
+    bring the feature in or lower the target, and record the choice in `studio/DECISIONS.md`.
+14. **Planned dates:** split the human's corrected hours by stage, divide by their real weekly hours, add the
+    waits that cannot run alongside the work, keep the polish buffer before Gold Master and the soft launch's
+    length before Global Launch, and write a Planned date (and the same Forecast) for every gate in the Gates
+    table.
+15. **Risks:** run a pre-mortem ("imagine this failed; why?") and fill `studio/RISKS.md`: the top five risks,
     kill or pivot criteria (both kinds: "if 3 of 5 outsiders are not keen to replay the prototype after two
     rounds" and the business-case numbers from the soft launch), and a time-box for the Prototype stage.
-14. **Foundations:** set up version control with `indie-studio:git-workflow` (init mode: repo, remote backup,
+16. **Foundations:** set up version control with `indie-studio:git-workflow` (init mode: repo, remote backup,
     permission contract). Offer the CLAUDE.md block from `indie-studio:director`. Search the stores and the
     trademark databases for the working title (`indie-studio:research`); if it is taken, change it now, before
     anything is built around it. Make sure STUDIO_STATE.md and `studio/` are current.
-15. **Gate:** run `indie-studio:gate-review` for Conception Exit. On approval: tag `m0-kickoff`; set phase
+17. **Gate:** run `indie-studio:gate-review` for Conception Exit. On approval: tag `m0-kickoff`; set phase
     Pre-Production, stage Prototype, hats Engineer + Designer; refresh Off-limits and Next actions (first
     action: create the empty engine project on `chore/<engine>-project` and merge it into `develop`, then
     branch `spike/core-loop` from `develop`); recommend a fresh session.

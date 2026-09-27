@@ -37,10 +37,14 @@ Keep the whole file under about 80 lines. It is read at every session start; eve
 Move history to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verified facts to
 `studio/KNOWLEDGE.md`.
 
+**One home per fact.** The Scope tiers section is the only copy of the scope and the first-release line, the
+Gates table the only copy of the dates, and the Schedule section the only copy of the weekly hours and the
+target date. Other documents link here instead of repeating them, so a change is made once.
+
 ## When to update (state as you go)
 Update the file at each of these moments, not only at the end of a session:
 1. A task finishes or the "Next actions" list changes.
-2. A decision is made (also append to DECISIONS.md).
+2. A decision is made (also append to DECISIONS.md, and set the Status of any decision it replaces).
 3. A gate passes or a stage changes (also update Off-limits, Hats, next_gate, and the Gates table).
 4. The human answers or raises an open question.
 5. Before recommending a compact or a fresh session.

@@ -77,7 +77,8 @@ fix; do not change things silently.
 6. `last_synced_commit` exists in history and is not far behind HEAD, and no other branch or `archive/*` tag
    holds a newer notebook (`indie-studio:git-workflow`, section 8).
 7. Scope: the first-release line is set; tasks in progress belong to a tier the first release includes (or
-   to a recorded trade); no T3 work while T1 is incomplete; parking lot ideas have not leaked into code.
+   to a recorded trade); no T3 work while T1 is incomplete; parking lot ideas have not leaked into code; every
+   retention target in the business case is carried by a feature the first release includes.
 8. Schedule: the protected polish buffer has not shrunk, and the journal records the human's hours and the AI
    session time separately.
 9. `studio/KNOWLEDGE.md` has no entries past their re-check date that are still being relied on.
@@ -92,6 +93,9 @@ fix; do not change things silently.
     give the list more room (`skillListingBudgetFraction`, for example `0.02`; costs a little context every
     turn), or switch off plugins this project does not use yet (`enabledPlugins`). These are Claude Code
     settings and can change: verify the names with `indie-studio:research` before writing them.
+13. Decisions and copies: every decision a newer one replaced says so in its Status line
+    (`studio/DECISIONS.md`), and no document repeats a scope, date, or target that disagrees with its home
+    (the consistency pass in `indie-studio:gate-review`).
 
 ## 5. Hat (switch role)
 Read the matching file in `${CLAUDE_PLUGIN_ROOT}/skills/roles/references/roles/`, update `hats` in the state

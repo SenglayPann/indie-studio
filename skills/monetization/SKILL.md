@@ -19,7 +19,7 @@ mode, measure, and explain.
 | Stage | What to do |
 |---|---|
 | Conception (Validation) | The route to players: organic, paid installs, or a publisher (growth.md, section 1) |
-| Conception (Kickoff) | The model and `docs/BUSINESS_CASE.md`: how it earns, targets from research, how players find it, costs, soft-launch plan |
+| Conception (Kickoff) | The model and `docs/BUSINESS_CASE.md`: how it earns, targets from research (each carried by a named first-release feature), how players find it, costs, soft-launch plan |
 | Prototype (end) | If the plan depends on paid installs or a publisher: the marketability test (growth.md, section 2) |
 | GDD | `docs/ECONOMY.md`: what is sold, currencies and rewards, ad moments, the analytics event list |
 | Vertical Slice | Integrate nothing. Check the loop leaves natural room for the planned ad and offer moments |
@@ -103,7 +103,8 @@ tuning needs no new build, and plan to move the important numbers to remote sett
    the first session: clarity, difficulty, length, or the promise the store page made. In a game built from
    levels, the per-level funnel shows exactly where they leave (`docs/LEVELS.md`).
 3. **Then D7.** It shows whether a habit forms. If D1 is fine and D7 collapses, the game runs out of reasons
-   to return: progression, variety, or goals.
+   to return: progression, variety, or goals. Start with the features named in the business case's "Carried by"
+   column: do players reach them, and use them?
 4. **Then money per player**, and only then prices and placements.
 5. Check crash-free rate and store rating at the same time; a technical problem can look like a design one.
 6. Decide with the rules written in `docs/BUSINESS_CASE.md` before any results arrived: scale, keep fixing, or

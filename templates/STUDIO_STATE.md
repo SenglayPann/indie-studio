@@ -34,7 +34,8 @@ updated: <YYYY-MM-DD>
 
 ## Scope tiers
 <!-- Filled during Conception. The tiers are the build and cutting order: T1 is built first and cut last; cut
-     T3 first, then T2, then content volume inside T1. The first-release line says which tiers ship first. -->
+     T3 first, then T2, then content volume inside T1. The first-release line says which tiers ship first.
+     This is the only copy of the scope: other documents link here instead of repeating it. -->
 - First release includes: T1 (the human's choice: T1, T1-T2, or T1-T3; the capacity rule applies to it)
 - T1 must-have: <not defined yet>
 - T2 should-have: <not defined yet>

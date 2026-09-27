@@ -18,15 +18,20 @@ Checklists for all seven gates are in [gates.md](references/gates.md).
 3. **Check every criterion against evidence**, not impressions. Evidence is a file path, a commit or tag,
    a log or measurement, a playtest note, or the human's explicit confirmation. Mark each criterion:
    met (with the evidence), partly met, or not met.
-4. **Read the risks:** open `studio/RISKS.md`. Has any kill or pivot criterion triggered? Is a time-box overrun?
+4. **Consistency pass.** Every plan fact has one home: the scope, the first-release line, and the dates in
+   STUDIO_STATE.md; the targets in `docs/BUSINESS_CASE.md`; the estimate in `docs/FEASIBILITY.md`; the screens
+   in `docs/PITCH.md`. Look through the other documents for copies of these facts and check that each copy
+   agrees with its home, and that every decision a newer one replaced says so in its Status line
+   (`studio/DECISIONS.md`). A copy that disagrees is a gap: replace it with a link to its home.
+5. **Read the risks:** open `studio/RISKS.md`. Has any kill or pivot criterion triggered? Is a time-box overrun?
    Say so.
-5. **Report** in chat: a compact table (criterion, status, evidence), then a recommendation:
+6. **Report** in chat: a compact table (criterion, status, evidence), then a recommendation:
    - **Ready:** everything met.
    - **Not yet:** list the top three gaps and the smallest work that closes them. Turn them into next actions.
    - **Ready with risk:** name the unmet items and what could go wrong. Passing this way is the human's
      informed choice; record it in DECISIONS.md as an override with the reason.
-6. **Ask for approval** explicitly: "Approve the <gate> gate?" Do not treat silence or enthusiasm as approval.
-7. **If approved:**
+7. **Ask for approval** explicitly: "Approve the <gate> gate?" Do not treat silence or enthusiasm as approval.
+8. **If approved:**
    1. Update STUDIO_STATE.md: Gates table (status passed, the Passed date, evidence; re-forecast the remaining
       gates), `phase`, `stage`, `next_gate`, `hats`, "Off-limits right now", three new "Next actions", `updated`.
       Use [phases-and-stages.md](../director/references/phases-and-stages.md).
@@ -38,10 +43,10 @@ Checklists for all seven gates are in [gates.md](references/gates.md).
    5. If `studio/PLUGIN_FEEDBACK.md` holds entries that were never sent, say how many and offer to send them
       (`indie-studio:plugin-feedback`, send mode). A gate is a good moment to give something back.
    6. Recommend a **fresh session** (`indie-studio:session`, compact mode): a gate is the cleanest reset point.
-8. **If not approved or not ready:** record the missing items as next actions. Do not advance the stage.
+9. **If not approved or not ready:** record the missing items as next actions. Do not advance the stage.
 
 ## Rules
-- A gate cannot be skipped. If the human wants to move on anyway, record it as a risk override (step 5).
+- A gate cannot be skipped. If the human wants to move on anyway, record it as a risk override (step 6).
 - Do not lower a criterion to make it pass. If a criterion is wrong for this game, propose changing the
   checklist in `studio/DECISIONS.md` first, and have the human approve.
 - Passing the Alpha gate starts the feature freeze: state it clearly and update Off-limits and the branch rules.
