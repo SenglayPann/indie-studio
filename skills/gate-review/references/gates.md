@@ -44,7 +44,9 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 ## Gate 1: Vertical Slice (tag `m1-vertical-slice`)
 1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`;
    a clear signal (most understood the goal within a minute and wanted another go); an iterate-or-kill
-   decision recorded. A creator pass came first, and for a game with score targets, random content, or
+   decision recorded. Remote testers count through the remote survey (`indie-studio:playtest-loop`): there,
+   understanding the goal means describing it correctly, and wanting another go means playing again; the report
+   says which kind of evidence each finding rests on. A creator pass came first, and for a game with score targets, random content, or
    upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
 2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, UI flow. As
    long as it needs to be and no longer; anything unproven is written as an open question, not as a design.
@@ -58,8 +60,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    calendar days) per unit of content (per level, per item), with the measured ratio for each. Extrapolated to the first release's content list and compared with
    capacity (the human's hours) in `studio/DECISIONS.md`. Tiers, the first-release line, and
    `docs/FEASIBILITY.md` re-baselined from this.
-7. Runs at the target frame rate on the lowest-end target device; build size and start time measured in
-   `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
+7. Runs at the target frame rate on the lowest-end target device (owned, borrowed, or a named cloud device);
+   build size and start time measured in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
 8. A fresh clone of the repository builds and runs with the one-command build (repo hygiene).
 9. Agent setup in place: `CLAUDE.md` project rules, task briefs in use (`indie-studio:ai-delegation`).
 10. `docs/TECH.md` written, and the slice follows it: architecture map, conventions, save format with a version
@@ -81,7 +83,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 2. No crash on the critical path, on a real device.
 3. The first release's system list, in tier order, with the status of each; the remaining work estimated in
    both kinds of hours.
-4. At least 3 outsiders played this build; notes logged.
+4. At least 3 outsiders played this build, or the previous one when this build only fixes what they reported
+   (the tester budget in `indie-studio:playtest-loop`); notes logged.
 5. A `studio/PERF_LOG.md` entry exists for this milestone.
 6. Every merge into `develop` is built and tested automatically (CI), or a recorded reason why not
    (`indie-studio:toolchain`). `docs/TECH.md` matches the code.
@@ -106,10 +109,11 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 2. Zero known crash or progress-blocking bugs; the rest of the bug list is triaged.
 3. Performance within budget on the lowest-end target device (`studio/PERF_LOG.md`): frame rate, memory,
    build size, start time.
-4. At least 5 outsiders played the Beta build; difficulty and onboarding tuned from their notes. Every level in
+4. At least 5 outsiders played the Beta build (or the previous one, as at First Playable); difficulty and
+   onboarding tuned from their notes. Every level in
    the build is in the level list, passed its checklist, was proven winnable, and sits in its difficulty band.
-5. The real-device smoke test passed on at least two devices, one of them low-end
-   (see `indie-studio:mobile-perf-budget`).
+5. The real-device smoke test passed on at least two devices, one of them low-end (owned, borrowed, or a named
+   cloud device; see `indie-studio:mobile-perf-budget`).
 6. Analytics verified end to end: every event in `docs/ECONOMY.md` arrives in the dashboard with the right
    properties. A sandbox purchase and a rewarded ad completed in test mode.
 7. `studio/ASSET_LEDGER.md` is complete; tool license pages were re-checked (`indie-studio:asset-pipeline`).

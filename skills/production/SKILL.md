@@ -19,8 +19,9 @@ rules: [communication.md](../director/references/communication.md). Hats and off
    (`indie-studio:ai-delegation`). **`develop` must always open and run.** A broken `develop` stops everything
    until it is fixed.
 3. **Device build weekly:** install it on the real test device and play it (a short creator pass,
-   `indie-studio:playtest-loop`). Every two weeks, run an outsider playtest. A change to rules or numbers
-   re-runs the balance simulator and updates `docs/BALANCE.md`.
+   `indie-studio:playtest-loop`). Run an outsider playtest every two weeks when testers are easy to reach;
+   otherwise at the milestones the tester budget sets (`indie-studio:playtest-loop`). A change to rules or
+   numbers re-runs the balance simulator and updates `docs/BALANCE.md`.
 4. **Review (end of the week, Producer):** what finished against the plan; the AI session hours (and the
    human's, if they track them); estimate versus actual; update the measured ratios (without tracked hours, the
    calendar ratio in the producer role file); re-forecast the remaining gates in the Gates table (the human's

@@ -93,7 +93,8 @@ simulation: [systems-design.md](references/systems-design.md).
     `docs/LEVELS.md`, section 7). Re-baseline the tiers, update `docs/FEASIBILITY.md`, and re-forecast every
     remaining gate date in the Gates table. If the math does not fit, shrink the first release now.
 17. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
-    in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
+    in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`). With no low-end phone at hand, use that skill's
+    cloud-device route and name the models tested.
 18. **Fresh-clone test:** clone the repository to a new folder and build it with the one-command build from
     `docs/TECH.md`. If it does not build, fix the repository.
 19. **Playtest:** a creator pass, then 5 outsiders on the slice (`indie-studio:playtest-loop`).

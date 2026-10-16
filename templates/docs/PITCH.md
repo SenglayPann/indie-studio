@@ -35,7 +35,8 @@ The gap: <one sentence>. Sources are logged in `studio/KNOWLEDGE.md`.
 ## Constraints
 - Hours per week and target date: `STUDIO_STATE.md` (Schedule), the only copy
 - AI tool budget per month: <amount>
-- Test devices owned: <models>
+- Test devices owned: <models>   Low-end check: <own or borrowed low-end phone / cloud devices>
+- Testers: <people I can watch in person / online only / a store test track only / nobody yet>
 - Development computer: <Windows / Mac / Linux>   First store: <Android / iOS / both>
 - Skills the human brings: <...>   Skills the AI covers: <...>
 
