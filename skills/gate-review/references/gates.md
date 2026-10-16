@@ -9,6 +9,19 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, `docs/TECH.md`,
 `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
+## Stage closes (no gate, no tag)
+Six stages end without a gate. Close them with `indie-studio:gate-review` (stage close): the checklist is the
+playbook's steps for the ending stage.
+
+| Stage ending | Next stage | Check |
+|---|---|---|
+| Idea | Validation | `indie-studio:conception` steps 1-6: the intake recorded; the concept the human picked, with its one-sentence game, core loop, reason to come back, and hook in `docs/PITCH.md` |
+| Validation | Kickoff | Conception steps 7-10: `docs/MARKET.md` with the genre contract; `docs/FEASIBILITY.md` in three columns; the engine chosen and recorded; the concept adjusted to both |
+| Prototype | GDD | `indie-studio:preproduction` steps 1-8: the engine project on `develop` with a baseline build on the phone; the numbers simulated where the game needs it; a creator pass and an outsider round; the iterate-or-kill decision recorded; the spike closed with its notebook carried over |
+| GDD | Vertical Slice | Preproduction steps 9-12: `docs/GDD.md` with the screen map; `docs/LEVELS.md` or `docs/BALANCE.md` where they apply; `docs/ECONOMY.md` if the game earns from ads or purchases; `docs/TECH.md`; the slice defined with its definition of done |
+| Launch | Live Ops | `indie-studio:launch-live`, Launch steps 1-4: the rollout finished, the store listing per country, the announcement out, the support rhythm agreed |
+| Live Ops | Post-Mortem | The decision to stop growing the game (planned, or the numbers say stop), recorded; no hotfix open |
+
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
 1. One-sentence game description, the core loop (action, goal, feedback), the reason to come back tomorrow,
    and the hook in `docs/PITCH.md`. The working title was searched in the stores and trademark databases
@@ -42,11 +55,14 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
     `docs/MARKET.md` is kept by the first release or has a written reason.
 
 ## Gate 1: Vertical Slice (tag `m1-vertical-slice`)
-1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`;
-   a clear signal (most understood the goal within a minute and wanted another go); an iterate-or-kill
-   decision recorded. A creator pass came first, and for a game with score targets, random content, or
-   upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
-2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, UI flow. As
+1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`; a clear
+   signal (most understood the goal within a minute and wanted another go); an iterate-or-kill decision
+   recorded. Remote testers count through the remote survey (`indie-studio:playtest-loop`): there, understanding
+   the goal means describing it correctly, and wanting another go means playing again; the report says which
+   kind of evidence each finding rests on. A creator pass came first, and for a game with score targets, random
+   content, or upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
+2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, and the UI
+   flow with a screen map for the whole plan and the slice's screen specs. As
    long as it needs to be and no longer; anything unproven is written as an open question, not as a design.
 3. `docs/ECONOMY.md` drafted if the game earns from ads or purchases: what is sold, currencies, ad moments,
    and the analytics event list (`indie-studio:monetization`). Nothing integrated yet.
@@ -54,17 +70,17 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    and feedback ("juice"), running on a real device.
 5. The slice was built the way the rest of the game will be: clean code on a `feature/*` branch (not the
    throwaway spike), a style bible in `docs/STYLE_BIBLE.md`, asset ledger rows filled in.
-6. **Pipeline timing measured:** the AI's hours and the human's hours per unit of content (per level, per
-   item), with the measured ratio for each. Extrapolated to the first release's content list and compared with
-   capacity (the human's hours) in `studio/DECISIONS.md`. Tiers, the first-release line, and
-   `docs/FEASIBILITY.md` re-baselined from this.
-7. Runs at the target frame rate on the lowest-end target device; build size and start time measured in
-   `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
+6. **Pipeline timing measured:** the AI's hours and the human's side (their hours if tracked, otherwise calendar
+   days) per unit of content (per level, per item), with the measured ratio for each. Extrapolated to the first
+   release's content list and compared with capacity (the human's hours) in `studio/DECISIONS.md`. Tiers, the
+   first-release line, and `docs/FEASIBILITY.md` re-baselined from this.
+7. Runs at the target frame rate on the lowest-end target device (owned, borrowed, or a named cloud device);
+   build size and start time measured in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
 8. A fresh clone of the repository builds and runs with the one-command build (repo hygiene).
 9. Agent setup in place: `CLAUDE.md` project rules, task briefs in use (`indie-studio:ai-delegation`).
 10. `docs/TECH.md` written, and the slice follows it: architecture map, conventions, save format with a version
     number, one wrapper per service, text rules, build and release settings, test plan.
-11. Automated tests for saving and loading pass, including loading a save from an older version. All
+11. Automated tests for saving and loading pass, loading one saved file per save version (from version 1). All
     player-facing text in the slice comes from string tables: a pseudo-translation pass shows nothing
     hard-coded and nothing cut off (`indie-studio:asset-pipeline`, localization).
 12. If the game is built from levels: `docs/LEVELS.md` holds the building blocks and where each is taught, the
@@ -81,7 +97,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 2. No crash on the critical path, on a real device.
 3. The first release's system list, in tier order, with the status of each; the remaining work estimated in
    both kinds of hours.
-4. At least 3 outsiders played this build; notes logged.
+4. At least 3 outsiders played this build, or the previous one when this build only fixes what they reported
+   (the tester budget in `indie-studio:playtest-loop`); notes logged.
 5. A `studio/PERF_LOG.md` entry exists for this milestone.
 6. Every merge into `develop` is built and tested automatically (CI), or a recorded reason why not
    (`indie-studio:toolchain`). `docs/TECH.md` matches the code.
@@ -89,11 +106,14 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 ## Gate 3: Alpha, feature complete (tag `m3-alpha`)
 1. Every feature the first release includes (the first-release line in STUDIO_STATE.md, plus agreed trades)
    is implemented and reachable, checked item by item against `docs/GDD.md` and the tiers.
-2. All screens and flows exist: menus, settings, pause, results, first-time experience.
+2. All screens and flows exist: menus, settings, pause, results, first-time experience. Every first-release
+   feature is reachable within two taps of the home screen, each mode explains its own rules, and every screen
+   passed the usability checklist (`indie-studio:roles`, UI/UX designer).
 3. Save and load work; pausing, backgrounding, and resuming the app work.
 4. Analytics, ads, and purchases integrated in **test mode** and reachable, or explicitly deferred with a
-   recorded reason (`indie-studio:monetization`); the consent flow drafted. Each sits behind its wrapper as
-   `docs/TECH.md` describes; no game code calls an SDK directly.
+   recorded reason (`indie-studio:monetization`); no build testers get can show a real ad or sell (the live
+   switch); event names checked against the provider's naming rules; the consent flow drafted. Each sits behind
+   its wrapper as `docs/TECH.md` describes; no game code calls an SDK directly.
 5. No open `feature/*` branches; the parking lot has been reviewed and nothing in it is being built.
 6. Remaining content listed with per-unit timing (for levels, the level list in `docs/LEVELS.md`); capacity
    check recorded.
@@ -102,16 +122,20 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 9. Automated tests cover purchase handling (with the store faked) and the economy math, and pass in CI.
 
 ## Gate 4: Beta, content complete (tag `m4-beta`)
-1. All levels, content, art, UI, and audio are in the build (final or near final).
+1. All levels, content, art, UI, and audio are in the build (final or near final). Where screens have an
+   approved design, the human reviewed each screen's side-by-side picture, and every difference is either
+   deliberate (with a decision) or listed to fix (`indie-studio:asset-pipeline`, `references/design-match.md`).
 2. Zero known crash or progress-blocking bugs; the rest of the bug list is triaged.
 3. Performance within budget on the lowest-end target device (`studio/PERF_LOG.md`): frame rate, memory,
    build size, start time.
-4. At least 5 outsiders played the Beta build; difficulty and onboarding tuned from their notes. Every level in
+4. At least 5 outsiders played the Beta build (or the previous one, as at First Playable); difficulty and
+   onboarding tuned from their notes. Every level in
    the build is in the level list, passed its checklist, was proven winnable, and sits in its difficulty band.
-5. The real-device smoke test passed on at least two devices, one of them low-end
-   (see `indie-studio:mobile-perf-budget`).
+5. The real-device smoke test passed on at least two devices, one of them low-end (owned, borrowed, or a named
+   cloud device; see `indie-studio:mobile-perf-budget`).
 6. Analytics verified end to end: every event in `docs/ECONOMY.md` arrives in the dashboard with the right
-   properties. A sandbox purchase and a rewarded ad completed in test mode.
+   properties. A purchase with the store's test accounts and a rewarded ad on a test device completed; the
+   live switch is off in every build testers have.
 7. `studio/ASSET_LEDGER.md` is complete; tool license pages were re-checked (`indie-studio:asset-pipeline`).
 8. Store paperwork under way: the final name cleared, developer accounts exist, privacy policy drafted, store
    forms started, featuring and pre-launch sign-up options checked with their lead times. If a
@@ -134,8 +158,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 3. Store listing complete in each soft-launch language: title, description, icon, screenshots (with their
    text translated), age rating, privacy policy URL, data and privacy forms, content declarations including any
    AI-content disclosure (all checked against the current store requirements, with source and date).
-4. Ads and purchases: production IDs configured, test purchases verified, consent flows in place where
-   required.
+4. Ads and purchases: the real ad units and products configured, the live switch on in the release build
+   only, a test purchase and a restore verified on each store, consent flows in place where required.
 5. Crash reporting and analytics active, and consistent with the privacy declarations.
 6. Signing keys backed up in two private places (human confirms; never paste them anywhere).
 7. Release plan ready: the soft-launch shape and its countries or languages (or a recorded decision to skip

@@ -1,6 +1,6 @@
 ---
 name: playtest-loop
-description: Run real-player playtests and decide what to do with the results. Use when a prototype, slice, or build is ready for outside eyes, when the creator has played their own build and shares notes or screenshots of what feels off, when the user asks "is it fun", how to test with friends, how to read feedback, or whether to keep, change, or drop a concept; and on a regular rhythm at every stage. Provides the creator pass, the observe-do-not-explain protocol, an observation sheet, how to read signals, and the iterate-or-kill decision.
+description: Run real-player playtests and decide what to do with the results. Use when a prototype, slice, or build is ready for outside eyes, when the creator has played their own build and shares notes or screenshots of what feels off, when the user asks "is it fun", how to test with friends, how to find testers or test without watching them, how to read feedback, or whether to keep, change, or drop a concept; and on a regular rhythm at every stage. Provides the creator pass, the observe-do-not-explain protocol, a remote survey and tester budget, an observation sheet, how to read signals, and the iterate-or-kill decision.
 argument-hint: "[build or stage to test]"
 ---
 
@@ -19,15 +19,19 @@ ends, and bugs cheaply, before an outsider's time is spent on them.
    wrong), and sorts every point into one bucket:
    - **Tuning** (numbers: targets, costs, rates, timings): check the numbers behind it by replaying the seed or
      running the simulator (`indie-studio:preproduction`, `references/systems-design.md`), then fix it before
-     the outsider round, with the human's approval.
-   - **Design** (rules, a missing reason to return, choices that do not feel like choices): test it in the
-     simulator or in the next outsider round. One person's view is not yet a design change.
+     the outsider round, with the human's approval. For each run with a known seed, compare the creator's
+     result with the bots on that exact deal and label it "hard deal", "missed plays", or "fine"
+     (systems-design.md, section 3), so a loss is not blamed on the numbers by mistake.
+   - **Design** (rules, a missing reason to return, choices that do not feel like choices, a screen that
+     confuses): test it in the simulator or in the next outsider round. One person's view is not yet a design
+     change.
    - **Scope** (a new feature, currency, or screen): `indie-studio:scope-guard`.
    - **Bug:** fix it (classes in `indie-studio:roles`, QA).
 3. **Summarize in chat:** the buckets, the numbers behind them, and one recommended change to try first. The
    human decides.
-4. **Record it** as `studio/playtests/YYYY-MM-DD-00.md` (00 marks a creator pass) with the creator variant of
-   the sheet. Then run the outsider round: only strangers show whether the game is understood and wanted.
+4. **Record it** as `studio/playtests/YYYY-MM-DD-00.md` (00 marks a creator pass; a second pass on the same day
+   is `-00b`) with the creator variant of the sheet. Then run the outsider round: only strangers show whether
+   the game is understood and wanted.
 
 ## When and how many
 | Stage | Players | Question the round answers |
@@ -39,12 +43,40 @@ ends, and bugs cheaply, before an outsider's time is spent on them.
 | Beta | 5 or more | Bugs, devices, onboarding, and difficulty |
 | Closed test (where a store requires one, or by choice) | The testers, over one to two weeks | Do people come back on their own? Read it from analytics. The sample is tiny and friendly: nobody returning is a warning sign, and people returning is not proof |
 Three to five players find most big problems; more rounds beat more players per round. A creator pass comes
-before each outsider round.
+before each outsider round. When testers are scarce, the tester budget below sets how often they are asked.
 
 ## Who to recruit
 People who are not developers and ideally not close friends (friends are too kind). Include at least one
 person who does not play many games. Adults, or children with a parent present. Say what you will record
 before you record anything; never collect personal data.
+
+## When you cannot watch people play
+Read the Testers line in `docs/PITCH.md` (Constraints); if it is missing, ask once and add it. Many solo
+developers cannot find people to watch in person, and some only ever reach strangers online.
+- **Remote routes** (verify the current options with `indie-studio:research`): a store's test track or a web
+  build, online playtest communities and genre forums, and paid tester services. A store that requires a
+  closed test before publishing needs real testers too, so plan one group that serves both.
+- **The remote survey** replaces watching. Ask, in one short form: (1) in your own words, what is the goal?
+  (2) how far did you get? (a screenshot of the result) (3) where were you confused or stuck? (4) what was fun,
+  and what was annoying? (5) did you play again after the first time? (6) one thing you would change? Read
+  playing again from analytics as well as from the answer. Its limits: no hesitations, mis-taps, or faces, so
+  "understood the goal" means they described it correctly. Say which kind of evidence a finding rests on.
+- **What can stand in for people, and what cannot.** Bots check balance numbers; a fresh AI session given only
+  the build's text and screenshots can check whether the words and the first screen are clear. Neither can
+  tell whether the game is fun or whether people want another go.
+- **Kill rules that need outsiders** (`studio/RISKS.md`): if they cannot be met as written, rewrite them with
+  the human as a recorded decision that uses the evidence you can get. Never fill one with a simulated number.
+
+## The tester budget
+Testers are a resource that runs out: asked too often, they stop answering or leave a closed test the store
+requires. When they are scarce:
+- Count the asks per tester in the playtest notes; ask each person at most once per stage unless they offer.
+- Bundle questions into milestone builds (for example the end of a tier, or Beta) instead of every build.
+- Between asks, read the passive signals: analytics, crash and performance reports, and any automated device
+  report the store sends.
+- Protect a required closed test: never let the asks make testers drop out before it has run its course.
+- A gate's "played this build" accepts the previous build's testers when the new build only fixes what they
+  reported. The human may choose even fewer asks; record it.
 
 ## Getting the build onto their phone
 Prefer the simplest route that works, which changes with the platforms: verify the current options with

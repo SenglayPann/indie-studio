@@ -48,5 +48,5 @@ The cutting order (T3, then T2, then content volume inside T1) with what each cu
 version of each expensive part (`indie-studio:conception`, idea-filters.md).
 
 ## Measured so far
-| Date | What was measured | AI ratio (actual / estimate) | Human ratio | From |
+| Date | What was measured | AI ratio (actual / estimate) | Human ratio (hours, or calendar if not tracked) | From |
 |---|---|---|---|---|

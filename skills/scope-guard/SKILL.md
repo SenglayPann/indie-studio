@@ -22,6 +22,9 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
    - A change of plan (engine, platform, art style, core loop, what the first release includes, the target
      date): treat as major and run the re-plan checklist below. Recommend against a new engine, platform, art
      style, or core loop after the Vertical Slice.
+   - A small addition inside an existing tier is not a change of plan when it adds no tier and no system
+     outside the tiers, moves no Planned date, and costs less than about a tenth of the work left. Cost it,
+     check capacity, and record a decision (steps 3-7); the next weekly review is its review.
 3. **Cost it across the studio** with a quick range in hours, in two columns: the AI's build time and the
    human's hands-on time (deciding, reviewing, testing, store work), plus any new calendar wait
    (`indie-studio:roles`, producer, "Estimating in three columns"). Do not skip a row: hidden costs are the
@@ -31,14 +34,16 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
 |---|---|
 | Design | Rules, balance, tutorial or explanation needed? |
 | Engineering | New systems, save data changes, edge cases, platform behavior? |
-| Art and UI | New screens, sprites, animations, icons, states? |
+| Art and UI | New screens, sprites, animations, icons, states? Where does its way in live on the screen map (`docs/GDD.md`, section 6)? If the home screen cannot hold it, change the navigation first (`indie-studio:roles`, UI/UX designer) |
 | Audio | New sounds or music? |
 | Levels and content | How many new levels or items does it multiply into? |
 | QA | New paths to test, new devices or states? |
 | Monetization and release | New SDK, store text, screenshots, privacy declarations? Does it change `docs/ECONOMY.md`, the prices, or the analytics events? |
 
-   Calibrate with history: scale each column by its measured ratio (STUDIO_STATE.md, Schedule, from the
-   journal) and say so.
+   Calibrate with history before giving any number: scale each column by its measured ratio (STUDIO_STATE.md,
+   Schedule; or work it out from the journal's estimate-versus-actual lines once there are two) and state the
+   basis ("about 1-2 h of AI time, from T-012 and T-014"). Never fall back on what a human coder would need.
+   The human's reviewing and playing time does not shrink with the AI ratio.
 4. **Compare with capacity:** the human's hours left before the next gate or the target date (their hours per
    week x weeks), minus the protected polish buffer, minus the first release's remaining work (the human's
    column). Show the numbers.

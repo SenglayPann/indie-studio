@@ -3,6 +3,65 @@
 All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses semantic versioning.
 
+## [0.4.0] - 2026-10-16
+
+Built from the second critique of the first real project run with the plugin (the same solo developer's game,
+from the Prototype through the Vertical Slice and First Playable gates into Pre-Alpha), and written for any
+genre. The theme: the plugin assumed resources a solo developer does not have. Every change below has a scenario
+in `docs/TESTING.md` (51-88).
+
+### Added
+- **Decisions a new developer can make:** one decision per message, told from what the human saw in play, each
+  option in plain words with an example, at most two numbers, how sure the AI is, and a plain restatement of a
+  quick approval before it is recorded as the human's.
+- **Delegate mode** (`session`): "decide for me and leave me notes" is recorded, repeated by the brief while it
+  lasts, and limited to small reversible calls (provisional decisions). Prices, spending, accounts, publishing,
+  merges, packages, gates, and plan changes stay proposals. A plain review file (`templates/docs/REVIEW.md`)
+  waits for the human, with stacked branches and their merge order.
+- **Testing without testers in the room** (`playtest-loop`): remote routes, a six-question remote survey that
+  the gates accept with its limits, what bots and a cold-read AI can and cannot stand in for, kill rules
+  rewritten instead of filled with simulated numbers, and a tester budget that protects a store's closed test.
+- **The UI/UX designer hat** (the eleventh): a screen map for every tier and the roadmap before screens
+  multiply, a spec per screen, a usability checklist, a "game UI, not app UI" reference study, and the UI
+  structure kept apart from the look. Roles names the hat each kind of request needs, put on before building.
+- **Matching an approved design** (`asset-pipeline`, `references/design-match.md`): design and build captured
+  alike and measured (boxes, text, ink, word widths, clipping), the usual browser-to-engine traps, the design
+  as the floor with extras kept apart for approval, and review captures that may freeze motion.
+- **Onboarding** for the designer: ask which kind is meant; a guided first game plus hints by default.
+- **Claude as a code maker** for art: a shared style module, renders at the import density, a contrast and
+  colour-blind check of the palette, and a byte-compared golden set. **The AI cannot listen:** a test proves a
+  build can make sound before the human gets it.
+- **Balance checks that find a solved game:** the best fixed pick list against a reader of the run, dead
+  options measured by never taking them, when "no best list" is reachable, the spread between deals and the
+  bound a curve puts on it, growing a pool as a difficulty change, partners measured apart from strength, and a
+  check that fails on day one treated as a finding.
+- **Stage closes** in `gate-review` for the six stages that end without a gate.
+- **Plugin version check:** `plugin_version` in the state file; the brief says when the installed plugin
+  differs, and `director doctor` adds what the newer version needs from `references/upgrades.md`, with the
+  human's approval.
+
+### Changed
+- **Hours are never asked for by default.** The Schedule line "Track my own hours" is `no` unless the human
+  turns it on; pace comes from finish dates (a calendar ratio), and AI-hours figures always use the measured AI
+  ratio with its basis stated.
+- **Test mode for ads and purchases** means who can see a real ad or pay: a live switch in data, off until
+  Beta, and each network's and store's own test method looked up first. Analytics event names are checked
+  against the provider's naming rules.
+- Low-end checks without a low-end phone use named cloud devices; a store's automated report is never planned on.
+- A safety setting that refuses an approved git step hands the human the commands, and the notebook never
+  claims a refused step. Gate merges take the stage's own branch into `develop` first.
+- Git: `docs/<doc>` branches for design documents, the same checks before every merge, `git rm` staged with its
+  own commit, and new worktrees checked for LFS pointer files.
+- Scope-guard: small additions inside a tier skip the re-plan review. Small polish that reuses a task's new
+  code is allowed before Beta with a decision.
+
+### Fixed
+- The brief printed lists by line count and cut items mid-sentence; it now prints whole items (long ones marked
+  "continued") and counts the rest.
+- False "STATE MAY BE STALE" warnings after state updates that did not move `last_synced_commit`, and after
+  commits that touch only `docs/`.
+- The GDD template pointed older projects at a pitch section they did not have; it now falls back.
+
 ## [0.3.0] - 2026-09-27
 
 The design layer, built from the critique of the first real project run with the plugin (a solo developer's

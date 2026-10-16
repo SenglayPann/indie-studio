@@ -10,6 +10,7 @@ engine: undecided
 platform: mobile
 git_permissions: not-set     # set | not-set (see ## Permissions)
 last_synced_commit: none     # last code commit this file accounts for
+plugin_version: <version>    # the indie-studio version this notebook follows (set at init and by doctor)
 updated: <YYYY-MM-DD>
 ---
 
@@ -30,7 +31,7 @@ updated: <YYYY-MM-DD>
 - <things that must not be started yet in this phase>
 
 ## Open questions
-<!-- Most urgent first; the brief shows four lines. Answered ones move to DECISIONS or JOURNAL the same day. -->
+<!-- Most urgent first; the brief shows four items. Answered ones move to DECISIONS or JOURNAL the same day. -->
 - <decisions waiting for the human>
 
 ## Scope tiers
@@ -63,11 +64,14 @@ updated: <YYYY-MM-DD>
 - Ask every time: not set yet
 - Generation credits per session without asking: not set yet
 - Studio-wide knowledge file (~/.indie-studio/KNOWLEDGE.md, outside this project): not asked yet
+- Git steps the AI cannot run here (the human runs them): none known
+- Standing delegation: none
 
 ## Schedule
 - Hours per week (the human's own): <n>
 - Target date: <date or none>
 - Polish buffer (protected): <weeks>
+- Track my own hours: no (no: pace is measured from work done by date; yes: the wrap asks for them)
 - Estimate ratios, actual / estimate: human <1.5-2 until measured>, AI <1 until measured>
 
 ## Last session

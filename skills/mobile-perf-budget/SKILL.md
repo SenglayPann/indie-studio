@@ -13,8 +13,14 @@ runs well on a developer's PC can be unplayable on a cheap phone. Communication 
 ## 1. Pick the test devices (once, at Conception or the Prototype baseline)
 - The **lowest-end device you intend to support**. This is the one that matters.
 - One mid-range device. Note the OS versions.
-- The human must own or borrow at least one low-end phone. An emulator or a high-end phone is not enough.
-Record them in `studio/PERF_LOG.md` and in STUDIO_STATE.md.
+- Best: the human owns or borrows a low-end phone. An emulator, a desktop "simulation", or a high-end phone is
+  not enough: none of them has a slow phone's graphics chip, memory limits, or heat.
+- **No low-end phone at hand:** measure memory, build size, and cold start on the phone the human owns (these
+  carry over roughly), then run the build on real low-end devices in the cloud and name the models. Options
+  change, so verify them with `indie-studio:research` (for Android, for example, a device-testing lab with a
+  free daily quota, and the store's automated pre-launch report). A store's automated report runs only when the
+  store has capacity: never plan a gate on one arriving; when one does arrive, read it the same day.
+Record them in `studio/PERF_LOG.md` and in `docs/PITCH.md` (Constraints).
 
 ## 2. Starting budgets (rules of thumb; measure and set your own; verify store limits)
 | Area | Starting target | Notes |
@@ -46,7 +52,8 @@ font characters needed; strip unused assets. Check the engine's build report for
 (`indie-studio:asset-pipeline`, section 5).
 
 ## 5. Measure (at each milestone, and after any big asset or SDK addition)
-1. Make a development build with profiling enabled and install it on the low-end device.
+1. Make a development build with profiling enabled and install it on the low-end device (or run it on the
+   cloud devices from section 1, with a scripted session, and read their reports).
 2. Play a scripted five-minute session that covers the heaviest scene.
 3. Record: average FPS and worst frames, peak memory, cold start time, build size, and how hot the phone felt.
 4. Use the engine's profiler and memory tools (verify the current tool names for your engine version).

@@ -24,21 +24,32 @@ scope, your schedule, and your project.
   choices that are real choices. Games with score targets, random content, or stacking upgrades are checked
   with bot simulations before strangers play, and the balance targets become automated tests.
 - **Playtests that start with you.** Your own runs come first: the AI sorts what felt off into tuning, design,
-  and scope, checks the numbers, and fixes the tuning before outsiders spend their time on it.
+  and scope, checks the numbers, and fixes the tuning before outsiders spend their time on it. No testers to
+  watch in person? A short remote survey stands in, and a tester budget keeps you from wearing them out.
+- **Decisions you actually understand.** One decision at a time, explained from what you saw in play, with how
+  sure the AI is. A quick yes is repeated back in plain words before it is recorded as yours.
+- **Screens that feel like a game.** A UI/UX designer hat plans the screen map for the whole roadmap before
+  the screens multiply, reviews every screen for usability, and proves the build matches an approved design.
 - **Code that stays healthy.** A technical design every AI session codes by, saves with version numbers and
   migration tests, one wrapper per ads, purchase, or analytics SDK, and automatic builds and tests (CI) on every
   merge. Installed engine plugins, such as the engine vendor's own skills, do the engine-specific work.
 - **Estimates made for an AI studio.** The AI's build time, your own hours, and calendar waits are estimated
-  separately; your hours decide the schedule, and measured ratios replace the guesses after two weeks.
+  separately; your hours decide the schedule, and measured ratios replace the guesses after two weeks. You are
+  never asked to log your hours unless you want to: your pace is read from when things get finished.
+- **Works while you are away.** Say "decide for me and leave me notes": small, reversible calls are made and
+  marked provisional, anything involving money, merges, or publishing waits for you, and a plain review file is
+  ready when you come back.
 - **Dates that warn early.** Every gate gets a planned and a forecast date, and the brief says SLIPPING as soon
   as the forecast passes the plan.
-- **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
-  audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
+- **The right hat for the moment.** Eleven studio roles (producer, designer, engineer, artist, UI/UX designer,
+  level designer, audio, QA, monetization, release engineer, marketer), activated a few at a time by stage, and
+  the one a request needs is put on before building it.
 - **Gates, not guesses.** Seven evidence-based checkpoints from idea to worldwide launch. Only you approve them.
 - **Built to earn.** Ideas scored for their hook as well as their fit, a business case with researched
   targets, an economy and analytics plan, and a soft launch (a few countries with paid installs, or a quiet
   worldwide release for organic-only games) that decides whether to scale up, keep fixing, or stop. Ambitious
-  ideas get priced, not refused.
+  ideas get priced, not refused. Until Beta, a live switch keeps real ads and real charges away from your
+  testers, whatever ad network or store you use.
 - **Built to be found.** The route to players (organic, paid installs, or a publisher), an optional
   marketability test before production commits, translation built in from the Vertical Slice, and the stores'
   yearly requirement deadlines tracked after launch.
@@ -50,6 +61,8 @@ scope, your schedule, and your project.
 - **Looks things up.** Versions, store rules, prices, licenses, and AI-tool terms are verified and logged with a
   date instead of answered from memory. If you allow it, facts verified in one game carry over to the next.
 - **Knows when to reset.** Recommends `/compact` or a fresh session at the right moments, saving state first.
+- **Updates safely.** After a plugin update, the brief says so, and the director adds the notebook lines the
+  new version needs, with your approval.
 - **Built for AI-assisted work.** Task briefs, a delegation matrix, a three-strikes rule, and an asset ledger for
   AI-generated art and audio.
 - **Works with AI asset generators.** It walks you through connecting them (Meshy, Tripo, audio tools, Blender,
@@ -122,7 +135,7 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | Layer | Purpose |
 |---|---|
 | **Skills** | Procedures and judgment, loaded when relevant |
-| **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase, the next gate's planned and forecast dates, and your experience setting (silent in projects without `STUDIO_STATE.md`) |
+| **Session hook** | Deterministic: prints the project brief at session start, including the skill that runs the current phase, the next gate's planned and forecast dates, your experience setting, an active delegation, and a notice after a plugin update (silent in projects without `STUDIO_STATE.md`) |
 | **Project files** | `STUDIO_STATE.md` (now), `studio/` (history, decisions, verified facts, risks, ledgers), `docs/` (pitch, market, feasibility, business case, GDD, level design, balance, economy, technical design, style bible) |
 | **Git hooks** | Copied into your game repository; enforce commit format and block secrets, huge files, direct commits to `main`, and feature work during the freeze |
 
@@ -138,19 +151,19 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | Skill | What it does |
 |---|---|
 | `director` | Entry point: init, status, next, doctor, hats |
-| `session` | Start, wrap, and compact routines |
+| `session` | Start, wrap, compact, and delegate routines |
 | `git-workflow` | Branching, commits, tags, backups, safe undo, permission contract |
 | `research` | Verify-before-you-rely protocol and AI-tool evaluation |
 | `scope-guard` | Costs ideas; park, swap, or reject; Alpha freeze |
-| `gate-review` | Evidence-based gate checklists |
-| `roles` | The ten hats, one reference file each |
+| `gate-review` | Evidence-based gate checklists, and closing the stages that have no gate |
+| `roles` | The eleven hats, one reference file each, and which hat a request needs |
 | `conception`, `preproduction`, `production`, `launch-live` | The four phases |
-| `playtest-loop` | The creator pass, real-player testing, and the iterate-or-kill decision |
+| `playtest-loop` | The creator pass, real-player testing (in person or remote, within a tester budget), and the iterate-or-kill decision |
 | `engine-selector` | Engine choice for an AI-assisted solo developer |
 | `ai-delegation` | Task briefs, three strikes, review before a merge, engine plugins, project rules |
 | `monetization` | Business model, ads, purchases, the economy, analytics, reading a soft launch, and getting players (route, marketability test, paid installs, featuring) |
 | `mobile-perf-budget` | Budgets and real-device measurement |
-| `asset-pipeline` | Style bible, who makes each asset (freelancers included), drift control, 3D for phones, translation, licensing, ledger |
+| `asset-pipeline` | Style bible, who makes each asset (Claude's own code and freelancers included), drift control, matching an approved design, 3D for phones, translation, licensing, ledger |
 | `toolchain` | Connects AI asset generators, engine plugins, and CI; keeps keys out of the chat; proves each tool works |
 | `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
 

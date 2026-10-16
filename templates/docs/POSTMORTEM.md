@@ -15,7 +15,7 @@ Date: <YYYY-MM-DD>   Project length: <weeks>   Total hours: <n>   Outcome: <ship
 - <...>
 
 ## Estimates versus actuals
-| Area | AI hours: estimated | AI hours: actual | Human hours: estimated | Human hours: actual | Why |
+| Area | AI hours: estimated | AI hours: actual | Human: estimated | Human: actual (hours if tracked, else calendar weeks) | Why |
 |---|---|---|---|---|---|
 | Systems and code | | | | | |
 | Content (levels, items) | | | | | |
