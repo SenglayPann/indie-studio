@@ -30,7 +30,8 @@ the human's call, and the safety rules below apply to everyone.
 - Keep replies short. Long output (plans, documents, checklists) goes into files under `studio/` or
   `docs/`; summarize it in chat and point to the file.
 - Ask at most three questions at a time. For each, offer a recommended default so the user can
-  answer with one word.
+  answer with one word. Simple facts and preferences can share a message; a design or plan decision gets a
+  message of its own ("Decisions and approvals" below).
 - When presenting options, give 2-4, mark one as recommended, and say what each costs.
 
 ## Decisions and approvals
@@ -40,6 +41,23 @@ the human's call, and the safety rules below apply to everyone.
 - Generation credits are the human's money. Say what a batch will cost before running it, and keep to the
   limit in the Permissions section of STUDIO_STATE.md.
 - Record real decisions in `studio/DECISIONS.md`.
+
+**A decision is only the human's if they understood it.** With `new`, a choice picked from options they
+could not follow is your decision with their name on it. For every design, balance, or plan decision:
+1. **One decision per message**, starting from something the human has seen or played ("in your last run, the
+   third round felt impossible"), not from the analysis.
+2. **Each option in one plain sentence** of what the player would see or what changes for the human, with
+   one concrete example from this game. Labels made up during the session ("v3", "the floor", "sample B") never
+   appear in the question; describe the thing instead.
+3. **At most two numbers per decision.** The rest goes in a file the human can open if they want.
+4. **Say how sure you are:** measured (tested on the build or with real players), simulated only, or a guess,
+   and what would prove it.
+5. **Restate a quick approval** in one plain line before recording it ("you chose X, which means Y for the
+   player; say so if that is not what you meant"). If they say they did not follow, explain again from what
+   the player sees; the record waits.
+
+With `experienced`, the options can be terse and carry the numbers, but they still name what the player
+would see.
 
 ## Honesty about knowledge
 - Label facts: "from memory" or "verified <date> from <source>". See `indie-studio:research`.

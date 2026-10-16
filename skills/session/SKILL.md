@@ -1,7 +1,7 @@
 ---
 name: session
-description: Manage the start, end, and length of a working session in an Indie Studio project. Use at the start of a session or after /clear or a compaction (orient from STUDIO_STATE.md and reconcile with git), at the end of a session (save state, write the journal, commit, hand off), and whenever the conversation is long or cluttered, a milestone just finished, or a debugging loop just ended (recommend compacting or a fresh session, saving state first).
-argument-hint: "[start | wrap | compact]"
+description: Manage the start, end, and length of a working session in an Indie Studio project. Use at the start of a session or after /clear or a compaction (orient from STUDIO_STATE.md and reconcile with git), at the end of a session (save state, write the journal, commit, hand off), whenever the conversation is long or cluttered, a milestone just finished, or a debugging loop just ended (recommend compacting or a fresh session, saving state first), and when the user hands over decisions for a while ("decide for me and leave me notes").
+argument-hint: "[start | wrap | compact | delegate]"
 ---
 
 # Session protocol
@@ -11,7 +11,8 @@ start informed, end clean, and get reset at the right moments. Communication rul
 [communication.md](../director/references/communication.md).
 
 Pick the mode from `$ARGUMENTS`. With no argument, use `start` at the beginning of a session, `wrap`
-when the user says they are finishing, and `compact` when a trigger below applies.
+when the user says they are finishing, `compact` when a trigger below applies, and `delegate` when the user
+hands over their decisions for a while.
 
 ## Start
 1. Use the session brief injected at startup (phase, stage, hats, git status, next actions, open
@@ -27,10 +28,10 @@ when the user says they are finishing, and `compact` when a trigger below applie
    `indie-studio:git-workflow` before any git action.
 5. Give the recap in at most six lines (one line when `experience` is `experienced`): phase and stage, next
    gate, hats, branch, the next three actions, open questions.
-6. Ask how much time the user has today if it is not obvious, and propose a plan that fits: one to
-   three tasks, each with a rough estimate of the AI's time and the human's time. Name any time-box in
-   `studio/RISKS.md` that is close or overrun. Note the start time (`date`), so the wrap can record the AI
-   session time.
+6. Propose a plan for the session: one to three tasks, each with a rough estimate of the AI's time and the
+   human's time. Fit it to the time the user mentions; ask only if the plan really depends on it. Name any
+   time-box in `studio/RISKS.md` that is close or overrun. Note the start time (`date`), so the wrap can record
+   the AI session time.
 7. Begin with the first task once the user agrees.
 
 ## Wrap
@@ -40,13 +41,13 @@ Run when the user is done for now, or before a long break.
 2. Update `STUDIO_STATE.md`: Now, the next three actions, Last session, `updated`, and `last_synced_commit`
    (the latest code commit, not a state-only commit). Clean up **Open questions**: remove every question
    answered today, moving its answer to `studio/DECISIONS.md` if it is a decision and into the journal entry
-   otherwise, and put the most urgent first (the brief prints only the first four lines).
-3. Append a journal entry to `studio/JOURNAL.md` using the format in that file, with both kinds of hours:
-   the AI session time (from the start time noted at session start, or the session's first and last commits)
-   and the human's own hands-on hours today, including work outside the session (playing builds, store tasks,
-   recruiting testers). Ask for the second; you cannot see it. For finished tasks, give the estimate versus the
-   actual in each column, and note any wait that started or ended. This feeds the weekly review and the
-   post-mortem.
+   otherwise, and put the most urgent first (the brief prints only the first four items).
+3. Append a journal entry to `studio/JOURNAL.md` using the format in that file: what finished today (finish
+   dates are how the human's pace is measured) and the AI session time (from the start time noted at session
+   start, or the session's first and last commits). **Do not ask the human how long they worked** unless the
+   Schedule in STUDIO_STATE.md says `Track my own hours: yes`; then ask once, for today, including work outside
+   the session. For finished tasks, give the AI's estimate versus the actual (and the human's, if tracked), and
+   note any wait that started or ended. This feeds the weekly review and the post-mortem.
 4. Append any decisions made to `studio/DECISIONS.md`, and set the Status of any decision they replace. Move
    any parked ideas to `studio/PARKING_LOT.md`.
 5. **Studio-wide knowledge.** If today's research added `general` entries to `studio/KNOWLEDGE.md`: when the
@@ -62,6 +63,28 @@ Run when the user is done for now, or before a long break.
    next session will be. Recommend a fresh chat next time; the brief will restore the context.
 9. Add one short invitation, once, and drop it if they pass: anything the studio itself got wrong today
    (`indie-studio:plugin-feedback`).
+
+## Delegate (the human hands over decisions for a while)
+For "go with your recommendations and leave me notes", "decide for me overnight", and the like. The human
+still owns the project: you make the small, reversible calls they would otherwise have to wait for, and you
+leave everything else ready for their yes.
+1. **Record it** in STUDIO_STATE.md, Permissions: `Standing delegation: <what it covers> from <date and time>
+   until <when the human is back>; review file studio/REVIEW-<date>.md`. The brief repeats it while it lasts.
+2. **What you may decide:** reversible choices inside the current stage and the agreed tiers, such as design
+   and tuning choices, the order of tasks, wording, and which of two ways to build something. Record each in
+   `studio/DECISIONS.md` with `Status: provisional` and `Decided by: AI under standing delegation`.
+3. **Never under a delegation** (write them as proposals instead): prices and anything that spends money or
+   credits beyond the Permissions limit; accounts, terms, store forms, and publishing; merges into `develop` or
+   `main`, tags, and pushes the permission contract does not pre-approve; new packages or SDKs; deleting work
+   or anything else hard to undo; gates; and any change to the tiers, the first-release line, or a Planned date.
+4. **Branches while merges wait:** stack them (`indie-studio:git-workflow`, section 8) and list the merge order.
+5. **Keep the review file as you go,** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/REVIEW.md`: one plain
+   section per decision (what the player or the human will see, why, how sure, how to undo it), the proposals
+   waiting, the merges waiting in order, and what you could not check yourself (sound, feel, a real phone).
+   Make "Read studio/REVIEW-<date>.md" the first open question.
+6. **When the human is back:** go through the file one decision at a time (communication.md). Confirmed
+   decisions become `active` and `Decided by: human (confirmed a provisional AI decision)`; undo the rejected
+   ones; merge in the listed order with their approval; set the delegation line back to `none`.
 
 ## Compact (context hygiene)
 You cannot see an exact token count. Watch for these triggers and, when one applies, recommend a reset

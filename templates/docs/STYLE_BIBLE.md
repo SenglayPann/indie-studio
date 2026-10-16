@@ -24,7 +24,9 @@ asset, not the bible (unless the human deliberately changes the bible and record
 
 ## UI kit
 - Buttons: <shape, corner radius, states: idle / pressed / disabled>
-- Text: <fonts, minimum size on the smallest phone, contrast rule>
+- Text: <fonts, minimum size on the smallest phone, contrast rule (WCAG ratio, checked for every text and
+  background pair)>
+- Game feel: <the few rules from the reference study: themed frames, reward moments, motion, celebration>
 - Touch target minimum: <size, verify current platform guidance>
 - Accessibility basics: never rely on colour alone (add a shape, icon, or pattern); text follows the phone's
   text-size setting where the engine allows; an option to reduce motion and flashing; separate switches for
@@ -63,8 +65,10 @@ a tool changes its model.
 |---|---|---|---|
 | | | | |
 
-## Prompt recipes
-One per asset class. The **style block** never changes; only the subject slot does. Copy it exactly.
+## Recipes (prompts or code)
+One per asset class. The **style block** never changes; only the subject slot does. Copy it exactly. For assets
+Claude makes as code, the style block is the shared style module and the subject slot is the asset's function
+(`indie-studio:asset-pipeline`, section 3).
 
 ```
 Recipe: R-01 <asset class>
@@ -77,7 +81,8 @@ References: <file paths of the images attached to every generation>
 
 ## Golden set
 Three to five approved assets per class, kept in `Source/golden/` with their recipes. Regenerate one at the
-start of every batch and after any tool update, and compare side by side.
+start of every batch and after any tool update, and compare side by side. Code-made assets re-render the whole
+set after any change to the style module and compare byte for byte.
 
 | Golden asset | Recipe | Made on | Last drift check | Result |
 |---|---|---|---|---|

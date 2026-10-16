@@ -54,7 +54,7 @@ cheap. Skipping this is a decision to record, not a default.
    store listing and price the same as the global plan, so the numbers mean something.
 2. **Check the plumbing before reading anything:** events arriving with the right properties, purchases
    completing, ads filling, crash-free rate, no install or first-run failures on real devices.
-3. **Wait for enough players.** Decide the number before looking (`indie-studio:monetization`, section 7).
+3. **Wait for enough players.** Decide the number before looking (`indie-studio:monetization`, section 8).
    Reading a handful of installs is worse than reading nothing, because it feels like evidence.
 4. **Read in order:** D1, then D7, then revenue per player, always by cohort, and never mixing paid traffic
    with organic. For a game built from levels, read the per-level funnel beside D1: the levels where players

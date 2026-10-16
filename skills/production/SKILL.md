@@ -19,10 +19,14 @@ rules: [communication.md](../director/references/communication.md). Hats and off
    (`indie-studio:ai-delegation`). **`develop` must always open and run.** A broken `develop` stops everything
    until it is fixed.
 3. **Device build weekly:** install it on the real test device and play it (a short creator pass,
-   `indie-studio:playtest-loop`). Every two weeks, run an outsider playtest. A change to rules or numbers
-   re-runs the balance simulator and updates `docs/BALANCE.md`.
-4. **Review (end of the week, Producer):** the human's hours and the AI session hours; estimate versus actual in
-   each column; update the measured ratios; re-forecast the remaining gates in the Gates table (the human's
+   `indie-studio:playtest-loop`). Run an outsider playtest every two weeks when testers are easy to reach;
+   otherwise at the milestones the tester budget sets (`indie-studio:playtest-loop`). A change to rules or
+   numbers re-runs the balance simulator and updates `docs/BALANCE.md`, and so does adding items to a pool the
+   player picks from: a bigger pool changes the whole game's difficulty, so re-measure every difficulty level
+   before sizing the new items (`indie-studio:preproduction`, `references/systems-design.md`, section 4).
+4. **Review (end of the week, Producer):** what finished against the plan; the AI session hours (and the
+   human's, if they track them); estimate versus actual; update the measured ratios (without tracked hours, the
+   calendar ratio in the producer role file); re-forecast the remaining gates in the Gates table (the human's
    remaining corrected hours divided by their real weekly hours, plus the waits ahead); top three for next week;
    risks, time-boxes, and waits that could start now. A forecast past its planned date goes to
    `indie-studio:scope-guard` now, not at the deadline. Update STUDIO_STATE.md and the journal
@@ -41,10 +45,14 @@ Goal: a stranger can play from launch through one full session to the results an
 
 ## Stage: Pre-Alpha (systems)
 Goal: every planned feature exists.
+- **UI structure first** (UI/UX designer hat): check the screen map against every first-release feature and the
+  roadmap, and settle the navigation (the home screen's slots, a mode switcher, tabs) before the screens
+  multiply. Re-check it whenever a tier adds screens. The look pass comes later, from Alpha.
 - Build the rest of the first release in tier order (T1 first, then T2 and T3 if the first-release line
   includes them), starting with what every game needs: settings, pause, tutorial or first-time experience, save
   and load, audio hooks, results and progression, then anything else on the list.
-- Analytics, ads, and purchases: integrate in **test mode** only once the core loop is stable, following
+- Analytics, ads, and purchases: integrate in **test mode** only once the core loop is stable (no build that
+  testers get shows a real ad or sells: the live switch, `indie-studio:monetization`, section 5), following
   `docs/ECONOMY.md` (`indie-studio:monetization`), each behind its wrapper from `docs/TECH.md`, and through any
   engine-specific skills installed. Verify SDK steps with `indie-studio:research`. Analytics first: events
   written now are what the soft launch will read. Purchase handling and economy math get automated tests.
@@ -63,6 +71,9 @@ Goal: all the content, produced fast, using the measured pipeline.
 - Every new level goes into the level list in `docs/LEVELS.md` and through its checklist: the automated data
   check, a proven clear (solver, bot, or recorded human clear), and a difficulty band.
 - Artist and Audio hats bring assets to final quality (`indie-studio:asset-pipeline`); keep the ledger current.
+- The look pass (UI/UX designer and Artist): every screen reviewed against the usability checklist, and screens
+  that have an approved design matched against it before the human looks (`indie-studio:asset-pipeline`,
+  `references/design-match.md`).
 - Translations: as each screen's text becomes final, translate it into the soft-launch languages with a
   glossary and context notes; a native speaker reviews the first session (`indie-studio:asset-pipeline`,
   localization).
@@ -77,8 +88,9 @@ Goal: no new content. Make the game solid.
   the automated migration tests cover every earlier save version.
 - Tune difficulty and onboarding from 5 or more outside playtests, against the difficulty plan in
   `docs/LEVELS.md` or `docs/BALANCE.md`.
-- Monetization: switch to production IDs, verify a sandbox purchase and a rewarded ad, put the consent flow
-  live, and check that every event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
+- Monetization: configure the real ad units and products behind the live switch, verify a purchase with the
+  store's test accounts and a rewarded ad on a test device, put the consent flow live, and check that every
+  event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
 - Store paperwork: if a store requires a closed test before it will allow publishing, it must be running now.
   It costs weeks of calendar time (`indie-studio:research`).
 - Ledger complete; re-check every asset tool's license page.

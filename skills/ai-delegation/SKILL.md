@@ -74,7 +74,8 @@ For every change to be merged, give:
 1. A summary of what changed and why: in plain language for `new` (the human may not read code), short and
    technical for `experienced`, with the diff or the files to read.
 2. The riskiest part, and anything touching save data, purchases, permissions, or networking.
-3. How to test it (exact steps on the device or in the editor), and whether the automated tests passed.
+3. How to test it (exact steps on the device or in the editor), and the result of each merge check (CI, or the
+   one-command build and the automated tests: `indie-studio:git-workflow`, section 3).
 4. The size of the change (files and lines).
 Then ask before merging into `develop`.
 

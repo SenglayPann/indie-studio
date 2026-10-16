@@ -23,9 +23,9 @@ mode, measure, and explain.
 | Prototype (end) | If the plan depends on paid installs or a publisher: the marketability test (growth.md, section 2) |
 | GDD | `docs/ECONOMY.md`: what is sold, currencies and rewards, ad moments, the analytics event list |
 | Vertical Slice | Integrate nothing. Check the loop leaves natural room for the planned ad and offer moments |
-| Pre-Alpha | Integrate analytics, ads, and purchases in **test mode**, through the engine's own skills when they are installed |
+| Pre-Alpha | Integrate analytics, ads, and purchases in **test mode** (section 5: nobody sees a real ad or pays), through the engine's own skills when they are installed; check the analytics provider's naming rules |
 | Alpha | Every ad and purchase path reachable and testable; consent flow drafted |
-| Beta | Production IDs, a real sandbox purchase verified, consent flow live, events checked end to end |
+| Beta | The real ad units and products configured behind the live switch, a purchase verified with the store's test accounts, consent flow live, events checked end to end |
 | Gold Master | Verified on a real device; store data declarations match what the game and its SDKs collect |
 | Soft Launch | Read the numbers, tune, decide (`indie-studio:launch-live`); CPI and payback if you pay for installs |
 | Live Ops | Offers, events (the live calendar in `docs/ECONOMY.md`), and balance changes driven by data, through `indie-studio:scope-guard` |
@@ -63,7 +63,7 @@ until the soft launch shows real numbers.
   mediation service is enough; each extra network adds build size, permissions, and support work. Which ones
   exist and what they pay changes constantly: verify before choosing (`indie-studio:research`), and use the
   engine's own ad skills when they are installed.
-- **Test mode until Beta.** Never ship test IDs, and never tap your own ads: it gets accounts closed.
+- **No real ads before Beta** (section 5), and never tap your own live ads: it gets accounts closed.
 - **Consent:** privacy rules differ by region and store and change often. Verify what applies, and make the
   consent flow part of the build, not an afterthought.
 
@@ -79,7 +79,25 @@ until the soft launch shows real numbers.
 - **Never:** pay-to-win that spoils the loop, hidden prices, pressure aimed at children, or anything the store
   forbids. Use the engine's own purchase skills where they exist.
 
-## 5. The economy (`docs/ECONOMY.md`)
+## 5. Test mode: who can see a real ad or pay real money
+"Test mode" is not one switch, and every ad network and store does it differently. Some networks have test ad
+units; others only serve test ads to devices registered as test devices, and real ads to every other phone.
+Some stores have no purchase test switch at all: a test build sells for real to anyone who is not a registered
+test account. (In October 2026, for example, AdMob had test ad units while LevelPlay had only test devices, and
+Google Play tested purchases only through license testers. Verify; these change.) So plan test mode as **which
+builds may show real ads or sell, to whom, and with which test accounts**:
+- **The live switch.** Every build that reaches testers or players before the planned live date shows no real
+  ads and sells nothing: a `live` setting in data, off until Beta, so a store test build cannot earn or charge
+  by accident. It is switched on for the release build only, with the human's approval.
+- **Look it up before the brief** (`indie-studio:research`, results in `studio/KNOWLEDGE.md`): how this network
+  serves test ads; how this store tests purchases (test accounts, test cards, sandbox users); whether a
+  product can be created before a build that declares purchases has been uploaded; and how a restore works.
+- **The human's steps, in order,** go in the task brief: accounts, test devices or test users to register,
+  which build to upload first, and how to refund or reset a test purchase to try again.
+- **Restore purchases** re-reads the store's purchases on every store. Test it on each one: some SDK "restore"
+  calls do nothing on some stores.
+
+## 6. The economy (`docs/ECONOMY.md`)
 Write it at the GDD stage from
 `${CLAUDE_PLUGIN_ROOT}/templates/docs/ECONOMY.md`: currencies (one soft currency, at most one hard one) and
 what each is for (progress, cosmetics, convenience, or power), every source and every sink, the reward
@@ -87,19 +105,23 @@ schedule, prices, and the ad moments. Check earn rates in the balance simulator 
 it in data files so tuning needs no new build, and plan to move the important numbers to remote settings before
 launch.
 
-## 6. Measuring
+## 7. Measuring
 - **Minimum event list:** first open; tutorial step started and finished; session start and end; level or
   round started, finished, failed (with the level and the attempt number); currency earned and spent (with
   the reason); ad requested, shown, completed, failed (with the placement); purchase started, completed,
   failed (with the product); settings changed.
 - One analytics tool, one naming scheme, written down once in `docs/ECONOMY.md` and never improvised.
+- **Check the names against the provider's rules** as soon as the provider is chosen: reserved words (some
+  providers reject events whose names or parameters use words such as "day" or "value"), allowed characters,
+  length, and letter case. Rename any clash in the events table before the wrapper is built, and keep the
+  provider's reserved list as a test fixture that every event the game sends is checked against.
 - Verify events arrive in the dashboard before Beta ends. An event you never see is worse than no event.
 - What you collect must match the store's data declarations and the privacy policy.
 - Read cohorts, not totals: "players who installed this week", not "everyone since launch". Small numbers lie;
   check how many players you need before a difference means anything (`indie-studio:research`), and change
   one thing at a time.
 
-## 7. Reading a soft launch
+## 8. Reading a soft launch
 1. Check you have enough players for the numbers to mean anything. If not, wait; do not redesign on noise.
 2. **D1 first.** If players do not come back the next day, no ad placement or price fixes it. The problem is
    the first session: clarity, difficulty, length, or the promise the store page made. In a game built from
@@ -112,21 +134,21 @@ launch.
 6. Decide with the rules written in `docs/BUSINESS_CASE.md` before any results arrived: scale, keep fixing, or
    stop. Record the decision in `studio/DECISIONS.md`.
 
-## 8. Getting players
+## 9. Getting players
 Players are the other half of revenue. Choose the route early (organic, paid installs, or a publisher), test
 what an install costs before production commits when the plan depends on paying for players, and buy installs
 only while they pay back, with the stop rule written first. The procedures, publisher terms to check, and
 traps: [growth.md](references/growth.md).
 
-## 9. AI does / Human does
+## 10. AI does / Human does
 - **AI:** designs the model and economy, drafts the event plan, integrates SDKs in test mode, builds the
   analysis, drafts store declarations and the privacy policy for review.
 - **Human:** creates every account (ad network, store, payments, tax), accepts the terms, sets prices,
   approves spending, and submits. The AI never enters payment, bank, or identity details and never accepts
   terms on someone else's behalf.
 
-## 10. Beginner traps
+## 11. Beginner traps
 Ads in the first minute; an interstitial after every single round; three ad networks in one build; no
-consent flow; test IDs shipped to production; a paywall in front of the fun; an economy tuned by feel and
+consent flow; assuming "test mode" is a switch, so testers see real ads or pay real money; a paywall in front of the fun; an economy tuned by feel and
 never measured; reading results from a handful of players; treating downloads as success; building a season
 pass for a game nobody returns to; forgetting that the store takes a cut and that money arrives late.

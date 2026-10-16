@@ -49,7 +49,7 @@ Game code calls the wrapper, never the SDK, so a provider can change without tou
 |---|---|---|---|---|
 | Analytics | | | | Events: `docs/ECONOMY.md` |
 | Ads (mediation) | | | | Placements: `docs/ECONOMY.md` |
-| Purchases | | | | Receipt check, restore, pending and interrupted purchases |
+| Purchases | | | | Receipt check, restore (re-reads the store's purchases), pending and interrupted purchases |
 | Remote settings | | | | Keys: `docs/ECONOMY.md` |
 | Consent | | | | Regions and flows: `docs/ECONOMY.md` |
 | Crash reporting | | | | Symbols uploaded for every release build |

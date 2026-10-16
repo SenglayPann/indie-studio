@@ -19,7 +19,7 @@ document.
 - Balance and progression tables kept in data files, not hard-coded.
 - `docs/BALANCE.md` for games with score targets, random content, or upgrades that stack: power against
   targets, the difficulty plan measured by a reference bot, the skill share, and choice health.
-- A first-minute onboarding flow.
+- The first-session plan (Onboarding, below), with the UI/UX designer.
 - The writing voice and, if the game has a story, the world and its characters, in the style bible's "World,
   characters, and voice" section (with the Artist).
 
@@ -39,6 +39,15 @@ Loops and what carries them, the genre contract, power against targets, luck aga
 the economy's purpose, and simulation with bots:
 [systems-design.md](../../../preproduction/references/systems-design.md). Load it at the Idea stage for the
 loops, before the first outsider playtest for the numbers, and at the GDD stage for `docs/BALANCE.md`.
+
+## Onboarding
+"A tutorial" means different things to different people, so ask which kind the human means before building: a
+**guided first game** (a short, prepared session on the real rules that the player cannot lose), **hints during
+play** (a tip the first time each system appears), or both. A good default for most games: a guided first game
+for the core verb, then hints for the later systems. Teach one idea at a time, by doing rather than reading;
+hold back whatever the first session does not need; let experienced players skip it and anyone replay it from
+the settings. Test it with first-time players: the first session of an outsider round or a closed test, or the
+remote survey's "what is the goal?" (`indie-studio:playtest-loop`).
 
 ## Sizing a design for a solo, AI-assisted studio
 Ambition is priced, not refused: use the cost table in

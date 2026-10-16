@@ -50,12 +50,12 @@ Scope and schedule discipline does not need a hat: `scope-guard` and `gate-revie
 | Validation | Designer, Marketer | Engineer, Producer, Monetization |
 | Kickoff | Producer, Designer | Engineer, Monetization |
 | Prototype | Engineer, Designer | QA (playtests), Producer |
-| GDD | Designer, Producer | Engineer, Level Designer, Monetization |
-| Vertical Slice | Engineer, Artist, Level Designer | Audio, QA, Producer (timing math) |
-| First Playable | Engineer, Level Designer | Designer, Producer |
-| Pre-Alpha | Engineer, Designer, Artist | Audio, Monetization, Producer |
-| Alpha | Level Designer, Artist, Audio | Engineer, QA, Producer, Release Engineer |
-| Beta | QA, Engineer | Artist, Audio, Release Engineer, Marketer, Producer |
+| GDD | Designer, Producer | Engineer, Level Designer, Monetization, UI/UX Designer (screen map) |
+| Vertical Slice | Engineer, Artist, Level Designer | UI/UX Designer, Audio, QA, Producer (timing math) |
+| First Playable | Engineer, Level Designer | Designer, UI/UX Designer, Producer |
+| Pre-Alpha | Engineer, Designer, Artist | UI/UX Designer (UI structure first), Audio, Monetization, Producer |
+| Alpha | Level Designer, Artist, Audio | UI/UX Designer, Engineer, QA, Producer, Release Engineer |
+| Beta | QA, Engineer | UI/UX Designer, Artist, Audio, Release Engineer, Marketer, Producer |
 | Soft Launch | Monetization, Producer, Engineer | QA, Marketer, Release Engineer, Designer |
 | Launch | Release Engineer, Marketer | QA, Monetization, Producer |
 | Live Ops | Engineer, QA | Monetization, Marketer, Producer |
@@ -75,13 +75,17 @@ If the user asks for something on the list, say it is out of phase, offer to par
 | Prototype | Ad or purchase SDKs; final art (use grey boxes and placeholders); audio; menus beyond a start button; save systems; frameworks or architecture (a throwaway balance simulator is fine); anything store-related |
 | GDD | Building beyond what is needed to answer open design questions; new systems not in the pitch |
 | Vertical Slice | Features outside the slice; mass-producing content before the per-level time is measured |
-| First Playable | Polish; T2 and T3 features (they come in Pre-Alpha, in tier order); live ad or purchase integration |
-| Pre-Alpha | Tiers the first release does not include; T3 work while T1 or T2 is unfinished; systems not in the scope tiers (go through scope-guard); store submission |
+| First Playable | Polish as its own work (see below); T2 and T3 features (they come in Pre-Alpha, in tier order); ad or purchase integration (it starts in Pre-Alpha, in test mode) |
+| Pre-Alpha | Tiers the first release does not include; T3 work while T1 or T2 is unfinished; systems not in the scope tiers (go through scope-guard); real ads or real sales in any build testers get (the live switch stays off until Beta); store submission |
 | Alpha | New features of any kind (feature freeze). Allowed: content, fixes, polish, tuning |
 | Beta | New content beyond the plan; risky refactors; new SDKs or packages |
 | Soft Launch | Changes no measurement asked for; adding countries, or promoting a quiet worldwide release, before the numbers have been read; spending on marketing beyond the soft-launch budget |
 | Launch | Gameplay changes; unrelated features |
 | Live Ops | Large features outside the agreed update plan |
+
+**Polish before Beta.** Polish as its own work waits for the protected buffer after Beta. Polish that reuses
+what the current task just built (for example a new effect applied to older parts of the same screen) and costs
+under about an hour is fine with a recorded decision; it never comes out of the buffer.
 
 **Throwaway sketches in Idea and Validation.** Small playable sketches that help choose between concepts (for
 example one HTML page per concept), and a time-boxed test of a pivot on a build the human already has
@@ -92,6 +96,7 @@ guards against. The real prototype still starts after Conception Exit.
 ## Branch rules by stage (see `indie-studio:git-workflow`)
 - Prototype: `spike/*` allowed and encouraged; messy code is fine there. The empty engine project comes first,
   on `chore/<engine>-project` merged into `develop`, and the spike branches from `develop`.
+- GDD: one `docs/<doc>` branch per document off `develop`, merged with approval like any task.
 - From Vertical Slice on: `feature/*`, `content/*`, `fix/*` off `develop`.
 - From the Alpha gate on: no new `feature/*` branches. Only `fix/*`, `content/*`, `polish/*`. The pre-commit
   hook blocks `feature/*` commits while the stage is Alpha, Beta, or Launch.

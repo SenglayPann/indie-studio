@@ -10,14 +10,17 @@ catalog, analytics events, remote configuration, and the privacy and consent flo
 ## Deliverables
 `docs/BUSINESS_CASE.md` (model, targets, discovery, costs, soft-launch plan); `docs/ECONOMY.md` (what is
 sold, currencies, ad moments, analytics events); SDKs integrated in test mode; a consent flow where required;
-a verified sandbox purchase and rewarded ad; the soft-launch reading and its decision.
+a purchase verified with the store's test accounts and a rewarded ad on a test device; the soft-launch reading
+and its decision.
 
 ## Quality bar by phase
 - **Conception:** the model and the business case, with targets researched for this genre (source and date).
 - **GDD:** the economy and the analytics event list, written before anything is integrated.
 - **Prototype and Vertical Slice:** do NOT integrate SDKs. Prove the game is fun first.
-- **Pre-Alpha and Alpha:** integrate analytics, ads, and purchases in test mode once the core loop is stable.
-- **Beta:** production IDs; verified sandbox purchase; consent flow live; every event arriving in the dashboard.
+- **Pre-Alpha and Alpha:** integrate analytics, ads, and purchases in test mode once the core loop is stable:
+  no build that testers get shows a real ad or sells (the live switch, `indie-studio:monetization`, section 5).
+- **Beta:** the real ad units and products behind the live switch; a purchase verified with the store's test
+  accounts; consent flow live; every event arriving in the dashboard.
 - **Soft Launch:** read D1, then D7, then revenue per player, by cohort; one change at a time; then the
   scale-or-stop decision.
 - Every SDK step is versioned or volatile knowledge: verify it (`indie-studio:research`). If engine-specific

@@ -14,6 +14,7 @@
 - [ ] Understood the goal within about a minute without help
 - [ ] Understood the controls without help
 - [ ] Made the same mistake more than once (where: ______)
+- [ ] Looked for something and could not find it, or tapped where nothing happens (where: ______)
 - [ ] Looked bored or checked their phone (when: ______)
 - [ ] Asked for another go without being asked
 - [ ] Said something unexpected (quote: ______)

@@ -11,8 +11,8 @@ and lets you (and future you) see why the project looks the way it does.
 - Alternatives rejected: ...
 - Replaces: <D-0xx, part of D-0xx (which part), or none>
 - Revisit if: <the condition that would make us reconsider>
-- Decided by: human | human on AI recommendation
-- Status: active | amended by D-0xx (<what changed>) | superseded by D-0xx
+- Decided by: human | human on AI recommendation | AI under standing delegation
+- Status: active | provisional (until the human confirms) | amended by D-0xx (<what changed>) | superseded by D-0xx
 
 When a decision replaces or changes an older one, name it under Replaces and update the older entry's Status
 the same day. Nothing else in an old entry is rewritten, so the history stays readable.
