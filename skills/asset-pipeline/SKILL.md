@@ -24,7 +24,7 @@ Connecting the tools: `indie-studio:toolchain`.
 Create it from `${CLAUDE_PLUGIN_ROOT}/templates/docs/STYLE_BIBLE.md` at the start of the Vertical Slice stage
 with the Artist hat. It fixes the palette (hex values), resolution and pixel density, line and shading style,
 perspective, UI rules with the accessibility basics, audio mood and loudness, the world, characters, and
-writing voice (with the Designer), reference images, the 3D technical spec, the **prompt recipes**, the
+writing voice (with the Designer), reference images, the 3D technical spec, the **recipes** (prompts or code), the
 **makers** table, and the **golden set**. Every generated asset, and every line of player-facing text, is
 checked against it.
 
@@ -67,12 +67,24 @@ Re-run this whenever the style bible changes or a tool changes its model.
 8. Add a row to `studio/ASSET_LEDGER.md` and commit on a `content/*` branch with an `art(...)` or `audio(...)`
    message (`indie-studio:git-workflow`).
 
+**When Claude makes the asset as code** (vector shapes, drawing code, shaders, procedural sound), the same
+protocol applies with code in place of prompts:
+- The **style block** is one shared style module (palette, line widths, corner radii, shadows, motion timings);
+  the **subject slot** is one function or file per asset. Nothing outside the module sets a colour or a width.
+- **Render to images** at the pixel density the engine imports (for example two or three times the point size),
+  with a tool already on the machine (a headless browser, the engine itself); ask before adding a package.
+- **Check the palette before the samples:** the contrast of every text and background pair against the WCAG
+  ratios, and a colour-blind simulation of the screens. Fix failing colours in the module.
+- Rendering is deterministic, so the **golden set** is a byte-for-byte compare: re-render it after any change to
+  the style module and look at every file that changed.
+- The recipe in the style bible names the module, the asset's function, and the render settings.
+
 ## 4. Keeping the style from drifting
 Generators change models quietly, and prompts wander between sessions. Three habits prevent a game that looks
 like several games:
 - **The golden set.** Keep 3-5 approved assets per class in `Source/golden/` with their exact recipes,
-  settings, and reference images. At the start of every new batch, and after any tool or model update,
-  regenerate one golden asset and compare it with the original side by side.
+  settings, and reference images. At the start of every new batch, and after any tool, model, or style-module
+  update, regenerate one golden asset and compare it with the original side by side.
 - **Stop when it drifts.** If the golden asset comes back different, do not "fix it later": re-tune the recipe
   (or pin the older model version if the tool allows) before producing anything else. Note it in the ledger.
 - **Normalize after generation.** Remap to the palette, keep one canvas size and pivot per class, apply the
@@ -128,6 +140,12 @@ in tier order. Beta: nothing placeholder remains in the build.
 Sound effects on every meaningful action make a game feel alive. Check audio on the phone speaker and on
 earbuds. Provide volume and mute settings, respect the phone's silent mode, and pause on interruptions. Music
 licences are the ones most likely to exclude games: read section 5 before generating a note of it.
+
+**The AI cannot listen.** Before a build with sound goes to the human, an automated test proves the game can be
+heard: the running scene has what the engine needs to output sound (in Unity, for example, an audio listener;
+a scene built from code can lack one), every clip the game names loads, and the music is assigned and set to
+play. In the hand-over, say plainly that the AI has not heard the sounds, and ask the human to listen for the
+new ones.
 
 ## 9. Text and translations
 Text is an asset too. From the Vertical Slice, every player-facing string lives in a string table (never in

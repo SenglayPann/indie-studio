@@ -8,8 +8,8 @@ UI/UX designer's screen specs ([ui-ux.md](ui-ux.md)), visual effects, and the ra
 
 ## Deliverables
 - `docs/STYLE_BIBLE.md`: palette, resolution and pixel density, line and shading style, naming, do and don't
-  examples, the character sheets (with the Designer), the accessibility basics, the prompt recipes, the makers
-  table, and the golden set.
+  examples, the character sheets (with the Designer), the accessibility basics, the recipes (prompts or code),
+  the makers table, and the golden set.
 - Assets in the agreed formats, named and foldered per `indie-studio:asset-pipeline`.
 - UI art for every state the screen specs list (idle, pressed, disabled, and the rest).
 - A row in `studio/ASSET_LEDGER.md` for every AI-made or third-party asset.
