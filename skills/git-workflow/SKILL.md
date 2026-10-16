@@ -24,7 +24,7 @@ in STUDIO_STATE.md under "Permissions" and set `git_permissions: set`. Propose t
 user change it:
 
 - **Pre-approved (no need to ask):** create branches; commit on `feature/*`, `content/*`, `fix/*`,
-  `polish/*`, `spike/*`, `chore/*`; commit `chore(state)` updates; push those branches to `origin`;
+  `polish/*`, `spike/*`, `chore/*`, `docs/*`; commit `chore(state)` updates; push those branches to `origin`;
   read-only commands (`status`, `log`, `diff`).
 - **Ask every time:** merge into `develop`; anything into `main`; gate tags; deleting a branch that has
   unmerged work; `push --force`; `reset --hard`; `clean`; discarding changes (`restore`, `checkout --`);
@@ -71,18 +71,23 @@ One repository per game, at the game project folder root. Docs first; the engine
 | `content/<desc>` | Art, audio, levels | Same as feature, but separate so big binary changes do not bury code changes. |
 | `fix/<desc>` | Bug fixes | Allowed at every stage. |
 | `chore/<desc>` | Setup and housekeeping the game keeps: the empty engine project, ignore rules, tool and CI config | Branch from `develop`; merge into `develop`. The empty engine project is always made here, never on a spike. |
+| `docs/<desc>` | Design and studio documents (GDD, balance, technical design), with the tool changes they need | Branch from `develop`; merge into `develop` with the human's approval, like any task. |
 | `polish/<desc>` | Juice, tuning, small UX | Allowed after Alpha. |
 | `spike/<idea>` | Throwaway experiments and prototypes | Never merged. When done: carry its notebook to `develop` (section 8), tag `archive/spike-<idea>`, then delete. Messy code is fine here. |
 | `release/<x.y.z>` | Stabilizing Beta to Gold Master | Fixes only. Merge into `main` and `develop`. |
 | `hotfix/<desc>` | Post-launch emergency fix | Branch from `main`; merge into `main` and `develop`. |
 
 Names: lowercase, hyphens. Work on one task per branch. Parallel AI agents each get their own branch
-(or `git worktree`); never let two agents edit the same working folder at once.
+(or `git worktree`); never let two agents edit the same working folder at once. A new worktree may hold
+placeholder pointer files instead of the real art and sound, and has no engine cache yet: check it before the
+engine opens it ([engine-notes.md](references/engine-notes.md), "New worktrees").
 
 **Phase rules** (read `stage` from STUDIO_STATE.md):
 - Prototype: `spike/*` is the normal way to work, branched from `develop` after the empty engine project was
   merged there from `chore/<engine>-project`. Concept sketches from Idea and Validation are not committed here:
   they live outside the game's repository.
+- GDD: one branch per document, `docs/<doc>` from `develop` (with the tool changes that document needs), merged
+  with the human's approval like any task.
 - From the Vertical Slice stage: `feature/*`, `content/*`, `fix/*` from `develop`.
 - **From the Alpha gate onward: refuse to create new `feature/*` branches.** Only `fix/*`, `content/*`,
   `polish/*`. This is the feature freeze made mechanical; see `indie-studio:scope-guard`. The pre-commit hook
@@ -93,8 +98,10 @@ Names: lowercase, hyphens. Work on one task per branch. Parallel AI agents each 
 1. Start a task: `git switch develop`, `git pull` if a remote exists, `git switch -c feature/<scope>-<desc>`.
 2. Before a big or risky agent run: make sure the tree is clean (commit or set aside), so undo is easy.
 3. Work in small steps. Commit each logical change (section 4). Push the branch at least at wrap-up.
-4. Finished: run the engine's compile or test check (the engine skill defines it), then show the user a
-   plain-language summary of the diff and ask before merging into `develop`:
+4. Finished: run the checks the project requires before every merge: CI, or before CI exists the one-command
+   build and the automated tests (the same checks as `indie-studio:production`, weekly cycle), plus any check
+   the state file adds. Name each result in the merge summary. Then show the user a plain-language summary of
+   the diff and ask before merging into `develop`:
    `git switch develop && git merge --no-ff feature/... && git branch -d feature/...`.
    If the remote is GitHub, offering a pull request is a good way for a beginner to review the changes visually.
 5. Gate passed and approved by the human: merge `develop` into `main` with `--no-ff`, create an annotated
@@ -104,7 +111,10 @@ Names: lowercase, hyphens. Work on one task per branch. Parallel AI agents each 
 ## 4. Committing
 1. `git status` and `git diff --stat`. Read what is about to be saved.
 2. Stage deliberately: name the files or use `git add -p`. Avoid `git add -A` unless status shows nothing
-   surprising (no secrets, caches, builds, huge files).
+   surprising (no secrets, caches, builds, huge files). `git rm` stages a deletion at once, so it rides along
+   with whatever is committed next: delete with plain `rm` and stage the deletion with the commit it belongs
+   to, or commit it right away. Before every commit, `git diff --cached --stat` lists only this commit's files
+   (or commit named paths: `git commit -- <paths>`), so every commit builds on its own.
 3. Message: `<type>(<scope>): <summary>` per the convention, blank line, then a body that explains why.
    Add `Task: T-014` in a footer when a task ID exists. Add any attribution line the Claude Code
    environment asks for.

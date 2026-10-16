@@ -34,6 +34,16 @@ depend on them, and record what you verified in `studio/KNOWLEDGE.md`.
 - Store signing material (Android keystore, iOS certificates) outside the repository and back it up in
   two private places. Never paste it into a chat.
 
+## New worktrees
+A worktree is a second working folder of the same repository; some tools make one for every session or agent.
+- **Large files may be placeholders.** Files tracked by Git LFS can arrive as small pointer files (a few lines
+  of text starting with `version https://git-lfs.github.com/spec/v1`) instead of the real images and sounds.
+  Check one asset's size, or run `git lfs ls-files`. If they are pointers, run `git lfs checkout` before the
+  engine opens the folder: it fills them from the local LFS store, usually without a download. An engine that
+  imports pointer files makes broken textures and sounds, and screenshots taken from it are wrong.
+- **No engine cache yet.** The cache (Unity's `Library/`, Godot's `.godot/`) is not shared between worktrees,
+  so the first engine run imports the whole project. Allow for the time, and do not mistake it for a hang.
+
 ## Repository hygiene checklist
 1. `.gitignore` and `.gitattributes` exist and match the engine.
 2. `git status` is clean after a fresh clone and a project open (no generated files appear).

@@ -96,6 +96,7 @@ guards against. The real prototype still starts after Conception Exit.
 ## Branch rules by stage (see `indie-studio:git-workflow`)
 - Prototype: `spike/*` allowed and encouraged; messy code is fine there. The empty engine project comes first,
   on `chore/<engine>-project` merged into `develop`, and the spike branches from `develop`.
+- GDD: one `docs/<doc>` branch per document off `develop`, merged with approval like any task.
 - From Vertical Slice on: `feature/*`, `content/*`, `fix/*` off `develop`.
 - From the Alpha gate on: no new `feature/*` branches. Only `fix/*`, `content/*`, `polish/*`. The pre-commit
   hook blocks `feature/*` commits while the stage is Alpha, Beta, or Launch.

@@ -22,6 +22,9 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
    - A change of plan (engine, platform, art style, core loop, what the first release includes, the target
      date): treat as major and run the re-plan checklist below. Recommend against a new engine, platform, art
      style, or core loop after the Vertical Slice.
+   - A small addition inside an existing tier is not a change of plan when it adds no tier and no system
+     outside the tiers, moves no Planned date, and costs less than about a tenth of the work left. Cost it,
+     check capacity, and record a decision (steps 3-7); the next weekly review is its review.
 3. **Cost it across the studio** with a quick range in hours, in two columns: the AI's build time and the
    human's hands-on time (deciding, reviewing, testing, store work), plus any new calendar wait
    (`indie-studio:roles`, producer, "Estimating in three columns"). Do not skip a row: hidden costs are the

@@ -9,6 +9,19 @@ Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `
 with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, `docs/TECH.md`,
 `docs/STYLE_BIBLE.md`, and the `studio/` logs. Templates are in `${CLAUDE_PLUGIN_ROOT}/templates/docs/`.
 
+## Stage closes (no gate, no tag)
+Six stages end without a gate. Close them with `indie-studio:gate-review` (stage close): the checklist is the
+playbook's steps for the ending stage.
+
+| Stage ending | Next stage | Check |
+|---|---|---|
+| Idea | Validation | `indie-studio:conception` steps 1-6: the intake recorded; the concept the human picked, with its one-sentence game, core loop, reason to come back, and hook in `docs/PITCH.md` |
+| Validation | Kickoff | Conception steps 7-10: `docs/MARKET.md` with the genre contract; `docs/FEASIBILITY.md` in three columns; the engine chosen and recorded; the concept adjusted to both |
+| Prototype | GDD | `indie-studio:preproduction` steps 1-8: the engine project on `develop` with a baseline build on the phone; the numbers simulated where the game needs it; a creator pass and an outsider round; the iterate-or-kill decision recorded; the spike closed with its notebook carried over |
+| GDD | Vertical Slice | Preproduction steps 9-12: `docs/GDD.md` with the screen map; `docs/LEVELS.md` or `docs/BALANCE.md` where they apply; `docs/ECONOMY.md` if the game earns from ads or purchases; `docs/TECH.md`; the slice defined with its definition of done |
+| Launch | Live Ops | `indie-studio:launch-live`, Launch steps 1-4: the rollout finished, the store listing per country, the announcement out, the support rhythm agreed |
+| Live Ops | Post-Mortem | The decision to stop growing the game (planned, or the numbers say stop), recorded; no hotfix open |
+
 ## Gate 0: Conception Exit (tag `m0-kickoff`)
 1. One-sentence game description, the core loop (action, goal, feedback), the reason to come back tomorrow,
    and the hook in `docs/PITCH.md`. The working title was searched in the stores and trademark databases
