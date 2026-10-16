@@ -33,8 +33,14 @@ loses meaning within days.
 
 First session rule: <what the player must reach before any ad appears>.
 
+## Test mode (`indie-studio:monetization`, section 5)
+- Live switch: <data key>, off in every build before Beta; on in the release build only
+- Ad network's test method: <test ad units / registered test devices>   Verified: <date, source>
+- Store's purchase testing: <test accounts, test cards, sandbox users; the order of the human's steps>
+
 ## Analytics events
-One naming scheme, decided here. Same names in code, dashboards, and reports.
+One naming scheme, decided here. Same names in code, dashboards, and reports. Checked against the provider's
+naming rules: <provider, date>; its reserved list is a test fixture at <path>.
 
 | Event name | When it fires | Properties |
 |---|---|---|

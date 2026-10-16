@@ -95,7 +95,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 2. All screens and flows exist: menus, settings, pause, results, first-time experience.
 3. Save and load work; pausing, backgrounding, and resuming the app work.
 4. Analytics, ads, and purchases integrated in **test mode** and reachable, or explicitly deferred with a
-   recorded reason (`indie-studio:monetization`); the consent flow drafted. Each sits behind its wrapper as
+   recorded reason (`indie-studio:monetization`); no build testers get can show a real ad or sell (the live
+   switch); event names checked against the provider's naming rules; the consent flow drafted. Each sits behind its wrapper as
    `docs/TECH.md` describes; no game code calls an SDK directly.
 5. No open `feature/*` branches; the parking lot has been reviewed and nothing in it is being built.
 6. Remaining content listed with per-unit timing (for levels, the level list in `docs/LEVELS.md`); capacity
@@ -115,7 +116,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 5. The real-device smoke test passed on at least two devices, one of them low-end (owned, borrowed, or a named
    cloud device; see `indie-studio:mobile-perf-budget`).
 6. Analytics verified end to end: every event in `docs/ECONOMY.md` arrives in the dashboard with the right
-   properties. A sandbox purchase and a rewarded ad completed in test mode.
+   properties. A purchase with the store's test accounts and a rewarded ad on a test device completed; the
+   live switch is off in every build testers have.
 7. `studio/ASSET_LEDGER.md` is complete; tool license pages were re-checked (`indie-studio:asset-pipeline`).
 8. Store paperwork under way: the final name cleared, developer accounts exist, privacy policy drafted, store
    forms started, featuring and pre-launch sign-up options checked with their lead times. If a
@@ -138,8 +140,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 3. Store listing complete in each soft-launch language: title, description, icon, screenshots (with their
    text translated), age rating, privacy policy URL, data and privacy forms, content declarations including any
    AI-content disclosure (all checked against the current store requirements, with source and date).
-4. Ads and purchases: production IDs configured, test purchases verified, consent flows in place where
-   required.
+4. Ads and purchases: the real ad units and products configured, the live switch on in the release build
+   only, a test purchase and a restore verified on each store, consent flows in place where required.
 5. Crash reporting and analytics active, and consistent with the privacy declarations.
 6. Signing keys backed up in two private places (human confirms; never paste them anywhere).
 7. Release plan ready: the soft-launch shape and its countries or languages (or a recorded decision to skip

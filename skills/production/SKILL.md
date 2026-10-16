@@ -46,7 +46,8 @@ Goal: every planned feature exists.
 - Build the rest of the first release in tier order (T1 first, then T2 and T3 if the first-release line
   includes them), starting with what every game needs: settings, pause, tutorial or first-time experience, save
   and load, audio hooks, results and progression, then anything else on the list.
-- Analytics, ads, and purchases: integrate in **test mode** only once the core loop is stable, following
+- Analytics, ads, and purchases: integrate in **test mode** only once the core loop is stable (no build that
+  testers get shows a real ad or sells: the live switch, `indie-studio:monetization`, section 5), following
   `docs/ECONOMY.md` (`indie-studio:monetization`), each behind its wrapper from `docs/TECH.md`, and through any
   engine-specific skills installed. Verify SDK steps with `indie-studio:research`. Analytics first: events
   written now are what the soft launch will read. Purchase handling and economy math get automated tests.
@@ -79,8 +80,8 @@ Goal: no new content. Make the game solid.
   the automated migration tests cover every earlier save version.
 - Tune difficulty and onboarding from 5 or more outside playtests, against the difficulty plan in
   `docs/LEVELS.md` or `docs/BALANCE.md`.
-- Monetization: switch to production IDs, verify a sandbox purchase and a rewarded ad, put the consent flow
-  live, and check that every event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
+- Monetization: configure the real ad units and products behind the live switch, verify a purchase with the
+  store's test accounts and a rewarded ad on a test device, put the consent flow live, and check that every event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
 - Store paperwork: if a store requires a closed test before it will allow publishing, it must be running now.
   It costs weeks of calendar time (`indie-studio:research`).
 - Ledger complete; re-check every asset tool's license page.
