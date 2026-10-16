@@ -10,7 +10,8 @@ catalog, analytics events, remote configuration, and the privacy and consent flo
 ## Deliverables
 `docs/BUSINESS_CASE.md` (model, targets, discovery, costs, soft-launch plan); `docs/ECONOMY.md` (what is
 sold, currencies, ad moments, analytics events); SDKs integrated in test mode; a consent flow where required;
-a verified sandbox purchase and rewarded ad; the soft-launch reading and its decision.
+a purchase verified with the store's test accounts and a rewarded ad on a test device; the soft-launch reading
+and its decision.
 
 ## Quality bar by phase
 - **Conception:** the model and the business case, with targets researched for this genre (source and date).

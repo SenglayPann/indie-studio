@@ -32,8 +32,9 @@ scope, your schedule, and your project.
   separately; your hours decide the schedule, and measured ratios replace the guesses after two weeks.
 - **Dates that warn early.** Every gate gets a planned and a forecast date, and the brief says SLIPPING as soon
   as the forecast passes the plan.
-- **The right hat for the moment.** Ten studio roles (producer, designer, engineer, artist, level designer,
-  audio, QA, monetization, release engineer, marketer), activated a few at a time by stage.
+- **The right hat for the moment.** Eleven studio roles (producer, designer, engineer, artist, UI/UX designer,
+  level designer, audio, QA, monetization, release engineer, marketer), activated a few at a time by stage, and
+  the one a request needs is put on before building it.
 - **Gates, not guesses.** Seven evidence-based checkpoints from idea to worldwide launch. Only you approve them.
 - **Built to earn.** Ideas scored for their hook as well as their fit, a business case with researched
   targets, an economy and analytics plan, and a soft launch (a few countries with paid installs, or a quiet
@@ -143,7 +144,7 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | `research` | Verify-before-you-rely protocol and AI-tool evaluation |
 | `scope-guard` | Costs ideas; park, swap, or reject; Alpha freeze |
 | `gate-review` | Evidence-based gate checklists |
-| `roles` | The ten hats, one reference file each |
+| `roles` | The eleven hats, one reference file each, and which hat a request needs |
 | `conception`, `preproduction`, `production`, `launch-live` | The four phases |
 | `playtest-loop` | The creator pass, real-player testing, and the iterate-or-kill decision |
 | `engine-selector` | Engine choice for an AI-assisted solo developer |

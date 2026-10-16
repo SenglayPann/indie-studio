@@ -20,8 +20,9 @@ ends, and bugs cheaply, before an outsider's time is spent on them.
    - **Tuning** (numbers: targets, costs, rates, timings): check the numbers behind it by replaying the seed or
      running the simulator (`indie-studio:preproduction`, `references/systems-design.md`), then fix it before
      the outsider round, with the human's approval.
-   - **Design** (rules, a missing reason to return, choices that do not feel like choices): test it in the
-     simulator or in the next outsider round. One person's view is not yet a design change.
+   - **Design** (rules, a missing reason to return, choices that do not feel like choices, a screen that
+     confuses): test it in the simulator or in the next outsider round. One person's view is not yet a design
+     change.
    - **Scope** (a new feature, currency, or screen): `indie-studio:scope-guard`.
    - **Bug:** fix it (classes in `indie-studio:roles`, QA).
 3. **Summarize in chat:** the buckets, the numbers behind them, and one recommended change to try first. The

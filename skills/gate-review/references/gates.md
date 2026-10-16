@@ -48,7 +48,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    understanding the goal means describing it correctly, and wanting another go means playing again; the report
    says which kind of evidence each finding rests on. A creator pass came first, and for a game with score targets, random content, or
    upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
-2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, UI flow. As
+2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, and the UI
+   flow with a screen map for the whole plan and the slice's screen specs. As
    long as it needs to be and no longer; anything unproven is written as an open question, not as a design.
 3. `docs/ECONOMY.md` drafted if the game earns from ads or purchases: what is sold, currencies, ad moments,
    and the analytics event list (`indie-studio:monetization`). Nothing integrated yet.
@@ -92,7 +93,9 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 ## Gate 3: Alpha, feature complete (tag `m3-alpha`)
 1. Every feature the first release includes (the first-release line in STUDIO_STATE.md, plus agreed trades)
    is implemented and reachable, checked item by item against `docs/GDD.md` and the tiers.
-2. All screens and flows exist: menus, settings, pause, results, first-time experience.
+2. All screens and flows exist: menus, settings, pause, results, first-time experience. Every first-release
+   feature is reachable within two taps of the home screen, each mode explains its own rules, and every screen
+   passed the usability checklist (`indie-studio:roles`, UI/UX designer).
 3. Save and load work; pausing, backgrounding, and resuming the app work.
 4. Analytics, ads, and purchases integrated in **test mode** and reachable, or explicitly deferred with a
    recorded reason (`indie-studio:monetization`); no build testers get can show a real ad or sell (the live
@@ -106,7 +109,9 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 9. Automated tests cover purchase handling (with the store faked) and the economy math, and pass in CI.
 
 ## Gate 4: Beta, content complete (tag `m4-beta`)
-1. All levels, content, art, UI, and audio are in the build (final or near final).
+1. All levels, content, art, UI, and audio are in the build (final or near final). Where screens have an
+   approved design, the human reviewed each screen's side-by-side picture, and every difference is either
+   deliberate (with a decision) or listed to fix (`indie-studio:asset-pipeline`, `references/design-match.md`).
 2. Zero known crash or progress-blocking bugs; the rest of the bug list is triaged.
 3. Performance within budget on the lowest-end target device (`studio/PERF_LOG.md`): frame rate, memory,
    build size, start time.

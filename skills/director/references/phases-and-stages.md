@@ -50,12 +50,12 @@ Scope and schedule discipline does not need a hat: `scope-guard` and `gate-revie
 | Validation | Designer, Marketer | Engineer, Producer, Monetization |
 | Kickoff | Producer, Designer | Engineer, Monetization |
 | Prototype | Engineer, Designer | QA (playtests), Producer |
-| GDD | Designer, Producer | Engineer, Level Designer, Monetization |
-| Vertical Slice | Engineer, Artist, Level Designer | Audio, QA, Producer (timing math) |
-| First Playable | Engineer, Level Designer | Designer, Producer |
-| Pre-Alpha | Engineer, Designer, Artist | Audio, Monetization, Producer |
-| Alpha | Level Designer, Artist, Audio | Engineer, QA, Producer, Release Engineer |
-| Beta | QA, Engineer | Artist, Audio, Release Engineer, Marketer, Producer |
+| GDD | Designer, Producer | Engineer, Level Designer, Monetization, UI/UX Designer (screen map) |
+| Vertical Slice | Engineer, Artist, Level Designer | UI/UX Designer, Audio, QA, Producer (timing math) |
+| First Playable | Engineer, Level Designer | Designer, UI/UX Designer, Producer |
+| Pre-Alpha | Engineer, Designer, Artist | UI/UX Designer (UI structure first), Audio, Monetization, Producer |
+| Alpha | Level Designer, Artist, Audio | UI/UX Designer, Engineer, QA, Producer, Release Engineer |
+| Beta | QA, Engineer | UI/UX Designer, Artist, Audio, Release Engineer, Marketer, Producer |
 | Soft Launch | Monetization, Producer, Engineer | QA, Marketer, Release Engineer, Designer |
 | Launch | Release Engineer, Marketer | QA, Monetization, Producer |
 | Live Ops | Engineer, QA | Monetization, Marketer, Producer |

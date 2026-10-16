@@ -43,6 +43,9 @@ Goal: a stranger can play from launch through one full session to the results an
 
 ## Stage: Pre-Alpha (systems)
 Goal: every planned feature exists.
+- **UI structure first** (UI/UX designer hat): check the screen map against every first-release feature and the
+  roadmap, and settle the navigation (the home screen's slots, a mode switcher, tabs) before the screens
+  multiply. Re-check it whenever a tier adds screens. The look pass comes later, from Alpha.
 - Build the rest of the first release in tier order (T1 first, then T2 and T3 if the first-release line
   includes them), starting with what every game needs: settings, pause, tutorial or first-time experience, save
   and load, audio hooks, results and progression, then anything else on the list.
@@ -66,6 +69,9 @@ Goal: all the content, produced fast, using the measured pipeline.
 - Every new level goes into the level list in `docs/LEVELS.md` and through its checklist: the automated data
   check, a proven clear (solver, bot, or recorded human clear), and a difficulty band.
 - Artist and Audio hats bring assets to final quality (`indie-studio:asset-pipeline`); keep the ledger current.
+- The look pass (UI/UX designer and Artist): every screen reviewed against the usability checklist, and screens
+  that have an approved design matched against it before the human looks (`indie-studio:asset-pipeline`,
+  `references/design-match.md`).
 - Translations: as each screen's text becomes final, translate it into the soft-launch languages with a
   glossary and context notes; a native speaker reviews the first session (`indie-studio:asset-pipeline`,
   localization).

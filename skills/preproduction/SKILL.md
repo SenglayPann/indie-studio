@@ -50,7 +50,7 @@ simulation: [systems-design.md](references/systems-design.md).
    section 8), then tag the spike `archive/spike-core-loop` and delete the branch. The spike is reference only.
    Never merge it.
 
-## Stage: GDD (Designer + Producer; Engineer, Level Designer, and Monetization as guests)
+## Stage: GDD (Designer + Producer; Engineer, Level Designer, Monetization, and UI/UX Designer as guests)
 9. **Write `docs/GDD.md`** from `${CLAUDE_PLUGIN_ROOT}/templates/docs/GDD.md`: a living document, as long as
    the game needs and no longer. Include only what playtests proved or the human decided; write open questions
    as open questions. Split anything that grows on its own into its own file, so a session loads only what it
@@ -60,6 +60,9 @@ simulation: [systems-design.md](references/systems-design.md).
    game has score targets, random content, or upgrades that stack, write **`docs/BALANCE.md`** from
    `${CLAUDE_PLUGIN_ROOT}/templates/docs/BALANCE.md` with the Designer hat: the loops and what carries them,
    power against targets, the difficulty plan measured by the reference bot, the skill share, and choice health.
+   With the UI/UX Designer as guest, section 6 of the GDD gets the **screen map** for the whole plan (every tier
+   and the roadmap, so the home screen is planned for the features still to come), the specs of the slice's
+   screens, and the onboarding plan (`indie-studio:roles`, designer and UI/UX designer).
 10. **Draft `docs/ECONOMY.md`** if the game earns from ads or purchases (`indie-studio:monetization`): what is
     sold, currencies and what each is for, sources and sinks, ad moments, and the analytics event list. Nothing
     is integrated yet; this is the plan the build will follow from Pre-Alpha.
@@ -71,7 +74,7 @@ simulation: [systems-design.md](references/systems-design.md).
 12. **Define the Vertical Slice exactly:** one level or one complete segment; the list of systems, art, audio,
     UI, and feedback it must include; and a definition of done. Everything outside that list waits.
 
-## Stage: Vertical Slice (Engineer + Artist + Level Designer; Audio, QA, Producer as guests)
+## Stage: Vertical Slice (Engineer + Artist + Level Designer; UI/UX Designer, Audio, QA, Producer as guests)
 13. **Style bible first:** `docs/STYLE_BIBLE.md` and the tool choices (`indie-studio:asset-pipeline`;
     time-boxed comparison in `indie-studio:research`, setup and key handling in `indie-studio:toolchain`).
     Decide who makes each asset class and approve three samples from each maker before production starts.
@@ -83,7 +86,10 @@ simulation: [systems-design.md](references/systems-design.md).
     library with no engine dependency, used by the game, the tests, and the simulator (`docs/TECH.md`, section
     2); retire any separate prototype simulator, and turn the key balance targets in `docs/BALANCE.md` into
     automated checks. Set up CI now if you can (`indie-studio:toolchain`); it is due by the First Playable gate.
-15. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
+15. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel
+    ("juice"). Before the UI is built, run the reference study ("Game UI, not app UI" in the UI/UX designer role
+    file); afterwards, review every screen against its usability checklist. Screens built from an approved
+    design are matched against it (`indie-studio:asset-pipeline`, `references/design-match.md`).
 16. **Timing exercise (the most important step).** Measure each kind of work on the slice (level design, art,
     audio, integration, testing, including AI generation and cleanup) in two columns: the AI's session time, and
     the human's side as their hands-on hours if they track them (Schedule), or otherwise as calendar days per

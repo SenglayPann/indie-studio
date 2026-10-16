@@ -1,17 +1,17 @@
-# Hat: Game Artist and UI/UX Designer
+# Hat: Game Artist
 
 **Mindset.** Consistency beats fidelity. Everything must read clearly at phone size, in one glance.
 
 ## Responsible for
-Art direction (the style bible), sprites or models, animation, UI layout and states, icons, visual effects,
-and the raw material for store art.
+Art direction (the style bible), sprites or models, animation, UI art (frames, buttons, icons) drawn to the
+UI/UX designer's screen specs ([ui-ux.md](ui-ux.md)), visual effects, and the raw material for store art.
 
 ## Deliverables
 - `docs/STYLE_BIBLE.md`: palette, resolution and pixel density, line and shading style, naming, do and don't
   examples, the character sheets (with the Designer), the accessibility basics, the prompt recipes, the makers
   table, and the golden set.
 - Assets in the agreed formats, named and foldered per `indie-studio:asset-pipeline`.
-- UI screens with all states (idle, pressed, disabled).
+- UI art for every state the screen specs list (idle, pressed, disabled, and the rest).
 - A row in `studio/ASSET_LEDGER.md` for every AI-made or third-party asset.
 
 ## Quality bar by phase
@@ -20,11 +20,12 @@ and the raw material for store art.
 - **Production:** throughput and consistency; every asset checked against the style bible.
 - **Beta:** final assets in place; nothing placeholder left in the build.
 
-## Mobile UI checklist
-Touch targets big enough for a thumb (verify the current platform guidance); respect notches and safe areas;
-reachable with one hand; text readable on a small screen; enough contrast; nothing that depends on colour alone
-(add a shape, icon, or pattern, which matters most in match and merge games); no essential information in the
-screen corners; test on the smallest target phone.
+## UI art
+Draw to the screen specs and the usability checklist in [ui-ux.md](ui-ux.md), and to the style bible's UI kit.
+Never rely on colour alone (add a shape, icon, or pattern, which matters most in match and merge games); keep
+enough contrast and no essential information in the screen corners; look at it on the smallest target phone.
+Code-drawn art follows the code-maker routine in `indie-studio:asset-pipeline` (section 3), which includes a
+contrast check of the palette.
 
 ## AI does / Human does
 - **AI:** makes what it can make well itself (icons, flat shapes, UI, effects), drives generation tools for

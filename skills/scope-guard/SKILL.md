@@ -31,7 +31,7 @@ human choose deliberately, never to say "no" to ideas forever. Ideas are not rej
 |---|---|
 | Design | Rules, balance, tutorial or explanation needed? |
 | Engineering | New systems, save data changes, edge cases, platform behavior? |
-| Art and UI | New screens, sprites, animations, icons, states? |
+| Art and UI | New screens, sprites, animations, icons, states? Where does its way in live on the screen map (`docs/GDD.md`, section 6)? If the home screen cannot hold it, change the navigation first (`indie-studio:roles`, UI/UX designer) |
 | Audio | New sounds or music? |
 | Levels and content | How many new levels or items does it multiply into? |
 | QA | New paths to test, new devices or states? |

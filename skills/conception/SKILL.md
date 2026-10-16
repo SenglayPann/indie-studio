@@ -94,7 +94,9 @@ Validation, Kickoff rows in [phases-and-stages.md](../director/references/phases
     **build and cutting order**: T1 is built first and cut last; cut T3 first, then T2, then content volume
     inside T1. Add content targets as ranges (for example, 10-15 levels), a **post-launch roadmap** where the
     bigger ambitions wait, and a short "not doing" list. List every **screen** in `docs/PITCH.md` (Screens),
-    one line each with its tier, and write down any screen left out (for example leaderboards) with the reason.
+    one line each with its tier, plus the screens the post-launch roadmap will need (marked "roadmap"), so the
+    home screen can be planned for them; write down any screen left out (for example leaderboards) with the
+    reason.
 13. **The first release.** The human chooses what it includes: T1, T1-T2, or T1-T3 (T1 unless they choose
     otherwise). How big it should be depends on the route to players (idea-filters.md, rule 2), and the choice
     must pass the capacity rule: the first release fits when the human's corrected hands-on hours for

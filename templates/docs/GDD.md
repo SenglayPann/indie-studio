@@ -36,10 +36,22 @@ Count targets follow the tiers in `STUDIO_STATE.md`.
 |---|---|---|---|
 | Levels | | template + data | |
 
-## 6. UI flow
-<Start from the screen list in `docs/PITCH.md` (Screens) and connect those screens: how the player moves
-between them (start > play > results > menu; settings; pause). A screen that is not on that list goes through
-`indie-studio:scope-guard` first.>
+## 6. UI flow and screens
+<Start from the screen list in `docs/PITCH.md` (Screens). If the pitch has none (a project set up before plugin
+0.3.0), build the list first from `docs/FEASIBILITY.md` and the tiers and add it to the pitch. A screen that is
+not on that list goes through `indie-studio:scope-guard` first. Method: `indie-studio:roles`, UI/UX designer.>
+
+- **Screen map** for the whole plan (every tier and the post-launch roadmap): the home screen's slots (one main
+  action; a mode switcher once there are two modes; at most three to five tabs; a top bar for the player, the
+  currencies, and settings), and every screen's way in and way out (start > play > results > menu; settings;
+  pause). Every mode has its own rules page.
+- **Screen specs** (move them to `docs/UI_FLOW.md` once they grow):
+
+| Screen | Purpose | Main action | States (empty, loading, error, first time) | Exits | Back button or gesture |
+|---|---|---|---|---|---|
+
+- **Onboarding:** <the kind (a guided first game, hints during play, or both), what is taught first, what
+  waits, how it is skipped and replayed (`indie-studio:roles`, designer, "Onboarding")>
 
 ## 7. Look, sound, and story (summary; details in the style bible)
 <Art style in two sentences; audio mood in one; the setting and main characters in one, if any; the writing
