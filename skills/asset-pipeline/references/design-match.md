@@ -32,7 +32,8 @@ List every difference as either deliberate (with a decision) or still to fix.
 - **Text placement:** line height, baseline, and letter spacing differ between a browser and the engine's text
   renderer: match them by measurement. Measuring tools can be wrong too (a zero-size baseline marker inside a
   flex box lands at its centre), so check a surprising number before "fixing" the build.
-- **Moving parts:** check what must stay put when the content moves (scenery must not scroll with the cards).
+- **Moving parts:** check what must stay put when the content moves (a background must not scroll with the
+  pieces in front of it).
 
 ## 4. The design is the floor, not the ceiling
 Matching a design exactly can leave the game flatter than it should be (a gentle pulse that reads as a sticker

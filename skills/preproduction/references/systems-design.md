@@ -41,7 +41,9 @@ is anything the player must beat: a score target, enemy health, a level goal.
    flat bonuses fall behind.
 
 ## 3. Luck against skill
-Randomness (deals, draws, drops, spawns) keeps runs fresh. Too much of it makes choices meaningless.
+Randomness (deals, draws, drops, spawns) keeps runs fresh. Too much of it makes choices meaningless. Below, a
+**deal** means one random setup of a round, whatever the game draws: a card deal, a board, a map, a wave of
+enemies, a set of drops.
 - **Measure it** with two bots on the same seeds: a **careful** bot that plays sensibly using only what a
   player can see, and a **random** bot that makes any legal move. The difference between their pass rates is
   the **skill share**: how much playing well matters. A small share means luck decides; a very large one can

@@ -1,6 +1,6 @@
 ---
 name: session
-description: Manage the start, end, and length of a working session in an Indie Studio project. Use at the start of a session or after /clear or a compaction (orient from STUDIO_STATE.md and reconcile with git), at the end of a session (save state, write the journal, commit, hand off), whenever the conversation is long or cluttered, a milestone just finished, or a debugging loop just ended (recommend compacting or a fresh session, saving state first), and when the user hands over their decisions for a while ("go with your recommendations and leave me notes", "decide for me overnight").
+description: Manage the start, end, and length of a working session in an Indie Studio project. Use at the start of a session or after /clear or a compaction (orient from STUDIO_STATE.md and reconcile with git), at the end of a session (save state, write the journal, commit, hand off), whenever the conversation is long or cluttered, a milestone just finished, or a debugging loop just ended (recommend compacting or a fresh session, saving state first), and when the user hands over decisions for a while ("decide for me and leave me notes").
 argument-hint: "[start | wrap | compact | delegate]"
 ---
 

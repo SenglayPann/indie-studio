@@ -1,6 +1,6 @@
 ---
 name: roles
-description: The eleven studio roles ("hats") a solo developer covers - Producer, Designer, Engineer, Artist, UI/UX Designer, Level Designer, Audio, QA, Monetization, Release Engineer, Marketer - each with a mindset, deliverables, phase-appropriate quality bar, and a split between what AI does and what the human must do. Use when a stage calls for a role, when the user says "act as", "switch to", or "who should do this", before building what a request asks (to put on the hat it needs), or when you need the standards for a specific kind of work.
+description: The eleven studio roles ("hats") a solo developer covers - Producer, Designer, Engineer, Artist, UI/UX Designer, Level Designer, Audio, QA, Monetization, Release Engineer, Marketer - each with a mindset, deliverables, phase-appropriate quality bar, and a split between what AI does and what the human must do. Use when a stage calls for a role, when the user says "act as", "switch to", or "who should do this", before building a request (to pick the hat it needs), or when you need the standards for a specific kind of work.
 argument-hint: "[role name]"
 ---
 

@@ -217,14 +217,14 @@ cat <<'RULES'
 3. User asks for a new feature, mechanic, asset, or plan change: invoke indie-studio:scope-guard BEFORE doing it.
 4. Answer depends on a version, API, store rule, price, license, tool feature, or an unfamiliar error: invoke indie-studio:research BEFORE answering.
 5. Any git action (commit, branch, merge, tag, push, undo): follow indie-studio:git-workflow.
-6. Only the human approves gates, merges into main, spending money, or publishing, also while they have delegated decisions to you (indie-studio:session, delegate mode). Never enter passwords, keys, or payment details.
+6. Only the human approves gates, merges into main, spending money, or publishing, even under a delegation (indie-studio:session, delegate). Never enter passwords, keys, or payment details.
 7. Update STUDIO_STATE.md after each meaningful step, with last_synced_commit set to the latest code commit. Suggest a compact or fresh session per indie-studio:session.
 RULES
 echo "8. $tone"
 cat <<'RULES'
 9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
-10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done, with or without a gate: indie-studio:gate-review. Before building what a request asks, put on the hat it needs and check that hat's conventions first (indie-studio:roles).
-11. If an indie-studio skill in your skill list shows no description, the list is over its size limit and studio skills may not start on their own: tell the human once and offer the fix in indie-studio:director (doctor).
+10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done: indie-studio:gate-review. Before building a request, put on the hat it needs (indie-studio:roles).
+11. If an indie-studio skill in your skill list shows no description, the list is over its size limit: tell the human once and offer the fix in indie-studio:director (doctor).
 12. Before changing how the code is organized, what is saved, or how a service is called: read docs/TECH.md (once it exists), keep it current in the same branch, and build and run the tests before saying "done".
 === END BRIEF ===
 RULES
