@@ -42,12 +42,12 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
     `docs/MARKET.md` is kept by the first release or has a written reason.
 
 ## Gate 1: Vertical Slice (tag `m1-vertical-slice`)
-1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`;
-   a clear signal (most understood the goal within a minute and wanted another go); an iterate-or-kill
-   decision recorded. Remote testers count through the remote survey (`indie-studio:playtest-loop`): there,
-   understanding the goal means describing it correctly, and wanting another go means playing again; the report
-   says which kind of evidence each finding rests on. A creator pass came first, and for a game with score targets, random content, or
-   upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
+1. Core loop validated by outsiders: at least 3 (aim for 5) people played; notes in `studio/playtests/`; a clear
+   signal (most understood the goal within a minute and wanted another go); an iterate-or-kill decision
+   recorded. Remote testers count through the remote survey (`indie-studio:playtest-loop`): there, understanding
+   the goal means describing it correctly, and wanting another go means playing again; the report says which
+   kind of evidence each finding rests on. A creator pass came first, and for a game with score targets, random
+   content, or upgrades that stack, a simulation of the prototype's numbers (`studio/playtests/<date>-00.md`).
 2. `docs/GDD.md` written from what playtests proved: rules, controls, progression, content plan, and the UI
    flow with a screen map for the whole plan and the slice's screen specs. As
    long as it needs to be and no longer; anything unproven is written as an open question, not as a design.
@@ -57,17 +57,17 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    and feedback ("juice"), running on a real device.
 5. The slice was built the way the rest of the game will be: clean code on a `feature/*` branch (not the
    throwaway spike), a style bible in `docs/STYLE_BIBLE.md`, asset ledger rows filled in.
-6. **Pipeline timing measured:** the AI's hours and the human's side (their hours if tracked, otherwise
-   calendar days) per unit of content (per level, per item), with the measured ratio for each. Extrapolated to the first release's content list and compared with
-   capacity (the human's hours) in `studio/DECISIONS.md`. Tiers, the first-release line, and
-   `docs/FEASIBILITY.md` re-baselined from this.
+6. **Pipeline timing measured:** the AI's hours and the human's side (their hours if tracked, otherwise calendar
+   days) per unit of content (per level, per item), with the measured ratio for each. Extrapolated to the first
+   release's content list and compared with capacity (the human's hours) in `studio/DECISIONS.md`. Tiers, the
+   first-release line, and `docs/FEASIBILITY.md` re-baselined from this.
 7. Runs at the target frame rate on the lowest-end target device (owned, borrowed, or a named cloud device);
    build size and start time measured in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`).
 8. A fresh clone of the repository builds and runs with the one-command build (repo hygiene).
 9. Agent setup in place: `CLAUDE.md` project rules, task briefs in use (`indie-studio:ai-delegation`).
 10. `docs/TECH.md` written, and the slice follows it: architecture map, conventions, save format with a version
     number, one wrapper per service, text rules, build and release settings, test plan.
-11. Automated tests for saving and loading pass, including loading a save from an older version. All
+11. Automated tests for saving and loading pass, loading one saved file per save version (from version 1). All
     player-facing text in the slice comes from string tables: a pseudo-translation pass shows nothing
     hard-coded and nothing cut off (`indie-studio:asset-pipeline`, localization).
 12. If the game is built from levels: `docs/LEVELS.md` holds the building blocks and where each is taught, the
@@ -99,8 +99,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
 3. Save and load work; pausing, backgrounding, and resuming the app work.
 4. Analytics, ads, and purchases integrated in **test mode** and reachable, or explicitly deferred with a
    recorded reason (`indie-studio:monetization`); no build testers get can show a real ad or sell (the live
-   switch); event names checked against the provider's naming rules; the consent flow drafted. Each sits behind its wrapper as
-   `docs/TECH.md` describes; no game code calls an SDK directly.
+   switch); event names checked against the provider's naming rules; the consent flow drafted. Each sits behind
+   its wrapper as `docs/TECH.md` describes; no game code calls an SDK directly.
 5. No open `feature/*` branches; the parking lot has been reviewed and nothing in it is being built.
 6. Remaining content listed with per-unit timing (for levels, the level list in `docs/LEVELS.md`); capacity
    check recorded.

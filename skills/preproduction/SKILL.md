@@ -30,10 +30,12 @@ simulation: [systems-design.md](references/systems-design.md).
 5. **Check the numbers before anyone else plays** (Designer, with the Engineer as guest). If the game has score
    targets, random content (deals, drops, spawns), or upgrades that stack, simulate the spike first, so the
    outsider round and the kill rule judge the concept rather than first-guess numbers. A quick script that
-   replays the spike's rules is enough; prove it matches the build by replaying one recorded game. Run a careful
+   replays the spike's rules is enough; prove it matches the build (a fixed bot run in the engine and compared
+   game by game, or at the least one recorded game replayed: systems-design.md, section 5). Run a careful
    bot and a random bot on the same fixed seeds, a thousand games or more each, and trust the careful one only
    once it beats the random one. Report the pass rate per round, the skill share (careful minus random), how
-   power stacks against the targets, and any dead or dominant picks. Fix the obvious faults (runaway stacking,
+   power stacks against the targets, the spread between deals, and any dead or dominant picks, including the best
+   fixed pick order against a reader of the run. Fix the obvious faults (runaway stacking,
    coin-flip rounds, picks that do nothing) and run it again. Method:
    [systems-design.md](references/systems-design.md), sections 2-5.
 6. **Creator pass, then outsiders.** As soon as the loop runs on the phone, the creator plays two or three runs
@@ -81,11 +83,14 @@ simulation: [systems-design.md](references/systems-design.md).
     Nothing final gets generated before this exists.
 14. **Rebuild cleanly** on `feature/vertical-slice` from `develop`, following `docs/TECH.md`. Port the proven
     logic from the spike; do not copy the spike wholesale. The slice must use the same pipeline the rest of the
-    game will use. **Automated checks start here:** a one-command build, and tests for saving and loading
-    (including a save from an older version). If the game has a balance simulator, move the rules into one
+    game will use. **Automated checks start here:** a one-command build, and tests for saving and loading:
+    from the first save version on, keep one saved file per version as a test fixture, and load every fixture
+    (at version 1, that is version 1's file). If the game has a balance simulator, move the rules into one
     library with no engine dependency, used by the game, the tests, and the simulator (`docs/TECH.md`, section
     2); retire any separate prototype simulator, and turn the key balance targets in `docs/BALANCE.md` into
-    automated checks. Set up CI now if you can (`indie-studio:toolchain`); it is due by the First Playable gate.
+    automated checks. A check that fails the day it is built is a finding: keep the goal, measure candidate
+    fixes, record them in `docs/BALANCE.md`, and let the human choose; never loosen a goal to make a check pass.
+    Set up CI now if you can (`indie-studio:toolchain`); it is due by the First Playable gate.
 15. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel
     ("juice"). Before the UI is built, run the reference study ("Game UI, not app UI" in the UI/UX designer role
     file); afterwards, review every screen against its usability checklist. Screens built from an approved
@@ -95,9 +100,10 @@ simulation: [systems-design.md](references/systems-design.md).
     the human's side as their hands-on hours if they track them (Schedule), or otherwise as calendar days per
     content unit from the finish dates. Say in the slice's definition of done which one is used. Compute both
     per content unit, extrapolate to the content list of the first release, and compare the human's side with
-    capacity (the capacity rule in `indie-studio:roles`, producer). Record the numbers and both measured ratios in `studio/DECISIONS.md` (and the time per level in
-    `docs/LEVELS.md`, section 7). Re-baseline the tiers, update `docs/FEASIBILITY.md`, and re-forecast every
-    remaining gate date in the Gates table. If the math does not fit, shrink the first release now.
+    capacity (the capacity rule in `indie-studio:roles`, producer). Record the numbers and both measured ratios
+    in `studio/DECISIONS.md` (and the time per level in `docs/LEVELS.md`, section 7). Re-baseline the tiers,
+    update `docs/FEASIBILITY.md`, and re-forecast every remaining gate date in the Gates table. If the math does
+    not fit, shrink the first release now.
 17. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time
     in `studio/PERF_LOG.md` (`indie-studio:mobile-perf-budget`). With no low-end phone at hand, use that skill's
     cloud-device route and name the models tested.

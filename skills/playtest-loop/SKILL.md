@@ -19,7 +19,9 @@ ends, and bugs cheaply, before an outsider's time is spent on them.
    wrong), and sorts every point into one bucket:
    - **Tuning** (numbers: targets, costs, rates, timings): check the numbers behind it by replaying the seed or
      running the simulator (`indie-studio:preproduction`, `references/systems-design.md`), then fix it before
-     the outsider round, with the human's approval.
+     the outsider round, with the human's approval. For each run with a known seed, compare the creator's
+     result with the bots on that exact deal and label it "hard deal", "missed plays", or "fine"
+     (systems-design.md, section 3), so a loss is not blamed on the numbers by mistake.
    - **Design** (rules, a missing reason to return, choices that do not feel like choices, a screen that
      confuses): test it in the simulator or in the next outsider round. One person's view is not yet a design
      change.
@@ -27,8 +29,9 @@ ends, and bugs cheaply, before an outsider's time is spent on them.
    - **Bug:** fix it (classes in `indie-studio:roles`, QA).
 3. **Summarize in chat:** the buckets, the numbers behind them, and one recommended change to try first. The
    human decides.
-4. **Record it** as `studio/playtests/YYYY-MM-DD-00.md` (00 marks a creator pass) with the creator variant of
-   the sheet. Then run the outsider round: only strangers show whether the game is understood and wanted.
+4. **Record it** as `studio/playtests/YYYY-MM-DD-00.md` (00 marks a creator pass; a second pass on the same day
+   is `-00b`) with the creator variant of the sheet. Then run the outsider round: only strangers show whether
+   the game is understood and wanted.
 
 ## When and how many
 | Stage | Players | Question the round answers |

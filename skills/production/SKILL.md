@@ -21,7 +21,9 @@ rules: [communication.md](../director/references/communication.md). Hats and off
 3. **Device build weekly:** install it on the real test device and play it (a short creator pass,
    `indie-studio:playtest-loop`). Run an outsider playtest every two weeks when testers are easy to reach;
    otherwise at the milestones the tester budget sets (`indie-studio:playtest-loop`). A change to rules or
-   numbers re-runs the balance simulator and updates `docs/BALANCE.md`.
+   numbers re-runs the balance simulator and updates `docs/BALANCE.md`, and so does adding items to a pool the
+   player picks from: a bigger pool changes the whole game's difficulty, so re-measure every difficulty level
+   before sizing the new items (`indie-studio:preproduction`, `references/systems-design.md`, section 4).
 4. **Review (end of the week, Producer):** what finished against the plan; the AI session hours (and the
    human's, if they track them); estimate versus actual; update the measured ratios (without tracked hours, the
    calendar ratio in the producer role file); re-forecast the remaining gates in the Gates table (the human's
@@ -87,7 +89,8 @@ Goal: no new content. Make the game solid.
 - Tune difficulty and onboarding from 5 or more outside playtests, against the difficulty plan in
   `docs/LEVELS.md` or `docs/BALANCE.md`.
 - Monetization: configure the real ad units and products behind the live switch, verify a purchase with the
-  store's test accounts and a rewarded ad on a test device, put the consent flow live, and check that every event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
+  store's test accounts and a rewarded ad on a test device, put the consent flow live, and check that every
+  event in `docs/ECONOMY.md` arrives in the dashboard (`indie-studio:monetization`).
 - Store paperwork: if a store requires a closed test before it will allow publishing, it must be running now.
   It costs weeks of calendar time (`indie-studio:research`).
 - Ledger complete; re-check every asset tool's license page.
