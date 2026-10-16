@@ -30,7 +30,8 @@ State file rules are in [state-file.md](references/state-file.md).
 4. Ask for the working title (default "untitled") and whether they have shipped a game before (sets
    `experience`: `new` or `experienced`; see [communication.md](references/communication.md)), and fill the
    front matter: project, experience, phase `Conception`, stage `Idea`, next_gate `Conception Exit`, hats
-   `Producer, Designer`, today's date.
+   `Producer, Designer`, `plugin_version` (the `version` in `${CLAUDE_PLUGIN_ROOT}/.claude-plugin/plugin.json`),
+   today's date.
    Write "Off-limits right now" from the Idea row of the off-limits table and three real "Next actions".
    Replace every remaining `<placeholder>` line in the state file (for example, set "Open questions" to
    "- none yet"), because the session hook prints these sections verbatim. If a studio-wide knowledge file
@@ -81,8 +82,8 @@ fix; do not change things silently.
 7. Scope: the first-release line is set; tasks in progress belong to a tier the first release includes (or
    to a recorded trade); no T3 work while T1 is incomplete; parking lot ideas have not leaked into code; every
    retention target in the business case is carried by a feature the first release includes.
-8. Schedule: the protected polish buffer has not shrunk, and the journal records the human's hours and the AI
-   session time separately.
+8. Schedule: the protected polish buffer has not shrunk; the journal records the AI session time, and the
+   human's hours only if the Schedule says they track them (otherwise pace comes from work done by date).
 9. `studio/KNOWLEDGE.md` has no entries past their re-check date that are still being relied on.
 10. `studio/ASSET_LEDGER.md` has a row for every shipped AI-generated asset (spot-check a few).
 11. From Kickoff: `docs/FEASIBILITY.md` and `docs/BUSINESS_CASE.md` exist, every target carries a source and a
@@ -99,11 +100,18 @@ fix; do not change things silently.
 13. Decisions and copies: every decision a newer one replaced says so in its Status line
     (`studio/DECISIONS.md`), and no document repeats a scope, date, or target that disagrees with its home
     (the consistency pass in `indie-studio:gate-review`).
+14. Plugin version: `plugin_version` in STUDIO_STATE.md matches the installed plugin. If not, bring the
+    notebook up to date with the human's approval: [upgrades.md](references/upgrades.md).
 
 ## 5. Hat (switch role)
 Read the matching file in `${CLAUDE_PLUGIN_ROOT}/skills/roles/references/roles/`, update `hats` in the state
 file, and say in one line which hat is now on and what it will focus on. If the user asks for a hat that
 does not fit the stage, say why, and offer to do it as a guest task.
+
+**The right hat for a request.** Before building what the human asks, name the hat the request needs (the
+table in `indie-studio:roles`), even when that hat is not active: a screen change needs the UI/UX designer, a
+number change the designer. Check that hat's conventions and costs first; if they differ from the request,
+recommend the convention in one or two lines, then build what the human chooses.
 
 ## Always-on rules
 - **State as you go.** Update STUDIO_STATE.md at the moments listed in state-file.md.

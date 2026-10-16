@@ -18,6 +18,7 @@ The SessionStart hook reads it, so keep the headings and front-matter keys exact
 | `platform` | Target platforms | `mobile`, `Android`, `iOS`, ... |
 | `git_permissions` | Whether the git permission contract was agreed | `set`, `not-set` |
 | `last_synced_commit` | Latest code commit this file accounts for | short hash or `none` |
+| `plugin_version` | The indie-studio version whose formats this notebook follows ([upgrades.md](upgrades.md)) | `0.4.0`, ... |
 | `updated` | Date of last edit | `YYYY-MM-DD` |
 
 Only put a `#` comment after a value, never inside one (the hook strips text after ` #`).
@@ -26,9 +27,12 @@ Only put a `#` comment after a value, never inside one (the hook strips text aft
 `Now`, `Next actions` (hook), `Off-limits right now` (hook), `Open questions` (hook), `Scope tiers`,
 `Gates`, `Permissions`, `Schedule`, `Last session`.
 
-The brief prints only the first five lines of Next actions, four of Open questions, and five of Off-limits,
-so keep the most urgent item first and each item to a line or two. A comment inside these three sections must
-fit on one line starting with `<!--`, or the brief prints it.
+The brief prints the first five items of Next actions, four of Open questions, and five of Off-limits, and
+counts the rest. An item is a line that starts at the left edge ("1. ...", "- ...") plus the indented lines
+under it; one longer than about 300 characters is cut and marked "continued". So keep the most urgent item
+first and each item short, with the detail in a task brief or a document it links to. A comment inside these
+three sections must fit on one line starting with `<!--`, or the brief prints it. The brief also prints the
+Permissions line "Standing delegation" whenever it is not `none`.
 
 The **Gates** table has the columns Gate, Status, Planned, Forecast, Passed, and Evidence. Dates are
 `YYYY-MM-DD`. Planned is set at Kickoff from the capacity math and changes only by a recorded decision.
@@ -42,8 +46,10 @@ Move history to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verif
 `studio/KNOWLEDGE.md`.
 
 **One home per fact.** The Scope tiers section is the only copy of the scope and the first-release line, the
-Gates table the only copy of the dates, and the Schedule section the only copy of the weekly hours and the
-target date. Other documents link here instead of repeating them, so a change is made once.
+Gates table the only copy of the dates, and the Schedule section the only copy of the weekly hours, the target
+date, and whether the human tracks their own hours. The Permissions section holds the git contract, a standing
+delegation, and any git step the AI cannot run in this setup. Other documents link here instead of repeating
+them, so a change is made once.
 
 ## When to update (state as you go)
 Update the file at each of these moments, not only at the end of a session:
@@ -55,9 +61,9 @@ Update the file at each of these moments, not only at the end of a session:
 5. Before recommending a compact or a fresh session.
 6. At wrap-up.
 
-After a real code commit, set `last_synced_commit` to that commit's short hash, so the next session
-can tell whether anything happened outside the notebook. Commits that only touch STUDIO_STATE.md or
-`studio/` do not count (the hook ignores them).
+Every time you update the file, set `last_synced_commit` to the latest code commit, so the next session can
+tell whether anything happened outside the notebook. Commits that only touch STUDIO_STATE.md, `studio/`, or
+`docs/` do not count, and a later commit of STUDIO_STATE.md itself also counts as a sync (the hook checks both).
 
 Always set `updated` to today's date when editing.
 

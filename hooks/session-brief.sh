@@ -29,11 +29,28 @@ fm() {
     n >= 2 { exit }'
 }
 
-# Non-empty, non-comment lines under "## <heading>", at most N lines.
+# The first N items under "## <heading>", each printed whole. An item starts at a line that is not
+# indented ("1. ...", "- ...") and takes the indented lines below it. Items longer than about 300
+# characters are cut with a marker, and the rest of the list is counted, never cut mid-item.
 section() {
-  tr -d '\r' < "$state" | awk -v h="$1" '
-    /^## / { on = ($0 == "## " h); next }
-    on && NF && $0 !~ /^<!--/ { print }' | head -n "$2"
+  tr -d '\r' < "$state" | awk -v h="$1" -v n="$2" -v cap=300 '
+    function flush() {
+      if (item == "") return
+      count++
+      if (count <= n) {
+        if (length(item) > cap) item = substr(item, 1, cap) " ... (continued in STUDIO_STATE.md)"
+        print item
+      }
+      item = ""
+    }
+    /^## / { if (on) flush(); on = ($0 == "## " h); next }
+    !on || !NF || /^[ \t]*<!--/ { next }
+    /^[^ \t]/ { flush(); item = $0; next }
+    { sub(/^[ \t]+/, ""); item = (item == "" ? $0 : item " " $0) }
+    END {
+      if (on) flush()
+      if (count > n) printf "(+%d more in STUDIO_STATE.md)\n", count - n
+    }'
 }
 
 # Front-matter value, or a fallback when empty.
@@ -66,6 +83,14 @@ esac
 
 echo "=== INDIE STUDIO BRIEF (generated automatically at session start) ==="
 echo "Project : $(val project '(untitled)')   Experience: $experience"
+# A plugin update can add notebook lines that later steps rely on. Say so only when the versions differ.
+plugin_root="${CLAUDE_PLUGIN_ROOT:-$(dirname "$0")/..}"
+installed=$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' \
+  "$plugin_root/.claude-plugin/plugin.json" 2>/dev/null | head -n 1)
+noted=$(fm plugin_version)
+if [ -n "$installed" ] && [ "$noted" != "$installed" ]; then
+  echo "! PLUGIN VERSION: indie-studio $installed is installed; this notebook says ${noted:-nothing (set up before 0.4.0)}. Run indie-studio:director (doctor) to update the notebook before planning."
+fi
 gate=$(val next_gate '?')
 dates=$(gate_dates "$(fm next_gate)")
 planned=${dates%%|*}
@@ -109,10 +134,17 @@ if command -v git >/dev/null 2>&1 && git -C "$root" rev-parse --is-inside-work-t
     synced=$(fm last_synced_commit)
     if [ -n "$synced" ] && [ "$synced" != "none" ]; then
       if git -C "$root" cat-file -e "$synced^{commit}" 2>/dev/null; then
-        newer=$(git -C "$root" log --oneline "$synced..HEAD" -- . ':!STUDIO_STATE.md' ':!studio' 2>/dev/null)
+        # A later commit of the state file itself also counts as a sync, even if last_synced_commit
+        # was not moved. Only code commits count as news: not the notebook, and not docs/.
+        base=$synced
+        saved=$(git -C "$root" log -1 --format=%h -- STUDIO_STATE.md 2>/dev/null)
+        if [ -n "$saved" ] && git -C "$root" merge-base --is-ancestor "$synced" "$saved" 2>/dev/null; then
+          base=$saved
+        fi
+        newer=$(git -C "$root" log --oneline "$base..HEAD" -- . ':!STUDIO_STATE.md' ':!studio' ':!docs' 2>/dev/null)
         if [ -n "$newer" ]; then
           count=$(printf '%s\n' "$newer" | wc -l | tr -d ' ')
-          echo "! STATE MAY BE STALE: $count commit(s) since STUDIO_STATE.md was last synced ($synced):"
+          echo "! STATE MAY BE STALE: $count code commit(s) since STUDIO_STATE.md was last synced ($base):"
           printf '%s\n' "$newer" | head -n 5 | sed 's/^/    /'
           echo "  Reconcile from git log before planning (indie-studio:session, start mode)."
         fi
@@ -142,6 +174,15 @@ if command -v git >/dev/null 2>&1 && git -C "$root" rev-parse --is-inside-work-t
 else
   echo "Git     : not a git repository yet. Run indie-studio:git-workflow (init mode)."
 fi
+
+# A standing delegation ("decide for me and leave notes") has to survive a compaction or a new session.
+deleg=$(tr -d '\r' < "$state" | awk '
+  /^## / { on = ($0 == "## Permissions"); next }
+  on && /^- Standing delegation:/ { sub(/^- Standing delegation:[ \t]*/, ""); print; exit }')
+case "$deleg" in
+  ""|[Nn]one*|[Nn]ot\ *) ;;
+  *) echo "! DELEGATION ACTIVE: $deleg. Work by indie-studio:session (delegate mode)." ;;
+esac
 
 next=$(section "Next actions" 5)
 if [ -n "$next" ]; then
@@ -176,13 +217,13 @@ cat <<'RULES'
 3. User asks for a new feature, mechanic, asset, or plan change: invoke indie-studio:scope-guard BEFORE doing it.
 4. Answer depends on a version, API, store rule, price, license, tool feature, or an unfamiliar error: invoke indie-studio:research BEFORE answering.
 5. Any git action (commit, branch, merge, tag, push, undo): follow indie-studio:git-workflow.
-6. Only the human approves gates, merges into main, spending money, or publishing. Never enter passwords, keys, or payment details.
-7. Update STUDIO_STATE.md after each meaningful step. Suggest a compact or fresh session per indie-studio:session.
+6. Only the human approves gates, merges into main, spending money, or publishing, also while they have delegated decisions to you (indie-studio:session, delegate mode). Never enter passwords, keys, or payment details.
+7. Update STUDIO_STATE.md after each meaningful step, with last_synced_commit set to the latest code commit. Suggest a compact or fresh session per indie-studio:session.
 RULES
 echo "8. $tone"
 cat <<'RULES'
 9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
-10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done: indie-studio:gate-review. For a hat's standards: indie-studio:roles.
+10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done, with or without a gate: indie-studio:gate-review. Before building what a request asks, put on the hat it needs and check that hat's conventions first (indie-studio:roles).
 11. If an indie-studio skill in your skill list shows no description, the list is over its size limit and studio skills may not start on their own: tell the human once and offer the fix in indie-studio:director (doctor).
 12. Before changing how the code is organized, what is saved, or how a service is called: read docs/TECH.md (once it exists), keep it current in the same branch, and build and run the tests before saying "done".
 === END BRIEF ===
