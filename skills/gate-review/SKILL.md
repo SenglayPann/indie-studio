@@ -36,9 +36,13 @@ Checklists for all seven gates are in [gates.md](references/gates.md).
       gates), `phase`, `stage`, `next_gate`, `hats`, "Off-limits right now", three new "Next actions", `updated`.
       Use [phases-and-stages.md](../director/references/phases-and-stages.md).
    2. Append the decision to `studio/DECISIONS.md` and an entry to `studio/JOURNAL.md`.
-   3. Git (`indie-studio:git-workflow`): with the user's approval, merge `develop` into `main` with `--no-ff`,
-      create the annotated gate tag, and push `main` and the tag. Update `last_synced_commit`.
-      (For Gold Master, merge the `release/x.y.z` branch into `main` and `develop` instead; see `indie-studio:launch-live`.)
+   3. Git (`indie-studio:git-workflow`): with the user's approval, merge the stage's own branch into
+      `develop` first if it was built on one (for example `feature/vertical-slice`), then `develop` into `main`
+      with `--no-ff`, create the annotated gate tag, and push `main` and the tag. If Permissions lists these
+      as steps the AI cannot run here, or a safety setting refuses one, give the human the exact commands (one
+      per code block) and mark the step pending. Write the tag into the Gates table and update
+      `last_synced_commit` only once the tag exists. (For Gold Master, merge the `release/x.y.z` branch into
+      `main` and `develop` instead; see `indie-studio:launch-live`.)
    4. Give one line on what this milestone means and one line on what the next stage is about.
    5. If `studio/PLUGIN_FEEDBACK.md` holds entries that were never sent, say how many and offer to send them
       (`indie-studio:plugin-feedback`, send mode). A gate is a good moment to give something back.

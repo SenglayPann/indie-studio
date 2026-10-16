@@ -84,11 +84,12 @@ simulation: [systems-design.md](references/systems-design.md).
     2); retire any separate prototype simulator, and turn the key balance targets in `docs/BALANCE.md` into
     automated checks. Set up CI now if you can (`indie-studio:toolchain`); it is due by the First Playable gate.
 15. **Bring the slice to final quality:** production art, UI, sound effects, one music loop, and game feel ("juice").
-16. **Timing exercise (the most important step).** Log real hours for each kind of work on the slice (level
-    design, art, audio, integration, testing, including AI generation and cleanup) in two columns: the AI's
-    session time and the human's hands-on time. Compute both per content unit, extrapolate to the content list
-    of the first release, and compare the human's hours with capacity (the capacity rule in `indie-studio:roles`,
-    producer). Record the numbers and both measured ratios in `studio/DECISIONS.md` (and the time per level in
+16. **Timing exercise (the most important step).** Measure each kind of work on the slice (level design, art,
+    audio, integration, testing, including AI generation and cleanup) in two columns: the AI's session time, and
+    the human's side as their hands-on hours if they track them (Schedule), or otherwise as calendar days per
+    content unit from the finish dates. Say in the slice's definition of done which one is used. Compute both
+    per content unit, extrapolate to the content list of the first release, and compare the human's side with
+    capacity (the capacity rule in `indie-studio:roles`, producer). Record the numbers and both measured ratios in `studio/DECISIONS.md` (and the time per level in
     `docs/LEVELS.md`, section 7). Re-baseline the tiers, update `docs/FEASIBILITY.md`, and re-forecast every
     remaining gate date in the Gates table. If the math does not fit, shrink the first release now.
 17. **Device check.** Run it on the lowest-end target device; record frame rate, memory, size, and start time

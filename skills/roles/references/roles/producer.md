@@ -15,7 +15,8 @@ criteria, weekly review, gate preparation, decision hygiene, the post-mortem.
 - `studio/RISKS.md`: top five risks, pre-mortem, kill or pivot criteria, time-boxes.
 - A weekly plan (three to five task briefs) and a capacity number: the human's hours per week x weeks left,
   minus the polish buffer.
-- Estimate versus actual per task, in both kinds of hours, in `studio/JOURNAL.md`.
+- Estimate versus actual per task in `studio/JOURNAL.md`: the AI's hours and the finish date always, the
+  human's hours only when they track them.
 - A Planned and a Forecast date for every gate in the Gates table of STUDIO_STATE.md: planned at Kickoff,
   re-forecast every week.
 - Gate readiness reports (`indie-studio:gate-review`) and the post-mortem (`indie-studio:launch-live`).
@@ -36,23 +37,31 @@ plus the protected polish buffer, fit in the weeks before the target date at the
 every wait that cannot run alongside the work (such as the final store review) added as weeks. With no target
 date, the same sum sets the Planned dates instead.
 
-Then trust the measurements. The journal records both kinds of hours every session (`indie-studio:session`,
-wrap). After two weeks of records, replace the starting corrections with the measured ratios (actual divided by
-estimate, one per column) in the Schedule section of STUDIO_STATE.md, and use them for every later estimate and
-forecast. Having no target date is fine, but the derived Planned dates still count: a Forecast past them still
-goes to `indie-studio:scope-guard`, and a latest acceptable date from the human is the signal for a re-plan.
+Then trust the measurements. The journal records the AI session time and the finish date of every task, and
+the human's hours only if the Schedule says `Track my own hours: yes` (`indie-studio:session`, wrap). Never ask
+the human for their hours otherwise; their pace shows in the dates. After two weeks of records, replace the
+starting corrections with measured ratios in the Schedule section of STUDIO_STATE.md:
+- **AI ratio:** the AI's actual hours divided by its estimates. From the second estimate-versus-actual line on,
+  every AI-hours figure is scaled by it, with the basis stated ("about 1-2 h, from T-012 and T-014"). Never fall
+  back on what a human coder would need.
+- **Human ratio:** from their hours when they track them. Otherwise the **calendar ratio**: the weeks the
+  finished work actually took, divided by the weeks the plan gave it at their stated weekly hours. Both correct
+  the human's column the same way.
+Use them for every later estimate and forecast. Having no target date is fine, but the derived Planned dates
+still count: a Forecast past them still goes to `indie-studio:scope-guard`, and a latest acceptable date from
+the human is the signal for a re-plan.
 
 ## Quality bar by phase
 - **Conception:** every part estimated in three columns; the capacity rule holds for the first-release choice.
   Kill criteria written before any building starts.
-- **Pre-Production:** re-baseline the tiers after the Vertical Slice timing measurement (both kinds of hours per
-  unit of content).
+- **Pre-Production:** re-baseline the tiers after the Vertical Slice timing measurement (per unit of content:
+  the AI's hours, and the human's hours or calendar days).
 - **Production:** a 15-minute weekly review. When behind, cut scope, never the polish buffer.
 - **Launch and after:** run the post-mortem while memories are fresh.
 
 ## Weekly review (15 minutes)
-1. The human's hours and the AI session hours this week, against the plan.
-2. Tasks finished; estimate versus actual in each column; update the measured ratios.
+1. What finished this week against the plan, with the AI session hours (and the human's, if tracked).
+2. Estimate versus actual for the finished tasks; update the measured ratios.
 3. Top three tasks for next week, tied to the next gate.
 4. Any risk grown, any kill criterion triggered, any time-box overrun, any wait that could have started but has not.
 5. Re-forecast the remaining gates: the human's remaining corrected hours at their real weekly hours, plus the
@@ -62,8 +71,8 @@ goes to `indie-studio:scope-guard`, and a latest acceptable date from the human 
 ## AI does / Human does
 - **AI:** drafts plans, does the capacity arithmetic, tracks estimates in both columns, logs its own session
   time, reminds about time-boxes and waits, prepares gate reports.
-- **Human:** states honestly how many hours they really have and how many they worked, chooses what to cut,
-  approves gates.
+- **Human:** states honestly how many hours a week they really have (and how many they worked, only if they
+  chose to track them), chooses what to cut, approves gates.
 
 ## Beginner traps
 - The planning fallacy: a first-timer's own hands-on estimates are usually 1.5 to 2 times too low. AI build time

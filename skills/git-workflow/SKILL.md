@@ -32,6 +32,11 @@ user change it:
 
 Until the contract is set, ask before every commit or push.
 
+The human's yes is not always enough: a Claude Code safety setting (auto mode, for example) can still refuse a
+step, most often writing to `main` or pushing a tag. Do not retry it or look for a way around it. Give the human
+the exact commands, one per code block, and add the step to Permissions ("Git steps the AI cannot run here"),
+so later gates hand it over at once. Never write a refused step into the notebook as done.
+
 ## 1. Init mode (new game repository)
 One repository per game, at the game project folder root. Docs first; the engine project is added later.
 1. `git --version`. If git is missing, help the user install it (verify the current install steps with
@@ -145,6 +150,10 @@ The notebook (`STUDIO_STATE.md` and `studio/`) is one diary for the whole projec
 every branch. Switching branches shows that branch's copy, and deleting a branch deletes its copy. The newest
 copy is the true one. Keep it that way:
 - Work on one branch at a time and merge it before starting the next, so notebook updates travel with the merge.
+- **When merges have to wait for the human** (a standing delegation, or they are away), stack the branches:
+  start each task from the previous task's branch, keep the notebook current on the newest one, and list the
+  merge order for the human (the review file, `indie-studio:session`). After their yes, merge into `develop`
+  in that order.
 - **Before archiving or deleting a branch that will not be merged** (every spike, any abandoned task), switch
   to `develop` and carry that branch's notebook over first.
 - **When the session brief says "NEWER NOTEBOOK"**, carry that copy to the branch you are on before planning.

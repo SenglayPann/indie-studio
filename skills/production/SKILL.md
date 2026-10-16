@@ -21,8 +21,9 @@ rules: [communication.md](../director/references/communication.md). Hats and off
 3. **Device build weekly:** install it on the real test device and play it (a short creator pass,
    `indie-studio:playtest-loop`). Every two weeks, run an outsider playtest. A change to rules or numbers
    re-runs the balance simulator and updates `docs/BALANCE.md`.
-4. **Review (end of the week, Producer):** the human's hours and the AI session hours; estimate versus actual in
-   each column; update the measured ratios; re-forecast the remaining gates in the Gates table (the human's
+4. **Review (end of the week, Producer):** what finished against the plan; the AI session hours (and the
+   human's, if they track them); estimate versus actual; update the measured ratios (without tracked hours, the
+   calendar ratio in the producer role file); re-forecast the remaining gates in the Gates table (the human's
    remaining corrected hours divided by their real weekly hours, plus the waits ahead); top three for next week;
    risks, time-boxes, and waits that could start now. A forecast past its planned date goes to
    `indie-studio:scope-guard` now, not at the deadline. Update STUDIO_STATE.md and the journal

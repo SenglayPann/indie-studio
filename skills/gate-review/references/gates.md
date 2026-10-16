@@ -54,8 +54,8 @@ with score targets, random content, or upgrades that stack), `docs/ECONOMY.md`, 
    and feedback ("juice"), running on a real device.
 5. The slice was built the way the rest of the game will be: clean code on a `feature/*` branch (not the
    throwaway spike), a style bible in `docs/STYLE_BIBLE.md`, asset ledger rows filled in.
-6. **Pipeline timing measured:** the AI's hours and the human's hours per unit of content (per level, per
-   item), with the measured ratio for each. Extrapolated to the first release's content list and compared with
+6. **Pipeline timing measured:** the AI's hours and the human's side (their hours if tracked, otherwise
+   calendar days) per unit of content (per level, per item), with the measured ratio for each. Extrapolated to the first release's content list and compared with
    capacity (the human's hours) in `studio/DECISIONS.md`. Tiers, the first-release line, and
    `docs/FEASIBILITY.md` re-baselined from this.
 7. Runs at the target frame rate on the lowest-end target device; build size and start time measured in

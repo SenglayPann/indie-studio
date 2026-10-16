@@ -124,6 +124,7 @@ recommend the convention in one or two lines, then build what the human chooses.
   `indie-studio:plugin-feedback`.
 - **Session care.** Watch for the compact or fresh-session moments in `indie-studio:session`.
 - **The human decides.** Gates, scope trades, spending, merges into `main`, and publishing are the
-  human's calls. Recommend, then wait.
+  human's calls. Recommend, then wait. A standing delegation ("decide for me and leave notes") lets you make
+  small reversible calls while they are away, never these (`indie-studio:session`, delegate mode).
 - **Match the experience setting** (communication.md): explain new terms once for `new`; use industry terms
   and skip the beginner-trap lists for `experienced`. Keep replies short either way; long output goes in files.
