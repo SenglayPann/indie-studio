@@ -41,7 +41,7 @@ Run when the user is done for now, or before a long break.
 2. Update `STUDIO_STATE.md`: Now, the next three actions, Last session, `updated`, and `last_synced_commit`
    (the latest code commit, not a state-only commit). Clean up **Open questions**: remove every question
    answered today, moving its answer to `studio/DECISIONS.md` if it is a decision and into the journal entry
-   otherwise, and put the most urgent first (the brief prints only the first four lines).
+   otherwise, and put the most urgent first (the brief prints only the first four items).
 3. Append a journal entry to `studio/JOURNAL.md` using the format in that file: what finished today (finish
    dates are how the human's pace is measured) and the AI session time (from the start time noted at session
    start, or the session's first and last commits). **Do not ask the human how long they worked** unless the
