@@ -26,15 +26,34 @@ asset, not the bible (unless the human deliberately changes the bible and record
 - Buttons: <shape, corner radius, states: idle / pressed / disabled>
 - Text: <fonts, minimum size on the smallest phone, contrast rule (WCAG ratio, checked for every text and
   background pair)>
-- Game feel: <the few rules from the reference study: themed frames, reward moments, motion, celebration>
+- Game feel of the screens: <the few rules from the reference study: themed frames, reward moments, motion,
+  celebration>; how strongly each moment answers: the feedback-strength table below
 - Touch target minimum: <size, verify current platform guidance>
 - Accessibility basics: never rely on colour alone (add a shape, icon, or pattern); text follows the phone's
   text-size setting where the engine allows; an option to reduce motion and flashing; separate switches for
   sound, music, and vibration; captions for any voice.
 
+## Feedback strength (game feel)
+How the game answers each event, in three levels (`indie-studio:asset-pipeline`, `references/game-feel.md`). An
+event gets a row before it gets effects. Sizes and times are starting points, tuned on the phone with the human.
+
+| Level | Motion | Flash | Particles | Sound | Haptic | Hit-stop |
+|---|---|---|---|---|---|---|
+| Small (frequent events) | | | | | | |
+| Medium (a clear success or failure) | | | | | | |
+| Large (rare peaks) | | | | | | |
+
+| Event (as the rules report it) | Level | What changes from the preset (colour, sprite, sound) | Notes |
+|---|---|---|---|
+| | | | |
+
+- With "reduce motion and flashing" on: <what each level becomes; the information stays>
+- Flash limit: <large flashes per second, from the current accessibility guideline, with source and date>
+
 ## Audio mood and loudness
 - Music: <mood, tempo range, instruments>   Effects: <soft / crisp / playful>
-- Loudness target: <how the set is normalized>
+- Loudness target: <the mix target and peak ceiling, a researched starting point (`indie-studio:roles`, audio,
+  mix rules), and how the set is normalized>
 
 ## World, characters, and voice
 Skip the world and characters if the game has none; every game still needs the writing voice.
