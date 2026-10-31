@@ -3,6 +3,56 @@
 All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses semantic versioning.
 
+## [Unreleased]
+
+Ideas taken from three other Claude Code collections (Donchitos/Claude-Code-Game-Studios, MIT;
+obra/superpowers, MIT; gamedev-skills/awesome-gamedev-agent-skills, Apache-2.0), rewritten in this plugin's own
+words for any game; no text or code copied. What was left out and why: `docs/research/Ideas from other studio
+plugins (2026-10-31).md`. The tool scout and the store search guide are the user's own requests. Scenarios in
+`docs/TESTING.md` (89-104).
+
+### Added
+- **Proof before "done"** (`ai-delegation`, `references/done-evidence.md`): every done, fixed or works claim
+  names its check, runs it after the last change, and reports met, not met, not checked or n/a. A table says
+  what each kind of check proves and does not prove (tests, scripted runs, captures, emulator, faked store or
+  ad results, real play with sound, subagent reports). New tests are seen failing once, visible changes are
+  looked at in the running game, flows are checked step by step, and a subagent's work counts only once its
+  file is on disk.
+- **A fresh-eyes review before every merge** (`references/review-prompt.md`), a cold read of long briefs, and
+  **root-cause debugging** that defines what a strike is (`references/debugging.md`). The task brief gains
+  "Review focus" and a proof table per criterion.
+- **A notebook that stays small** (`session`, `director`, session brief): Now and Last session are overwritten;
+  old finished log entries move to dated files in `studio/archive/` at wrap and stay searchable; the brief warns
+  when the notebook is twice its size, and the doctor checks it too.
+- **Honest gate results** (`gate-review`, `director`): "not checked" is its own result; a gate is never Ready
+  with anything unchecked, and a check counts only once it has been seen failing.
+- **Joining a game already under way** (`director init`, `references/adopt.md`): the stage comes from evidence,
+  earlier gates are marked `adopted`, and a catch-up plan (`studio/CATCH_UP.md`) starts with backups, save
+  versions and the signing key. The doctor also checks that versions written in the docs match the project.
+- **Engineering rules commercial games get wrong** (`TECH.md`, `project-rules.md`, `monetization`,
+  `systems-design.md`): ad results as a fixed set tested against a faked ad network; pause owners, so closing
+  an ad never unpauses the player's pause; seeded randomness with saved generator state and a fair shuffle;
+  safer saves (temp file then rename, newer saves refused, repair on load, bought items restored from the
+  store); growth-economy pacing, capped offline earnings, and shown odds from the same list as the roll.
+- **Live-ops safety** (`launch-live`, `mobile-perf-budget`, roles): a Bad release plan (halt, kill switches,
+  clamped remote values, fix forward, tell players), a Soak test from Beta, a cheating and data-leak pass before
+  Gold Master, and player release notes drafted from commits.
+- **Game feel as a recipe** (`asset-pipeline`, `references/game-feel.md`): feedback hangs on rule events in
+  three strength levels with one preset each, written in a feedback-strength table in the style bible; a
+  reduce-motion setting and a researched flash limit. Also four usability checks and touch accessibility
+  (UI/UX), mix rules with a loudness starting point to verify (audio), and mechanical checks on every generated
+  art batch (artist).
+- **A tool scout** (`toolchain scout [topic]`, `references/tool-scout.md`): on call, weekly through a scheduled
+  run the human approves, or offered in one line when a gap shows (three strikes caused by a missing capability,
+  an asset class no maker fits, a request no connected tool covers). Official directories first; each tool is
+  checked for gap, publisher, activity, cost, licence, safety and fit, and gets Try, Watch or Skip. It never
+  installs: a Try goes through the tool comparison and `connect`. The digest lives in the studio-wide folder
+  when allowed.
+- **Store page and search (ASO)** (`launch-live`, `references/aso.md`): who does what (the AI drafts and reads,
+  the human signs in, approves and publishes), search terms from the store's own suggestions, a page that
+  converts, one-change listing tests, the monthly report, and a record in `docs/store/LISTING.md`. Paid ASO
+  tools wait until the game earns.
+
 ## [0.4.0] - 2026-10-16
 
 Built from the second critique of the first real project run with the plugin (the same solo developer's game,

@@ -39,7 +39,7 @@ Before the Vertical Slice commits months of production, find out what an install
 ## 3. Organic basics
 The store page and its keywords (ASO) in every launch language, screenshots and a short video from real
 gameplay, short clips during production, and one or two communities rather than every platform. Details:
-`indie-studio:roles` (marketer).
+`indie-studio:roles` (marketer); the store page and search method: `indie-studio:launch-live` (`references/aso.md`).
 
 ## 4. Featuring and pre-launch sign-ups
 - Stores offer ways to reach their editors (for example featuring nomination forms) and to collect sign-ups

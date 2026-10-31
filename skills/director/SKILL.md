@@ -1,6 +1,6 @@
 ---
 name: director
-description: Entry point of the Indie Studio workflow for solo game developers who build with AI. Use when the user starts or resumes a game project, asks what to do next, which phase or stage they are in, which role to act as, wants a status or project health check, or asks for direction while a STUDIO_STATE.md exists. Reads the project state, decides the phase, stage, active roles and what is off-limits, and routes to the right phase skill.
+description: Entry point of the Indie Studio workflow for solo game developers who build with AI. Use when the user starts or resumes a game project, brings the studio into a game already under way or released, asks what to do next, which phase or stage they are in, which role to act as, wants a status or project health check, or asks for direction while a STUDIO_STATE.md exists. Reads the project state, decides the phase, stage, active roles and what is off-limits, and routes to the right phase skill.
 argument-hint: "[init | status | next | doctor | hat <role>]"
 ---
 
@@ -12,7 +12,8 @@ phase, and tell the human exactly what to do next.
 
 Follow the communication rules in [communication.md](references/communication.md) in every reply.
 Phase, stage, gate, hat and off-limits tables are in [phases-and-stages.md](references/phases-and-stages.md).
-State file rules are in [state-file.md](references/state-file.md).
+State file rules are in [state-file.md](references/state-file.md). Joining a game already under way:
+[adopt.md](references/adopt.md).
 
 ## Choose the mode from `$ARGUMENTS`
 - empty or `status`: orient and report (section 2).
@@ -21,10 +22,13 @@ State file rules are in [state-file.md](references/state-file.md).
 - `doctor`: run the health check (section 4).
 - `hat <role>`: switch hats (section 5).
 
-## 1. Init (new project)
+## 1. Init (new project, or one already under way)
 1. Confirm the current folder is the game project folder (one folder per game). If it is not, ask
    the user to open the right folder. Do not create the project in an unrelated directory.
-2. If `STUDIO_STATE.md` already exists, do not overwrite it. Run status instead.
+2. If `STUDIO_STATE.md` already exists, do not overwrite it. Run status instead. If the folder already holds
+   a game (an engine project, builds, a store page, design documents, or a long git history), follow
+   [adopt.md](references/adopt.md) alongside the steps below: the stage comes from the evidence, not from
+   step 4's defaults, and step 7 hands over to that stage's phase skill.
 3. Copy `${CLAUDE_PLUGIN_ROOT}/templates/STUDIO_STATE.md` to `./STUDIO_STATE.md` and the folder
    `${CLAUDE_PLUGIN_ROOT}/templates/studio/` to `./studio/` (use `cp`, or Read and Write if `cp` fails).
 4. Ask for the working title (default "untitled") and whether they have shipped a game before (sets
@@ -60,7 +64,7 @@ State file rules are in [state-file.md](references/state-file.md).
 ## 3. Next (decide and start the next action)
 1. Load the phase skill for the current phase (the brief's `Playbook` line names it; otherwise use the table
    in phases-and-stages.md). It defines the steps of each stage and the gate.
-2. Find the first unmet criterion of the next gate (`indie-studio:gate-review`,
+2. Find the first criterion of the next gate that is not met or not checked (`indie-studio:gate-review`,
    [gates.md](../gate-review/references/gates.md)). That is the next action unless a task in "Next actions"
    is already in progress.
 3. Put on the hats for the stage (max 3). Read `indie-studio:roles` for the role files you need.
@@ -68,14 +72,15 @@ State file rules are in [state-file.md](references/state-file.md).
 5. When the stage's work is done, run `indie-studio:gate-review`. Only the human approves a gate.
 
 ## 4. Doctor (health check)
-Check each item; report a table of PASS / WARN / FAIL with a one-line fix for each problem. Offer to
-fix; do not change things silently.
+Check each item; report a table of PASS / WARN / FAIL / NOT CHECKED with a one-line fix for each problem. NOT
+CHECKED means you could not look (no access, no remote, a tool missing): give the reason, and never count it
+as a PASS. Offer to fix; do not change things silently.
 1. STUDIO_STATE.md exists; `phase` and `stage` are valid together; `next_gate` matches the stage; `updated`
    is not older than the last real work; `experience` is `new` or `experienced`.
 2. At most 3 hats, and they suit the stage.
 3. Git: repo exists; `main` and `develop` exist; hooks path set (`core.hooksPath`); a remote exists and
    nothing important is unpushed; `git_permissions` is `set`.
-4. Tags match the Gates table (each passed gate has its tag on `main`).
+4. Tags match the Gates table (each passed gate has its tag on `main`; a gate marked `adopted` has none).
 5. Branch names obey the phase rules (for example, no open `feature/*` branch after the Alpha gate).
 6. `last_synced_commit` exists in history and is not far behind HEAD, and no other branch or `archive/*` tag
    holds a newer notebook (`indie-studio:git-workflow`, section 8).
@@ -102,6 +107,13 @@ fix; do not change things silently.
     (the consistency pass in `indie-studio:gate-review`).
 14. Plugin version: `plugin_version` in STUDIO_STATE.md matches the installed plugin. If not, bring the
     notebook up to date with the human's approval: [upgrades.md](references/upgrades.md).
+15. Versions written down match the project: the engine version, SDK and package versions, and the build
+    command in `docs/TECH.md` and `CLAUDE.md` agree with the files that hold the truth (the engine's own
+    version file, the package manifest or lock file, the build script). Report each mismatch with both
+    values, and fix the document unless the human says the project file is the one that is wrong.
+16. Notebook size: STUDIO_STATE.md under about 80 lines and each file in `studio/` under about 40 KB
+    (`wc -lc STUDIO_STATE.md studio/*.md`). WARN when over, FAIL at twice. Fix: `indie-studio:session`, "Keep
+    the notebook small".
 
 ## 5. Hat (switch role)
 Read the matching file in `${CLAUDE_PLUGIN_ROOT}/skills/roles/references/roles/`, update `hats` in the state

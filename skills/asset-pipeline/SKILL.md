@@ -1,6 +1,6 @@
 ---
 name: asset-pipeline
-description: Rules for making, naming, importing, and tracking game art, audio, 3D models, and text, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when preparing text for translation or translating the game or its store page (localization); when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, a hired freelancer, or the human); when writing a style bible, character sheets, the writing voice, or prompt recipes; when generated assets drift out of style between batches or tool versions; when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
+description: Rules for making, naming, importing, and tracking game art, audio, 3D models, and text, especially AI-generated ones. Use when creating or importing sprites, models, UI art, animations, sound effects, music, fonts, or icons; when preparing text for translation or translating the game or its store page (localization); when deciding who should make an asset (Claude itself, an AI generator such as Meshy or Tripo, a bought pack, a hired freelancer, or the human); when writing a style bible, character sheets, the writing voice, or prompt recipes; when generated assets drift out of style between batches or tool versions; when adding game feel ("juice": screen shake, flashes, particles, haptics, hit-stop); when organizing asset folders, 3D budgets, or import settings; or when a question comes up about licences, ownership, or store disclosure of AI-generated content.
 argument-hint: "[asset type or question]"
 ---
 
@@ -10,6 +10,7 @@ AI can produce a lot of assets fast. Without rules the result is a game that loo
 whose files nobody can trace, with licence risks nobody checked. Communication rules:
 [communication.md](../director/references/communication.md). 3D specifics:
 [3d-pipeline.md](references/3d-pipeline.md). Text and translations: [localization.md](references/localization.md).
+Game feel, how each action answers the player in three strength levels: [game-feel.md](references/game-feel.md).
 Connecting the tools: `indie-studio:toolchain`.
 
 ## Principles
@@ -46,7 +47,8 @@ answer in the makers table.
 3. Look at them: render vector output to an image, take a screenshot of a model, and compare against the
    style bible and the technical spec. If you cannot see the result, it is not verified: say so and ask the
    human to look.
-4. The human approves or rejects. After two failed rounds, change the maker rather than the prompt.
+4. The human approves or rejects. After two failed rounds, change the maker rather than the prompt. If no maker
+   in the table fits, offer to look for one (`indie-studio:toolchain`, scout).
 5. Record the decision, the date, and the samples in the makers table.
 Re-run this whenever the style bible changes or a tool changes its model.
 

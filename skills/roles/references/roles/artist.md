@@ -27,13 +27,32 @@ enough contrast and no essential information in the screen corners; look at it o
 Code-drawn art follows the code-maker routine in `indie-studio:asset-pipeline` (section 3), which includes a
 contrast check of the palette.
 
+## Checks on every generated batch
+Generators make the same faults again and again. Check each file before the human looks, with tools already on
+the machine (ask before adding a package), and report what you found; the human still judges the look.
+- **Size and anchor:** the exact canvas size and anchor point of the asset class (style bible, technical spec).
+- **Real transparency:** an image with an alpha channel (its transparency layer) that is fully opaque everywhere
+  has a baked-in background, or a checkerboard painted to look transparent. Remove the background or reject the
+  image, then look for a halo: a thin rim of the old background colour around the edges.
+- **Colour count:** for flat and pixel styles, count the distinct colours. Far more than the palette means
+  gradients, noise, or smudges crept in: remap to the palette.
+- **Grayscale read:** turn it grey and place it on the game's usual backgrounds. A shape that disappears
+  without colour will not read at a glance, nor for colour-blind players.
+- **Three distances:** judge it at its size on the smallest target phone (the one that matters), at working size
+  (for flaws), and in a capture of real play beside the other assets (does it belong?).
+- **Contact sheet:** the whole batch on one image, over a checkerboard and over the game's background, beside
+  the golden asset. Name any drift: proportions, outline width or colour, light direction, palette creep,
+  detail density, camera angle.
+
 ## AI does / Human does
 - **AI:** makes what it can make well itself (icons, flat shapes, UI, effects), drives generation tools for
-  the rest, drafts variations, batch-processes and renames files, checks specs, and runs the golden-set drift
-  check. It proves each claim with three samples before taking an asset class (`indie-studio:asset-pipeline`).
+  the rest, drafts variations, batch-processes and renames files, runs the batch checks above and the
+  golden-set drift check. It proves each claim with three samples before taking an asset class
+  (`indie-studio:asset-pipeline`).
 - **Human:** curates and picks, cleans up results, judges the look, decides licence questions.
 
 ## Beginner traps
 Style drift between tools, sessions, or silent model updates; detail that vanishes at phone size; polishing
 before the pipeline is proven; using assets whose licence is unknown; forgetting UI states; trusting a
-generator's demo instead of a sample made with the real recipe.
+generator's demo instead of a sample made with the real recipe; a "transparent" image with a painted
+checkerboard.

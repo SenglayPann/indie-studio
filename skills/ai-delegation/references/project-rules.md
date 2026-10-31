@@ -12,6 +12,8 @@ Show it to the human and get approval before writing it.
 - Read `docs/TECH.md` before changing structure, saves, or services, and keep it current in the same branch.
 - One branch per task. Small commits in the `type(scope): summary` format. Never commit to `main`.
 - Build and run the tests (`<test command>`) before saying "done". Report failures and skipped steps honestly.
+- A bug-fix test must fail with the fix reverted. Tests never compute their expected values with the code
+  they test.
 - Three failed attempts at the same problem: stop, summarize, and give the human the options from
   `indie-studio:ai-delegation` (fresh session, look it up, make it smaller, ask people, hands on).
 - Check engine and SDK calls against the docs for the installed version. Never invent an API.
@@ -22,9 +24,16 @@ Show it to the human and get approval before writing it.
 - Gameplay code never queries UI objects directly. Use events or signals between them.
 - Numbers that designers tune (speeds, costs, rewards) live in data files, not in code.
 - Game code never calls ad, purchase, or analytics SDKs directly: use the wrappers listed in `docs/TECH.md`.
+  Each ad or purchase ends in one result from a fixed set, and a reward is granted at most once per request.
 - Every save carries a version number. Changing what is saved raises it and adds a migration and a test.
+  Saves are written to a temporary file and renamed over the old one, keeping a backup.
+- Every remote setting has a default in the build and a safe range enforced in code.
+- Gameplay randomness comes from the game's own seeded generators, never the engine's global one; visual
+  effects use a separate generator; saves and undo keep the generator's state, not only its seed.
 - Player-facing text comes from string tables, never from code or images.
-- Handle pause, resume, and interruptions (calls, notifications). Respect safe areas and notches.
+- Handle pause, resume, and interruptions (calls, notifications). Pause has owners (menu, background, ad,
+  purchase sheet): each removes only its own reason, so closing an ad never unpauses the player's pause.
+  Respect safe areas and notches.
 - Touch targets must be large enough for a thumb (see `indie-studio:mobile-perf-budget`).
 
 ### Assets
