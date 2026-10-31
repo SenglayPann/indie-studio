@@ -53,7 +53,8 @@ the user approves. Downloads need the user's approval: say the file name, source
 or private code into a search query.
 
 ## 5. Errors and failed fixes
-1. Read the whole error. Check the obvious causes for the project's version.
+1. Read the whole error. Check the obvious causes for the project's version. When the cause is still not
+   clear, find it before trying a fix: [debugging.md](../ai-delegation/references/debugging.md).
 2. If the error is unfamiliar, or one fix has already failed, search the exact core phrase of the error
    together with the engine and version. Check the engine's official issue tracker.
 3. Apply the fix from the best source, and check it fits the installed version.
@@ -76,3 +77,4 @@ user a short list of official pages to check. Do not present remembered specific
 ## 8. Evaluating new AI or asset tools
 For "should I use tool X" or "which tool is best for Y", follow
 [tool-evaluation.md](references/tool-evaluation.md): a time-boxed, fair comparison before spending money.
+To find candidates first (what is new, or whether any tool does a job), use `indie-studio:toolchain`, scout.

@@ -39,11 +39,22 @@ redesign" says which of the two it defers.
 - Anything destructive (a new game over a saved one, a purchase, a reset) is confirmed or can be undone; no
   progress is ever lost to one tap.
 - Tips and messages appear only where the player can see them: never under a panel or during an animation.
+  Less urgent ones (a tip, an offer, a reward notice) wait or merge until the player is between actions; none
+  covers the next thing the player needs to tap.
+- The tap that closes a popup or panel never also presses what lies under it. Check by tapping close where a
+  button sits underneath, and by tapping during the closing animation.
+- Numbers that change (score, coins, a timer) have room for their widest value. Try 9 to 10, 99 to 100, the
+  largest value the game allows, and the longest translation: nothing beside them moves or gets cut off.
+  Digits of one fixed width keep a counting number from wobbling.
+- A sound that carries information (time running out, a warning, a turn starting) has a visible match, so the
+  game still works with the sound off.
 - The system back button or gesture does something defined on every screen (close the panel, go back, pause,
   or ask before quitting).
 - Text is readable at arm's length on the smallest phone; the main actions sit within thumb reach.
 - The mobile basics: touch targets big enough for a thumb (verify the current platform guidance), safe areas
   and notches respected, enough contrast, and nothing that depends on colour alone.
+- Touch for everyone: nothing needs a long hold (offer a tap to start and a tap to stop) or two fingers at once
+  (a pinch also has buttons).
 
 ## Game UI, not app UI
 Plain app-style screens (flat boxes, system fonts, no motion) make a game feel unfinished. Before the slice's UI
@@ -51,7 +62,8 @@ is built, study three to five comparable games: the same genre and audience, and
 features (modes, events, leaderboards). Rate what makes each feel like a game, and write the few rules you will
 apply into the style bible's UI kit. Common ones: frames and buttons themed to the game's world; reward moments
 that celebrate (a burst, a sound, a count-up); light motion on idle screens; numbers that animate when they
-change; one strong visual focus per screen.
+change; one strong visual focus per screen. How strongly each tap, reward, and win answers follows the style
+bible's feedback-strength table (`indie-studio:asset-pipeline`, `references/game-feel.md`).
 
 ## When a request differs from the convention
 If the human asks for something the usual approach does better (for example a full-screen blur behind a tip,
@@ -67,4 +79,5 @@ the cost on the phone, recommend, then build what they choose.
 ## Beginner traps
 A home screen that grows one corner button per feature; screens designed one at a time with no map; a tip shown
 under another panel; a "New game" button that silently wipes a saved one; no answer to the back button; an
-app's look copied into a game; the structure deferred together with the look.
+app's look copied into a game; the structure deferred together with the look; a score that jumps sideways at 10;
+a close tap that also presses the button beneath.

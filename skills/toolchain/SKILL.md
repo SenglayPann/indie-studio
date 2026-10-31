@@ -1,7 +1,7 @@
 ---
 name: toolchain
-description: Connect, check, and look after the outside tools the studio uses: AI asset generators for 3D, 2D, and audio (Meshy, Tripo, and the like), engine editor bridges, engine plugins, and MCP servers, Blender, automated builds and tests (CI), and build or analytics services. Use when the user wants to set up or connect a tool, asks which tools they are missing for the current stage or what else they should install, when a tool or MCP server fails, errors, or stops responding, when an API key or a paid plan is needed, after a tool was chosen through the tool comparison, or when generation credits are about to be spent in bulk. Walks the human through every step, keeps keys out of the chat and out of git, proves the tool works with one cheap test job, and records it.
-argument-hint: "[check | connect <tool> | test <tool> | fix <tool>]"
+description: Connect, check, and look after the outside tools the studio uses: AI asset generators for 3D, 2D, and audio (Meshy, Tripo, and the like), engine editor bridges, engine plugins, and MCP servers, Blender, automated builds and tests (CI), and build or analytics services. Use when the user wants to set up or connect a tool, asks which tools they are missing for the current stage or what else they should install, when a tool or MCP server fails, errors, or stops responding, when an API key or a paid plan is needed, after a tool was chosen through the tool comparison, when generation credits are about to be spent in bulk, or when the user asks what new tools, plugins, skills, or MCP servers are worth knowing, whether a tool exists for a job, or wants a weekly tool digest. Walks the human through every step, keeps keys out of the chat and out of git, proves the tool works with one cheap test job, records it, and scouts for new tools without installing any.
+argument-hint: "[check | connect <tool> | test <tool> | fix <tool> | scout [topic]]"
 ---
 
 # Toolchain
@@ -15,8 +15,8 @@ and keeps the human's keys and money safe. Communication rules:
 engine). A tool with an MCP server can be used inside a session; a tool without one is driven by the human in
 a browser and the results are imported by hand.
 
-Pick the mode from `$ARGUMENTS`: `check` (what is missing), `connect`, `test`, `fix`. With no argument, use
-the one that matches the request.
+Pick the mode from `$ARGUMENTS`: `check` (what is missing), `connect`, `test`, `fix`, `scout` (what is new).
+With no argument, use the one that matches the request.
 
 ## Rules that never bend
 - **Choose before connecting.** A tool is picked through the comparison in
@@ -113,3 +113,13 @@ the same day instead of at the next device build. Start at the Vertical Slice; i
 - Review paid tools monthly with the human: what was used, what was not, what to cancel.
 - Re-check each tool's terms before the Beta and Gold Master gates; terms change quietly.
 - Disconnect servers the project no longer uses. Every connected server costs context and adds risk.
+
+## 7. Scout (what is new)
+New tools appear every week; most are noise and some are unsafe. Details:
+[tool-scout.md](references/tool-scout.md).
+- **On call** (`scout`, or `scout <topic>` for one job): search the official directories first, filter on gap,
+  cost, licence, and safety, and write a short digest: at most five tools, each Try, Watch, or Skip.
+- **When a gap shows** (three strikes caused by a missing capability, an asset class no maker fits, a request
+  no connected tool covers): name the gap and ask once whether to look. Do not search unasked.
+- **Weekly,** only if the human approves a scheduled run; the plugin cannot schedule itself.
+- **Never installs.** A "Try" goes through the tool comparison, the human's decision, then section 2.

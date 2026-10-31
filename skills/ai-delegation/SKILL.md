@@ -1,6 +1,6 @@
 ---
 name: ai-delegation
-description: Rules for handing game-development work to AI coding agents, subagents, editor-control tools, and generators. Use when delegating a task, writing or updating the project's CLAUDE.md or AGENTS.md rules, planning multi-step or parallel agent work, reviewing agent-written code before a merge, or when an agent keeps failing at the same problem. Provides task briefs, a delegation matrix, the three-strikes rule, the checkpoint-before-big-runs rule, and the human review protocol.
+description: Rules for handing game-development work to AI coding agents, subagents, editor-control tools, and generators, and for proving that it works. Use when delegating a task, writing or updating the project's CLAUDE.md or AGENTS.md rules, planning multi-step or parallel agent work, before calling agent work done or fixed, reviewing agent-written code before a merge, debugging a bug whose cause is not yet known, or when an agent keeps failing at the same problem. Provides task briefs, a delegation matrix, proof before "done", a fresh-eyes review, the three-strikes rule, the checkpoint-before-big-runs rule, and the human review protocol.
 argument-hint: "[task to delegate or brief to write]"
 ---
 
@@ -23,8 +23,12 @@ mistake twice, add one line. Start from [project-rules.md](references/project-ru
 ## 2. Write a task brief before delegating
 Copy `${CLAUDE_PLUGIN_ROOT}/templates/docs/TASK_BRIEF.md` to `studio/tasks/T-###.md` (a short inline brief
 is enough for tiny tasks). It states: why (which scope tier), what to build, acceptance criteria that can be
-tested, the files or areas the agent may touch, what is out of scope, how to verify, and the estimate.
-Size: one session or about four hours at most. Split anything bigger. Vague briefs cause drift.
+tested, the files or areas the agent may touch, what is out of scope, how to verify (each step with what
+passing looks like), the player situations no criterion covers, and the estimate.
+Size: one session or about four hours at most. Split anything bigger. Vague briefs cause drift, and the writer
+cannot see their own gaps: before a brief goes to a long or unattended run, or to a freelancer, a fresh
+subagent cold-reads it and lists what it would have to guess ([review-prompt.md](references/review-prompt.md),
+builder check).
 
 ## 3. Delegation matrix
 | Work | Agent alone? | Human involvement |
@@ -45,12 +49,19 @@ Size: one session or about four hours at most. Split anything bigger. Vague brie
    branch made for this task, so undo is one command (`indie-studio:git-workflow`).
 3. Verify engine and SDK calls against the docs for the installed version. Never invent an API
    (`indie-studio:research`).
-4. Build and run the automated tests before saying "done". Report results honestly, including failures and
-   skipped steps. A change to saves, purchases, or economy math comes with a test.
-5. **Three strikes.** After three failed attempts at the same problem, stop. Do not keep patching symptoms, and
-   do not widen the scope by rewriting things to "fix" it. Write a short summary (what was tried, what is now
-   known, two or three hypotheses), then offer the human these options with one marked as recommended. The
-   human may not be able to read the code, so give them choices they can act on:
+4. **Proof before "done".** Before saying done, fixed, or works, run the check that proves that claim, after
+   the last change, and put its result in the message. Always build and run the automated tests. Report
+   failures and skipped steps honestly: a check that could not run is "not checked", with the reason, never
+   "met". A change to saves, purchases, or economy math comes with a test, seen failing once before the fix
+   made it pass. A change the player can see is checked in the running game. What each kind of check proves,
+   and what it does not: [done-evidence.md](references/done-evidence.md).
+5. **Three strikes.** Debug from evidence, not guesses: make the bug happen on purpose, find what changed, and
+   test one hypothesis at a time ([debugging.md](references/debugging.md)). A strike is a hypothesis that
+   proved wrong, or a fix that did not remove the symptom. After three strikes on the same problem, stop. Do
+   not keep patching symptoms, and do not widen the scope by rewriting things to "fix" it. Write a short
+   summary (what was tried, what is now known, two or three hypotheses), then offer the human these options
+   with one marked as recommended. The human may not be able to read the code, so give them choices they can
+   act on:
    - **Fresh session** (`indie-studio:session`, compact mode): failed attempts crowd the context and cause
      repeats. Often the cheapest fix.
    - **Look it up** (`indie-studio:research`, section 5): the exact error text with the engine and version,
@@ -60,23 +71,30 @@ Size: one session or about four hours at most. Split anything bigger. Vague brie
    - **Ask people:** draft a question for the engine's official forum or community with the version, the exact
      error, what was tried, and the shortest steps to reproduce. The human posts it under their own account.
    - **Hands on:** talk the human through the step in the editor and watch what comes back.
+   - **Find a tool** (`indie-studio:toolchain`, scout): only when the summary shows a missing capability, not a
+     mistake: no connected tool does this job well.
    When it is solved, record the cause and the fix in `studio/KNOWLEDGE.md` so the next session does not repeat it.
 6. No new dependencies, packages, or SDKs without approval. No unrelated refactors. No secrets read or printed.
 7. Subagents get a brief and return short findings. Only the main thread edits STUDIO_STATE.md, so updates do
-   not collide.
+   not collide. A brief to a subagent names the file it must write, and its work counts only once that file is
+   on disk; its "done" is a claim like any other ([done-evidence.md](references/done-evidence.md), section 6).
 8. Parallel agents work on separate branches or worktrees, never in the same folder.
 9. **Engine plugins do the engine-specific how.** If an installed engine plugin offers a skill for the task
    (its skills appear in your skill list under the engine vendor's prefix), use it for the implementation
    steps. The task brief still decides what is built, what is out of scope, and when it counts as done.
 
 ## 5. Reviewing before a merge
-For every change to be merged, give:
+First, a fresh subagent that has not seen this chat reviews the change against the brief and the project
+rules, and every MUST FIX it finds is fixed before the human is asked
+([review-prompt.md](references/review-prompt.md)). Then, for every change to be merged, give:
 1. A summary of what changed and why: in plain language for `new` (the human may not read code), short and
    technical for `experienced`, with the diff or the files to read.
 2. The riskiest part, and anything touching save data, purchases, permissions, or networking.
-3. How to test it (exact steps on the device or in the editor), and the result of each merge check (CI, or the
+3. How to test it (exact steps on the device or in the editor), the proof for each acceptance criterion (met,
+   not met, or not checked, from the brief's Result), and the result of each merge check (CI, or the
    one-command build and the automated tests: `indie-studio:git-workflow`, section 3).
-4. The size of the change (files and lines).
+4. The size of the change (files and lines), and any file changed outside the brief's "Allowed to touch".
+5. The fresh review's result: what it found, what was fixed or declined and why, and what it could not judge.
 Then ask before merging into `develop`.
 
 ## 6. Closed-loop testing
@@ -84,12 +102,14 @@ Where the engine allows it, let the agent run the build, the tests, or the game 
 editor-control tool), read the console errors, and fix them, within the three-strikes limit. CI repeats the
 same checks on every merge (`indie-studio:toolchain`), so a fix that only works on one machine is caught. What tools exist changes
 quickly: verify the current options for the chosen engine with `indie-studio:research`. Never let a loop run
-unattended past its retry limit.
+unattended past its retry limit. A run without errors does not show the screen: for a change the player can
+see, the loop ends with a look at the running game ([done-evidence.md](references/done-evidence.md), section 4).
 
 ## 7. Planning bigger work
 For anything spanning several files or systems, plan first (use plan mode if available), agree the plan with
-the human, then delegate the steps as separate briefs in dependency order. The plan lives in `docs/` or the task
-briefs, not only in chat.
+the human, then delegate the steps as separate briefs in dependency order, each naming what it hands to the
+next (a file, an event, a data format). The plan lives in `docs/` or the task briefs, not only in chat, and
+gets the same cold read as a brief before an unattended run.
 
 ## 8. Keeping the rules useful
 Review CLAUDE.md at each gate: remove stale lines, add the lessons from repeated mistakes, keep it short.

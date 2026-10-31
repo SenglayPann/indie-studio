@@ -40,7 +40,8 @@ These are starting points. The truth is what the low-end device shows.
 - Pool objects that spawn often (projectiles, effects, floating text).
 - Decouple UI from gameplay with events or signals.
 - Load scenes and big assets asynchronously; do not freeze the game.
-- Handle pause, resume, and interruptions; save state when the app goes to the background.
+- Handle pause, resume, and interruptions; save state when the app goes to the background. Pause has owners
+  (`docs/TECH.md`, section 2): closing an ad never unpauses a game the player paused.
 
 ## 4. Asset rules
 For 3D games, per-asset triangle, texture, and material budgets live in `indie-studio:asset-pipeline`
@@ -60,6 +61,18 @@ font characters needed; strip unused assets. Check the engine's build report for
 5. Add a row to `studio/PERF_LOG.md`, with pass or fail against the budget. Copy the numbers, not impressions.
 
 When to measure: Vertical Slice (the baseline), First Playable, Alpha, Beta, Gold Master.
+
+### Soak test
+A five-minute session misses what builds up. From Beta, at each milestone, play or bot-drive one long session
+on the low-end device without restarting the app (a starting point: 30-60 minutes): many rounds, every scene
+change, many ad views (test ads), menus opened and closed again and again.
+- Record memory, average and worst frame time, and heat at the start and every 10-15 minutes, one
+  `studio/PERF_LOG.md` row per checkpoint (milestone "Beta soak, +30 min").
+- Judge growth against the start, not only the budget: memory or frame time that rises at three checkpoints
+  in a row is a leak even while it is under budget (a starting rule).
+- Look for state that piles up over many rounds: lists, counters, event listeners, pooled objects that are never
+  returned, queued log or analytics events.
+- A low-end phone may kill an app that keeps growing; players see that as a crash with no report.
 
 ## 6. If a budget fails
 Measure first, then fix the single biggest cost. Typical order: too many separate draw calls (use atlases and

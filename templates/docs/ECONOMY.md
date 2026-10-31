@@ -8,6 +8,10 @@ file, never in code, so it can be tuned without a new build. Note which file hol
 |---|---|---|---|---|---|
 | Remove ads | | one-off | | | |
 
+Paid random items (mystery packs, loot boxes), if any: the odds shown and the real roll come from one list in
+<data file>; boosts and guaranteed drops update the shown odds. Store and country disclosure rules: <verified
+with `indie-studio:research`, date>.
+
 ## Currencies
 | Currency | Soft or hard | Earned from | Spent on | For (progress / cosmetics / convenience / power) | Earned per session (typical / heavy) | Starting amount | Data file |
 |---|---|---|---|---|---|---|---|
@@ -25,6 +29,15 @@ loses meaning within days.
 
 ## Reward schedule
 <What a player gets for finishing a round, a level, a day, a streak. Keep it in data.>
+
+## Pacing (games with upgrade ladders, idle income, or resets)
+How long the player waits for each next step, at a typical player's income. Method: `indie-studio:preproduction`
+(systems design, the economy).
+
+| Step | Cost | Income at that point | Wait | Ratio to the previous wait |
+|---|---|---|---|---|
+
+Offline earnings: <cap in hours; share of the playing rate>; a device clock that moved backwards pays nothing.
 
 ## Ad moments
 | Placement | Format | When it appears | Cap and minimum gap | Reward, if any |
@@ -54,7 +67,13 @@ naming rules: <provider, date>; its reserved list is a test fixture at <path>.
 | purchase | | product_id, result |
 
 ## Remote settings
-<Which numbers should be changeable without an app update, and which service holds them.>
+<Which numbers should be changeable without an app update, and which service holds them.> Every key has a
+default inside the build, used when the service cannot be reached, and a safe range the code enforces, so a
+typo in a dashboard cannot hand out a million coins. Each risky new feature (a new ad placement, a new saved
+field, cloud sync) gets an on/off key, a **kill switch**, so it can be turned off without an update.
+
+| Key | What it changes | Default in the build | Safe range (clamped in code) | Kill switch? |
+|---|---|---|---|---|
 
 ## Live events and offers (live games only; planned after launch)
 One reusable event template, run through remote settings, sized to real hours. Each event names the number it

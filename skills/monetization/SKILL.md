@@ -63,6 +63,15 @@ until the soft launch shows real numbers.
   mediation service is enough; each extra network adds build size, permissions, and support work. Which ones
   exist and what they pay changes constantly: verify before choosing (`indie-studio:research`), and use the
   engine's own ad skills when they are installed.
+- **Ad results are a fixed set,** tested like purchases (section 4). Through the wrapper, every rewarded or
+  interstitial request (separate calls) ends in exactly one result: reward earned, closed without reward, no ad
+  available, failed, or timed out. Each request has an ID, and a reward is granted at most once per ID. Cover
+  with automated tests against a faked ad network: no ad available, closed early, the reward reported before
+  or after the close, the same reward twice, a result for an old request, a timeout (the button recovers, no
+  reward is invented) followed by a late real reward (granted once: the player did watch), and the app sent to
+  the background mid-ad. Test ads in the editor nearly always fill, so none of these shows up there. An ad on
+  screen is one of the game's pause owners (`docs/TECH.md`, section 2): closing it never unpauses a game the
+  player paused.
 - **No real ads before Beta** (section 5), and never tap your own live ads: it gets accounts closed.
 - **Consent:** privacy rules differ by region and store and change often. Verify what applies, and make the
   consent flow part of the build, not an afterthought.
@@ -76,6 +85,9 @@ until the soft launch shows real numbers.
 - **Must work before launch:** restoring purchases, checking the receipt, a purchase interrupted by a call or
   a lost connection, and a refund leaving the player in a sane state. Keep purchases behind one wrapper
   (`docs/TECH.md`) and cover each of these cases with an automated test against a faked store.
+- **Paid random items** (mystery packs, loot boxes): the odds shown and the real roll come from one list in
+  data, so they cannot drift apart; boosts and guaranteed drops update the shown odds. Disclosure rules differ
+  by store and country and change: verify them (`indie-studio:research`) before designing one.
 - **Never:** pay-to-win that spoils the loop, hidden prices, pressure aimed at children, or anything the store
   forbids. Use the engine's own purchase skills where they exist.
 
@@ -103,7 +115,8 @@ Write it at the GDD stage from
 what each is for (progress, cosmetics, convenience, or power), every source and every sink, the reward
 schedule, prices, and the ad moments. Check earn rates in the balance simulator when there is one. Keep all of
 it in data files so tuning needs no new build, and plan to move the important numbers to remote settings before
-launch.
+launch, each with a default in the build and a safe range the code enforces. Upgrade ladders, idle income, and
+offline earnings get a pacing table (`indie-studio:preproduction`, systems design).
 
 ## 7. Measuring
 - **Minimum event list:** first open; tutorial step started and finished; session start and end; level or
@@ -149,6 +162,7 @@ traps: [growth.md](references/growth.md).
 
 ## 11. Beginner traps
 Ads in the first minute; an interstitial after every single round; three ad networks in one build; no
-consent flow; assuming "test mode" is a switch, so testers see real ads or pay real money; a paywall in front of the fun; an economy tuned by feel and
+consent flow; assuming "test mode" is a switch, so testers see real ads or pay real money; rewarded ads tested
+only in the editor, where they nearly always fill; a paywall in front of the fun; an economy tuned by feel and
 never measured; reading results from a handful of players; treating downloads as success; building a season
 pass for a game nobody returns to; forgetting that the store takes a cut and that money arrives late.
