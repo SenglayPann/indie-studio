@@ -33,12 +33,18 @@ scope, your schedule, and your project.
 - **Code that stays healthy.** A technical design every AI session codes by, saves with version numbers and
   migration tests, one wrapper per ads, purchase, or analytics SDK, and automatic builds and tests (CI) on every
   merge. Installed engine plugins, such as the engine vendor's own skills, do the engine-specific work.
+- **Proof, not promises.** Every "done" comes with the check that proves it, run after the last change; what
+  could not be checked is called "not checked", never passed. Bugs are chased to their cause, and every merge
+  gets a fresh-eyes review first.
 - **Estimates made for an AI studio.** The AI's build time, your own hours, and calendar waits are estimated
   separately; your hours decide the schedule, and measured ratios replace the guesses after two weeks. You are
   never asked to log your hours unless you want to: your pace is read from when things get finished.
 - **Works while you are away.** Say "decide for me and leave me notes": small, reversible calls are made and
   marked provisional, anything involving money, merges, or publishing waits for you, and a plain review file is
   ready when you come back.
+- **Keeps up with new tools.** Ask what is new, or approve a weekly run: new skills, plugins, MCP servers, and
+  AI generators are checked for the gap they fill, cost, licence, and safety, then listed as try, watch, or
+  skip. Nothing is installed without you.
 - **Dates that warn early.** Every gate gets a planned and a forecast date, and the brief says SLIPPING as soon
   as the forecast passes the plan.
 - **The right hat for the moment.** Eleven studio roles (producer, designer, engineer, artist, UI/UX designer,
@@ -51,8 +57,8 @@ scope, your schedule, and your project.
   ideas get priced, not refused. Until Beta, a live switch keeps real ads and real charges away from your
   testers, whatever ad network or store you use.
 - **Built to be found.** The route to players (organic, paid installs, or a publisher), an optional
-  marketability test before production commits, translation built in from the Vertical Slice, and the stores'
-  yearly requirement deadlines tracked after launch.
+  marketability test before production commits, translation built in from the Vertical Slice, a store page
+  and search (ASO) guide, and the stores' yearly requirement deadlines tracked after launch.
 - **Scope protection.** Every new idea is costed, then parked or traded. The tiers set the build and cutting
   order, you choose how much of them the first release includes, and a cut that would remove a reason to return
   is flagged. The feature freeze at Alpha is enforced by a git hook.
@@ -160,11 +166,11 @@ reports this, give the list more room in your game project's `.claude/settings.j
 | `conception`, `preproduction`, `production`, `launch-live` | The four phases |
 | `playtest-loop` | The creator pass, real-player testing (in person or remote, within a tester budget), and the iterate-or-kill decision |
 | `engine-selector` | Engine choice for an AI-assisted solo developer |
-| `ai-delegation` | Task briefs, three strikes, review before a merge, engine plugins, project rules |
+| `ai-delegation` | Task briefs, proof before "done", root-cause debugging, three strikes, review before a merge, engine plugins, project rules |
 | `monetization` | Business model, ads, purchases, the economy, analytics, reading a soft launch, and getting players (route, marketability test, paid installs, featuring) |
 | `mobile-perf-budget` | Budgets and real-device measurement |
 | `asset-pipeline` | Style bible, who makes each asset (Claude's own code and freelancers included), drift control, matching an approved design, 3D for phones, translation, licensing, ledger |
-| `toolchain` | Connects AI asset generators, engine plugins, and CI; keeps keys out of the chat; proves each tool works |
+| `toolchain` | Connects AI asset generators, engine plugins, and CI; keeps keys out of the chat; proves each tool works; scouts for new tools without installing any |
 | `plugin-feedback` | Records where this plugin was wrong, and sends it only with your approval |
 
 The plugin is engine-agnostic. If engine-specific skills are installed (for example Unity ones), it uses them

@@ -3,7 +3,7 @@
 All notable changes to this project are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses semantic versioning.
 
-## [Unreleased]
+## [0.5.0] - 2026-10-31
 
 Ideas taken from three other Claude Code collections (Donchitos/Claude-Code-Game-Studios, MIT;
 obra/superpowers, MIT; gamedev-skills/awesome-gamedev-agent-skills, Apache-2.0), rewritten in this plugin's own

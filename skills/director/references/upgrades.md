@@ -16,7 +16,7 @@ brief says "PLUGIN VERSION" when `plugin_version` in STUDIO_STATE.md differs fro
    playtest notes stay as they were written.
 5. Set `plugin_version` to the installed version and commit `chore(state): update notebook to <version>`.
 
-## Next version (unreleased; rename to its number at release)
+## 0.5.0
 Add now:
 - STUDIO_STATE.md: overwrite Now and Last session to their short form (`indie-studio:session`, "Keep the
   notebook small"); history already in them moves to the journal, not deleted.
