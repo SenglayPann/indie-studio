@@ -16,6 +16,17 @@ brief says "PLUGIN VERSION" when `plugin_version` in STUDIO_STATE.md differs fro
    playtest notes stay as they were written.
 5. Set `plugin_version` to the installed version and commit `chore(state): update notebook to <version>`.
 
+## Next version (unreleased; rename to its number at release)
+Add now:
+- STUDIO_STATE.md: overwrite Now and Last session to their short form (`indie-studio:session`, "Keep the
+  notebook small"); history already in them moves to the journal, not deleted.
+
+Needs a decision or real work:
+- If the brief says NOTEBOOK TOO BIG: archive old finished entries of each named log once, at the next wrap,
+  to `studio/archive/<LOG>-<YYYY-MM>.md`, with the human's yes. Entries move whole and unedited.
+- Task briefs written from now on use the new Result table (proof per criterion) and a Review focus list;
+  older briefs stay as they are.
+
 ## 0.4.0
 Add now:
 - STUDIO_STATE.md front matter: `plugin_version`.

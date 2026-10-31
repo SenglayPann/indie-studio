@@ -184,6 +184,28 @@ case "$deleg" in
   *) echo "! DELEGATION ACTIVE: $deleg. Work by indie-studio:session (delegate mode)." ;;
 esac
 
+# The notebook is read in every session. Name each file that is far over its size: twice the starting
+# sizes in indie-studio:session ("Keep the notebook small"). This only reports; it never moves anything.
+# One wc and one awk for all files: starting a process per file is slow on Windows.
+big=$( { wc -lc < "$state"; echo "--"; wc -c "$root"/studio/*.md; } 2>/dev/null | awk '
+  /^--$/ { logs = 1; next }
+  !logs {
+    if ($1 > 160 || $2 > 16384) out = sprintf("STUDIO_STATE.md (%d lines, %d KB; aim: about 80 lines, 8 KB)", $1, $2 / 1024)
+    next
+  }
+  { n++; size[n] = $1 + 0; name = $0; sub(/^[ \t]*[0-9]+[ \t]+/, "", name); sub(/.*[\/\\]/, "", name); file[n] = name }
+  END {
+    if (n > 1) n--   # with two or more files, the last line is the total
+    for (i = 1; i <= n; i++)
+      if (size[i] > 81920)
+        out = out (out == "" ? "" : ", ") sprintf("studio/%s (%d KB; aim: about 40 KB)", file[i], size[i] / 1024)
+    print out
+  }')
+if [ -n "$big" ]; then
+  echo "! NOTEBOOK TOO BIG: $big."
+  echo "  Read these files by section, never whole. Trim and archive them (indie-studio:session, \"Keep the notebook small\")."
+fi
+
 next=$(section "Next actions" 5)
 if [ -n "$next" ]; then
   echo "Next actions:"
@@ -223,7 +245,7 @@ RULES
 echo "8. $tone"
 cat <<'RULES'
 9. A studio rule or skill was wrong, missing, or in the way, or the user overrides one: log it with indie-studio:plugin-feedback in one line, then carry on.
-10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first unmet item. Before calling a stage done: indie-studio:gate-review. Before building a request, put on the hat it needs (indie-studio:roles).
+10. Choosing new work, or asked "what next": follow indie-studio:director (next mode); it loads the Playbook skill and finds the next gate's first item not yet met or not checked. Before calling a stage done: indie-studio:gate-review. Before building a request, put on the hat it needs (indie-studio:roles).
 11. If an indie-studio skill in your skill list shows no description, the list is over its size limit: tell the human once and offer the fix in indie-studio:director (doctor).
 12. Before changing how the code is organized, what is saved, or how a service is called: read docs/TECH.md (once it exists), keep it current in the same branch, and build and run the tests before saying "done".
 === END BRIEF ===

@@ -1,6 +1,6 @@
 ---
 name: session
-description: Manage the start, end, and length of a working session in an Indie Studio project. Use at the start of a session or after /clear or a compaction (orient from STUDIO_STATE.md and reconcile with git), at the end of a session (save state, write the journal, commit, hand off), whenever the conversation is long or cluttered, a milestone just finished, or a debugging loop just ended (recommend compacting or a fresh session, saving state first), and when the user hands over decisions for a while ("decide for me and leave me notes").
+description: Manage the start, end, and length of a working session in an Indie Studio project. Use at the start of a session or after /clear or a compaction (orient from STUDIO_STATE.md and reconcile with git), at the end of a session (save state, write the journal, archive old log entries, commit, hand off), when STUDIO_STATE.md or a studio log has grown too big, whenever the conversation is long or cluttered, a milestone just finished, or a debugging loop just ended (recommend compacting or a fresh session, saving state first), and when the user hands over decisions for a while ("decide for me and leave me notes").
 argument-hint: "[start | wrap | compact | delegate]"
 ---
 
@@ -20,7 +20,8 @@ hands over their decisions for a while.
    `indie-studio:director` in init mode.
 2. If the brief flags the state as stale, reconcile first: follow "Reconciling a stale state" in
    [state-file.md](../director/references/state-file.md). If it reports a newer notebook on another branch or
-   tag, carry that copy over first (`indie-studio:git-workflow`, section 8).
+   tag, carry that copy over first (`indie-studio:git-workflow`, section 8). If it says NOTEBOOK TOO BIG, read
+   those files by section only, and plan "Keep the notebook small" (below) into this session.
 3. Check the working tree. If there are uncommitted changes from an earlier session, summarize them in
    one or two lines and ask what to do (commit them on the right branch, keep going, or set aside). Never
    discard changes without explicit approval.
@@ -38,7 +39,8 @@ hands over their decisions for a while.
 Run when the user is done for now, or before a long break.
 1. Save the work. Show `git status`. Commit per `indie-studio:git-workflow` on the current
    working branch (never directly on `main`). Do not leave work only in the working tree.
-2. Update `STUDIO_STATE.md`: Now, the next three actions, Last session, `updated`, and `last_synced_commit`
+2. Update `STUDIO_STATE.md`: **overwrite** Now and Last session with today only (first copy into the journal
+   anything they held that it lacks), the next three actions, `updated`, and `last_synced_commit`
    (the latest code commit, not a state-only commit). Clean up **Open questions**: remove every question
    answered today, moving its answer to `studio/DECISIONS.md` if it is a decision and into the journal entry
    otherwise, and put the most urgent first (the brief prints only the first four items).
@@ -50,19 +52,21 @@ Run when the user is done for now, or before a long break.
    note any wait that started or ended. This feeds the weekly review and the post-mortem.
 4. Append any decisions made to `studio/DECISIONS.md`, and set the Status of any decision they replace. Move
    any parked ideas to `studio/PARKING_LOT.md`.
-5. **Studio-wide knowledge.** If today's research added `general` entries to `studio/KNOWLEDGE.md`: when the
+5. **Size check:** `wc -lc STUDIO_STATE.md studio/*.md`. If the state file or a log is over its size, run
+   "Keep the notebook small" (below) now, in this wrap.
+6. **Studio-wide knowledge.** If today's research added `general` entries to `studio/KNOWLEDGE.md`: when the
    Permissions section says yes to the studio-wide file, copy the new ones into `~/.indie-studio/KNOWLEDGE.md`
    (skip any already there; keep their dates and re-check windows; nothing about this game, so no title,
    numbers, private links, or account details). When it says "not asked yet", ask once whether to keep such a
    file for future games. It lives outside the project folder, so the choice is theirs; record the answer in
    Permissions.
-6. Back up: if the permission contract allows it, push the working branch to the remote. If there is no
+7. Back up: if the permission contract allows it, push the working branch to the remote. If there is no
    remote yet, say so and recommend setting one up.
-7. Commit the state and journal changes as `chore(state): wrap up <date>`.
-8. Tell the user in three lines: what is saved and where, what is unfinished, and what the first action
+8. Commit the state, journal, and archive changes as `chore(state): wrap up <date>`.
+9. Tell the user in three lines: what is saved and where, what is unfinished, and what the first action
    next session will be. Recommend a fresh chat next time; the brief will restore the context.
-9. Add one short invitation, once, and drop it if they pass: anything the studio itself got wrong today
-   (`indie-studio:plugin-feedback`).
+10. Add one short invitation, once, and drop it if they pass: anything the studio itself got wrong today
+    (`indie-studio:plugin-feedback`).
 
 ## Delegate (the human hands over decisions for a while)
 For "go with your recommendations and leave me notes", "decide for me overnight", and the like. The human
@@ -115,6 +119,26 @@ Procedure when recommending:
    For a fresh start, tell them to run `/clear` (or open a new chat).
 4. Explain what happens next: after a compact, clear, or new session the studio brief is injected
    automatically, so nothing is lost. If no brief appears, re-read `STUDIO_STATE.md` before continuing.
+
+## Keep the notebook small
+The notebook is read again in every session, so each extra line is paid for again and again. Starting sizes
+(change them by a decision): `STUDIO_STATE.md` under about 80 lines (about 8 KB), each file in `studio/` under
+about 40 KB. The brief warns at twice these. Copy before you cut: nothing is deleted, only moved.
+1. **The state file:** "Keep it small" in [state-file.md](../director/references/state-file.md): Now and
+   Last session hold the present only, long items shrink to a line or two, and history moves out.
+2. **A log over its size** (the journal, decisions, knowledge, plugin feedback, a bug list): move its oldest
+   *finished* entries, whole and unedited, to `studio/archive/<LOG>-<YYYY-MM>.md` (the month the entries were
+   written), until the live file is down to about half its size limit, so this comes round only now and then.
+   Finished means: journal entries before this week; decisions replaced, or older than the last passed gate;
+   feedback sent or dropped; facts replaced by a newer check or no longer used; closed risks and bugs. What is
+   still open stays: provisional decisions, unsent feedback, facts still relied on, open risks and bugs.
+3. **A register whose rows all still apply** (the asset ledger) shrinks another way: rows of assets no longer
+   in the game move to the archive, and long text in a row (a full prompt) moves to the file the row names.
+4. Under the live file's title, keep one line naming its archive files and the IDs each holds, for example
+   `Older entries: studio/archive/DECISIONS-2026-03.md (D-001 to D-087)`. IDs never change, so
+   `grep -rn "D-042" studio/` still finds any entry.
+5. Archive files are never edited and never read whole: search them, then read only the part you need.
+   Review files the human has gone through (delegate mode) move to `studio/archive/` as they are.
 
 ## Keep sessions light
 - Prefer filtered output (`head`, `grep`, a targeted read) over dumping whole logs or files into the chat.

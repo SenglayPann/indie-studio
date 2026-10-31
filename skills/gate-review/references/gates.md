@@ -1,8 +1,9 @@
 # Gate checklists
 
-Every criterion needs evidence. The numbers below are sensible defaults for a solo mobile game; the human may
-adjust them by recording a decision. Store, platform, price, and benchmark details are volatile: verify them
-with `indie-studio:research` and cite the source and date.
+Every criterion needs evidence; one that could not be checked is marked "not checked", never met
+(`indie-studio:gate-review`, step 3). The numbers below are sensible defaults for a solo mobile game; the human
+may adjust them by recording a decision. Store, platform, price, and benchmark details are volatile: verify
+them with `indie-studio:research` and cite the source and date.
 
 Project documents live in the game project: `docs/PITCH.md`, `docs/MARKET.md`, `docs/FEASIBILITY.md`,
 `docs/BUSINESS_CASE.md`, `docs/GDD.md`, `docs/LEVELS.md` (games built from levels), `docs/BALANCE.md` (games
@@ -67,7 +68,8 @@ playbook's steps for the ending stage.
 3. `docs/ECONOMY.md` drafted if the game earns from ads or purchases: what is sold, currencies, ad moments,
    and the analytics event list (`indie-studio:monetization`). Nothing integrated yet.
 4. A playable slice at final target quality: one complete level or segment with production art, UI, audio,
-   and feedback ("juice"), running on a real device.
+   and feedback ("juice": `${CLAUDE_PLUGIN_ROOT}/skills/asset-pipeline/references/game-feel.md`), running on
+   a real device.
 5. The slice was built the way the rest of the game will be: clean code on a `feature/*` branch (not the
    throwaway spike), a style bible in `docs/STYLE_BIBLE.md`, asset ledger rows filled in.
 6. **Pipeline timing measured:** the AI's hours and the human's side (their hours if tracked, otherwise calendar
@@ -149,6 +151,8 @@ playbook's steps for the ending stage.
     off, no missing characters (`docs/BUSINESS_CASE.md`, Languages).
 12. Accessibility basics checked (`docs/STYLE_BIBLE.md`, UI kit): nothing depends on colour alone, text is
     readable on the smallest phone, and sound, music, and vibration can each be switched off.
+13. A long-session (soak) test on the lowest-end target device, logged in `studio/PERF_LOG.md`: memory and
+    frame time did not keep climbing (`indie-studio:mobile-perf-budget`, "Soak test").
 
 ## Gate 5: Gold Master (tag `v1.0.0`; release candidates `v1.0.0-rc.N`)
 1. Release candidate built from `release/x.y.z` by CI or the one-command build, versioned, with a build number
@@ -163,8 +167,10 @@ playbook's steps for the ending stage.
 5. Crash reporting and analytics active, and consistent with the privacy declarations.
 6. Signing keys backed up in two private places (human confirms; never paste them anywhere).
 7. Release plan ready: the soft-launch shape and its countries or languages (or a recorded decision to skip
-   the soft launch), what is held back for the global launch, the rollout, and the hotfix path.
-8. The human approves submission and submits with their own accounts.
+   the soft launch), what is held back for the global launch, and the rollout.
+8. A bad-release plan written: how to halt the rollout, ship a fix, and switch off a risky feature
+   (`indie-studio:launch-live`, "Bad release plan").
+9. The human approves submission and submits with their own accounts.
 
 ## Gate 6: Global Launch (tag `m5-global-launch`)
 Passed at the end of the Soft Launch stage, before the full launch: new countries after a limited-countries

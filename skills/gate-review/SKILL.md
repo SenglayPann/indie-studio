@@ -16,10 +16,17 @@ Checklists for all seven gates are in [gates.md](references/gates.md).
 1. **Pick the gate:** from `next_gate` in STUDIO_STATE.md, or from `$ARGUMENTS`. If the current stage ends
    without a gate (Idea, Validation, Prototype, GDD, Launch, Live Ops), run the stage close below instead:
    the next gate's checklist cannot pass yet and is not the test.
-2. **Load its checklist** from gates.md.
+2. **Load its checklist** from gates.md, plus the open items of `studio/CATCH_UP.md` if the studio joined
+   the game mid-way ([adopt.md](../director/references/adopt.md)).
 3. **Check every criterion against evidence**, not impressions. Evidence is a file path, a commit or tag,
    a log or measurement, a playtest note, or the human's explicit confirmation. Mark each criterion:
-   met (with the evidence), partly met, or not met.
+   met (with the evidence), partly met, not met, or **not checked** (with the reason: no device at hand, no
+   access, a step skipped, the input missing). Never turn "could not check" into "met" or "partly met".
+   Reading the code is not evidence for how something plays, looks, sounds, or performs. **A check you have
+   not seen fail is not a check:** an automated test or CI step counts only once it has been seen failing
+   (CI red on a deliberately broken build, a test failing before the fix it guards). If nobody has seen it,
+   break what it guards once on a throwaway branch and watch it fail; until then, its criterion is not
+   checked.
 4. **Consistency pass.** Every plan fact has one home: the scope, the first-release line, and the dates in
    STUDIO_STATE.md; the targets in `docs/BUSINESS_CASE.md`; the estimate in `docs/FEASIBILITY.md`; the screens
    in `docs/PITCH.md`. Look through the other documents for copies of these facts and check that each copy
@@ -27,11 +34,13 @@ Checklists for all seven gates are in [gates.md](references/gates.md).
    (`studio/DECISIONS.md`). A copy that disagrees is a gap: replace it with a link to its home.
 5. **Read the risks:** open `studio/RISKS.md`. Has any kill or pivot criterion triggered? Is a time-box overrun?
    Say so.
-6. **Report** in chat: a compact table (criterion, status, evidence), then a recommendation:
-   - **Ready:** everything met.
-   - **Not yet:** list the top three gaps and the smallest work that closes them. Turn them into next actions.
-   - **Ready with risk:** name the unmet items and what could go wrong. Passing this way is the human's
-     informed choice; record it in DECISIONS.md as an override with the reason.
+6. **Report** in chat: a compact table (criterion, status, evidence or the reason it was not checked), then a
+   recommendation. The worst status decides it, in this order: not met, partly met, not checked, met.
+   - **Ready:** everything met. A single "not checked" item means the gate is not Ready.
+   - **Not yet:** list the top three gaps and the smallest work that closes them, and for each item not
+     checked, what would check it. Turn them into next actions.
+   - **Ready with risk:** name the unmet and unchecked items and what could go wrong. Passing this way is the
+     human's informed choice; record it in DECISIONS.md as an override with the reason.
 7. **Ask for approval** explicitly: "Approve the <gate> gate?" Do not treat silence or enthusiasm as approval.
 8. **If approved:**
    1. Update STUDIO_STATE.md: Gates table (status passed, the Passed date, evidence; re-forecast the remaining

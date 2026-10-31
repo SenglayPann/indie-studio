@@ -30,9 +30,9 @@ Only put a `#` comment after a value, never inside one (the hook strips text aft
 The brief prints the first five items of Next actions, four of Open questions, and five of Off-limits, and
 counts the rest. An item is a line that starts at the left edge ("1. ...", "- ...") plus the indented lines
 under it; one longer than about 300 characters is cut and marked "continued". So keep the most urgent item
-first and each item short, with the detail in a task brief or a document it links to. A comment inside these
-three sections must fit on one line starting with `<!--`, or the brief prints it. The brief also prints the
-Permissions line "Standing delegation" whenever it is not `none`.
+first and each item to one or two lines, with the detail in a task brief (`studio/tasks/`) or a document it
+links to. A comment inside these three sections must fit on one line starting with `<!--`, or the brief prints
+it. The brief also prints the Permissions line "Standing delegation" whenever it is not `none`.
 
 The **Gates** table has the columns Gate, Status, Planned, Forecast, Passed, and Evidence. Dates are
 `YYYY-MM-DD`. Planned is set at Kickoff from the capacity math and changes only by a recorded decision.
@@ -41,15 +41,22 @@ remaining corrected hours divided by their real weekly hours, plus the waits sti
 alongside the work (`indie-studio:roles`, producer). Passed is the approval date. The hook prints the next
 gate's planned and forecast dates and warns when the forecast is later than the plan.
 
-Keep the whole file under about 80 lines. It is read at every session start; every line costs context.
-Move history to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verified facts to
-`studio/KNOWLEDGE.md`.
-
 **One home per fact.** The Scope tiers section is the only copy of the scope and the first-release line, the
 Gates table the only copy of the dates, and the Schedule section the only copy of the weekly hours, the target
 date, and whether the human tracks their own hours. The Permissions section holds the git contract, a standing
 delegation, and any git step the AI cannot run in this setup. Other documents link here instead of repeating
 them, so a change is made once.
+
+## Keep it small
+Keep the whole file under about 80 lines (about 8 KB). It is read at every session start; every line costs
+context, every session. The file is a snapshot, not a diary:
+- **Now** and **Last session** are overwritten, never added to. Now is the present focus in one to three
+  lines; Last session is the latest session only, because the journal already holds its full story.
+- History goes to `studio/JOURNAL.md`, reasons to `studio/DECISIONS.md`, and verified facts to
+  `studio/KNOWLEDGE.md`. When Now or an item starts collecting dates, commit hashes, or who said what, it has
+  become history: move it.
+- The logs in `studio/` have a size too; their old entries move to `studio/archive/` (`indie-studio:session`,
+  "Keep the notebook small"). The brief warns when the state file or a log is twice its size.
 
 ## When to update (state as you go)
 Update the file at each of these moments, not only at the end of a session:
