@@ -121,7 +121,10 @@ The cheapest balance tool for any game with score targets, random content, or up
    engine with the build's own code and compare the results with the simulator's, game by game (easier and
    stronger than replaying a game recorded on a phone); at the least, replay one recorded game (same seed, same
    result). From the Vertical Slice, the rules live in one library used by the game, the tests, and the bots
-   (`docs/TECH.md`, section 2), so the simulator can never drift away from the game.
+   (`docs/TECH.md`, section 2), so the simulator can never drift away from the game. When the game and the
+   simulator disagree on the same seed, check the randomness first: a visual effect drawing from the gameplay
+   generator, the engine's global random function, or a result that depends on hash-map order (`docs/TECH.md`,
+   section 2, Randomness).
 2. **Two bots, then trust.** The random bot is the baseline. The careful bot must beat it across many seeds
    before any of its numbers are trusted; on a single deal either one can win.
 3. **Enough games.** Fixed seeds, so every result can be repeated. A thousand games measure a pass rate to
@@ -134,7 +137,9 @@ The cheapest balance tool for any game with score targets, random content, or up
    section 3 ("Reading a person's run"), and move the targets to fit the people, not the other way round.
 6. **Checks that stay.** From the Vertical Slice, the key balance targets run as automated tests on fixed
    seeds (for example "the careful bot passes round 4 in 75-85% of games"), so a change that breaks the curve
-   fails CI (`indie-studio:toolchain`). A check that fails the day it is built is a finding, not a broken
+   fails CI (`indie-studio:toolchain`). The target is the number written in `docs/BALANCE.md`; a check that
+   computes its target with the same rules library it tests can never fail. Break the guarded number once to
+   see the check fail before trusting it. A check that fails the day it is built is a finding, not a broken
    tool: keep the goal, measure candidate fixes with the tool, record the numbers in `docs/BALANCE.md`, and let
    the human choose. Never loosen a goal to make a check pass.
 
@@ -145,6 +150,21 @@ The cheapest balance tool for any game with score targets, random content, or up
 - A lost run should still move the player forward a little, or losing feels like wasted time.
 - Run the economy through the simulator too: how many sessions until each unlock, for a typical player and a
   heavy one.
+
+**Growth economies** (upgrade ladders, idle income, resets for a permanent bonus). The bots answer "is it
+fair"; these games also need "how long until the next thing".
+- **Prices that multiply** each level (cost = base x growth to the power of the level) double every
+  log 2 / log growth levels: about every 5 levels at a growth of 1.15, about every 10 at 1.07. Income has to
+  keep up with that, or the ladder becomes a wall.
+- **A pacing table** (`docs/ECONOMY.md`, Pacing): each next step with its cost, the income at that point, the
+  wait, and the ratio to the previous wait. A gentle rise feels like progress (a starting point: each wait 1.2
+  to 1.5 times the last); a sudden jump is where players quit. Resets get rows too: the wait between them.
+- **Offline earnings:** capped in hours, and paid at a lower rate than playing (a starting point: a quarter to
+  a half). A device clock that moved backwards pays nothing; players change the clock to skip waits. Where it
+  matters, use a time source the player cannot change (verify the options with `indie-studio:research`).
+- **Big numbers:** round before choosing the suffix, or 999,999 shows as "1000.0K" instead of "1.0M". Know
+  where the number type breaks: whole numbers overflow, and decimals stop adding small amounts to a huge total.
+- **Paid random items:** the odds shown and the roll come from one list (`indie-studio:monetization`).
 
 The plan itself lives in `docs/ECONOMY.md`.
 
@@ -163,4 +183,6 @@ Tuning by feel from your own runs; trusting one bot on one deal; treating a solv
 targets that grow by adding while power multiplies; answers to threats that never bite; a second copy of the
 rules in another language, drifting away from the game; a reason to return that the business case promises
 and the first release does not contain; judging luck by the average alone; never searching for the best fixed
-pick order; adding items to a pool without re-measuring the whole game; calling two strong items partners.
+pick order; adding items to a pool without re-measuring the whole game; calling two strong items partners; a
+price curve that outruns income; offline income paid for a clock moved backwards; a balance check whose
+target comes from the code it checks.

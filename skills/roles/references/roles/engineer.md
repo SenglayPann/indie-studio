@@ -26,7 +26,9 @@ integrations, technical-debt notes, and basic performance.
   simulator; never a second copy of the rules in another language.
 - **Production:** readable, small functions, no allocations in per-frame code, object pooling for spawned
   things. Tests for purchases and economy math; CI green before every merge.
-- **Alpha onward:** fixes only. No new systems. Every Class A bug gets a test where the engine allows.
+- **Alpha onward:** fixes only. No new systems. Every Class A bug gets a test where the engine allows, seen
+  failing with the fix reverted before it counts.
+- **Before Gold Master:** the cheating and data-leak pass below.
 
 ## AI does / Human does
 - **AI:** writes, refactors, and debugs code; writes and runs tests; runs builds; keeps TECH.md current.
@@ -44,8 +46,25 @@ integrations, technical-debt notes, and basic performance.
   what is built and when it is done. Record such plugins in TECH.md, section 9.
 - Small commits on a branch per task (`indie-studio:git-workflow`). Three failed fixes in a row: stop and escalate.
 - Mobile limits apply from the start (`indie-studio:mobile-perf-budget`).
+- Tests compare against values from the design docs or worked out by hand. A balance check that computes its
+  target with the same rules library it tests can never fail.
+
+## Cheating and data-leak pass (before Gold Master)
+Look at the release build the way a cheater or a snoop would. Size it to the game: an offline game with nothing
+to buy needs only the save and debug lines.
+- **The save:** can a player edit it to get currency, unlocks, or purchases? What was bought is restored from
+  the store, never trusted from the save. How much tampering matters beyond that is the human's call.
+- **Secrets:** anything inside the app can be read out of it. Only public IDs (an ad unit ID, an analytics app
+  ID) belong in the build; never a private key, a server password, or an admin token.
+- **Debug leftovers:** debug menus, cheat shortcuts, test ad units, and verbose logs are off in the release
+  build; leftover TODO notes and debug prints are counted, then fixed or listed as debt.
+- **Personal data:** none in logs, crash reports, or analytics properties (no names, emails, or free text).
+- **SDKs:** each one listed with its version in `docs/TECH.md`, matching the store's data declarations.
+- **Anything sent to a server** (scores, cloud saves) is checked there, or treated as untrusted.
+Protection tools (code obfuscation, tamper checks) change often: verify them with `indie-studio:research`, and
+each one is a package the human approves.
 
 ## Beginner traps
 Over-engineering early; optimizing before measuring; giant scripts that do everything; adding packages
 casually (each one adds size and risk); ignoring compiler warnings; trusting code that was never run; changing
-the save format without a migration.
+the save format without a migration; a test that still passes with the bug put back.

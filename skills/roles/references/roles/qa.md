@@ -25,17 +25,22 @@ Prototype: outside playtests. First Playable: no crash on the critical path. Alp
 Beta: zero Class A. Gold Master: a regression pass on real devices.
 
 ## Mobile smoke test (run at each milestone, on two or more devices, one low-end)
-Install and launch; cold start time; a full core-loop session; pause and resume; background and return; an
-incoming call or notification mid-play; rotation if supported; low battery mode; airplane mode and offline
-behavior; nearly full storage; different screen sizes and notches; mute and volume; app update keeps the save;
-every shipped language (nothing cut off, no missing characters).
+Install and launch; cold start time; a full core-loop session; pause and resume; pause, then let an ad or the
+purchase sheet open and close (still paused); background and return, also in the middle of an ad; an incoming
+call or notification mid-play; rotation if supported; low battery mode; airplane mode and offline behavior (a
+rewarded-ad button recovers and invents no reward); nearly full storage; different screen sizes and notches;
+mute and volume; app update keeps the save; every shipped language (nothing cut off, no missing characters).
+From Beta, a long session too (`indie-studio:mobile-perf-budget`, Soak test).
 
 ## AI does / Human does
 - **AI:** writes test plans and checklists, triages logs and stack traces, and automates what can be
   automated: the test list in `docs/TECH.md` (section 8) grows by one test for every Class A bug the engine
-  can reproduce in a test.
+  can reproduce in a test. A bug-fix test counts only after it was seen failing with the fix reverted. Balance
+  checks compare against the targets written in `docs/BALANCE.md`, never against numbers the rules code under
+  test computes.
 - **Human:** plays on real phones, recruits outside testers, and verifies fixes by hand.
 
 ## Beginner traps
 Testing only on the development PC or emulator; only on a high-end phone; never testing interruptions; bug
-reports with no reproduction steps.
+reports with no reproduction steps; trusting a test nobody has seen fail; testing ads only in the editor,
+where test ads nearly always fill.

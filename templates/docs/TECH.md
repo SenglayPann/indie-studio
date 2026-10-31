@@ -29,6 +29,21 @@ with no engine dependency, used by the game, the automated tests, and the headle
 There is never a second copy of the rules in another language for the simulator. How this engine runs such
 code outside the editor: <verified with `indie-studio:research`, date>.
 
+**Randomness** (games with random content): gameplay draws (deals, drops, spawns) come from the game's own
+seeded generators, never the engine's global random function; some engine shuffle helpers use the global one,
+so check. Visual effects (particles, idle motion, shake) use a separate generator, so adding a sparkle never
+changes the next deal. The save keeps each generator's current state, not only its seed. Undo, reloading after
+the app was closed, and a retry restore that state (unless the design says a retry deals afresh); otherwise
+players re-roll bad luck. Shuffles use the standard Fisher-Yates method (from the last item down, swap each item
+with a random one at or before it); home-made shuffles are often biased. No gameplay result depends on the clock
+or on the order a dictionary or hash set returns its items.
+
+**Pause has owners.** The game is paused while any reason holds: the player's pause menu, the app in the
+background, an ad on screen, a purchase sheet, a system dialog. Each owner adds and removes only its own reason,
+so closing an ad never unpauses a game the player paused. Slow-motion and freeze-frame effects scale game time
+on their own and never touch the pause state; their timers run on real time, so a freeze always ends. Pause
+owners in this game: <...>.
+
 ## 3. Conventions
 - Asset folders and names: `indie-studio:asset-pipeline`. Code folders and names: <...>
 - Code style: <...>   Where tuning data lives: <...>   Level data format and IDs: `docs/LEVELS.md`
@@ -39,8 +54,19 @@ code outside the editor: <verified with `indie-studio:research`, date>.
 - Format and location: <...>   Cloud save: <none / service>
 - **Version number:** every save carries one. A change to what is saved raises it and adds a migration from
   the previous version, with a test. An update must never break an existing player's save.
-- Corrupted or missing save: <what happens; never crash, never silently wipe progress>
-- Purchases: <which are restored from the store, which live in the save>
+- **Safe writes:** write the new save to a temporary file, then rename it over the old one, keeping the
+  previous save as a backup. A crash or a dead battery mid-write then leaves a good save; loading falls back to
+  the backup when the main file fails.
+- **Newer than the build:** a save written by a newer game version (a cloud save after a downgrade, a second
+  phone on an older build) is refused with a message, never guessed at.
+- **Repair, do not crash:** on load, removed or unknown item IDs are dropped or replaced, values outside current
+  limits are clamped, negative or not-a-number values are reset, and each repair is logged. Corrupted or missing
+  save: <what happens; never crash, never silently wipe progress>
+- **Save what cannot be recomputed** (choices, unlocks, inventory, generator state). Totals and other derived
+  values are recomputed on load, so a formula change in a patch cannot leave them out of step.
+- Purchases: <which are restored from the store, which live in the save>. What was bought is restored from the
+  store, never trusted from the local file: a save a player can open and edit is a cheat path in a game that
+  sells currency or power (`indie-studio:roles`, engineer, cheating and data-leak pass).
 
 ## 5. Services (each behind one wrapper)
 Game code calls the wrapper, never the SDK, so a provider can change without touching gameplay.
@@ -48,9 +74,9 @@ Game code calls the wrapper, never the SDK, so a provider can change without tou
 | Service | Provider and SDK version (verified date) | Wrapper | Test mode or fake | Notes |
 |---|---|---|---|---|
 | Analytics | | | | Events: `docs/ECONOMY.md` |
-| Ads (mediation) | | | | Placements: `docs/ECONOMY.md` |
+| Ads (mediation) | | | | Placements: `docs/ECONOMY.md`. A fixed set of results, an ID per request, a reward granted at most once, a timeout rule (`indie-studio:monetization`, section 3) |
 | Purchases | | | | Receipt check, restore (re-reads the store's purchases), pending and interrupted purchases |
-| Remote settings | | | | Keys: `docs/ECONOMY.md` |
+| Remote settings | | | | Keys, defaults, safe ranges, kill switches: `docs/ECONOMY.md`. Every value read is clamped to its range; a missing one uses the build's default |
 | Consent | | | | Regions and flows: `docs/ECONOMY.md` |
 | Crash reporting | | | | Symbols uploaded for every release build |
 
@@ -64,12 +90,25 @@ Game code calls the wrapper, never the SDK, so a provider can change without tou
 - Application IDs: <Android package name / iOS bundle ID>
 - Versioning: <x.y.z> for players, plus a build number that rises with every upload and is never reused.
 - Signing: the human holds the keys and two private backups; CI reads them only from its secret settings.
+- A bad store build is fixed forward with a higher build number; stores usually cannot roll one back
+  (`indie-studio:launch-live`, Bad release plan).
 
 ## 8. Automated checks
 - Run all tests: `<command>`
+- A test counts once it has been seen failing: a bug-fix test fails with the fix reverted, and a new balance or
+  economy check fails when the number it guards is broken on purpose. Expected values come from the design docs
+  or are worked out by hand, never computed by the rules code under test.
 - Tested automatically (grow this list; every Class A bug adds a test where the engine allows):
-  - [ ] Save and load, including loading a save from every earlier save version
+  - [ ] Save and load, including a save from every earlier save version, a cut-off file (the backup loads), a
+    save from a newer version (refused), and a removed item ID (repaired)
   - [ ] Purchase handling with the store faked: success, failure, pending, restore, refund
+  - [ ] Ad handling with the network faked: no ad available, closed without reward, the reward reported before
+    and after the close, the same reward twice, a result for an old request, a timeout then a late reward, the
+    app sent to the background mid-ad
+  - [ ] Pause: the player pauses, an ad or a purchase sheet opens and closes, the game is still paused
+  - [ ] Randomness: the same seed and moves give the same game with visual effects on and off; undo, or save
+    and reload, then the same move gives the same draw
+  - [ ] Remote settings: a missing or out-of-range value falls back to the default or is clamped
   - [ ] Economy math: rewards, prices, and sinks, read from the real data files
   - [ ] Level data: every level loads and passes its automated checks; solver or bot clears (`docs/LEVELS.md`)
   - [ ] Balance: on fixed seeds, the bots' numbers stay inside the targets in `docs/BALANCE.md`

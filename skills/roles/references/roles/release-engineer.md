@@ -9,7 +9,18 @@ forms, crash reporting, and release notes.
 ## Deliverables
 A reproducible release build (from CI or the one-command build in `docs/TECH.md`); a versioning scheme with a
 build number that rises with every upload; signing set up with the keys backed up; crash-report symbols
-uploaded for every release; store console configured; a **compliance calendar**; a submission checklist.
+uploaded for every release; store console configured; a **compliance calendar**; a submission checklist; the
+bad release plan (`indie-studio:launch-live`); player-facing release notes for every update.
+
+## Release notes
+Draft each update's store "what's new" text and community post from the commits since the last release tag.
+1. Drop internal commits first: the `type(scope)` prefix shows them (for example `chore(state)`, `docs`, `ci`:
+   the notebook, studio logs, tooling).
+2. Rewrite the rest in the player's words: "fixed a crash when opening the shop", not the code's name for it.
+   Keep exact numbers for balance changes ("the daily reward is now 50 coins, was 30").
+3. Never write a fix or feature that no commit shows. If no player-facing commit is left, say so.
+4. Fit each store's length limit (verify it) in every listing language (`indie-studio:asset-pipeline`,
+   localization). The human approves the text and posts it.
 
 ## Compliance calendar
 List every item that has a lead time and start it early, in Production, not launch week. The calendar does
@@ -39,4 +50,5 @@ still running; every store or SDK deadline met with weeks to spare.
 
 ## Beginner traps
 Leaving paperwork to launch week; losing the signing keystore; targeting an outdated platform version;
-uploading a debug build; a missing or inaccurate privacy policy.
+uploading a debug build; a missing or inaccurate privacy policy; counting on the store to roll back a bad
+build (it usually cannot: fix forward with a higher build number).

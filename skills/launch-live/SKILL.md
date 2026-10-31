@@ -38,12 +38,32 @@ payment details, or personal identity data, and never says something was approve
 4. **Release plan.** Confirm the soft-launch shape from `docs/BUSINESS_CASE.md` and its countries or
    languages (`indie-studio:monetization`, growth, section 6), or record the decision to skip the soft launch;
    then the staged rollout, what would make you pause it (crash rate, one-star flood), and
-   the hotfix path (`hotfix/*` from `main`). If the route includes paid installs: the soft-launch ad budget,
+   the bad release plan (next section). If the route includes paid installs: the soft-launch ad budget,
    attribution set up and verified, and the payback rule that stops spending (`indie-studio:monetization`,
    growth).
 5. **Gate:** run `indie-studio:gate-review` for Gold Master. On approval the human submits with their own
    accounts. Merge `release/x.y.z` into `main` and `develop` and tag `v1.0.0` (each with the human's approval).
    Set the stage to Soft Launch, or to Launch if the soft launch was skipped by decision.
+
+## Bad release plan
+Write it before the first release, beside the release plan, and use it whenever a shipped build or a remote
+value goes wrong. A store build usually cannot be rolled back: players who updated keep the bad build until a
+newer one arrives. Verify each store's current options for halting a rollout with `indie-studio:research`.
+1. **Stop the spread.** When a pause rule trips (crash rate, a one-star flood, lost saves, wrong charges), the
+   human halts the staged rollout in the store console.
+2. **Turn the risk off.** If the fault sits behind a kill switch, switch it off in remote settings. Every risky
+   new feature (a new ad placement, a new saved field, cloud sync) ships behind one (`docs/ECONOMY.md`, Remote
+   settings). A bad remote value is undone in the dashboard, not by an update; the safe ranges in code limit the
+   damage meanwhile.
+3. **Fix forward.** Branch `hotfix/*` from `main` and fix the fault or, when the cause is unclear or large,
+   revert the release's changes there so the code matches the last good tag (`indie-studio:git-workflow`, safe
+   undo). Either way the new build gets a build number higher than every uploaded one, is tested on devices, and
+   is submitted by the human. If the bad build raised the save version, the fix must still load that version:
+   the old code would refuse every updated player's save.
+4. **Tell players and make it right.** A short incident note in `studio/JOURNAL.md` (what happened, who was hit,
+   the cause, the fix, how to stop it recurring). A player message drafted by the AI (store "what's new",
+   community post), approved and posted by the human. Compensation, such as a gift through remote settings,
+   when progress or purchases were lost: the human decides what and for whom.
 
 ## Stage: Soft Launch (Monetization + Producer + Engineer; QA, Marketer, Release Engineer, Designer as guests)
 Release the finished game quietly first, and learn whether players stay and spend while mistakes are still
@@ -73,7 +93,8 @@ cheap. Skipping this is a decision to record, not a default.
 1. **Open up in steps.** After a limited-countries soft launch, add countries with a staged rollout where the
    store supports it, and watch crash rate, rating, and retention between steps. After a quiet worldwide soft
    launch, the launch is the promotion push that was held back: translated store pages, the announcement, the
-   featuring pitch, community posts. Pause on the rules agreed in the release plan.
+   featuring pitch, community posts. Pause on the rules agreed in the release plan; if a shipped build is bad,
+   follow the bad release plan.
 2. **Store listing per country:** localized where the data says it matters; screenshots and text from the real
    game.
 3. **Marketing.** Announcement text, a few short gameplay clips, community posts, and the featuring pitch if
@@ -87,10 +108,10 @@ cheap. Skipping this is a decision to record, not a default.
 1. **Watch:** crash reports, reviews, analytics, and player feedback; daily for the first week, then weekly.
 2. **Triage** every item into: hotfix now, next patch, idea for later (parking lot), or ignore. Log it.
 3. **Hotfix:** branch `hotfix/*` from `main`, fix, test on devices, merge into `main` and `develop`, tag
-   `v1.0.1`. Keep it small.
+   `v1.0.1`. Keep it small. When players are already hurt, follow the bad release plan.
 4. **Updates:** plan the next version from the parking lot, the post-launch roadmap, and real numbers through
    `indie-studio:scope-guard`, with a fresh scope tier list and a buffer of its own. Do not promise dates you
-   cannot keep.
+   cannot keep. Draft each update's release notes from its commits (`indie-studio:roles`, release engineer).
 5. **Tune from data, not feeling:** move numbers through remote settings where possible, one change at a time,
    and measure the result (`indie-studio:monetization`). That includes per-level difficulty: retune the levels
    outside their band, keep their IDs, and log each change in `docs/LEVELS.md`.
