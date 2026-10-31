@@ -77,3 +77,4 @@ user a short list of official pages to check. Do not present remembered specific
 ## 8. Evaluating new AI or asset tools
 For "should I use tool X" or "which tool is best for Y", follow
 [tool-evaluation.md](references/tool-evaluation.md): a time-boxed, fair comparison before spending money.
+To find candidates first (what is new, or whether any tool does a job), use `indie-studio:toolchain`, scout.

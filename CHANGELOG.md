@@ -8,7 +8,8 @@ All notable changes to this project are recorded here. The format follows
 Ideas taken from three other Claude Code collections (Donchitos/Claude-Code-Game-Studios, MIT;
 obra/superpowers, MIT; gamedev-skills/awesome-gamedev-agent-skills, Apache-2.0), rewritten in this plugin's own
 words for any game; no text or code copied. What was left out and why: `docs/research/Ideas from other studio
-plugins (2026-10-31).md`. Scenarios in `docs/TESTING.md` (89-99).
+plugins (2026-10-31).md`. The tool scout and the store search guide are the user's own requests. Scenarios in
+`docs/TESTING.md` (89-104).
 
 ### Added
 - **Proof before "done"** (`ai-delegation`, `references/done-evidence.md`): every done, fixed or works claim
@@ -41,6 +42,16 @@ plugins (2026-10-31).md`. Scenarios in `docs/TESTING.md` (89-99).
   reduce-motion setting and a researched flash limit. Also four usability checks and touch accessibility
   (UI/UX), mix rules with a loudness starting point to verify (audio), and mechanical checks on every generated
   art batch (artist).
+- **A tool scout** (`toolchain scout [topic]`, `references/tool-scout.md`): on call, weekly through a scheduled
+  run the human approves, or offered in one line when a gap shows (three strikes caused by a missing capability,
+  an asset class no maker fits, a request no connected tool covers). Official directories first; each tool is
+  checked for gap, publisher, activity, cost, licence, safety and fit, and gets Try, Watch or Skip. It never
+  installs: a Try goes through the tool comparison and `connect`. The digest lives in the studio-wide folder
+  when allowed.
+- **Store page and search (ASO)** (`launch-live`, `references/aso.md`): who does what (the AI drafts and reads,
+  the human signs in, approves and publishes), search terms from the store's own suggestions, a page that
+  converts, one-change listing tests, the monthly report, and a record in `docs/store/LISTING.md`. Paid ASO
+  tools wait until the game earns.
 
 ## [0.4.0] - 2026-10-16
 

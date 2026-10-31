@@ -26,6 +26,8 @@ Needs a decision or real work:
   to `studio/archive/<LOG>-<YYYY-MM>.md`, with the human's yes. Entries move whole and unedited.
 - Task briefs written from now on use the new Result table (proof per criterion) and a Review focus list;
   older briefs stay as they are.
+- Nothing to add for the tool scout or the store search guide: `TOOL_SCOUT.md` and `docs/store/LISTING.md` are
+  created the first time they are used, and the weekly scout is set up only when the human asks for it.
 
 ## 0.4.0
 Add now:

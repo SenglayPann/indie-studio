@@ -22,7 +22,7 @@ where the additions below come from.
 ## Adopted on `feature/ideas-from-other-studios`
 
 No new skills: everything went into existing skills, reference files, templates and the session brief, so the
-skill list does not grow. Each change has a scenario in `docs/TESTING.md` (89-99) and a line in `CHANGELOG.md`.
+skill list does not grow. Each change has a scenario in `docs/TESTING.md` (89-104) and a line in `CHANGELOG.md`.
 
 | Theme | Where | From |
 |---|---|---|
@@ -73,12 +73,12 @@ helpers had no web access: the flash limit (about three per second) and the mobi
 - A one-hour prototype called a "vertical slice", the AI picking the art direction, and an easily edited save
   file as the default for games that sell currency.
 
-## Proposal: the tool scout (the human's idea, waiting for a yes)
+## The tool scout (the human's idea, built 2026-10-31)
 
 The human asked for a way to stay up to date with new tools for Claude Code, weekly or on call, and for the
 studio to suggest a search when a task is beyond what the AI can do with confidence.
 
-**Recommendation: build it into indie-studio, not as a second plugin.** The pieces already live here:
+**Built into indie-studio, not as a second plugin** (the human agreed). The pieces already live here:
 `toolchain` connects and checks tools, `research` section 8 evaluates new AI tools, `ai-delegation` has the
 three-strikes stop, and `asset-pipeline` decides who makes each asset. A second plugin would repeat the vetting
 rules, add to the skill-list budget, and could not see those moments where a gap shows.
@@ -93,3 +93,17 @@ Shape:
 - **Output:** a short digest per run (what it does, official or community, the gap it fills here, cost,
   licence, security notes, verdict: try, watch or skip). It never installs: installing goes through
   `toolchain connect` and the human's approval, with the vetting checklist.
+
+Where it went: `toolchain` section 7 and `references/tool-scout.md` (the gap signals, the sources, the
+seven-point filter, the digest and its place, the weekly run, and the safety read before any install), with
+one-line pointers from `research` section 8, the three-strikes options in `ai-delegation`, the samples rule in
+`asset-pipeline`, and the session-start recap. Scenarios 100-102.
+
+## Store page and search (ASO), the human's question
+
+The human asked whether the AI can do ASO without paid tools. Mostly yes: search terms from the store's own
+suggestions and competitors' pages and reviews, every text field, the screenshot plan, test variants, and
+reading the console's reports once the human signs in. What it cannot give is search volume and difficulty,
+which paid tools estimate. Written as a reference, not a new skill (`launch-live`, `references/aso.md`), because
+store pages already trigger `launch-live` and a new skill would add to the skill-list budget with no new trigger.
+Scenarios 103-104.

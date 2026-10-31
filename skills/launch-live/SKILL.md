@@ -1,6 +1,6 @@
 ---
 name: launch-live
-description: Phase 4 of an Indie Studio project. Use when the project is at or near release (Gold Master gate), in soft launch, or live (stage Soft Launch, Launch, Live Ops, or Post-Mortem), or when the user asks about store submission, the release build, store listings, launch day, staged rollouts, which countries to soft launch in, what the soft-launch numbers mean, fixing bugs after launch, updates, yearly store deadlines, live events, reading reviews and crash reports, or writing a post-mortem. Covers the release candidate, store readiness and the human-only steps, the soft launch and its scale-or-stop decision, the worldwide rollout, live monitoring and hotfixes, and the post-mortem that produces lessons for the next game.
+description: Phase 4 of an Indie Studio project. Use when the project is at or near release (Gold Master gate), in soft launch, or live (stage Soft Launch, Launch, Live Ops, or Post-Mortem), or when the user asks about store submission, the release build, store listings, store search keywords (ASO) and store page tests, launch day, staged rollouts, which countries to soft launch in, what the soft-launch numbers mean, fixing bugs after launch, updates, yearly store deadlines, live events, reading reviews and crash reports, or writing a post-mortem. Covers the release candidate, store readiness and the human-only steps, the soft launch and its scale-or-stop decision, the worldwide rollout, live monitoring and hotfixes, and the post-mortem that produces lessons for the next game.
 ---
 
 # Phase 4: Launch and Live
@@ -24,6 +24,7 @@ payment details, or personal identity data, and never says something was approve
    - Listing: title, short and full description, icon, screenshots from real gameplay, and any required
      graphics, in each soft-launch language (screenshot text included; `indie-studio:asset-pipeline`,
      localization). Screenshots and trailers must show the actual game.
+     Search terms and the page that converts: [aso.md](references/aso.md).
    - Privacy policy at a public URL (draft with the AI; the human reviews and, for real risk, gets legal
      help), and the data and privacy declarations that match what the game and its SDKs actually collect.
    - Age rating questionnaire, content declarations (including any AI-content disclosure), and ad or purchase
@@ -96,7 +97,7 @@ cheap. Skipping this is a decision to record, not a default.
    featuring pitch, community posts. Pause on the rules agreed in the release plan; if a shipped build is bad,
    follow the bad release plan.
 2. **Store listing per country:** localized where the data says it matters; screenshots and text from the real
-   game.
+   game. Search terms per language, tests, and the monthly report: [aso.md](references/aso.md).
 3. **Marketing.** Announcement text, a few short gameplay clips, community posts, and the featuring pitch if
    the stores' lead times allowed it. Paid installs scale country by country only while return on ad spend
    holds (`indie-studio:monetization`, growth). Drafted by the AI, posted and paid for by the human, honest about

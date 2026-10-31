@@ -6,7 +6,8 @@
 The market check, positioning, the route to players (organic, paid installs, or a publisher), the store listing
 and its search keywords (ASO) in each language, screenshots and trailer, ad creatives, store featuring and
 pre-launch sign-ups, social presence, community, post-launch support, and feedback triage. The growth procedures
-live in `indie-studio:monetization` (`references/growth.md`).
+live in `indie-studio:monetization` (`references/growth.md`); the store page and search method in
+`indie-studio:launch-live` (`references/aso.md`).
 
 ## Deliverables
 A market check note (three comparable games and the gap); the route and its reasons in `docs/BUSINESS_CASE.md`;

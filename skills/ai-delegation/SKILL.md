@@ -71,6 +71,8 @@ builder check).
    - **Ask people:** draft a question for the engine's official forum or community with the version, the exact
      error, what was tried, and the shortest steps to reproduce. The human posts it under their own account.
    - **Hands on:** talk the human through the step in the editor and watch what comes back.
+   - **Find a tool** (`indie-studio:toolchain`, scout): only when the summary shows a missing capability, not a
+     mistake: no connected tool does this job well.
    When it is solved, record the cause and the fix in `studio/KNOWLEDGE.md` so the next session does not repeat it.
 6. No new dependencies, packages, or SDKs without approval. No unrelated refactors. No secrets read or printed.
 7. Subagents get a brief and return short findings. Only the main thread edits STUDIO_STATE.md, so updates do

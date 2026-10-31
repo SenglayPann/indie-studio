@@ -47,7 +47,8 @@ answer in the makers table.
 3. Look at them: render vector output to an image, take a screenshot of a model, and compare against the
    style bible and the technical spec. If you cannot see the result, it is not verified: say so and ask the
    human to look.
-4. The human approves or rejects. After two failed rounds, change the maker rather than the prompt.
+4. The human approves or rejects. After two failed rounds, change the maker rather than the prompt. If no maker
+   in the table fits, offer to look for one (`indie-studio:toolchain`, scout).
 5. Record the decision, the date, and the samples in the makers table.
 Re-run this whenever the style bible changes or a tool changes its model.
 

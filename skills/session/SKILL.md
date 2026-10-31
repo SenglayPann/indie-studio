@@ -29,6 +29,8 @@ hands over their decisions for a while.
    `indie-studio:git-workflow` before any git action.
 5. Give the recap in at most six lines (one line when `experience` is `experienced`): phase and stage, next
    gate, hats, branch, the next three actions, open questions.
+   If Permissions records a weekly tool scout, add one line only when its digest has a new "Try"
+   (`indie-studio:toolchain`, scout).
 6. Propose a plan for the session: one to three tasks, each with a rough estimate of the AI's time and the
    human's time. Fit it to the time the user mentions; ask only if the plan really depends on it. Name any
    time-box in `studio/RISKS.md` that is close or overrun. Note the start time (`date`), so the wrap can record
